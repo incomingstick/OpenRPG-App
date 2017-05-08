@@ -1,0 +1,5 @@
+{
+  "name"    : "openrpg",
+  "version" : "v0.4.0-dev",
+  "main"    : "main.js"
+}
