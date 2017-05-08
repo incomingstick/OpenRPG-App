@@ -1,9 +1,19 @@
 {
   "name": "openrpg",
-  "version": "v0.4.0-dev",
+  "version": "0.4.0",
   "main": "main.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/incomingstick/OpenRPG.git"
-  }
+  },
+  "license": "OSL",
+  "bugs": {
+    "url": "https://github.com/incomingstick/OpenRPG/issues"
+  },
+  "homepage": "http://openrpg.io",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1"
+  },
+  "devDependencies": {}
 }
