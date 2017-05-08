@@ -1,5 +1,9 @@
 {
-  "name"    : "openrpg",
-  "version" : "v0.4.0-dev",
-  "main"    : "main.js"
+  "name": "openrpg",
+  "version": "v0.4.0-dev",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/incomingstick/OpenRPG.git"
+  }
 }
