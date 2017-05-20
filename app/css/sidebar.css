@@ -1,58 +1,32 @@
-/*-------------------------------*/
-/*           VARIABLES           */
-/*-------------------------------*/
-body {
-  position: relative;
-  overflow-x: hidden;
-}
-body,
-html {
-  height: 100%;
-}
+/* Open nav stuff */
 .nav .open > a {
   background-color: transparent;
 }
+
 .nav .open > a:hover {
   background-color: transparent;
 }
+
 .nav .open > a:focus {
   background-color: transparent;
 }
-/*-------------------------------*/
-/*           Wrappers            */
-/*-------------------------------*/
-#wrapper {
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  -webkit-transition: all 0.5s ease;
-  padding-left: 5rem;
-  transition: all 0.5s ease;
-}
+
+/* Wrappers */
 #sidebar-wrapper {
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  -webkit-transition: all 0.5s ease;
   background: #1a1a1a;
   height: 100%;
   left: 5rem;
   margin-left: -5rem;
   overflow-x: hidden;
   overflow-y: auto;
-  transition: all 0.5s ease;
   width: 5rem;
-  z-index: 1000;
 }
+
 #sidebar-wrapper::-webkit-scrollbar {
   display: none;
 }
-#page-content-wrapper {
-  margin-right: -5rem;
-  position: absolute;
-  width: 100%;
-}
-/*-------------------------------*/
-/*     Sidebar nav styles        */
-/*-------------------------------*/
+
+/* Sidebar nav styles */
 .sidebar-nav {
   list-style: none;
   margin: 0;
@@ -61,12 +35,14 @@ html {
   top: 0;
   width: 5rem;
 }
+
 .sidebar-nav li {
   display: inline-block;
   line-height: 20px;
   position: relative;
   width: 100%;
 }
+
 .sidebar-nav li:before {
   background-color: #1c1c1c;
   content: '';
@@ -79,29 +55,27 @@ html {
   width: 3px;
   z-index: -1;
 }
-.sidebar-nav li:first-child a {
-  background-color: #1a1a1a;
-  color: #ffffff;
-}
-.sidebar-nav li:before {
-  background-color: #2196F3;
-}
+
 .sidebar-nav li:hover:before {
+  background-color: #2196F3;
   -webkit-transition: width 0.2s ease-in;
   transition: width 0.2s ease-in;
   width: 100%;
 }
+
 .sidebar-nav li a {
   color: #dddddd;
   display: block;
   padding: 10px 15px 10px 30px;
   text-decoration: none;
 }
+
 .sidebar-nav li.open:hover before {
   -webkit-transition: width 0.2s ease-in;
   transition: width 0.2s ease-in;
   width: 100%;
 }
+
 .sidebar-nav .dropdown-menu {
   background-color: #222222;
   border-radius: 0;
@@ -112,6 +86,7 @@ html {
   position: relative;
   width: 100%;
 }
+
 .sidebar-nav li a:hover,
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus,
@@ -122,6 +97,7 @@ html {
   color: #ffffff;
   text-decoration: none;
 }
+
 .sidebar-nav > .sidebar-brand {
   font-size: 20px;
   height: 65px;

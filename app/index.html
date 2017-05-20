@@ -31,37 +31,55 @@
 </head>
 
 <body>
-  <div id="wrapper">
-    <nav class="navbar navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-      <ul class="nav sidebar-nav">
-        <li>
-          <a href="#" data-toggle="tooltip" title="Home"><i class="fa fa-fw fa-home"></i></a>
-        </li>
-        <li>
-          <a href="#" data-toggle="tooltip" title="TODO Tooltip"><i class="fa fa-fw fa-folder"></i></a>
-        </li>
-        <li>
-          <a href="#" data-toggle="tooltip" title="TODO Tooltip"><i class="fa fa-fw fa-file"></i></a>
-        </li>
-        <li>
-          <a href="#" data-toggle="tooltip" title="TODO Tooltip"><i class="fa fa-fw fa-building"></i></a>
-        </li>
-        <li>
-          <a href="#" data-toggle="tooltip" title="TODO Tooltip"><i class="fa fa-fw fa-map"></i></a>
-        </li>
-        <li>
-          <a href="#" data-toggle="tooltip" title="TODO Tooltip"><i class="fa fa-fw fa-globe"></i></a>
-        </li>
-        <li>
-          <a href="#" data-toggle="tooltip" title="TODO Tooltip"><i class="fa fa-fw fa-cog"></i></a>
-        </li>
-      </ul>
-    </nav>
-
+  <div id="wrapper"> 
     <div id="page-content-wrapper">
+      <nav class="navbar navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+        <ul class="nav sidebar-nav">
+          <li>
+            <a href="#" data-toggle="tooltip" title="Home"><i class="fa fa-fw fa-home"></i></a>
+          </li>
+          <li>
+            <!-- TODO Is this the correct tooltip -->
+            <a href="#" data-toggle="tooltip" title="Characters"><i class="fa fa-fw fa-file"></i></a>
+          </li>
+          <li>
+            <!-- TODO Is this the correct tooltip / icon -->
+            <a href="#" data-toggle="tooltip" title="Archives"><i class="fa fa-fw fa-folder"></i></a>
+          </li>
+          <li>
+            <!-- TODO Is this the correct tooltip / icon -->
+            <a href="#" data-toggle="tooltip" title="Cities and Towns"><i class="fa fa-fw fa-building"></i></a>
+          </li>
+          <li>
+            <!-- TODO Is this the correct tooltip -->
+            <a href="#" data-toggle="tooltip" title="World Maps"><i class="fa fa-fw fa-map"></i></a>
+          </li>
+          <li>
+            <!-- TODO Is this the correct tooltip -->
+            <a href="#" data-toggle="tooltip" title="Campaign"><i class="fa fa-fw fa-globe"></i></a>
+          </li>
+          <li>
+            <!-- TODO Is this the correct tooltip -->
+            <a href="#" data-toggle="tooltip" title="Settings"><i class="fa fa-fw fa-cog"></i></a>
+          </li>
+        </ul>
+      </nav>
+
       <div class="container">
         <h1>OpenRPG</h1>
-        We are using node
+      </div>
+    </div>
+    <!-- end page-content-wrapper -->
+  </div>
+  <!-- end wrapper -->
+
+  <footer>
+    <div class="container">
+      <p>
+        We are using OpenRPG
+        <script>
+          document.write(require('./package.json').version)
+        </script>, node
         <script>
           document.write(process.versions.node)
         </script>, Chrome
@@ -71,9 +89,9 @@
         <script>
           document.write(process.versions.electron)
         </script>.
-      </div>
+      </p>
     </div>
-  </div>
+  </footer>
 </body>
 
 </html>
