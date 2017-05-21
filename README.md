@@ -31,7 +31,7 @@ v0.1.0 is a basis for the CLI/developer version, but v1.0.0 will contain a
 portable GUI that works on Windows, Linux, and macOS.
 
 ## Building
-Currently we require `cmake` (at least v2.8.4) and `make`
+Currently we require `cmake` (at least v2.8.4) and `make` to build the main binaries. To compile the gui see [Building the GUI](#building-the-gui) below.
 
 ### Build script
 **Linux:** run build.sh `$ ./build.sh`
@@ -44,8 +44,21 @@ Run make `$ make`
 ## Check Integrity of build
 Run make check `$ make check` 
 
+## Building the GUI
+Currently we require `npm` and `electron` to build the GUI. To compile the main binaries see [Building](#building) above.
+I _highly_ recommend installing `electron` globally `$ sudo npm install electron -g`.
+
+### Manual build
+Change current directory to the `app/` directory `$ cd app/` 
+Download dependencies `$ npm install`  
+Build and run `$ electron .`
+
+**NOTE:** Currently this will NOT create any binaries.
+
 # Installing
 After building run make install `$ make install`
+
+**NOTE:** Currently this will NOT install the GUI.
 
 # License
 OpenRPG Software License - Version 1.0 - February 10th, 2017 <http://www.openrpg.io/about/license/>
