@@ -1,4 +1,4 @@
-/* page structure*/
+/* main page structure */
 html {
     -ms-overflow-style: scrollbar;
     -webkit-tap-highlight-color: transparent;
@@ -15,8 +15,8 @@ body {
     font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
     font-size: 1rem;
     line-height: 1.42857143;
-    color: #333;
-    background-color: #fff;
+    color: #ccc;
+    background-color: #363636;
 }
 
 html, body {
@@ -26,27 +26,22 @@ html, body {
     height: 100%;
 }
 
-footer {
-    margin-top: 1rem;
-    font-size: .85rem;
-    text-align: left;
-    background-color: #2196F3;
-    position: fixed;
-    height: 1.3rem;
-    width: 100%;
-    bottom: 0;
-    z-index: 1030;
-    color: #fff;
+h1 {
+    color: #eee;
+    font-weight: 700;
 }
 
-footer li {
-    display: inline-block;
+h2 {
+    color: #aaa;
+    font-weight: 500;
 }
 
-footer .container {
-    margin: 0 1rem;
+h3 {
+    color: #ddd;
+    font-weight: 300;
 }
 
+/* wrappers */
 #wrapper {
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -68,20 +63,35 @@ footer .container {
     position: absolute;
 }
 
-h1, h2, h3 {
-    color: #666;
-    font-weight: 400;
+#main-content-wrapper {
+    padding-left: 2.5rem;
 }
 
-footer a, .navbar a {
-    color:#333;
-    font-weight: 500;
+/* main content */
+.welcome-header {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    flex: 1 100%;
 }
 
-.active > .doc-nav-link:hover {
-    color: #fff;
+/*.getting-started {
+    padding: 2rem 5rem;
+    margin: 2.5rem;
+}*/
+
+.getting-started > ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
 }
 
+.homepage-utils > ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+/* search-box */
 .search-box {
     margin-top: 25px;
     position: relative;
@@ -121,6 +131,7 @@ footer a, .navbar a {
     white-space: normal;
 }
 
+/* buttons */
 .btn {
     display: inline-block;
     font-weight: 500;
@@ -156,6 +167,33 @@ footer a, .navbar a {
     border-radius: .3rem;
 }
 
+/* footer stuff */
+footer {
+    margin-top: 1rem;
+    font-size: .85rem;
+    text-align: left;
+    background-color: #2196F3;
+    position: fixed;
+    height: 1.3rem;
+    width: 100%;
+    bottom: 0;
+    z-index: 1030;
+    color: #fff;
+}
+
+footer li {/* main content @media styles */
+    display: inline-block;
+}
+
+footer .container {
+    margin: 0 1rem;
+}
+
+footer a, .navbar a {
+    color:#333;
+    font-weight: 500;
+}
+
 footer a {
     font-weight: 500;
 }
@@ -163,21 +201,4 @@ footer a {
 footer a:hover {
     color: #0275d8;
     text-decoration: underline;
-}
-
-pre {
-    font-size: .65rem;
-}
-
-/* @media styles */
-@media (min-width: 768px) {
-    pre {
-        font-size: 1.25rem;
-    }
-}
-
-@media (min-width: 576px) {
-    pre {
-        font-size: 1rem;
-    }
 }
