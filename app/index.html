@@ -6,9 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>OpenRPG</title>
 
+  <!-- Package info (package.json) -->
+  <script>
+    const { remote } = require('electron');
+    const pkginfo = remote.getGlobal('pkginfo');
+  </script>
+
   <!-- jQuery first, then Tether, then Bootstrap -->
   <script>
-    window.$ = window.jQuery = require('jquery');
+          window.$ = window.jQuery = require('jquery');
   </script>
   <script src="js/vendor/tether-1.4.0.min.js"></script>
 
@@ -122,7 +128,7 @@
       <p>
         We are using OpenRPG
         <script>
-          document.write(require('./package.json').version)
+          document.write(pkginfo.version)
         </script>, node
         <script>
           document.write(process.versions.node)

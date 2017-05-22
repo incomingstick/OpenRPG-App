@@ -12,10 +12,11 @@
   },
   "homepage": "http://openrpg.io",
   "dependencies": {
-    "cmake-js": "^3.4.1",
     "bootstrap": "^3.3.7",
+    "cmake-js": "^3.4.1",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
-    "font-awesome": "^4.7.0"
+    "pkginfo": "^0.4.0"
   },
   "devDependencies": {}
 }
