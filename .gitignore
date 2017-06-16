@@ -47,3 +47,8 @@ config.h
 .vscode
 [Gg]ifs/
 node_modules/
+*.un~
+*.un
+
+# Rust files
+Cargo.lock
