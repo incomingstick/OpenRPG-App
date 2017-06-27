@@ -2,8 +2,13 @@ set(ROLL_PARSER_SOURCE
     ${CMAKE_CURRENT_SOURCE_DIR}/roll-parser.cpp
 )
 
-add_library(roll-parser ${ROLL_PARSER_SOURCE})
-target_link_libraries(roll-parser)
+add_library(roll-parser SHARED ${ROLL_PARSER_SOURCE})
+target_link_libraries(roll-parser utils)
+
+install(TARGETS roll-parser
+           ARCHIVE DESTINATION lib
+           LIBRARY DESTINATION lib
+           RUNTIME DESTINATION bin)
 
 # if the roll-parser library needs a higher standard than C++11 please update here
 set_property(TARGET roll-parser PROPERTY CXX_STANDARD 11)

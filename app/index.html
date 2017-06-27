@@ -10,6 +10,7 @@
   <script>
     const { remote } = require('electron');
     const pkginfo = remote.getGlobal('pkginfo');
+    const roll = remote.getGlobal('roll');
   </script>
 
   <!-- jQuery first, then Tether, then Bootstrap -->
@@ -109,6 +110,10 @@
                 <ul>
                   <!-- TODO All of these should be collapsed when program starts -->
                   <li>TODO Roll Dice here</li>
+                  <li><script>
+                    var die = new roll.Die(10);
+                    document.write("Die roll test: " + die.roll());
+                  </script></li>
                   <li>TODO Name Generator here</li>
                   <li>TODO Initiative Helper here</li>
                 </ul>

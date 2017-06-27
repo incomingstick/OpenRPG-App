@@ -11,12 +11,16 @@
     "url": "https://github.com/incomingstick/OpenRPG/issues"
   },
   "homepage": "http://openrpg.io",
+  "blog": "http://blog.openrpg.io",
   "dependencies": {
+    "bindings": "^1.2.1",
     "bootstrap": "^3.3.7",
-    "cmake-js": "^3.4.1",
+    "electron": "^1.6.11",
+    "ffi": "^2.2.0",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.2.1",
-    "pkginfo": "^0.4.0"
+    "jquery": "^3.2.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "pkginfo": "^0.4.0"
+  }
 }

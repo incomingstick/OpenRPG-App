@@ -2,7 +2,13 @@ set(NAMES_SOURCE
         ${CMAKE_CURRENT_SOURCE_DIR}/names.cpp
 )
 
-add_library(names ${NAMES_SOURCE})
+add_library(names SHARED ${NAMES_SOURCE})
+target_link_libraries(names utils)
+
+install(TARGETS names
+           ARCHIVE DESTINATION lib
+           LIBRARY DESTINATION lib
+           RUNTIME DESTINATION bin)
 
 # if the names library needs a higher standard than C++11 please update here
 set_property(TARGET names PROPERTY CXX_STANDARD 11)
@@ -13,7 +19,7 @@ set(NG_SOURCES
 )
 
 add_executable(name-generator ${NG_SOURCES})
-target_link_libraries(name-generator utils names)
+target_link_libraries(name-generator names)
 
 # if the name-generator executable needs a higher standard than C++11 please update here
 set_property(TARGET name-generator PROPERTY CXX_STANDARD 11)

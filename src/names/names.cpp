@@ -83,7 +83,7 @@ string NameGenerator::make_first() {
         while(safeGetline(file, line)) lines.push_back(line);
         while(lines[lines.size()-1].empty()) lines.pop_back();
 
-        int select = random(0, lines.size() - 1);
+        int select = randomInt(0, lines.size() - 1);
 
         file.close();
 
@@ -112,7 +112,7 @@ string NameGenerator::make_last() {
         while(safeGetline(file, line)) lines.push_back(line);
         while(lines[lines.size()-1].empty()) lines.pop_back();
 
-        int select = random(0, lines.size() - 1);
+        int select = randomInt(0, lines.size() - 1);
 
         file.close();
 

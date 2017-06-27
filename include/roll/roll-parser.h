@@ -11,6 +11,8 @@ There is NO WARRANTY, to the extent permitted by law.
 
 #include "roll/die.h"
 
+extern "C" {
+
 #define FUDGE_DIE       -2 // represents a fudge die
 #define HUNDRED         -1 // represents d100
 
@@ -38,6 +40,8 @@ struct parse_node {
     unsigned short int op;      // node type
     int value;                  // node value
 };
+
+}
 
 class ExpressionTree {
 private:

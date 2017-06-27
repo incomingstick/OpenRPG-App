@@ -15,10 +15,11 @@ There is NO WARRANTY, to the extent permitted by law.
 #include "core/utils.h"
 
 class Die {
-    private:
+    protected:
         const int MAX = 20;
     public:
         Die(int max):MAX(max){};
+        
         int roll() {
             std::random_device rd;
             std::mt19937 mt(rd());

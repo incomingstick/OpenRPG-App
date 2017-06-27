@@ -8,8 +8,12 @@ set(CHARACTER_INCLUDE
         ${CMAKE_SOURCE_DIR}/include/races.h
 )
 
-add_library(character ${CHARACTER_SOURCE})
-target_link_libraries(character)
+add_library(character SHARED ${CHARACTER_SOURCE})
+
+install(TARGETS character
+           ARCHIVE DESTINATION lib
+           LIBRARY DESTINATION lib
+           RUNTIME DESTINATION bin)
 
 # if the character library needs a higher standard than C++11 please update here
 set_property(TARGET character PROPERTY CXX_STANDARD 11)

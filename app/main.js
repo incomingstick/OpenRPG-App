@@ -1,9 +1,18 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const url = require('url')
-const pkginfo = require('pkginfo')(module);
+const pkginfo = require('pkginfo')(module,
+    "version",
+    "repository",
+    "bugs",
+    "homepage",
+    "blog"
+);
 
-global.pkginfo = pkginfo;
+const libroll = require("./libWrappers/build/Release/roll.node");
+
+global.roll = libroll;
+global.pkginfo = module.exports;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
