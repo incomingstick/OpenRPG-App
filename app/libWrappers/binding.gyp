@@ -13,6 +13,5 @@
           "roll/rollWrapper.cpp"
       ]
     }
-    }
   ]
 }

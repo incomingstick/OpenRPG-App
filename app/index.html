@@ -111,8 +111,9 @@
                   <!-- TODO All of these should be collapsed when program starts -->
                   <li>TODO Roll Dice here</li>
                   <li><script>
-                    var die = new roll.Die(10);
-                    document.write("Die roll test: " + die.roll());
+                    var tree = new roll.ExpressionTree();
+                    tree.set_expression("1d20");
+                    document.write("Die roll test: " + tree.parse_expression());
                   </script></li>
                   <li>TODO Name Generator here</li>
                   <li>TODO Initiative Helper here</li>

@@ -16,6 +16,7 @@ using v8::Object;
 
 void InitAll(Local<Object> exports) {
     DieWrapper::Init(exports);
+    ExpressionTreeWrapper::Init(exports);
 }
 
 NODE_MODULE(roll, InitAll)

@@ -394,7 +394,7 @@ int ExpressionTree::parse_input_string(string* buff, int* numBytesRead, int maxB
 }
 
 // TODO ensure integrity of this string before
-static bool is_expression_valid(const std::string exp) {
+bool ExpressionTree::is_expression_valid(const std::string exp) {
     return true;
 }
 
@@ -409,7 +409,6 @@ bool ExpressionTree::set_expression(const std::string exp) {
 
     return build_expression_tree();
 }
-    
 
 /**
   * @desc scans the string held by the ExpressionTree and

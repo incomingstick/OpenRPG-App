@@ -44,7 +44,7 @@ struct parse_node {
 }
 
 class ExpressionTree {
-private:
+protected:
     parse_node* allocate_node();
     parse_node* new_number(struct parse_node* cur, int* numBytesToRead = 0);
     parse_node* new_op(struct parse_node* cur, unsigned short int op);
@@ -82,7 +82,7 @@ public:
      */
     std::string to_string() { return tree_string(head, 0); };
 
-    static bool is_exppression_valid(const std::string exp);
+    static bool is_expression_valid(const std::string exp);
 };
 
 #endif  /* SRC_ROLL_PARSER_H_ */
