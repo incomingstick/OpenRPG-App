@@ -18,8 +18,6 @@ There is NO WARRANTY, to the extent permitted by law.
 
 #endif
 
-extern "C" {
-
 #define CONTINUE_CODE  -2
 #define OUTPUT_CODE    -1
 #define VB_CODE         0
@@ -38,7 +36,5 @@ std::istream& safeGetline(std::istream& is, std::string& t);
 bool print_file(std::string file);
 int randomInt(int min, int max);
 int gcd(int a, int b);
-
-}
 
 #endif /* SRC_UTILS_H_ */
