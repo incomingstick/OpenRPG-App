@@ -243,7 +243,7 @@ int ExpressionTree::parse_tree(struct parse_node* node) {
     // keep highest results node
     case OP_HIGH: {
         repetitions = parse_tree(cur->left->left);
-        high        = parse_tree(cur->right);      
+        high = parse_tree(cur->right);      
 
         // array to store the results to sort
         if (!(results = new int[repetitions])) {
@@ -404,8 +404,13 @@ bool ExpressionTree::is_expression_valid(const std::string exp) {
  */
 bool ExpressionTree::set_expression(const std::string exp) {
     if(!is_expression_valid(exp)) return false;
-    
+
     inputString = exp;
+
+    if(head != allocate_node())
+        head = allocate_node();
+
+    globalReadOffset = 0;
 
     return build_expression_tree();
 }

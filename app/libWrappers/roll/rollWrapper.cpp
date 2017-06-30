@@ -138,11 +138,11 @@ void ExpressionTreeWrapper::parse_expression(const v8::FunctionCallbackInfo<v8::
 }
 
 void ExpressionTreeWrapper::checked_sum(const v8::FunctionCallbackInfo<v8::Value>& args) {
-
+    // TODO add wrapper
 }
 
 void ExpressionTreeWrapper::checked_multiplication(const v8::FunctionCallbackInfo<v8::Value>& args) {
-
+    // TODO add wrapper
 }
 
 void ExpressionTreeWrapper::to_string(const v8::FunctionCallbackInfo<v8::Value>& args) {
