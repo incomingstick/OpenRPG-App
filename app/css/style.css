@@ -67,17 +67,12 @@ h3 {
     padding-left: 2.5rem;
 }
 
-/* main content */
+/* home content */
 .welcome-header {
     margin-top: 1em;
     margin-bottom: 1em;
     flex: 1 100%;
 }
-
-/*.getting-started {
-    padding: 2rem 5rem;
-    margin: 2.5rem;
-}*/
 
 .getting-started > ul {
     padding: 0;
@@ -89,6 +84,27 @@ h3 {
     padding: 0;
     margin: 0;
     list-style-type: none;
+}
+
+li.utils-panel {
+    margin-bottom: 10px;
+    background-color: #222;
+    border: 2px solid transparent;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.utils-panel > a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+#die-calculator {
+    background-color: #444;
+}
+
+#calc {
+    margin: auto;
 }
 
 /* search-box */
@@ -167,6 +183,21 @@ h3 {
     border-radius: .3rem;
 }
 
+.btn-sm {
+    padding: .25rem .75rem;
+    font-size: .85rem;
+    border-radius: .2rem;
+}
+
+.btn-fill {
+    width: 100%;
+    height: 100%;
+}
+
+.btn-rect {
+    border-radius: 0;
+}
+
 /* footer stuff */
 footer {
     margin-top: 1rem;
@@ -181,7 +212,7 @@ footer {
     color: #fff;
 }
 
-footer li {/* main content @media styles */
+footer li {
     display: inline-block;
 }
 

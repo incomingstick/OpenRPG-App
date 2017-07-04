@@ -1,25 +1,22 @@
-$(document).ready(function () {
-    var trigger = $(".hamburger"), overlay = $(".overlay"), isClosed = false;
+const roll = remote.getGlobal('roll');
 
-    trigger.click(function () {
-        hamburger_cross();
-    });
+$('.collapse').on('shown.bs.collapse', function() {
+    $(this).parent().find(".fa-plus").removeClass("fa-plus").addClass("fa-minus");
+}).on('hidden.bs.collapse', function() {
+    $(this).parent().find(".fa-minus").removeClass("fa-minus").addClass("fa-plus");
+});
 
-    function hamburger_cross() {
-        if (isClosed == true) {
-            overlay.hide();
-            trigger.removeClass("is-open");
-            trigger.addClass("is-closed");
-            isClosed = false;
-        } else {
-            overlay.show();
-            trigger.removeClass("is-closed");
-            trigger.addClass("is-open");
-            isClosed = true;
-        }
-    }
-
-    $('[data-toggle="offcanvas"]').click(function () {
-        $("#wrapper").toggleClass("toggled");
+$(document).ready(function(){
+    $('#calc-display').keypress(function(e){
+      if(e.keyCode==13)
+      $('#calc-eval').click();
     });
 });
+
+function die_eval(exp) {
+    var parser = new roll.ExpressionTree();
+
+    parser.set_expression(exp);
+
+    return parser.parse_expression();
+}
