@@ -1,3 +1,15 @@
+// Workaround for https://github.com/electron/electron/issues/9225. Chrome has an issue where
+// in certain locales (e.g. PL), image metrics are wrongly computed. We explicitly set the
+// LC_NUMERIC to prevent this from happening (selects the numeric formatting category of the
+// C locale, http://en.cppreference.com/w/cpp/locale/LC_categories). TODO@Ben temporary.
+if (process.env.LC_ALL) {
+	process.env.LC_ALL = 'C';
+}
+process.env.LC_NUMERIC = 'C';
+
+// Perf measurements
+global.perfStartTime = Date.now();
+
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const url = require('url')
@@ -8,6 +20,8 @@ const pkginfo = require('pkginfo')(module,
     "homepage",
     "blog"
 );
+
+const minimist = require('minimist'); // TODO add CLA's
 
 const libroll = require("./libWrappers/build/Release/roll.node");
 

@@ -18,14 +18,11 @@
   </script>
   <script src="js/vendor/tether-1.4.0.min.js"></script>
 
-  <!-- Latest compiled and minified bootstrap CSS -->
+   <!--Latest compiled and minified bootstrap CSS -->
   <script>
     const bootstrap = require('bootstrap')
   </script>
   <link rel="stylesheet" href="css/vendor/bootstrap-3.3.7.min.css">
-
-  <!-- Our custom JavaScript -->
-  <script src="js/scripts.js"></script>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
@@ -34,174 +31,94 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animate.min.css">
   <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/section.css">
+
+  <script src="./js/scripts.js"></script>
+
+  <!-- Our page templates and imports -->
+  <link rel="import" href="sections/welcome.html">
+  <link rel="import" href="sections/characters.html">
 </head>
 
 <body>
   <div id="wrapper">
     <div id="page-content-wrapper">
-      <nav class="navbar navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+      <nav class="navbar navbar-fixed-top js-nav" id="sidebar-wrapper" role="navigation">
         <ul class="nav sidebar-nav">
           <li>
-            <a href="#" data-toggle="tooltip" title="Home"><i class="fa fa-fw fa-home"></i></a>
+            <button type="button" id="button-welcome" data-section="welcome" class="nav-button" data-toggle="tooltip" title="Home">
+              <i class="fa fa-fw fa-home"></i></button>
           </li>
           <li>
             <!-- TODO Is this the correct tooltip -->
-            <a href="#" data-toggle="tooltip" title="Characters"><i class="fa fa-fw fa-file"></i></a>
+            <button type="button" id="button-characters" data-section="character" class="nav-button" data-toggle="tooltip" title="Characters">
+              <i class="fa fa-fw fa-file"></i>
+            </button>
           </li>
           <li>
             <!-- TODO Is this the correct tooltip / icon -->
-            <a href="#" data-toggle="tooltip" title="Archives"><i class="fa fa-fw fa-folder"></i></a>
+            <button type="button" id="button-welcome" data-section="welcome" class="nav-button" data-toggle="tooltip" title="Archives">
+              <i class="fa fa-fw fa-folder"></i>
+            </button>
           </li>
           <li>
             <!-- TODO Is this the correct tooltip / icon -->
-            <a href="#" data-toggle="tooltip" title="Cities and Towns"><i class="fa fa-fw fa-building"></i></a>
+            <button type="button" id="button-welcome" data-section="welcome" class="nav-button" data-toggle="tooltip" title="Cities and Towns">
+              <i class="fa fa-fw fa-building"></i>
+            </button>
           </li>
           <li>
             <!-- TODO Is this the correct tooltip -->
-            <a href="#" data-toggle="tooltip" title="World Maps"><i class="fa fa-fw fa-map"></i></a>
+            <button type="button" id="button-welcome" data-section="welcome" class="nav-button" data-toggle="tooltip" title="World Maps">
+              <i class="fa fa-fw fa-map"></i>
+            </button>
           </li>
           <li>
             <!-- TODO Is this the correct tooltip -->
-            <a href="#" data-toggle="tooltip" title="Campaign"><i class="fa fa-fw fa-globe"></i></a>
+            <button type="button" id="button-welcome" data-section="welcome" class="nav-button" data-toggle="tooltip" title="Campaign"><i class="fa fa-fw fa-globe"></i>
+          </button>
           </li>
           <li>
             <!-- TODO Is this the correct tooltip -->
-            <a href="#" data-toggle="tooltip" title="Settings"><i class="fa fa-fw fa-cog"></i></a>
+            <button type="button" id="button-welcome" data-section="welcome" class="nav-button" data-toggle="tooltip" title="Settings">
+              <i class="fa fa-fw fa-cog"></i>
+            </button>
           </li>
         </ul>
       </nav>
 
-      <div id="main-content-wrapper">
-        <div class="welcome-header">
-          <h1>OpenRPG</h1>
-          <h2>You're tabletop RPG workbench</h2>
-        </div>
-
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-6 col-sm-6 col-md-6">
-              <div class="getting-started">
-                <h3>Start</h3>
-                <ul>
-                  <li><a href="#">New Character</a></li>
-                  <li><a href="#">Open Something...</a></li>
-                  <li><a href="#">Import Something...</a></li>
-                </ul>
-              </div>
-              <div class="getting-started">
-                <h3>Recent</h3>
-                <ul>
-                  <li>No recent stuff</li>
-                </ul>
-              </div>
-              <div class="getting-started">
-                <h3>Help</h3>
-                <ul>
-                  <li><a href="#">Documentation</a></li>
-                  <li><a href="#">Github Repository</a></li>
-                  <li><a href="#">Blog</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-              <div class="homepage-utils">
-                <h3>Utilities</h3>
-                <ul>
-                  <!-- TODO All of these should be collapsed when program starts -->
-                  <li class="utils-panel">
-                    <a href="#die-calculator" data-toggle="collapse">
-                      <span class="fa fa-fw fa-plus"></span>
-                      Die Calculator
-                    </a>
-                    <div id="die-calculator" class="collapse">
-                      <div style="padding: .5rem 0">
-                        <form Name="calc" onsubmit="return false">
-                          <table id="calc" border=0>
-                            <tr>
-                              <td colspan=3><input id="calc-display" class="btn btn-rect" name="display" type="text"></td>
-                              <td><input class="btn btn-fill btn-rect" type=button value="C" onclick="calc.display.value=''"
-                                  title="Clear"></td>
-                            </tr>
-                            <tr>
-                              <td><input class="btn btn-fill btn-rect" type=button value="1" onclick="calc.display.value+='1'"></td>
-                              <td><input class="btn btn-fill btn-rect" type=button value="2" onclick="calc.display.value+='2'"></td>
-                              <td><input class="btn btn-fill btn-rect" type=button value="3" onclick="calc.display.value+='3'"></td>
-                              <td><input class="btn btn-fill btn-rect" type=button value="+" onclick="calc.display.value+='+'"></td>
-                            </tr>
-                            <tr>
-                              <td><input class="btn btn-fill btn-rect" type=button value="4" onclick="calc.display.value+='4'"></td>
-                              <td><input class="btn btn-fill btn-rect" type=button value="5" onclick="calc.display.value+='5'"></td>
-                              <td><input class="btn btn-fill btn-rect" type=button value="6" onclick="calc.display.value+='6'"></td>
-                              <td><input class="btn btn-fill btn-rect" type=button value="-" onclick="calc.display.value+='-'"></td>
-                            </tr>
-                            <tr>
-                              <td><input class="btn btn-fill btn-rect" type=button value="7" onclick="calc.display.value+='7'"></td>
-                              <td><input class="btn btn-fill btn-rect" type=button value="8" onclick="calc.display.value+='8'"></td>
-                              <td><input class="btn btn-fill btn-rect" type=button value="9" onclick="calc.display.value+='9'"></td>
-                              <td><input class="btn btn-fill btn-rect" type=button value="x" onclick="calc.display.value+='*'"></td>
-                            </tr>
-                            <tr>
-                              <td><input class="btn btn-fill btn-rect" type=button value="d" onclick="calc.display.value+='d'"
-                                  title="XdY"></td>
-                              <td><input class="btn btn-fill btn-rect" type=button value="0" onclick="calc.display.value+='0'"></td>
-                              <td><input id="calc-eval" class="btn btn-fill btn-rect" type=button value="=" onclick="calc.display.value=die_eval(calc.display.value)"></td>
-                              <td><input class="btn btn-fill btn-rect" type=button value="/" onclick="calc.display.value+='/'"></td>
-                            </tr>
-                            <tr>
-                            </tr>
-                          </table>
-                        </form>
-                      </div>
-                  </li>
-                  <li class="utils-panel">
-                    <a href="#name-generator" data-toggle="collapse">
-                      <span class="fa fa-fw fa-plus"></span>
-                      TODO Name Generator here
-                    </a>
-                    <div id="name-generator" class="collapse">
-                      Lorem ipsum dolor text....
-                    </div>
-                  </li>
-                  <li class="utils-panel">
-                    <a href="#initiative-helper" data-toggle="collapse">
-                      <span class="fa fa-fw fa-plus"></span>
-                      TODO Initiative Helper here
-                    </a>
-                    <div id="initiative-helper" class="collapse">
-                      Lorem ipsum dolor text....
-                    </div>
-                  </li>
-                </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end main-content-wrapper -->
-      </div>
-      <!-- end page-content-wrapper -->
+      <main id="main-content-wrapper" class="content js-content"></main>
+      <!-- end main-content-wrapper -->
     </div>
-    <!-- end wrapper -->
+    <!-- end page-content-wrapper -->
+  </div>
+  <!-- end wrapper -->
 
-    <footer>
-      <div class="container">
-        <p>
-          We are using OpenRPG
-          <script>
-            document.write(pkginfo.version)
-          </script>, node
-          <script>
-            document.write(process.versions.node)
-          </script>, Chrome
-          <script>
-            document.write(process.versions.chrome)
-          </script>, and Electron
-          <script>
-            document.write(process.versions.electron)
-          </script>.
-        </p>
-      </div>
-    </footer>
+  <footer>
+     <div class="container">
+      <p>
+        We are using OpenRPG
+        <script>
+          document.write(pkginfo.version)
+        </script>, node
+        <script>
+          document.write(process.versions.node)
+        </script>, Chrome
+        <script>
+          document.write(process.versions.chrome)
+        </script>, and Electron
+        <script>
+          document.write(process.versions.electron)
+        </script>.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    require('./js/imports')
+    require('./js/nav')
+  </script>
+
 </body>
 
 </html>
