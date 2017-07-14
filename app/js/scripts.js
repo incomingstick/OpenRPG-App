@@ -38,3 +38,33 @@ function swapDrop(event) {
   event.currentTarget.replaceChild(src, target);
   srcParent.appendChild(target);
 }
+
+$(document).ready(function () {
+    $("div.editable").dblclick(function (event) {
+        event.stopPropagation();
+        var curr = $(this);
+        var value = $(this).html();
+        updateVal(curr, value);
+    });
+});
+
+function updateVal(curr, value) {
+    curr.attr("draggable", false);
+    $(curr).html('<input class="editing" type="text" value="' + value + '" />');
+    $(".editing").focus();
+    $(".editing").keyup(function (event) {
+        if (event.keyCode == 13) {
+            $(curr).html($(".editing").val().trim());
+            curr.attr("draggable", true);
+        }
+    });
+
+    $(document).click(function () {
+        var toTrim = $(".editing");
+        if (typeof toTrim.val() != 'undefined') {
+            $(curr).html($(".editing").val().trim());
+            curr.attr("draggable", true);
+            return;
+        }
+    });
+}
