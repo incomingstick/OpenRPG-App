@@ -140,6 +140,14 @@ li.utils-panel {
     margin: auto;
 }
 
+#name-generator {
+    background-color: #444;
+}
+
+#initiative-helper {
+    background-color: #444;
+}
+
 /* search-box */
 .search-box {
     margin-top: 25px;

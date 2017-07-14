@@ -7,8 +7,8 @@ $('.collapse').on('shown.bs.collapse', function() {
 });
 
 $(document).ready(function(){
-    $('#calc-display').keypress(function(e){
-      if(e.keyCode==13)
+    $('#calc-display').keypress(function(event){
+      if(event.keyCode==13)
       $('#calc-eval').click();
     });
 });
@@ -19,4 +19,22 @@ function die_eval(exp) {
     parser.set_expression(exp);
 
     return parser.parse_expression();
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drag(event) {
+    event.dataTransfer.setData("src", event.target.id);
+}
+
+function swapDrop(event) {
+  event.preventDefault ();
+  var src = document.getElementById(event.dataTransfer.getData ("src"));
+  var srcParent = src.parentNode;
+  var target = event.currentTarget.firstElementChild;
+
+  event.currentTarget.replaceChild(src, target);
+  srcParent.appendChild(target);
 }
