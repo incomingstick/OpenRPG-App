@@ -18,7 +18,7 @@
   </script>
   <script src="js/vendor/tether-1.4.0.min.js"></script>
 
-   <!--Latest compiled and minified bootstrap CSS -->
+  <!--Latest compiled and minified bootstrap CSS -->
   <script>
     const bootstrap = require('bootstrap')
   </script>
@@ -38,64 +38,60 @@
   <!-- Our page templates and imports -->
   <link rel="import" href="sections/welcome.html">
   <link rel="import" href="sections/characters.html">
+  <link rel="import" href="sections/cities.html">
+  <link rel="import" href="sections/world-maps.html">
+  <link rel="import" href="sections/campaign.html">
+  <link rel="import" href="sections/settings.html">
 </head>
 
 <body>
   <div id="wrapper">
-    <div id="page-content-wrapper">
-      <nav class="navbar navbar-fixed-top js-nav" id="sidebar-wrapper" role="navigation">
-        <ul class="nav sidebar-nav">
-          <li>
-            <button type="button" id="button-welcome" data-section="welcome" class="nav-button" data-toggle="tooltip" title="Home">
-              <i class="fa fa-fw fa-home"></i></button>
-          </li>
-          <li>
-            <!-- TODO Is this the correct tooltip -->
-            <button type="button" id="button-characters" data-section="character" class="nav-button" data-toggle="tooltip" title="Characters">
-              <i class="fa fa-fw fa-file"></i>
+    <nav class="navbar navbar-fixed-top js-nav" id="sidebar-wrapper" role="navigation">
+      <ul class="nav sidebar-nav">
+        <li>
+          <button type="button" id="button-welcome" data-section="welcome" class="nav-button" data-toggle="tooltip" title="Home">
+              <div class="fa fa-fw fa-home" onclick="document.getElementById('button-welcome').click()" ></div></button>
+        </li>
+        <li>
+          <!-- TODO Is this the correct tooltip -->
+          <button type="button" id="button-characters" data-section="character" class="nav-button" data-toggle="tooltip" title="Characters">
+              <div class="fa fa-fw fa-file" onclick="document.getElementById('button-characters').click()"></div>
             </button>
-          </li>
-          <li>
-            <!-- TODO Is this the correct tooltip / icon -->
-            <button type="button" id="button-welcome" data-section="welcome" class="nav-button" data-toggle="tooltip" title="Archives">
-              <i class="fa fa-fw fa-folder"></i>
+        </li>
+        <li>
+          <!-- TODO Is this the correct tooltip / icon -->
+          <button type="button" id="button-cities" data-section="cities" class="nav-button" data-toggle="tooltip" title="Cities and Towns">
+              <div class="fa fa-fw fa-building" onclick="document.getElementById('button-cities').click()"></div>
             </button>
-          </li>
-          <li>
-            <!-- TODO Is this the correct tooltip / icon -->
-            <button type="button" id="button-welcome" data-section="welcome" class="nav-button" data-toggle="tooltip" title="Cities and Towns">
-              <i class="fa fa-fw fa-building"></i>
+        </li>
+        <li>
+          <!-- TODO Is this the correct tooltip -->
+          <button type="button" id="button-world-maps" data-section="world-maps" class="nav-button" data-toggle="tooltip" title="World Maps">
+              <div class="fa fa-fw fa-map" onclick="document.getElementById('button-world-maps').click()"></div>
             </button>
-          </li>
-          <li>
-            <!-- TODO Is this the correct tooltip -->
-            <button type="button" id="button-welcome" data-section="welcome" class="nav-button" data-toggle="tooltip" title="World Maps">
-              <i class="fa fa-fw fa-map"></i>
-            </button>
-          </li>
-          <li>
-            <!-- TODO Is this the correct tooltip -->
-            <button type="button" id="button-welcome" data-section="welcome" class="nav-button" data-toggle="tooltip" title="Campaign"><i class="fa fa-fw fa-globe"></i>
+        </li>
+        <li>
+          <!-- TODO Is this the correct tooltip -->
+          <button type="button" id="button-campaign" data-section="campaign" class="nav-button" data-toggle="tooltip" title="Campaign">
+              <div class="fa fa-fw fa-globe" onclick="document.getElementById('button-campaign').click()"></div>
           </button>
-          </li>
-          <li>
-            <!-- TODO Is this the correct tooltip -->
-            <button type="button" id="button-welcome" data-section="welcome" class="nav-button" data-toggle="tooltip" title="Settings">
-              <i class="fa fa-fw fa-cog"></i>
+        </li>
+        <li>
+          <!-- TODO Is this the correct tooltip -->
+          <button type="button" id="button-settings" data-section="settings" class="nav-button" data-toggle="tooltip" title="Settings">
+              <div class="fa fa-fw fa-cog" onclick="document.getElementById('button-settings').click()"></div>
             </button>
-          </li>
-        </ul>
-      </nav>
+        </li>
+      </ul>
+    </nav>
 
-      <main id="main-content-wrapper" class="content js-content"></main>
-      <!-- end main-content-wrapper -->
-    </div>
-    <!-- end page-content-wrapper -->
+    <main id="main-content-wrapper" class="content js-content"></main>
+    <!-- end main-content-wrapper -->
   </div>
   <!-- end wrapper -->
 
   <footer>
-     <div class="container">
+    <div class="container">
       <p>
         We are using OpenRPG
         <script>
@@ -115,8 +111,8 @@
   </footer>
 
   <script>
-    require('./js/imports')
-    require('./js/nav')
+          require('./js/imports')
+          require('./js/nav')
   </script>
 
 </body>

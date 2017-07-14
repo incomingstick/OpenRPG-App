@@ -15,8 +15,6 @@
 #sidebar-wrapper {
   background: #1a1a1a;
   height: 100%;
-  left: 5rem;
-  margin-left: -5rem;
   overflow-x: hidden;
   overflow-y: auto;
   width: 5rem;
