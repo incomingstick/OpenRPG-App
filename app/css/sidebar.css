@@ -11,10 +11,14 @@
   background-color: transparent;
 }
 
+.navbar {
+ padding: 0;
+}
+
 /* Wrappers */
 #sidebar-wrapper {
   background: #1a1a1a;
-  height: 100%;
+  height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
   width: 5rem;
