@@ -25,9 +25,15 @@
                     <div class="getting-started">
                         <h3>Help</h3>
                         <ul>
-                            <li><a href="#">Documentation</a></li>
-                            <li><a href="#">Github Repository</a></li>
-                            <li><a href="#">Blog</a></li>
+                            <li><a href="#" target="_blank" id="docs">Documentation</a></li>
+                            <li><a href="#" target="_blank" id="repo">Github Repository</a></li>
+                            <li><a href="#" target="_blank" id="blog">Blog</a></li>
+
+                            <script type="text/javascript">
+                                document.getElementById("docs").href = pkginfo.website.docs;
+                                document.getElementById("repo").href = pkginfo.website.repo;
+                                document.getElementById("blog").href = pkginfo.website.blog;
+                              </script>
                         </ul>
                     </div>
                 </div>

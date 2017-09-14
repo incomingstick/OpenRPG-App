@@ -17,8 +17,7 @@ const pkginfo = require('pkginfo')(module,
     "version",
     "repository",
     "bugs",
-    "homepage",
-    "blog"
+    "website"
 );
 
 const minimist = require('minimist'); // TODO add CLA's

@@ -10,8 +10,11 @@
   "bugs": {
     "url": "https://github.com/incomingstick/OpenRPG/issues"
   },
-  "homepage": "http://openrpg.io",
-  "blog": "http://blog.openrpg.io",
+  "website": {
+    "url": "http://openrpg.io",
+    "blog": "http://blog.openrpg.io",
+    "docs": "http://openrpg.io/documentation/introduction/"
+  },
   "dependencies": {
     "bindings": "^1.2.1",
     "electron": "^1.6.11",
