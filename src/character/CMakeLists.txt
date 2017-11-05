@@ -9,6 +9,7 @@ set(CHARACTER_INCLUDE
 )
 
 add_library(character SHARED ${CHARACTER_SOURCE})
+target_link_libraries(character utils)
 
 install(TARGETS character
            ARCHIVE DESTINATION lib
