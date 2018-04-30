@@ -1,14 +1,19 @@
 const roll = remote.getGlobal('roll');
 
-// change plus and minus for dropdown items
-$('.collapse').on('shown.bs.collapse', function() {
-    $(this).parent().find(".fa-plus").removeClass("fa-plus").addClass("fa-minus");
-}).on('hidden.bs.collapse', function() {
-    $(this).parent().find(".fa-minus").removeClass("fa-minus").addClass("fa-plus");
-});
 
-// Allow use of enter/return key for calculator
 $(document).ready(function(){
+    // change plus and minus for dropdown items
+    $('a.utility').on('click', function(event) {
+        var $me = $(this);
+        var $childIcon = $me.find('.fa.fa-fw');
+
+        $childIcon.toggleClass('fa-plus');
+        $childIcon.toggleClass('fa-minus');
+
+        return true;
+    });
+
+    // Allow use of enter/return key for calculator
     $('#calc-display').keypress(function(event){
       if(event.keyCode==13)
       $('#calc-eval').click();
@@ -68,6 +73,7 @@ function updateVal(curr, value) {
 }
 
 // allow user to edit a div buy giving it the editable class
+// TODO ensure you cannot inject malicious code here
 $(document).ready(function () {
     $("div.editable").dblclick(function (event) {
         event.stopPropagation();
