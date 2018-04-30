@@ -5,7 +5,7 @@ html {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     font-family: sans-serif;
-    font-size: 1rem;
+    font-size: 14px;
     line-height: 1.15;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
@@ -41,6 +41,10 @@ h3 {
     font-weight: 300;
 }
 
+a {
+    -webkit-user-drag: none;
+}
+
 .content {
     flex: 1;
     overflow: hidden;
@@ -58,6 +62,10 @@ h3 {
     color: #fff;
 }
 
+.outline {
+    border: 1px solid #f00;
+}
+
 /* Visually hidden, but will be read by screen readers */
 .u-visible-to-screen-reader {
     position: absolute;
@@ -70,8 +78,8 @@ h3 {
     border: 0;
 }
 
-.no-display {
-    display: none;
+.hidden {
+    display: none !important;
 }
 
 /* wrappers */
@@ -103,6 +111,21 @@ h3 {
 /* main content  */
 .container {
     width: 100%;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #666;
+}
+
+a.nav-link {
+    color: #aaa;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    color: #eee;
+    background-color: #666;
+    border-color: #666;
 }
 
 
