@@ -138,6 +138,10 @@ li.utils-panel {
     text-decoration: none;
 }
 
+.inner-utility {
+    padding: 3px;
+}
+
 #die-calculator {
     background-color: #444;
     padding: .5rem 0;
