@@ -574,7 +574,6 @@ form.charSheet main section.combat > div.deathsaves > div div.bubbles {
 
 form.charSheet main section.combat > div.deathsaves > div div.bubbles input[type="checkbox"] {
     -webkit-appearance: none;
-    appearance: none;
     width: 10px;
     height: 10px;
     border: 1px solid black;
