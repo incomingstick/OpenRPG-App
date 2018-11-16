@@ -21,7 +21,7 @@
   height: calc(100vh - 1.3rem);
   overflow-x: hidden;
   overflow-y: auto;
-  width: 5rem;
+  width: 3rem;
 }
 
 #sidebar-wrapper::-webkit-scrollbar {
@@ -35,7 +35,7 @@
   padding: 0;
   position: absolute;
   top: 0;
-  width: 5rem;
+  width: 3rem;
 }
 
 .sidebar-nav li {

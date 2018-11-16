@@ -1,9 +1,10 @@
+#TODO: Cleanup app/libWrapper build tree
 # Do normal build first
 node-gyp configure build --verbose
 # Clear old cache
 rm -rf ~/.electron-gyp/
 # Electron's version.
-npm_config_target=1.6.11
+npm_config_target=1.8.8
 # The architecture of Electron, can be ia32 or x64.
 npm_config_arch=x64
 npm_config_target_arch=x64
