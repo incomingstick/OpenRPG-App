@@ -52,3 +52,4 @@ node_modules/
 
 # Rust files
 Cargo.lock
+*.swp

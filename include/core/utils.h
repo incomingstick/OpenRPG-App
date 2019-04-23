@@ -11,17 +11,24 @@ There is NO WARRANTY, to the extent permitted by law.
 
 #include <iostream>
 
-#ifdef WIN32
+#ifdef _WIN32
 
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 
 #endif
 
+// these are orpg connonical exit and output codes
 #define CONTINUE_CODE  -2
 #define OUTPUT_CODE    -1
 #define VB_CODE         0
 #define ERROR_CODE      1
+
+// Any useful keycodes go here
+#define KEY_UP 72
+#define KEY_DOWN 80
+#define KEY_LEFT 75
+#define KEY_RIGHT 77
 
 extern bool VB_FLAG;
 extern bool QUIET_FLAG;
@@ -34,7 +41,7 @@ std::string leftpad(std::string str, int len = 0, char ch = ' ');
 std::string rightpad(std::string str, int len = 0, char ch = ' ');
 std::istream& safeGetline(std::istream& is, std::string& t);
 bool print_file(std::string file);
-int randomInt(int min, int max);
+int random(int min, int max);
 int gcd(int a, int b);
 
 #endif /* SRC_UTILS_H_ */
