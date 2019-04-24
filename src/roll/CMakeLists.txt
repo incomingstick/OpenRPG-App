@@ -5,11 +5,6 @@ set(ROLL_PARSER_SOURCE
 add_library(roll-parser SHARED ${ROLL_PARSER_SOURCE})
 target_link_libraries(roll-parser utils)
 
-install(TARGETS roll-parser
-           ARCHIVE DESTINATION lib
-           LIBRARY DESTINATION lib
-           RUNTIME DESTINATION bin)
-
 # if the roll-parser library needs a higher standard than C++11 please update here
 set_property(TARGET roll-parser PROPERTY CXX_STANDARD 11)
 set_property(TARGET roll-parser PROPERTY CXX_STANDARD_REQUIRED ON)
@@ -26,3 +21,4 @@ set_property(TARGET roll PROPERTY CXX_STANDARD 11)
 set_property(TARGET roll PROPERTY CXX_STANDARD_REQUIRED ON)
 
 install(TARGETS roll DESTINATION bin)
+install(TARGETS roll-parser DESTINATION lib/openrpg)

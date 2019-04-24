@@ -33,8 +33,13 @@ v0.1.0 is a basis for the CLI/developer version, but v1.0.0 will contain a
 portable GUI that works on Windows, Linux, and macOS.
 
 ## Building
+<<<<<<< HEAD
 Currently we require `cmake` (at least v2.8.4) and `make` to build the main binaries. Currently we require `cmake` (at least v2.8.4) and `make`, and your choice of C/C++
 compiler. To compile the gui see [Building the GUI](#building-the-gui) below.
+=======
+Currently we require `cmake` (at least v2.8.4) and `make`, and your choice of C/C++
+compiler that supports at least the C++11 standard.
+>>>>>>> patch-v0.5.0-dev
 
 Note: This project strives to keep its source as clean of any dependancies to be as cross platform as possible. If you have suggestions to help move toward that goal, please feel free to open issues, or even a PR!
 
@@ -89,4 +94,4 @@ After installing, in the `build/` folder, run make uninstall `$ make uninstall`
 **NOTE:** Currently this will NOT install the GUI.
 
 # License
-OpenRPG Software License - Version 1.0 - February 10th, 2017 <http://www.openrpg.io/about/license/>
+OpenRPG Software License - Version 1.0 - February 10th, 2017 <https://www.openrpg.io/about/license/>

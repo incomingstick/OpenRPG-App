@@ -7,11 +7,6 @@ set(UTIL_SOURCE
 
 add_library(utils SHARED ${UTIL_SOURCE})
 
-install(TARGETS utils
-           ARCHIVE DESTINATION lib
-           LIBRARY DESTINATION lib
-           RUNTIME DESTINATION bin)
-
 # if the utils library needs a higher standard than C++11 please update here
 set_property(TARGET utils PROPERTY CXX_STANDARD 11)
 set_property(TARGET utils PROPERTY CXX_STANDARD_REQUIRED ON)
@@ -29,6 +24,7 @@ set_property(TARGET openrpg-tui PROPERTY CXX_STANDARD 11)
 set_property(TARGET openrpg-tui PROPERTY CXX_STANDARD_REQUIRED ON)
 
 install(TARGETS openrpg-tui DESTINATION bin)
+install(TARGETS utils DESTINATION lib/openrpg)
 
 # module directories
 add_subdirectory("names")
