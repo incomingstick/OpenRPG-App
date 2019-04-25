@@ -66,11 +66,11 @@ Run cmake `$ cmake ..` **OR** Optionally run `$ cmake -DCMAKE_INSTALL_PREFIX=/de
 Run make `$ make`  
 
 ## Check Integrity of Build
-In the `build/` folder, run make check `$ make check` 
+In the toplevel `build/` folder, run make check `$ make check` 
 
 ## Building the GUI
 Currently we require `npm` and `electron` to build the GUI. To compile the main binaries see [Building](#building) above.
-I _highly_ recommend installing `electron` globally `$ sudo npm install electron -g`.
+I _highly_ recommend installing `electron` globally `$ sudo npm install electron -g`. The rest of the directions assume you have done so.
 
 ### Manual build
 Change current directory to the `app/` directory `$ cd app/` 

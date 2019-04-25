@@ -1,10 +1,15 @@
 #TODO: Cleanup app/ build tree
 #this includes libWrappers/build.sh
-npm install
+if hash npm 2>/dev/null; then
+    npm install
 
-pushd libWrappers
-./build.sh
-popd
+    pushd libWrappers
+    ./build.sh
+    popd
+else
+    echo "NPM NOT INSTALLED, ABORTING..."
+    exit 1
+fi
 
 ./node_modules/.bin/electron-rebuild
 
