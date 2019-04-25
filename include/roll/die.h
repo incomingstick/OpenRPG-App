@@ -38,6 +38,8 @@ namespace ORPG {
 
                 return ret;
             }
+
+            int get_max() { return MAX; }
     };
 }
 

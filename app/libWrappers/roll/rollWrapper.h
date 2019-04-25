@@ -16,7 +16,7 @@ There is NO WARRANTY, to the extent permitted by law.
 
 namespace electronGUI {
 
-class DieWrapper : public Die, public node::ObjectWrap {
+class DieWrapper : public ORPG::Die, public node::ObjectWrap {
     private:
         explicit DieWrapper(int max);
         ~DieWrapper();
@@ -30,9 +30,9 @@ class DieWrapper : public Die, public node::ObjectWrap {
         static void Init(v8::Local<v8::Object> exports);
 };
 
-class ExpressionTreeWrapper : public ExpressionTree, public node::ObjectWrap {
+class ExpressionTreeWrapper : public ORPG::ExpressionTree, public node::ObjectWrap {
 private:
-    static ExpressionTree wrappedTree;
+    static ORPG::ExpressionTree wrappedTree;
 
     static void New(const v8::FunctionCallbackInfo<v8::Value>& args);
     static v8::Persistent<v8::Function> constructor;

@@ -42,18 +42,14 @@ namespace ORPG {
         void print_basic_help();
     }
 
-extern "C" {
-
     /* node of the intermediate representation parse tree */
-    struct parse_node {
+    extern "C" struct parse_node {
         struct parse_node* left;    // left node
         struct parse_node* right;   // right node
         struct parse_node* parent;  // this nodes parent
         unsigned short int op;      // node type
         int value;                  // node value
     };
-
-}
 
     class ExpressionTree {
     private:
@@ -94,7 +90,7 @@ extern "C" {
          */
         std::string to_string() { return tree_string(head, 0); };
 
-        static bool is_exppression_valid(const std::string exp);
+        static bool is_expression_valid(const std::string exp);
     };
 }
 

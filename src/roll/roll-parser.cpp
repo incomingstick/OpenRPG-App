@@ -102,7 +102,7 @@ namespace ORPG {
      * @desc creates a pointer to an empty parse_node
      * @return struct parse_node* - and empty parse_node
      */
-    parse_node* ExpressionTree::allocate_node() {
+    extern "C" parse_node* ExpressionTree::allocate_node() {
         struct parse_node* node = new parse_node;
         
         if(node == NULL) {
@@ -463,7 +463,7 @@ namespace ORPG {
     }
 
     // TODO ensure integrity of this string before
-    static bool is_expression_valid(const std::string exp) {
+    bool ExpressionTree::is_expression_valid(const std::string exp) {
         return true;
     }
 

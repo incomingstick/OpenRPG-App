@@ -9,16 +9,16 @@ There is NO WARRANTY, to the extent permitted by law.
 #include <node.h>
 #include "rollWrapper.h"
 
+using namespace ORPG;
+
 namespace electronGUI {
+    using v8::Local;
+    using v8::Object;
 
-using v8::Local;
-using v8::Object;
+    void InitAll(Local<Object> exports) {
+        DieWrapper::Init(exports);
+        ExpressionTreeWrapper::Init(exports);
+    }
 
-void InitAll(Local<Object> exports) {
-    DieWrapper::Init(exports);
-    ExpressionTreeWrapper::Init(exports);
-}
-
-NODE_MODULE(roll, InitAll)
-
+    NODE_MODULE(roll, InitAll)
 }
