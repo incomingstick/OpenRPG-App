@@ -60,8 +60,6 @@ if [[ $OSTYPE == "linux"* || $OSTYPE == "darwin"*  ||  $OSTYPE == "cygwin" ]]; t
 
             make
             popd
-
-            exit 0
         else
             echo "MAKE NOT INSTALLED, ABORTING..."
             exit 1
@@ -73,4 +71,17 @@ if [[ $OSTYPE == "linux"* || $OSTYPE == "darwin"*  ||  $OSTYPE == "cygwin" ]]; t
 else
     echo "UNSUPORTED PLATFORM $OSTYPE"
     exit 1
+fi
+
+if [[ $1 == "app" || $2 == "app" ]]; then
+    pushd $cwd/app/
+
+    if [[ $1 == "run" || $2 == "run" ]]; then
+        ./build.sh run
+    else
+        ./build.sh
+    fi
+
+    popd
+    exit 0
 fi

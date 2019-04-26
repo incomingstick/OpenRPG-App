@@ -69,15 +69,28 @@ Run make `$ make`
 In the toplevel `build/` folder, run make check `$ make check` 
 
 ## Building the GUI
-Currently we require `npm` and `electron` to build the GUI. To compile the main binaries see [Building](#building) above.
-I _highly_ recommend installing `electron` globally `$ sudo npm install electron -g`. The rest of the directions assume you have done so.
+Currently we require `npm` in addition to the requirements noted above to build the GUI. To compile the main binaries see [Building](#building) above.
 
 ### Manual build
-Change current directory to the `app/` directory `$ cd app/` 
-Download dependencies `$ npm install`  
-Build and run `$ electron .`
+Because we need to link to our C++ libraries building and linking properly gets pretty complicated pretty quick. To make this easier just use the provided build.sh files. I will not go into manual build details here. If you would like to understand this better, I suggest opening up those scripts and taking a look.
 
-**NOTE:** Currently this will NOT create any binaries.
+### Linux Build Script
+The build script now provides some extra assistance with building and running the GUIs.
+
+**Debug build:** `$ ./build.sh app`
+
+**Release build:** `$ ./build.sh release app`
+
+**Linux clean build:** `$ ./build.sh clean app`
+
+Note: this currently only cleans the top level build/ folder, and not the app.
+
+**Linux run the app:** `$ ./build.sh run app`
+
+Note: `build.sh` has the potential to work on MacOS, but is currently untested. If you happen to use a Mac, please test this!
+
+### Windows Build Script
+Currently the Windows built.bat does not support building the app.
 
 # Installing
 After building, in the `build/` folder, run make install `$ make install`
