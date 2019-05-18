@@ -2,12 +2,21 @@
 roll - roll-parser.h
 Created on: Feb 12, 2017
 
-OpenRPG Software License - Version 1.0 - February 10th, 2017 <https://www.openrpg.io/about/license/>
+OpenRPG Software License - Version 1.0 - February 10th, 2017 <https://openrpg.io/about/license/>
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
 */
 #ifndef SRC_ROLL_PARSER_H_
 #define SRC_ROLL_PARSER_H_
+
+#ifdef _WIN32
+#   ifndef roll_parser_EXPORTS
+#       define roll_parser_EXPORTS
+#   endif
+#   include "roll/exports/parser_exports.h"
+#else
+#   define ROLL_PARSER_EXPORT
+#endif
 
 #include "roll/die.h"
 
@@ -36,14 +45,14 @@ extern "C" {
 
 namespace ORPG {
     namespace Roll {
-        void print_version_flag();
-        void print_help_flag();
-        void print_basic_version();
-        void print_basic_help();
+        void ROLL_PARSER_EXPORT print_version_flag();
+        void ROLL_PARSER_EXPORT print_help_flag();
+        void ROLL_PARSER_EXPORT print_basic_version();
+        void ROLL_PARSER_EXPORT print_basic_help();
     }
 
     /* node of the intermediate representation parse tree */
-    extern "C" struct parse_node {
+    extern "C" struct ROLL_PARSER_EXPORT parse_node {
         struct parse_node* left;    // left node
         struct parse_node* right;   // right node
         struct parse_node* parent;  // this nodes parent
@@ -51,7 +60,7 @@ namespace ORPG {
         int value;                  // node value
     };
 
-    class ExpressionTree {
+    class ROLL_PARSER_EXPORT ExpressionTree {
     private:
         parse_node* allocate_node();
         parse_node* new_number(struct parse_node* cur, int* numBytesToRead = 0);
