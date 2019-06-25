@@ -62,8 +62,8 @@ namespace ORPG {
          **/
         void UTILS_EXPORT print_basic_help();
 
-        bool UTILS_EXPORT VB_FLAG = false;
-        bool UTILS_EXPORT QUIET_FLAG = false;
+        extern bool UTILS_EXPORT VB_FLAG;
+        extern bool UTILS_EXPORT QUIET_FLAG;
     };
 };
 
@@ -102,6 +102,8 @@ namespace ORPG {
         std::string UTILS_EXPORT rightpad(std::string str, int len = 0, char ch = ' ');
 
         int UTILS_EXPORT randomInt(int min, int max);
+
+        bool UTILS_EXPORT randomBool();
 
         /* Compute the greatest common divisor of a and b. */
         int UTILS_EXPORT gcd(int a, int b);

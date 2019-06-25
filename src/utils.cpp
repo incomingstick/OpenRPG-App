@@ -102,6 +102,9 @@ namespace ORPG {
                 "See 'man openrpg' for more information [TODO add man pages].\n",
                 stdout);
         }
+
+        bool VB_FLAG = false;
+        bool QUIET_FLAG = false;
     }
 }
 
@@ -255,6 +258,15 @@ namespace ORPG {
             uniform_int_distribution<int> dist(min, max);
 
             return dist(mt);
+        }
+
+        /**
+         * @desc Randomly select a true or false state
+         *
+         * @return bool - a randomly chosen true of false state
+         **/
+        bool randomBool() {
+            return randomInt(INT32_MIN, INT32_MAX) % 2 ? true : false;
         }
 
         /* Compute the greatest common divisor of a and b. */

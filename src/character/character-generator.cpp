@@ -6,6 +6,7 @@ OpenRPG Software License - Version 1.0 - February 10th, 2017 <https://openrpg.io
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
 */
+#include <cctype>
 #include <vector>
 #include <string>
 
@@ -14,9 +15,20 @@ There is NO WARRANTY, to the extent permitted by law.
 
 using namespace std;
 using namespace ORPG;
+using namespace ORPG::Characters;
 
-/* Option parser - parse_args(argc, argv)
-    This function parses all cla's passed to argv. */
+/* Global bool to help determine whether
+    we should be random or request data */
+bool RANDOM_FLAG = false;
+
+/**
+ * @desc This function parses all cla's passed to argv from the command line.
+ * This function may terminate the program.
+ *
+ * @param int argc - the number of arguments passed / the length of argv[]
+ * @param char* argv[] - the arguments passed from the command line
+ * @return int - an integer code following the C/C++ standard for program success
+ **/
 int parse_args(int argc, char* argv[]) {
     int status = EXIT_SUCCESS;
 
@@ -30,42 +42,43 @@ int parse_args(int argc, char* argv[]) {
     static struct Core::option long_opts[] = {
         {"help",    no_argument,        0,  'h'},
         {"random",  no_argument,        0,  'r'},
-        {"verbose", no_argument,        0,  'v'},
-        {"version", no_argument,        0,  'V'},
+        {"version", no_argument,        0,  'v'},
+        {"verbose", no_argument,        0,  'V'},
         /* NULL row to terminate struct */
         {0,         0,                  0,   0}
     };
 
-    while ((opt = Core::getopt_long(argc, argv, "rhvV",
+    while ((opt = Core::getopt_long(argc, argv, "hrvV",
                                long_opts, &opt_ind)) != EOF &&
                                status != EXIT_FAILURE) {
 
         switch (opt) {
         /* -h --help */
         case 'h': {
-            Characters::print_help_flag();
+            print_help_flag();
         } break;
 
         /* -r --random */
         case 'r': {
             // TODO skip character creator and generate fully random character
+            RANDOM_FLAG = true;
         } break;
 
-        /* -V --verbose */
+        /* -v --verbose */
         case 'v': {
             Core::VB_FLAG = true;
             Core::QUIET_FLAG = false;
         } break;
 
-        /* -v --version */
+        /* -V --version */
         case 'V': {
-            Characters::print_version_flag();
+            print_version_flag();
         } break;
-            
+
         /* parsing error */
         case ':':
         case '?': {
-            Characters::print_help_flag();
+            print_help_flag();
         } break;
 
         /* if we get here something very bad happened */
@@ -79,150 +92,40 @@ int parse_args(int argc, char* argv[]) {
     return status;
 }
 
-int request_selection(CharacterFactory factory) {
-    int index = -1;
-    string input;
-
-    vector<string> list;
-    
-    if(factory.has_options())
-        list = factory.current_options();
-    
-    while(index < 0 || index > (signed)list.size()) {
-        
-        int tick = 0;
-
-        for(string str : list) {
-            cout << "\t" << (tick++) << ") " << str;
-            
-            if(tick % 3 == 0) cout << endl;
-        }
-        
-        tick = 0;
-        
-        cout << "\n#? ";
-        cin >> input;
-    
-        index = stoi(input);
-    }
-
-    return index;
-}
-
-Ability request_scores() {    
-    printf("\n");
-
-    Ability ret;
-    string input;
-    vector<int> stats = ability_vector();
-
-    printf("You generated the following ability scores: \n");
-
-    for(int num : stats) printf("%i (%i)\n", num, modifier(num));
-
-    printf("\n");
-
-    for(size_t i = 0; i < stats.size(); i++) {
-        switch(i) {
-        case 0: {
-            printf("Set Strength\t (STR): ");
-
-            cin >> input;
-            
-            ret.STR = stoi(input);
-        } break;
-
-        case 1: {
-            printf("Set Dexterity\t (DEX): ");
-
-            cin >> input;
-            
-            ret.DEX = stoi(input);
-        } break;
-
-        case 2: {
-            printf("Set Constitution (CON): ");
-
-            cin >> input;
-            
-            ret.CON = stoi(input);
-        } break;
-
-        case 3: {
-            printf("Set Intelligence (INT): ");
-
-            cin >> input;
-            
-            ret.INT = stoi(input);
-        } break;
-
-        case 4: {
-            printf("Set Wisdom\t (WIS): ");
-
-            cin >> input;
-            
-            ret.WIS = stoi(input);
-        } break;
-
-        case 5: {
-            printf("Set Charisma\t (CHA): ");
-
-            cin >> input;
-            
-            ret.CHA = stoi(input);
-        } break;
-
-        default: {
-            printf("should not have gotten here");
-            exit(EXIT_FAILURE);
-        }
-        }
-    }
-
-    printf("\n");
-    
-    return ret;
-}
-
+/**
+ * @desc entry point for the character-generator program. This contains the
+ * main logic for creating a character via the character-generator. All
+ * command line arguments are parsed before character creation begins, and
+ * the program may terminate before allowing user input.
+ *
+ * @param string in - the users input to be parsed
+ * @return int - an integer code following the C/C++ standard for program success
+ **/
 int main(int argc, char* argv[]) {
     int status = parse_args(argc, argv); // may exit
-    
+
     /* begin creating the character here */
-    printf("Use character creator (Y/n)\n");   // TODO character creator switch ('-r' argv should ALSO handle this)
+    RANDOM_FLAG = RANDOM_FLAG ? RANDOM_FLAG : request_is_random();
 
-    CharacterFactory factory;
-    
-    printf("Choose Race:\n");
-    
-    factory.select_option(request_selection(factory));
+    auto race       = RANDOM_FLAG ? -1 : request_race();
+    auto scores     = RANDOM_FLAG ? AbilityScores() : request_scores();
+    auto bg         = RANDOM_FLAG ? true : request_background();
+    auto charClass  = RANDOM_FLAG ? true : request_class();
+    auto skills     = RANDOM_FLAG ? true : request_skills();
+    auto hp         = RANDOM_FLAG ? true : request_hitpoints();
+    auto equipment  = RANDOM_FLAG ? true : request_equipment();
+    auto name       = RANDOM_FLAG ? "" : request_name();
 
-    if(factory.has_options()) {
-        printf("Choose Subrace:\n");
-        factory.select_option(request_selection(factory)); 
+    /* NOTE(incomingstick): If this is not a pointer, it will segfault during GC... idk why */
+    auto character = RANDOM_FLAG ?
+        new Character() :
+        new Character(race, scores, name);
+
+    if(bg && charClass && skills && hp && equipment) {
+        printf("%s", character->to_string().c_str());
+    } else {
+        status = EXIT_FAILURE;
     }
-    
-    printf("Class\n");                         // TODO class menu.
-    printf("Background\n");                    // TODO background menu
-
-    Ability abil = request_scores();
-    
-    printf("Skill select based on class\n");   // TODO Skill select based on class
-    printf("Hit points\n");                    // TODO hit points max, avg, or roll + con mod
-    printf("Equipment\n\n");                   // TODO select equipment based on class and background
-
-    printf("(leave blank for random name)\n");
-    printf("Name: ");
-
-    string name;
-
-    cin.ignore();
-    getline(cin, name);
-
-    printf("\n");
-
-    Character* character = name.empty() ? factory.NewCharacter(abil) : factory.NewCharacter(abil, name);
-    
-    printf("%s", character->to_string().c_str());
 
     return status;
 }

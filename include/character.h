@@ -9,11 +9,9 @@ There is NO WARRANTY, to the extent permitted by law.
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
-#include "character/character.h"
-
-/* NOTE(incomingstick): this needs to stay at the
-   bottom as it relys on everything in this header */
+#include "character/ability-scores.h"
+#include "character/skills.h"
 #include "character/races.h"
-
+#include "character/character.h"
 
 #endif /* CHARACTER_H */
