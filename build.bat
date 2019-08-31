@@ -70,4 +70,3 @@ exit 1
 
 :commonExit
 echo exiting
-exit 0

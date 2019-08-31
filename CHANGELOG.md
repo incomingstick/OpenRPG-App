@@ -1,12 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
-
+f
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). However, note that all pre-v0.5.0 releases will have the suffix "-dev"
 
 ## [Unreleased]
 ### Added
-- We are now on the Arch User Repository and supporting Arch as our first Linux distro as it is what I use!
+- We are now on the Arch User Repository and supporting Arch as our first Linux distro, as it is what I ([@incomingstick](http://github.comincomingstick)) use!
     - You can use the PKGBUILD branch of this Repo to build from `makepkg` that way
     - Clone us out of the AUR yourself by running `git clone https://aur.archlinux.org/openrpg-git.git && cd openrpg-git && makepkg -si`
     - You can use your favorite AUR helper, such as `yay`
@@ -32,8 +32,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - `ORPG::Names`
     - `ORPG::Character`
 - `NameGenerator` class now has a constructor that takes a file location as a `std::string`, here are some important notes:
-    - By creating this constructor we are allowing an end user to specify the location the namelist we will read from. It is extremely important we explore this further. I do think this could prove a beneficial feature, if we allow end users to specify namelists.
-    - I am creating this function specifically to help the test suite. When testing on a fresh system, we are built before we test, but the release builds defines ASSET_LOC as: "/usr/local/data/openrpg" Because of this, it attempts to check a folder that has not been installed yet, and we need a way to NameGenerator to our source data folder.
+    - By creating this constructor we are allowing an end user to specify the location the namelist we will read from. It is extremely important we explore this further. I [@incomingstick](http://github.comincomingstick)) do think this could prove a beneficial feature, if we allow end users to specify namelists.
+    - I [@incomingstick](http://github.comincomingstick)) created this function specifically to help the test suite. When testing on a fresh system, we are built before we test, but the release builds defines ASSET_LOC as: "/usr/local/data/openrpg" Because of this, it attempts to check a folder that has not been installed yet, and we need a way to NameGenerator to our source data folder.
 - Character Generator program now takes full advantage of our Names library to allow for the use of first and last names
 - Added the Elf race to the Characters library
     - `class Elf : public Character`
@@ -67,9 +67,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Issue when running `make check` on a release build, that caused the tests to be unable to locate the data assets
 - A bug that would cause some divide by zero operations, as well as preventing the rolling of a 1 sided die thanks to [@tehguy](https://github.com/tehguy)
 - A typo in the roll parser test that was incorrectly validating d6's thanks to [@pashcovich](https://github.com/pashcovich)
+- Missing note in Core::print_basic_help() about how to exit OpenRPG.
 
 ### Removed
-- Deleted the old Name Generator test src/tests/name-generator-test.cpp
+- Obliterated the old Name Generator test src/tests/name-generator-test.cpp
 
 
 ## [0.4.4-dev] - 2017-11-05
@@ -180,8 +181,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - utils.h -> include/core/utils.h
 
 ### Fixed
-- segfault caused when anything other than exact syntax is provided, i.e: `$ roll hahahaha -v 2d10+6`
-- errors when a only a race is provided to `name-generator`
+- Segfault caused when anything other than exact syntax is provided, i.e: `$ roll hahahaha -v 2d10+6`
+- Errors when a only a race is provided to `name-generator`
 
 ### Removed
 - Cleaned up some CMakeLists.txt logic of irrelevant header logic
@@ -201,7 +202,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - data/LICENSE
 
 ### Changed
-- Discord badge color in README.md from blue to 7289da (discords official purple, I think...)
+- Discord badge color in README.md from blue to 7289da (discords official purple, I [@incomingstick](http://github.comincomingstick)) think...)
 - ASSET_LOC in config.h.in pulls the CMake `DATA_DIR` variable
 - Major project filesystem restructuring as noted below:
     - Moved the `src/tests/` folder out of `src/
