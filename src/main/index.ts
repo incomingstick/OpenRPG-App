@@ -3,16 +3,13 @@ import * as path from 'path';
 import * as url from 'url';
 import { version, repository, bugs, website, module } from  'pkginfo';
 import minimist from 'minimist'; // TODO add CLA's
-import libroll from 'roll';
 
-global.roll = libroll;
-global.pkginfo = module.exports;
+var libroll = require('roll');
+var pkginfo = module.exports;
 
-// Perf measurements
-global.perfStartTime = Date.now();
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let win;
+let win: BrowserWindow;
 
 function createWindow() {
     // Create the browser window.
