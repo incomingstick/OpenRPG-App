@@ -1,5 +1,35 @@
+import { ipcRenderer, remote } from 'electron';
+import * as React from 'react';
+import { Grid, Icon, Modal } from 'semantic-ui-react';
+import CharacterScreen from './characters';
+import CampaignScreen from './campaign';
+import CitiesScreen from './cities';
+import SettingsScreen from './settings';
+import WelcomeScreen from './welcome'
+import WorldMapsScreen from './world-maps'
+
+type TAppContainerState = {
+    screen: string;
+    aboutModalOpen: boolean;
+};
+
+export default class AppContainer extends React.Component<any, TAppContainerState> {
+    constructor(props: any, context?: any) {
+        super(props, context);
+        this.state = {
+            screen: 'addon',
+            aboutModalOpen: false
+        };
+    }
+
+    public render() {
+        return <WelcomeScreen />;
+    }
+}
+
+/* TODO(incomingstick): this is the previous main page
 <!DOCTYPE html>
-<html>
+                <html>
 
 <head>
     <meta charset="UTF-8">
@@ -123,3 +153,4 @@
 </body>
 
 </html>
+*/
