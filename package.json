@@ -54,7 +54,7 @@
     "minimist": "^1.2.0",
     "mkpath": "^1.0.0",
     "moment": "^2.24.0",
-    "openrpg-libs": "0.0.1",
+    "openrpg-libs": "0.0.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "semantic-ui-css": "^2.4.1",
@@ -85,6 +85,6 @@
     "tslint": "^5.20.0",
     "typescript": "^3.6.3",
     "uglify-js": "^3.6.0",
-    "webpack": "^4.40.0"
+    "webpack": "^4.40.2"
   }
 }

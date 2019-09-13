@@ -13,10 +13,6 @@
 *.dylib
 *.dll
 
-# Fortran module files
-*.mod
-*.smod
-
 # Compiled Static libraries
 *.lai
 *.la
@@ -34,32 +30,27 @@ config.h
 *_exports.h
 
 # Folders and other files
-exports/
-[Dd]ebug/
-.settings/
+exports/*
+[Dd]ebug/*
+.settings/*
 .project
 .cproject
 *.out
-[Bb]in/
+[Bb]in/*
 *.cbp
 *.depend
-[Bb]uild/
-[Bb]uild32/
-[Bb]uild64/
+[Bb]uild/*
+[Bb]uild32/*
+[Bb]uild64/*
+[Dd]ist/*
 .vscode
-[Gg]ifs/
-node_modules/
+[Gg]ifs/*
+node_modules/*
 *.un~
 *.un
-
-# Rust files
-Cargo.lock
 
 # packages and archive files
 *.zip
 *.tar
 *.tar.*
-
-# Temp until GUI is merged into dev branch
-app/
 *.swp
