@@ -1,11 +1,10 @@
 import { app, BrowserWindow, dialog, ipcMain, Menu, shell } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
-import { version, repository, bugs, website, module } from  'pkginfo';
-import minimist from 'minimist'; // TODO add CLA's
+// TODO(incomingstick): add CLA's
+// import minimist from 'minimist';
 
-var libroll = require('roll');
-var pkginfo = module.exports;
+const libroll = require('roll');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -27,7 +26,7 @@ function createWindow() {
         // Dereference the window object, usually you would store windows
         // in an array if your app supports multi windows, this is the time
         // when you should delete the corresponding element.
-        win = null
+        win = null;
     })
 }
 

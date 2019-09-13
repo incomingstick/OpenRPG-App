@@ -1,12 +1,12 @@
-import { ipcRenderer, remote } from 'electron';
+// import { ipcRenderer, remote } from 'electron';
 import * as React from 'react';
-import { Grid, Icon, Modal } from 'semantic-ui-react';
-import CharacterScreen from './characters';
-import CampaignScreen from './campaign';
-import CitiesScreen from './cities';
-import SettingsScreen from './settings';
+// import { Grid, Icon, Modal } from 'semantic-ui-react';
+// import CharacterScreen from './characters';
+// import CampaignScreen from './campaign';
+// import CitiesScreen from './cities';
+// import SettingsScreen from './settings';
 import WelcomeScreen from './welcome'
-import WorldMapsScreen from './world-maps'
+// import WorldMapsScreen from './world-maps'
 
 type TAppContainerState = {
     screen: string;
