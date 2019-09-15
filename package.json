@@ -11,8 +11,8 @@
     "pretty-quick": "pretty-quick --staged",
     "typecheck": "tsc --pretty --noEmit",
     "compile": "electron-webpack",
-    "dist": "yarn compile && electron-builder",
-    "dist:dir": "yarn compile && electron-builder --dir",
+    "dist": "npm compile && electron-builder",
+    "dist:dir": "npm compile && electron-builder --dir",
     "release": "build --mac --win -p always",
     "postinstall": "electron-rebuild"
   },
