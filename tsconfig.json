@@ -6,7 +6,8 @@
     "sourceMap": true,
     "inlineSources": true,
     "importHelpers": true,
-    "sourceRoot": "/"
+    "sourceRoot": "/",
+    "typeRoots": ["./src/common/types"]
   },
   "include": ["./src/**/*"],
   "exclude": ["./node_modules/**"]
