@@ -4,9 +4,9 @@ import { Grid, Header } from 'semantic-ui-react';
 export default class CitiesScreen extends React.Component<any, any> {
   public render() {
     return (
-      <Grid verticalAlign="middle" columns="2" centered container stretched>
+      <Grid verticalAlign='middle' columns='2' centered container stretched>
         <Grid.Row stretched>
-          <Grid.Column stretched textAlign="center">
+          <Grid.Column stretched textAlign='center'>
             <Header inverted>These are some mighty cool cities.</Header>
           </Grid.Column>
         </Grid.Row>
@@ -15,7 +15,8 @@ export default class CitiesScreen extends React.Component<any, any> {
   }
 }
 
-{/* <template class="section-template">
+{
+  /* <template class="section-template">
     <section id="cities-section" class="section js-section">
         <div class="cities-header">
             <h1>Cities and Towns</h1>
@@ -26,4 +27,5 @@ export default class CitiesScreen extends React.Component<any, any> {
             <h3>TODO city and town generator and other city/town stuff here</h3>
         </div>
     </section>
-</template> */}
+</template> */
+}

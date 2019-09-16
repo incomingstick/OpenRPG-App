@@ -1,7 +1,7 @@
 import * as crypto from 'crypto';
 import { promisify } from 'util'; // TODO: move to util.promisify when we are on a newer version of node
 import * as fs from 'fs';
-import * as Mkpath from 'mkpath';
+import Mkpath from 'mkpath';
 import fetch from 'electron-fetch';
 import * as path from 'path';
 import * as zlib from 'zlib';

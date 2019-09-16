@@ -59,7 +59,7 @@
 }
 
 .sidebar-nav li:hover:before {
-  background-color: #2196F3;
+  background-color: #2196f3;
   -webkit-transition: width 0.2s ease-in;
   transition: width 0.2s ease-in;
   width: 100%;
@@ -73,20 +73,20 @@
 }
 
 .nav-button {
-    display: block;
-    width: 100%;
-    font: inherit;
-    color: inherit;
-    border: none;
-    background-color: transparent;
-    outline: none;
-    color: #dddddd;
-    padding: .6rem .9rem;
-    text-decoration: none;
+  display: block;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  color: #dddddd;
+  padding: 0.6rem 0.9rem;
+  text-decoration: none;
 }
 
 .nav-button.is-selected {
-    background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 .sidebar-nav li.open:hover before {

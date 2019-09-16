@@ -97,9 +97,7 @@ class ConfigService extends EventEmitter implements IConfigService {
         this.configData = _.extend({}, DEFAULT_CONFIG, parsedJson);
       } else {
         log.info(
-          `[Config] Config format has changed. Old = ${
-            parsedJson.configFormat
-          }, New = ${CONFIG_FORMAT} -- resetting config`
+          `[Config] Config format has changed. Old = ${parsedJson.configFormat}, New = ${CONFIG_FORMAT} -- resetting config`
         );
         this.restoreDefaults();
         this.save();

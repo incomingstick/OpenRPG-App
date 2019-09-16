@@ -17,11 +17,16 @@
     "postinstall": "electron-rebuild"
   },
   "electronWebpack": {
+    "commonSourceDirectory": "src/common",
+    "title": "OpenRPG",
     "main": {
-      "webpackConfig": "webpack.main.config.js"
+      "sourceDirectory": "src/main",
+      "webpackConfig": "config/webpack/webpack.main.config.js"
     },
     "renderer": {
-      "webpackConfig": "webpack.renderer.config.js"
+      "sourceDirectory": "src/renderer",
+      "template": "src/renderer/index.html",
+      "webpackConfig": "config/webpack/webpack.renderer.config.js"
     }
   },
   "repository": {
@@ -87,7 +92,7 @@
     "sass-loader": ">=8.0.0",
     "source-map-loader": "^0.2.4",
     "ts-loader": ">=6.1.0",
-    "ts-node": ">=8.3.0",
+    "ts-node": "^8.4.1",
     "tslint": ">=5.20.0",
     "typescript": ">=3.6.3",
     "uglify-js": ">=3.6.0",

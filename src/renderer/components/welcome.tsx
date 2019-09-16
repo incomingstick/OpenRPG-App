@@ -4,10 +4,12 @@ import { Grid, Header } from 'semantic-ui-react';
 export default class WelcomeScreen extends React.Component<any, any> {
   public render() {
     return (
-      <Grid verticalAlign="middle" columns="2" centered container stretched>
+      <Grid verticalAlign='middle' columns='2' centered container stretched>
         <Grid.Row stretched>
-          <Grid.Column stretched textAlign="center">
-            <Header inverted>You should be here! Welcome to OpenRPG. We aren't quite working yet. Check back soon for more!</Header>
+          <Grid.Column stretched textAlign='center'>
+            <Header inverted>
+              You should be here! Welcome to OpenRPG. We aren't quite working yet. Check back soon for more!
+            </Header>
           </Grid.Column>
         </Grid.Row>
       </Grid>
@@ -15,7 +17,8 @@ export default class WelcomeScreen extends React.Component<any, any> {
   }
 }
 
-{/* <template class="section-template">
+{
+  /* <template class="section-template">
     <section id="welcome-section" class="section js-section">
         <div class="welcome-header">
             <h1>OpenRPG</h1>
@@ -195,4 +198,5 @@ export default class WelcomeScreen extends React.Component<any, any> {
             </div>
         </div>
     </section>
-</template> */}
+</template> */
+}

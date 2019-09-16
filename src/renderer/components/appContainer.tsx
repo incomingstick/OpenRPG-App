@@ -5,26 +5,26 @@ import * as React from 'react';
 // import CampaignScreen from './campaign';
 // import CitiesScreen from './cities';
 // import SettingsScreen from './settings';
-import WelcomeScreen from './welcome'
+import WelcomeScreen from './welcome';
 // import WorldMapsScreen from './world-maps'
 
 type TAppContainerState = {
-    screen: string;
-    aboutModalOpen: boolean;
+  screen: string;
+  aboutModalOpen: boolean;
 };
 
 export default class AppContainer extends React.Component<any, TAppContainerState> {
-    constructor(props: any, context?: any) {
-        super(props, context);
-        this.state = {
-            screen: 'addon',
-            aboutModalOpen: false
-        };
-    }
+  constructor(props: any, context?: any) {
+    super(props, context);
+    this.state = {
+      screen: 'addon',
+      aboutModalOpen: false
+    };
+  }
 
-    public render() {
-        return <WelcomeScreen />;
-    }
+  public render() {
+    return <WelcomeScreen />;
+  }
 }
 
 /* TODO(incomingstick): this is the previous main page
