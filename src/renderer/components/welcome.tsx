@@ -141,7 +141,7 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                                     <input class="btn btn-fill btn-rect" type=button value="0" onclick="calc.display.value+='0'">
                                                 </td>
                                                 <td>
-                                                    <input id="calc-eval" class="btn btn-fill btn-rect" type=button value="=" onclick="calc.display.value=die_eval(calc.display.value)">
+                    <input id="calc-eval" class="btn btn-fill btn-rect" type=button value="=" onclick="calc.display.value=die_eval(calc.display.value)">
                                                 </td>
                                                 <td>
                                                     <input class="btn btn-fill btn-rect" type=button value="/" onclick="calc.display.value+='/'">

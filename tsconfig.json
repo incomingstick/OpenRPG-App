@@ -1,14 +1,14 @@
 {
   "extends": "./node_modules/electron-webpack/tsconfig-base.json",
   "compilerOptions": {
-    "outDir": "./build",
+    "outDir": "./dist",
     "jsx": "react",
     "sourceMap": true,
     "inlineSources": true,
     "importHelpers": true,
-    "sourceRoot": "/",
-    "typeRoots": ["./src/common/types"]
+    "sourceRoot": "./",
+    "typeRoots": ["src/common/types"]
   },
-  "include": ["./src/**/*", "config/webpack/webpack.base.config.js"],
-  "exclude": ["./node_modules/**"]
+  "include": ["src/**/*", "webpack.base.config.js"],
+  "exclude": ["node_modules/**"]
 }

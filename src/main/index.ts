@@ -110,7 +110,7 @@ function createWindow() {
 app.on('ready', () => {
   createWindow();
 
-  console.log('libroll.Roll', libroll.Die);
+  console.log('libroll.Die', libroll.Die);
   console.log('libroll.ExpressionTree', libroll.ExpressionTree);
 
   autoUpdater.checkForUpdatesAndNotify();

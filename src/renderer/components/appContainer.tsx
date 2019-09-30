@@ -1,5 +1,6 @@
 // import { ipcRenderer, remote } from 'electron';
 import * as React from 'react';
+import { hot } from 'react-hot-loader/root';
 // import { Grid, Icon, Modal } from 'semantic-ui-react';
 // import CharacterScreen from './characters';
 // import CampaignScreen from './campaign';
@@ -13,11 +14,11 @@ type TAppContainerState = {
   aboutModalOpen: boolean;
 };
 
-export default class AppContainer extends React.Component<any, TAppContainerState> {
+class AppContainer extends React.Component<any, TAppContainerState> {
   constructor(props: any, context?: any) {
     super(props, context);
     this.state = {
-      screen: 'addon',
+      screen: 'welcome',
       aboutModalOpen: false
     };
   }
@@ -26,6 +27,13 @@ export default class AppContainer extends React.Component<any, TAppContainerStat
     return <WelcomeScreen />;
   }
 }
+
+const App = () => (
+    <AppContainer />
+);
+
+
+export default hot(App);
 
 /* TODO(incomingstick): this is the previous main page
 <!DOCTYPE html>

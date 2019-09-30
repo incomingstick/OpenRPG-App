@@ -1,7 +1,6 @@
 {
   "name": "openrpg",
   "version": "0.5.0",
-  "main": "src/main/index.ts",
   "description": "A tool for someone to use to quickly create content for a tabletop RPG world",
   "scripts": {
     "start": "electron-webpack dev",
@@ -12,7 +11,7 @@
     "typecheck": "tsc --pretty --noEmit",
     "compile": "electron-webpack",
     "dist": "npm compile && electron-builder",
-    "dist:dir": "npm compile && electron-builder --dir",
+    "dist:dir": "npm compile && electron-builder --dir -c.compression=store -c.mac.identity=null",
     "release": "build --mac --win -p always",
     "postinstall": "electron-rebuild"
   },
@@ -25,10 +24,10 @@
     },
     "renderer": {
       "sourceDirectory": "src/renderer",
-      "template": "src/renderer/index.html",
       "webpackConfig": "config/webpack/webpack.renderer.config.js"
     }
   },
+  "main": "src/main/index.ts",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com:incomingstick/OpenRPG-App.git"
@@ -63,21 +62,25 @@
     "lodash": "^4.17.15",
     "mkpath": "^1.0.0",
     "moment": ">=2.24.0",
-    "openrpg-libs": ">=0.0.5",
-    "react": ">=16.9.0",
-    "react-dom": ">=16.9.0",
+    "openrpg-libs": ">=0.0.11",
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1",
     "semantic-ui-css": ">=2.4.1",
     "semantic-ui-react": ">=0.88.1",
     "source-map-support": ">=0.5.6",
     "tslib": ">=1.10.0"
   },
   "devDependencies": {
-    "@types/async": ">=3.0.1",
-    "@types/lodash": ">=4.14.138",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/polyfill": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.6.0",
+    "@types/async": "^3.0.2",
+    "@types/lodash": "^4.14.141",
     "@types/mkpath": ">=0.1.29",
-    "@types/react": ">=16.9.2",
-    "@types/react-dom": ">=16.9.0",
-    "electron": "^6.0.9",
+    "@types/react": "^16.9.3",
+    "@types/react-dom": "^16.9.1",
+    "electron": "^6.0.10",
     "electron-builder": ">=21.2.0",
     "electron-prebuilt-compile": ">=4.0.0",
     "electron-rebuild": ">=1.8.6",
@@ -88,15 +91,15 @@
     "node-sass": ">=4.12.0",
     "prettier": ">=1.18.2",
     "pretty-quick": ">=1.11.1",
-    "react-hot-loader": ">=4.12.13",
+    "react-hot-loader": "^4.12.14",
     "sass-loader": ">=8.0.0",
     "source-map-loader": "^0.2.4",
-    "ts-loader": ">=6.1.0",
+    "ts-loader": "^6.2.0",
     "ts-node": "^8.4.1",
     "tslint": ">=5.20.0",
     "typescript": ">=3.6.3",
     "uglify-js": ">=3.6.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": ">=4.40.2"
+    "webpack": "^4.41.0"
   }
 }
