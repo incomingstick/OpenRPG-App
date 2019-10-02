@@ -1,18 +1,22 @@
 import * as React from 'react';
-import { Grid, Header } from 'semantic-ui-react';
+import { Header, Container, Menu } from 'semantic-ui-react';
 
 export default class WelcomeScreen extends React.Component<any, any> {
   public render() {
     return (
-      <Grid verticalAlign='middle' columns='2' centered container stretched>
-        <Grid.Row stretched>
-          <Grid.Column stretched textAlign='center'>
-            <Header inverted>
-              You should be here! Welcome to OpenRPG. We aren't quite working yet. Check back soon for more!
-            </Header>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+        <div>
+            <Header as='h3' content='Responsive Menu' textAlign='center' />
+            <Container>
+              <Menu stackable>
+                <Menu.Item>
+                  <img src='' />
+                </Menu.Item>
+                <Menu.Item>Features</Menu.Item>
+                <Menu.Item>Testimonials</Menu.Item>
+                <Menu.Item>Sign-in</Menu.Item>
+              </Menu>
+            </Container>
+        </div>
     );
   }
 }
