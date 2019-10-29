@@ -1,17 +1,27 @@
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const path = require('path');
 
-const baseConfig = require('./webpack.base.config');
-
-module.exports = merge.smart(baseConfig, {
-    target: 'electron-renderer',
-    entry: {
-        app: './src/renderer/app.tsx'
-    },
+module.exports = {
     module: {
         rules: [
+            {
+                test: /\.ts?$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                options: {
+                    cacheDirectory: true,
+                    babelrc: false,
+                    presets: [
+                        [
+                            '@babel/preset-env',
+                            { targets: 'maintained node versions' }
+                        ],
+                        '@babel/preset-typescript'
+                    ],
+                    plugins: [
+                        ['@babel/plugin-proposal-class-properties', { loose: true }]
+                    ]
+                }
+            },
             {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
@@ -47,7 +57,7 @@ module.exports = merge.smart(baseConfig, {
                     {
                         loader: 'image-webpack-loader',
                         options: {
-                            disable: true
+                            disable: false
                         }
                     }
                 ]
@@ -60,7 +70,18 @@ module.exports = merge.smart(baseConfig, {
             }
         ]
     },
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist')
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js', '.json']
+    },
+    devtool: 'source-map',
     plugins: [
+        new ForkTsCheckerWebpackPlugin({
+            reportFiles: ['src/main/**/*']
+        }),
         new ForkTsCheckerWebpackPlugin({
             reportFiles: ['src/renderer/**/*']
         }),
@@ -70,4 +91,4 @@ module.exports = merge.smart(baseConfig, {
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
         })
     ]
-});
+};

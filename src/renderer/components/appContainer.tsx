@@ -9,29 +9,32 @@ import { hot } from 'react-hot-loader/root';
 import WelcomeScreen from './welcome';
 // import WorldMapsScreen from './world-maps'
 
+require('../css/animate.min.css');
+require('../css/sidebar.css');
+require('../css/section.css');
+
+document.title = 'OpenRPG';
+
 type TAppContainerState = {
-  screen: string;
-  aboutModalOpen: boolean;
+    screen: string;
+    aboutModalOpen: boolean;
 };
 
 class AppContainer extends React.Component<any, TAppContainerState> {
-  constructor(props: any, context?: any) {
-    super(props, context);
-    this.state = {
-      screen: 'welcome',
-      aboutModalOpen: false
-    };
-  }
+    constructor(props: any, context?: any) {
+        super(props, context);
+        this.state = {
+            screen: 'welcome',
+            aboutModalOpen: false
+        };
+    }
 
-  public render() {
-    return <WelcomeScreen />;
-  }
+    public render() {
+        return <WelcomeScreen />;
+    }
 }
 
-const App = () => (
-    <AppContainer />
-);
-
+const App = () => <AppContainer />;
 
 export default hot(App);
 

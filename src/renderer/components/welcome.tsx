@@ -1,206 +1,351 @@
 import * as React from 'react';
-import { Header, Container, Menu } from 'semantic-ui-react';
+import { Grid, Form, Table, Input, List } from 'semantic-ui-react';
 
-export default class WelcomeScreen extends React.Component<any, any> {
-  public render() {
+// TODO get this working
+import * as Scripts from '../js/scripts';
+
+const ORPGLogo = require('../assets/images/d20_transparent.png');
+
+function GettingStarted() {
     return (
-        <div>
-            <Header as='h3' content='Responsive Menu' textAlign='center' />
-            <Container>
-              <Menu stackable>
-                <Menu.Item>
-                  <img src='' />
-                </Menu.Item>
-                <Menu.Item>Features</Menu.Item>
-                <Menu.Item>Testimonials</Menu.Item>
-                <Menu.Item>Sign-in</Menu.Item>
-              </Menu>
-            </Container>
-        </div>
+        <Grid.Column width={4}>
+            <div className='getting-started'>
+                <h3>Start</h3>
+                <ul>
+                    <li>
+                        <a href='#'>New Character</a>
+                    </li>
+                    <li>
+                        <a href='#'>Open Something...</a>
+                    </li>
+                    <li>
+                        <a href='#'>Import Something...</a>
+                    </li>
+                </ul>
+            </div>
+            <div className='getting-started'>
+                <h3>Recent</h3>
+                <ul>
+                    <li>No recent stuff</li>
+                </ul>
+            </div>
+            <div className='getting-started'>
+                <h3>Help</h3>
+                <ul>
+                    <li>
+                        <a href='#' target='_blank' id='docs'>
+                            Documentation
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' target='_blank' id='repo'>
+                            Github Repository
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' target='_blank' id='blog'>
+                            Blog
+                        </a>
+                    </li>
+
+                    <script type='text/javascript'>
+                        document.getElementById("docs").href = pkginfo.website.docs;
+                        document.getElementById("repo").href = pkginfo.repository.url;
+                        document.getElementById("blog").href = pkginfo.website.blog;
+                    </script>
+                </ul>
+            </div>
+        </Grid.Column>
     );
-  }
 }
 
-{
-  /* <template class="section-template">
-    <section id="welcome-section" class="section js-section">
-        <div class="welcome-header">
-            <h1>OpenRPG</h1>
-            <h2>Your tabletop RPG workbench</h2>
-        </div>
+function Calculator() {
+    const calcBtnClass = 'btn btn-fill btn-rect';
+    let value: string;
 
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                    <div class="getting-started">
-                        <h3>Start</h3>
-                        <ul>
-                            <li>
-                                <a href="#">New Character</a>
-                            </li>
-                            <li>
-                                <a href="#">Open Something...</a>
-                            </li>
-                            <li>
-                                <a href="#">Import Something...</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="getting-started">
-                        <h3>Recent</h3>
-                        <ul>
-                            <li>No recent stuff</li>
-                        </ul>
-                    </div>
-                    <div class="getting-started">
-                        <h3>Help</h3>
-                        <ul>
-                            <li>
-                                <a href="#" target="_blank" id="docs">Documentation</a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank" id="repo">Github Repository</a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank" id="blog">Blog</a>
-                            </li>
+    return (
+        <>
+            <a href='#die-calculator' data-toggle='collapse' className='utility'>
+                <span className='fa fa-fw fa-plus'></span>
+                Die Calculator
+            </a>
+            <div id='die-calculator' className='collapse'>
+                <Form name='calc' onSubmit={() => false}>
+                    <Table id='calc' border={0}>
+                        <Table.Body>
+                            <Table.Row>
+                                <Table.Cell colSpan={3}>
+                                    <Input id='calc-display' className='btn btn-rect' name='display' type='text' />
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <Input
+                                        className={calcBtnClass}
+                                        type={'button'}
+                                        value='C'
+                                        onClick={() => (value = '')}
+                                        title='Clear'
+                                    />
+                                </Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                    <Input
+                                        className={calcBtnClass}
+                                        type={'button'}
+                                        value='1'
+                                        onClick={() => (value += '1')}
+                                    />
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <Input
+                                        className={calcBtnClass}
+                                        type={'button'}
+                                        value='2'
+                                        onClick={() => (value += '2')}
+                                    />
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <Input
+                                        className={calcBtnClass}
+                                        type={'button'}
+                                        value='3'
+                                        onClick={() => (value += '3')}
+                                    />
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <Input
+                                        className={calcBtnClass}
+                                        type={'button'}
+                                        value='+'
+                                        onClick={() => (value += '+')}
+                                    />
+                                </Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                    <Input
+                                        className={calcBtnClass}
+                                        type={'button'}
+                                        value='4'
+                                        onClick={() => (value += '4')}
+                                    />
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <Input
+                                        className={calcBtnClass}
+                                        type={'button'}
+                                        value='5'
+                                        onClick={() => (value += '5')}
+                                    />
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <Input
+                                        className={calcBtnClass}
+                                        type={'button'}
+                                        value='6'
+                                        onClick={() => (value += '6')}
+                                    />
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <Input
+                                        className={calcBtnClass}
+                                        type={'button'}
+                                        value='-'
+                                        onClick={() => (value += '-')}
+                                    />
+                                </Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                    <Input
+                                        className={calcBtnClass}
+                                        type={'button'}
+                                        value='7'
+                                        onClick={() => (value += '7')}
+                                    />
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <Input
+                                        className={calcBtnClass}
+                                        type={'button'}
+                                        value='8'
+                                        onClick={() => (value += '8')}
+                                    />
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <Input
+                                        className={calcBtnClass}
+                                        type={'button'}
+                                        value='9'
+                                        onClick={() => (value += '9')}
+                                    />
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <Input
+                                        className={calcBtnClass}
+                                        type={'button'}
+                                        value='x'
+                                        onClick={() => (value += '*')}
+                                    />
+                                </Table.Cell>
+                            </Table.Row>
+                            <Table.Row>
+                                <Table.Cell>
+                                    <Input
+                                        className={calcBtnClass}
+                                        type={'button'}
+                                        value='d'
+                                        onClick={() => (value += 'd')}
+                                        title='XdY'
+                                    />
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <Input
+                                        className={calcBtnClass}
+                                        type={'button'}
+                                        value='0'
+                                        onClick={() => (value += '0')}
+                                    />
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <Input
+                                        id='calc-eval'
+                                        className={calcBtnClass}
+                                        type={'button'}
+                                        value='='
+                                        onClick={() => (value = Scripts.die_eval(value).toString())}
+                                    />
+                                </Table.Cell>
+                                <Table.Cell>
+                                    <Input
+                                        className={calcBtnClass}
+                                        type={'button'}
+                                        value='/'
+                                        onClick={() => (value += '/')}
+                                    />
+                                </Table.Cell>
+                            </Table.Row>
+                        </Table.Body>
+                    </Table>
+                </Form>
+            </div>
+        </>
+    );
+}
 
-                            <script type="text/javascript">
-                                document.getElementById("docs").href = pkginfo.website.docs;
-                                document.getElementById("repo").href = pkginfo.repository.url;
-                                document.getElementById("blog").href = pkginfo.website.blog;
-                            </script>
-                        </ul>
-                    </div>
-                </div>
+function HomeUtils() {
+    return (
+        <Grid.Column width={11}>
+            <div className='homepage-utils'>
+                <h3>Utilities</h3>
+                <List>
+                    {/* <!-- TODO All of these should be collapsed when program starts --> */}
+                    <List.Item className='utils-panel'>
+                        <Calculator />
+                    </List.Item>
 
-                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                    <div class="homepage-utils">
-                        <h3>Utilities</h3>
-                        <ul>
-                            <!-- TODO All of these should be collapsed when program starts -->
-                            <li class="utils-panel">
-                                <a href="#die-calculator" data-toggle="collapse" class="utility">
-                                    <span class="fa fa-fw fa-plus"></span>
-                                    Die Calculator
-                                </a>
-                                <div id="die-calculator" class="collapse">
-                                    <form Name="calc" onsubmit="return false">
-                                        <table id="calc" border=0>
-                                            <tr>
-                                                <td colspan=3>
-                                                    <input id="calc-display" class="btn btn-rect" name="display" type="text">
-                                                </td>
-                                                <td>
-                                                    <input class="btn btn-fill btn-rect" type=button value="C" onclick="calc.display.value=''" title="Clear">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <input class="btn btn-fill btn-rect" type=button value="1" onclick="calc.display.value+='1'">
-                                                </td>
-                                                <td>
-                                                    <input class="btn btn-fill btn-rect" type=button value="2" onclick="calc.display.value+='2'">
-                                                </td>
-                                                <td>
-                                                    <input class="btn btn-fill btn-rect" type=button value="3" onclick="calc.display.value+='3'">
-                                                </td>
-                                                <td>
-                                                    <input class="btn btn-fill btn-rect" type=button value="+" onclick="calc.display.value+='+'">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <input class="btn btn-fill btn-rect" type=button value="4" onclick="calc.display.value+='4'">
-                                                </td>
-                                                <td>
-                                                    <input class="btn btn-fill btn-rect" type=button value="5" onclick="calc.display.value+='5'">
-                                                </td>
-                                                <td>
-                                                    <input class="btn btn-fill btn-rect" type=button value="6" onclick="calc.display.value+='6'">
-                                                </td>
-                                                <td>
-                                                    <input class="btn btn-fill btn-rect" type=button value="-" onclick="calc.display.value+='-'">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <input class="btn btn-fill btn-rect" type=button value="7" onclick="calc.display.value+='7'">
-                                                </td>
-                                                <td>
-                                                    <input class="btn btn-fill btn-rect" type=button value="8" onclick="calc.display.value+='8'">
-                                                </td>
-                                                <td>
-                                                    <input class="btn btn-fill btn-rect" type=button value="9" onclick="calc.display.value+='9'">
-                                                </td>
-                                                <td>
-                                                    <input class="btn btn-fill btn-rect" type=button value="x" onclick="calc.display.value+='*'">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <input class="btn btn-fill btn-rect" type=button value="d" onclick="calc.display.value+='d'" title="XdY">
-                                                </td>
-                                                <td>
-                                                    <input class="btn btn-fill btn-rect" type=button value="0" onclick="calc.display.value+='0'">
-                                                </td>
-                                                <td>
-                    <input id="calc-eval" class="btn btn-fill btn-rect" type=button value="=" onclick="calc.display.value=die_eval(calc.display.value)">
-                                                </td>
-                                                <td>
-                                                    <input class="btn btn-fill btn-rect" type=button value="/" onclick="calc.display.value+='/'">
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </form>
-                                </div>
-                            </li>
+                    {/* <!-- TODO add name generator here --> */}
+                    <List.Item className='utils-panel'>
+                        <a href='#name-generator' data-toggle='collapse' className='utility'>
+                            <span className='fa fa-fw fa-plus'></span>
+                            TODO Name Generator here
+                        </a>
+                        <div id='name-generator' className='collapse'>
+                            <div className='inner-utility'>Lorem ipsum dolor text....</div>
+                        </div>
+                    </List.Item>
 
-                            <!-- TODO add name generator here -->
-                            <li class="utils-panel">
-                                <a href="#name-generator" data-toggle="collapse" class="utility">
-                                    <span class="fa fa-fw fa-plus"></span>
-                                    TODO Name Generator here
-                                </a>
-                                <div id="name-generator" class="collapse">
-                                    <div class="inner-utility">
-                                        Lorem ipsum dolor text....
-                                    </div>
-                                </div>
-                            </li>
-
-                            <!-- TODO Finish this
+                    {/* <!-- TODO Finish this
                                     - Ensure security of accepting label input
                                     - Allow adding more tags
-                                    - Allow removing tags. Currently if a tag becomes empty it no longer allows  -->
-                            <li class="utils-panel">
-                                <a href="#initiative-helper" data-toggle="collapse" class="utility">
-                                    <span class="fa fa-fw fa-plus"></span>
-                                    TODO Initiative Helper here
-                                </a>
-                                <div id="initiative-helper" class="collapse">
-                                    <ol class="inner-utility">
-                                        <li id="li1" ondrop="swapDrop(event)" ondragover="allowDrop(event)">
-                                            <div id="drag1" draggable="true" ondragstart="drag(event)" class="editable">Char 1</div>
-                                        </li>
-                                        <li id="li2" ondrop="swapDrop(event)" ondragover="allowDrop(event)">
-                                            <div id="drag2" draggable="true" ondragstart="drag(event)" class="editable">Char 2</div>
-                                        </li>
-                                        <li id="li3" ondrop="swapDrop(event)" ondragover="allowDrop(event)">
-                                            <div id="drag3" draggable="true" ondragstart="drag(event)" class="editable">Char 3</div>
-                                        </li>
-                                        <li id="li4" ondrop="swapDrop(event)" ondragover="allowDrop(event)">
-                                            <div id="drag4" draggable="true" ondragstart="drag(event)" class="editable">Char 4</div>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
+                                    - Allow removing tags. Currently if a tag becomes empty it no longer allows  --> */}
+                    <List.Item className='utils-panel'>
+                        <a href='#initiative-helper' data-toggle='collapse' className='utility'>
+                            <span className='fa fa-fw fa-plus'></span>
+                            TODO Initiative Helper here
+                        </a>
+                        <div id='initiative-helper' className='collapse'>
+                            <List ordered className='inner-utility'>
+                                <List.Item
+                                    id='li1'
+                                    onDrop={Scripts.swapDrop(event)}
+                                    onDragOver={Scripts.allowDrop(event)}>
+                                    <div
+                                        id='drag1'
+                                        draggable={true}
+                                        onDragStart={Scripts.drag(event)}
+                                        className='editable'>
+                                        Char 1
+                                    </div>
+                                </List.Item>
+                                <List.Item
+                                    id='li2'
+                                    onDrop={Scripts.swapDrop(event)}
+                                    onDragOver={Scripts.allowDrop(event)}>
+                                    <div
+                                        id='drag2'
+                                        draggable={true}
+                                        onDragStart={Scripts.drag(event)}
+                                        className='editable'>
+                                        Char 2
+                                    </div>
+                                </List.Item>
+                                <List.Item
+                                    id='li3'
+                                    onDrop={Scripts.swapDrop(event)}
+                                    onDragOver={Scripts.allowDrop(event)}>
+                                    <div
+                                        id='drag3'
+                                        draggable={true}
+                                        onDragStart={Scripts.drag(event)}
+                                        className='editable'>
+                                        Char 3
+                                    </div>
+                                </List.Item>
+                                <List.Item
+                                    id='li4'
+                                    onDrop={Scripts.swapDrop(event)}
+                                    onDragOver={Scripts.allowDrop(event)}>
+                                    <div
+                                        id='drag4'
+                                        draggable={true}
+                                        onDragStart={Scripts.drag(event)}
+                                        className='editable'>
+                                        Char 4
+                                    </div>
+                                </List.Item>
+                            </List>
+                        </div>
+                    </List.Item>
+                </List>
             </div>
-        </div>
-    </section>
-</template> */
+        </Grid.Column>
+    );
+}
+
+export default class WelcomeScreen extends React.Component<any, any> {
+    public handleItemClick = (e: any, { name }: any) => {
+        this.setState({ activeItem: name });
+    };
+
+    public render() {
+        return (
+            <div className='section-template'>
+                <div id='welcome-section' className='section js-section is-shown'>
+                    <div className='welcome-header'>
+                        <img src={ORPGLogo} height={45} />
+                        <h1>OpenRPG</h1>
+                        <h2>Your tabletop RPG workbench</h2>
+                    </div>
+
+                    <Grid className='container'>
+                        <Grid.Row className='row'>
+                            <GettingStarted />
+                            <HomeUtils />
+                        </Grid.Row>
+                    </Grid>
+                </div>
+            </div>
+        );
+    }
 }

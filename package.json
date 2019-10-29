@@ -19,15 +19,12 @@
     "commonSourceDirectory": "src/common",
     "title": "OpenRPG",
     "main": {
-      "sourceDirectory": "src/main",
-      "webpackConfig": "config/webpack/webpack.main.config.js"
+      "sourceDirectory": "src/main"
     },
     "renderer": {
-      "sourceDirectory": "src/renderer",
-      "webpackConfig": "config/webpack/webpack.renderer.config.js"
+      "sourceDirectory": "src/renderer"
     }
   },
-  "main": "src/main/index.ts",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com:incomingstick/OpenRPG-App.git"
@@ -76,6 +73,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.6.0",
     "@types/async": "^3.0.2",
+    "@types/jquery": "^3.3.31",
     "@types/lodash": "^4.14.141",
     "@types/mkpath": ">=0.1.29",
     "@types/react": "^16.9.4",

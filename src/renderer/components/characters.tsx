@@ -2,21 +2,21 @@ import * as React from 'react';
 import { Grid, Header } from 'semantic-ui-react';
 
 export default class CharacterScreen extends React.Component<any, any> {
-  public render() {
-    return (
-      <Grid verticalAlign='middle' columns='2' centered container stretched>
-        <Grid.Row stretched>
-          <Grid.Column stretched textAlign='center'>
-            <Header inverted>These are some mighty cool characters.</Header>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    );
-  }
+    public render() {
+        return (
+            <Grid verticalAlign='middle' columns='2' centered container stretched>
+                <Grid.Row stretched>
+                    <Grid.Column stretched textAlign='center'>
+                        <Header inverted>These are some mighty cool characters.</Header>
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
+        );
+    }
 }
 
 {
-  /* <template class="section-template">
+    /* <template class="section-template">
     <section id="character-section" class="section js-section">
         <link rel="stylesheet" href="css/characterSheet.css">
         <div class="character-header">

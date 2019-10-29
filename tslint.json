@@ -1,6 +1,7 @@
 {
   "extends": "tslint:recommended",
   "rules": {
+    "curly": false,
     "quotemark": [true, "single", "avoid-escape", "jsx-single"],
     "trailing-comma": [false],
     "object-literal-sort-keys": false,
@@ -21,6 +22,7 @@
     "max-line-length": [true, 160],
     "ordered-imports": [false],
     "object-literal-key-quotes": false,
+    "whitespace": false,
     "typedef-whitespace": [
       true,
       {
