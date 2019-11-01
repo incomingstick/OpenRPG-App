@@ -1,19 +1,21 @@
 // import { ipcRenderer, remote } from 'electron';
 import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
-// import { Grid, Icon, Modal } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 // import CharacterScreen from './characters';
 // import CampaignScreen from './campaign';
 // import CitiesScreen from './cities';
 // import SettingsScreen from './settings';
-import WelcomeScreen from './welcome';
 // import WorldMapsScreen from './world-maps'
+import WelcomeScreen from './welcome';
+import { remote } from 'electron';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faFile, faBuilding, faMap, faGlobe, faCog } from '@fortawesome/free-solid-svg-icons';
 
-require('../css/animate.min.css');
-require('../css/sidebar.css');
-require('../css/section.css');
-
-document.title = 'OpenRPG';
+const ORPG_VERSION = remote.app.getVersion();
+const NODE_VERSION = process.versions.node;
+const CHROME_VERSION = process.versions.chrome;
+const ELECTRON_VERSION = process.versions.electron;
 
 type TAppContainerState = {
     screen: string;
@@ -27,141 +29,150 @@ class AppContainer extends React.Component<any, TAppContainerState> {
             screen: 'welcome',
             aboutModalOpen: false
         };
+
+        this.handleClick = this.handleClick.bind(this);
     }
 
+    public handleClick = (e: Event | undefined, id: string) => {
+        if (e === undefined) {
+            console.log('click event ', e, ' is undefined');
+            return undefined;
+        }
+
+        e.preventDefault();
+        console.log('The link was clicked.');
+        const button = document.getElementById(id);
+
+        if (button === null) {
+            console.log(id, ' button ', button, ' is null');
+            return undefined;
+        }
+
+        button.click();
+
+        return undefined;
+    };
+
     public render() {
-        return <WelcomeScreen />;
+        document.title = `OpenRPG Client v` + ORPG_VERSION;
+
+        return (
+            <>
+                <div id='wrapper'>
+                    <nav className='navbar navbar-fixed-top js-nav' id='sidebar-wrapper' role='navigation'>
+                        <Menu fluid vertical tabular className='nav sidebar-nav'>
+                            <Menu.Item>
+                                <button
+                                    type='button'
+                                    id='button-welcome'
+                                    data-section='welcome'
+                                    className='nav-button'
+                                    data-toggle='tooltip'
+                                    title='Home'>
+                                    <FontAwesomeIcon
+                                        icon={faHome}
+                                        onClick={this.handleClick(event, 'button-welcome')}
+                                    />
+                                </button>
+                            </Menu.Item>
+                            <Menu.Item>
+                                {/* <!-- TODO Is this the correct tooltip --> */}
+                                <button
+                                    type='button'
+                                    id='button-characters'
+                                    data-section='character'
+                                    className='nav-button'
+                                    data-toggle='tooltip'
+                                    title='Characters'>
+                                    <FontAwesomeIcon
+                                        icon={faFile}
+                                        onClick={this.handleClick(event, 'button-characters')}
+                                    />
+                                </button>
+                            </Menu.Item>
+                            <Menu.Item>
+                                {/* <!-- TODO Is this the correct tooltip / icon --> */}
+                                <button
+                                    type='button'
+                                    id='button-cities'
+                                    data-section='cities'
+                                    className='nav-button'
+                                    data-toggle='tooltip'
+                                    title='Cities and Towns'>
+                                    <FontAwesomeIcon
+                                        icon={faBuilding}
+                                        onClick={this.handleClick(event, 'button-cities')}
+                                    />
+                                </button>
+                            </Menu.Item>
+                            <Menu.Item>
+                                {/* <!-- TODO Is this the correct tooltip --> */}
+                                <button
+                                    type='button'
+                                    id='button-world-maps'
+                                    data-section='world-maps'
+                                    className='nav-button'
+                                    data-toggle='tooltip'
+                                    title='World Maps'>
+                                    <FontAwesomeIcon
+                                        icon={faMap}
+                                        onClick={this.handleClick(event, 'button-world-maps')}
+                                    />
+                                </button>
+                            </Menu.Item>
+                            <Menu.Item>
+                                {/* <!-- TODO Is this the correct tooltip --> */}
+                                <button
+                                    type='button'
+                                    id='button-campaign'
+                                    data-section='campaign'
+                                    className='nav-button'
+                                    data-toggle='tooltip'
+                                    title='Campaign'>
+                                    <FontAwesomeIcon
+                                        icon={faGlobe}
+                                        onClick={this.handleClick(event, 'button-campaign')}
+                                    />
+                                </button>
+                            </Menu.Item>
+                            <Menu.Item>
+                                {/* <!-- TODO Is this the correct tooltip --> */}
+                                <button
+                                    type='button'
+                                    id='button-settings'
+                                    data-section='settings'
+                                    className='nav-button'
+                                    data-toggle='tooltip'
+                                    title='Settings'>
+                                    <FontAwesomeIcon
+                                        icon={faCog}
+                                        onClick={this.handleClick(event, 'button-settings')}
+                                    />
+                                </button>
+                            </Menu.Item>
+                        </Menu>
+                    </nav>
+
+                    <main id='main-content-wrapper' className='content js-content is-shown'>
+                        <WelcomeScreen />
+                    </main>
+                    {/* <!-- end main-content-wrapper --> */}
+                </div>
+                {/* <!-- end wrapper --> */}
+
+                <footer>
+                    <div className='container'>
+                        <p>
+                            We are using OpenRPG {ORPG_VERSION}, node {NODE_VERSION}, Chrome {CHROME_VERSION}, and
+                            Electron {ELECTRON_VERSION}.
+                        </p>
+                    </div>
+                </footer>
+            </>
+        );
     }
 }
 
 const App = () => <AppContainer />;
 
 export default hot(App);
-
-/* TODO(incomingstick): this is the previous main page
-<!DOCTYPE html>
-                <html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>OpenRPG</title>
-
-    <!-- Package info (package.json) -->
-    <script>
-        const { remote } = require('electron');
-        const pkginfo = remote.getGlobal('pkginfo');
-    </script>
-
-    <!-- Insert this line above script imports  -->
-    <script>if (typeof module === 'object') { window.module = module; module = undefined; }</script>
-
-    <!-- jQuery first, then Tether, then Bootstrap -->
-    <script>
-        window.$ = window.jQuery = require('jquery');
-    </script>
-    <script src="js/vendor/popper-v1.14.0/popper.min.js"></script>
-
-    <!--Latest compiled and minified bootstrap CSS and JS -->
-    <link rel="stylesheet" href="css/vendor/bootstrap-v4.1.0/bootstrap.min.css">
-    <script src="js/vendor/bootstrap-v4.1.0/bootstrap.min.js"></script>
-
-    <!-- Insert this line after script imports -->
-    <script>if (window.module) module = window.module;</script>
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
-
-    <!-- Our custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/sidebar.css">
-    <link rel="stylesheet" href="css/section.css">
-
-    <script src="./js/scripts.js"></script>
-
-    <!-- Our page templates and imports -->
-    <link rel="import" href="sections/welcome.html">
-    <link rel="import" href="sections/characters.html">
-    <link rel="import" href="sections/cities.html">
-    <link rel="import" href="sections/world-maps.html">
-    <link rel="import" href="sections/campaign.html">
-    <link rel="import" href="sections/settings.html">
-</head>
-
-<body>
-    <div id="wrapper">
-        <nav class="navbar navbar-fixed-top js-nav" id="sidebar-wrapper" role="navigation">
-            <ul class="nav sidebar-nav">
-                <li>
-                    <button type="button" id="button-welcome" data-section="welcome" class="nav-button" data-toggle="tooltip" title="Home">
-                        <div class="fa fa-fw fa-home" onclick="document.getElementById('button-welcome').click()"></div>
-                    </button>
-                </li>
-                <li>
-                    <!-- TODO Is this the correct tooltip -->
-                    <button type="button" id="button-characters" data-section="character" class="nav-button" data-toggle="tooltip" title="Characters">
-                        <div class="fa fa-fw fa-file" onclick="document.getElementById('button-characters').click()"></div>
-                    </button>
-                </li>
-                <li>
-                    <!-- TODO Is this the correct tooltip / icon -->
-                    <button type="button" id="button-cities" data-section="cities" class="nav-button" data-toggle="tooltip" title="Cities and Towns">
-                        <div class="fa fa-fw fa-building" onclick="document.getElementById('button-cities').click()"></div>
-                    </button>
-                </li>
-                <li>
-                    <!-- TODO Is this the correct tooltip -->
-                    <button type="button" id="button-world-maps" data-section="world-maps" class="nav-button" data-toggle="tooltip" title="World Maps">
-                        <div class="fa fa-fw fa-map" onclick="document.getElementById('button-world-maps').click()"></div>
-                    </button>
-                </li>
-                <li>
-                    <!-- TODO Is this the correct tooltip -->
-                    <button type="button" id="button-campaign" data-section="campaign" class="nav-button" data-toggle="tooltip" title="Campaign">
-                        <div class="fa fa-fw fa-globe" onclick="document.getElementById('button-campaign').click()"></div>
-                    </button>
-                </li>
-                <li>
-                    <!-- TODO Is this the correct tooltip -->
-                    <button type="button" id="button-settings" data-section="settings" class="nav-button" data-toggle="tooltip" title="Settings">
-                        <div class="fa fa-fw fa-cog" onclick="document.getElementById('button-settings').click()"></div>
-                    </button>
-                </li>
-            </ul>
-        </nav>
-
-        <main id="main-content-wrapper" class="content js-content"></main>
-        <!-- end main-content-wrapper -->
-    </div>
-    <!-- end wrapper -->
-
-    <footer>
-        <div class="container">
-            <p>
-                We are using OpenRPG
-                <script>
-                    document.write(pkginfo.version)
-                </script>, node
-                <script>
-                    document.write(process.versions.node)
-                </script>, Chrome
-                <script>
-                    document.write(process.versions.chrome)
-                </script>, and Electron
-                <script>
-                    document.write(process.versions.electron)
-                </script>.
-            </p>
-        </div>
-    </footer>
-
-    <script>
-        require('./js/imports')
-        require('./js/nav')
-    </script>
-
-</body>
-
-</html>
-*/

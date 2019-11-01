@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { Grid, Form, Table, Input, List } from 'semantic-ui-react';
 
+require('../css/section.css');
+
 // TODO get this working
-import * as Scripts from '../js/scripts';
+import * as Scripts from '../ts/scripts';
 
 const ORPGLogo = require('../assets/images/d20_transparent.png');
 
@@ -59,23 +61,37 @@ function GettingStarted() {
     );
 }
 
+function handleChange(event: React.ChangeEvent<HTMLInputElement>, data: any) {
+    // TODO some logic tbd
+}
+
+/**
+ * NOTE(incomingstick): I highly doubt this is the conventional way to do this 🤷 ‍
+ */
+let value: string = '';
 function Calculator() {
     const calcBtnClass = 'btn btn-fill btn-rect';
-    let value: string;
 
     return (
         <>
             <a href='#die-calculator' data-toggle='collapse' className='utility'>
                 <span className='fa fa-fw fa-plus'></span>
-                Die Calculator
+                Die Calculator {value}
             </a>
             <div id='die-calculator' className='collapse'>
-                <Form name='calc' onSubmit={() => false}>
+                <Form name='calc'>
                     <Table id='calc' border={0}>
                         <Table.Body>
                             <Table.Row>
                                 <Table.Cell colSpan={3}>
-                                    <Input id='calc-display' className='btn btn-rect' name='display' type='text' />
+                                    <Input
+                                        id='calc-display'
+                                        className='btn btn-rect'
+                                        name='display'
+                                        type='text'
+                                        value={value}
+                                        onChange={handleChange}
+                                    />
                                 </Table.Cell>
                                 <Table.Cell>
                                     <Input

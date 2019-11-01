@@ -4,6 +4,7 @@ import { AppContainer } from 'react-hot-loader';
 import App from './components/appContainer';
 
 require('semantic-ui-css/semantic.min.css');
+require('./css/animate.min.css');
 require('./css/style.css');
 require('./scss/main.scss');
 

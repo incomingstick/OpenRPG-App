@@ -10,8 +10,8 @@
     "pretty-quick": "pretty-quick --staged",
     "typecheck": "tsc --pretty --noEmit",
     "compile": "electron-webpack",
-    "dist": "npm compile && electron-builder",
-    "dist:dir": "npm compile && electron-builder --dir -c.compression=store -c.mac.identity=null",
+    "dist": "npm run compile && electron-builder",
+    "dist:dir": "npm run compile && electron-builder --dir -c.compression=store -c.mac.identity=null",
     "release": "build --mac --win -p always",
     "postinstall": "electron-rebuild"
   },
@@ -48,10 +48,14 @@
     "registry": "https://npm.pkg.github.com/incomingstick"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.7",
     "async": ">=3.1.0",
     "electron-compile": ">=6.4.4",
     "electron-fetch": ">=1.3.0",
     "electron-log": ">=3.0.8",
+    "electron-settings": "^3.2.0",
     "electron-updater": ">=4.1.2",
     "es6-promisify": ">=6.0.2",
     "font-awesome": ">=4.7.0",
