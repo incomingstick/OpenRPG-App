@@ -31,7 +31,7 @@ export function die_eval(exp: string) {
 }
 
 // Allow drag
-export function drag(event: any) {
+export function start_drag(event: any) {
     if (event == null) return;
     event.dataTransfer.setData('src', event.target.id);
 
@@ -39,14 +39,16 @@ export function drag(event: any) {
 }
 
 // Allow drop
-export function allowDrop(event: any) {
+export function allow_drop(event: any) {
     if (event == null) return;
+
     event.preventDefault();
 }
 
 // Swap two items when dragged on top of
-export function swapDrop(event: any) {
+export function swap_drop(event: any) {
     if (event == null) return;
+
     event.preventDefault();
     const src = <HTMLElement>document.getElementById(event.dataTransfer.getData('src'));
     const srcParent = <Node & ParentNode>src.parentNode;
@@ -57,7 +59,7 @@ export function swapDrop(event: any) {
 }
 
 // Update the value of two swapped items
-export function updateVal(curr: Element, value: string) {
+export function update_val(curr: Element, value: string) {
     curr.setAttribute('draggable', 'false');
     $(curr).html('<input class="editing" type="text" value="' + value + '" />');
     $('.editing').focus();
@@ -87,7 +89,7 @@ $(document).ready(() => {
         event.stopPropagation();
         const curr = this;
         const value = $(this).html();
-        updateVal(curr, value);
+        update_val(curr, value);
     });
 });
 
