@@ -82,7 +82,7 @@ export function update_val(curr: Element, value: string) {
     });
 }
 
-// allow user to edit a div buy giving it the editable class
+// allow user to edit a div by giving it the editable class
 // TODO ensure you cannot inject malicious code here
 $(document).ready(() => {
     $('div.editable').dblclick(function(event) {

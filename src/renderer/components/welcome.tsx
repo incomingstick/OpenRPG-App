@@ -1,16 +1,25 @@
 import * as React from 'react';
-import { Grid, Form, Table, Input, List } from 'semantic-ui-react';
+import { Grid, Form, Table, Input, List, InputProps } from 'semantic-ui-react';
 import ORPGLogo from '../assets/images/d20_transparent.png';
-import { die_eval, swap_drop, allow_drop, start_drag } from '../ts/scripts';
+import { die_eval, swap_drop, allow_drop, start_drag } from '../../common/scripts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 require('../css/section.css');
 
+type TWelcomeState = {
+    calcValue: string;
+};
 
+export default class WelcomeScreen extends React.Component<any, TWelcomeState> {
+    constructor(props: any, context?: TWelcomeState) {
+        super(props, context);
+        this.state = {
+            calcValue: '1d20'
+        };
 
-export default class WelcomeScreen extends React.Component<any, any> {
-    private value: string = '';
+        this.handleCalcInputChange = this.handleCalcInputChange.bind(this);
+    }
 
     public render() {
         return (
@@ -84,25 +93,32 @@ export default class WelcomeScreen extends React.Component<any, any> {
                 </div>
             </Grid.Column>
         );
-    }
+    };
 
-    private handleCalcInputChange = (event: React.ChangeEvent<HTMLInputElement>, data: any) => {
-        // TODO some logic tbd
-    }
+    private handleCalcInputChange = (e: React.ChangeEvent<HTMLInputElement>, data: InputProps) => {
+        // TODO(incomingstick): filter out bad characters
+        e.preventDefault();
+        this.setState({ calcValue: data.value });
+    };
 
-    /**
-     * NOTE(incomingstick): I highly doubt this is the conventional way to do this 🤷 ‍
-     */
+    private handleCalcSubmit = (e: React.SyntheticEvent, data: string) => {
+        // TODO(incomingstick): filter out bad characters
+        console.log('event: ', e);
+        console.log('data: ', data);
+
+        e.preventDefault();
+        if (data !== undefined) this.setState({ calcValue: die_eval(data).toString() });
+    };
+
     private Calculator = () => {
         const calcBtnClass = 'btn btn-fill btn-rect';
+        let currValue = this.state.calcValue;
 
         return (
             <>
                 <a href='#die-calculator' data-toggle='collapse' className='utility'>
-                    <FontAwesomeIcon
-                        icon={faPlus}
-                    />
-                    Die Calculator {this.value}
+                    <FontAwesomeIcon icon={faPlus} />
+                    Die Calculator
                 </a>
                 <div id='die-calculator' className='collapse'>
                     <Form name='calc'>
@@ -115,7 +131,8 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                             className='btn btn-rect'
                                             name='display'
                                             type='text'
-                                            value={this.value}
+                                            placeholder={currValue}
+                                            value={currValue}
                                             onChange={this.handleCalcInputChange}
                                         />
                                     </Table.Cell>
@@ -124,7 +141,10 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                             className={calcBtnClass}
                                             type={'button'}
                                             value='C'
-                                            onClick={() => (this.value = '')}
+                                            onClick={() => {
+                                                currValue = '';
+                                                this.setState({ calcValue: currValue });
+                                            }}
                                             title='Clear'
                                         />
                                     </Table.Cell>
@@ -135,7 +155,7 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                             className={calcBtnClass}
                                             type={'button'}
                                             value='1'
-                                            onClick={() => (this.value += '1')}
+                                            onClick={() => this.setState({ calcValue: currValue += '1' })}
                                         />
                                     </Table.Cell>
                                     <Table.Cell>
@@ -143,7 +163,7 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                             className={calcBtnClass}
                                             type={'button'}
                                             value='2'
-                                            onClick={() => (this.value += '2')}
+                                            onClick={() => this.setState({ calcValue: currValue += '2' })}
                                         />
                                     </Table.Cell>
                                     <Table.Cell>
@@ -151,7 +171,7 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                             className={calcBtnClass}
                                             type={'button'}
                                             value='3'
-                                            onClick={() => (this.value += '3')}
+                                            onClick={() => this.setState({ calcValue: currValue += '3' })}
                                         />
                                     </Table.Cell>
                                     <Table.Cell>
@@ -159,7 +179,7 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                             className={calcBtnClass}
                                             type={'button'}
                                             value='+'
-                                            onClick={() => (this.value += '+')}
+                                            onClick={() => this.setState({ calcValue: currValue += '+' })}
                                         />
                                     </Table.Cell>
                                 </Table.Row>
@@ -169,7 +189,7 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                             className={calcBtnClass}
                                             type={'button'}
                                             value='4'
-                                            onClick={() => (this.value += '4')}
+                                            onClick={() => this.setState({ calcValue: currValue += '4' })}
                                         />
                                     </Table.Cell>
                                     <Table.Cell>
@@ -177,7 +197,7 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                             className={calcBtnClass}
                                             type={'button'}
                                             value='5'
-                                            onClick={() => (this.value += '5')}
+                                            onClick={() => this.setState({ calcValue: currValue += '5' })}
                                         />
                                     </Table.Cell>
                                     <Table.Cell>
@@ -185,7 +205,7 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                             className={calcBtnClass}
                                             type={'button'}
                                             value='6'
-                                            onClick={() => (this.value += '6')}
+                                            onClick={() => this.setState({ calcValue: currValue += '6' })}
                                         />
                                     </Table.Cell>
                                     <Table.Cell>
@@ -193,7 +213,7 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                             className={calcBtnClass}
                                             type={'button'}
                                             value='-'
-                                            onClick={() => (this.value += '-')}
+                                            onClick={() => this.setState({ calcValue: currValue += '-' })}
                                         />
                                     </Table.Cell>
                                 </Table.Row>
@@ -203,7 +223,7 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                             className={calcBtnClass}
                                             type={'button'}
                                             value='7'
-                                            onClick={() => (this.value += '7')}
+                                            onClick={() => this.setState({ calcValue: currValue += '7' })}
                                         />
                                     </Table.Cell>
                                     <Table.Cell>
@@ -211,7 +231,7 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                             className={calcBtnClass}
                                             type={'button'}
                                             value='8'
-                                            onClick={() => (this.value += '8')}
+                                            onClick={() => this.setState({ calcValue: currValue += '8' })}
                                         />
                                     </Table.Cell>
                                     <Table.Cell>
@@ -219,7 +239,7 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                             className={calcBtnClass}
                                             type={'button'}
                                             value='9'
-                                            onClick={() => (this.value += '9')}
+                                            onClick={() => this.setState({ calcValue: currValue += '9' })}
                                         />
                                     </Table.Cell>
                                     <Table.Cell>
@@ -227,7 +247,7 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                             className={calcBtnClass}
                                             type={'button'}
                                             value='x'
-                                            onClick={() => (this.value += '*')}
+                                            onClick={() => this.setState({ calcValue: currValue += '*' })}
                                         />
                                     </Table.Cell>
                                 </Table.Row>
@@ -237,7 +257,7 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                             className={calcBtnClass}
                                             type={'button'}
                                             value='d'
-                                            onClick={() => (this.value += 'd')}
+                                            onClick={() => this.setState({ calcValue: currValue += 'd' })}
                                             title='XdY'
                                         />
                                     </Table.Cell>
@@ -246,7 +266,7 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                             className={calcBtnClass}
                                             type={'button'}
                                             value='0'
-                                            onClick={() => (this.value += '0')}
+                                            onClick={() => this.setState({ calcValue: currValue += '0' })}
                                         />
                                     </Table.Cell>
                                     <Table.Cell>
@@ -255,7 +275,9 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                             className={calcBtnClass}
                                             type={'button'}
                                             value='='
-                                            onClick={() => (this.value = die_eval(this.value).toString())}
+                                            onClick={(event: React.SyntheticEvent) => {
+                                                this.handleCalcSubmit(event, currValue);
+                                            }}
                                         />
                                     </Table.Cell>
                                     <Table.Cell>
@@ -263,7 +285,7 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                             className={calcBtnClass}
                                             type={'button'}
                                             value='/'
-                                            onClick={() => (this.value += '/')}
+                                            onClick={() => this.setState({ calcValue: currValue += '/' })}
                                         />
                                     </Table.Cell>
                                 </Table.Row>
@@ -273,7 +295,7 @@ export default class WelcomeScreen extends React.Component<any, any> {
                 </div>
             </>
         );
-    }
+    };
 
     private HomeUtils = () => {
         return (
@@ -289,9 +311,7 @@ export default class WelcomeScreen extends React.Component<any, any> {
                         {/* <!-- TODO add name generator here --> */}
                         <List.Item className='utils-panel'>
                             <a href='#name-generator' data-toggle='collapse' className='utility'>
-                                <FontAwesomeIcon
-                                    icon={faPlus}
-                                />
+                                <FontAwesomeIcon icon={faPlus} />
                                 TODO Name Generator here
                             </a>
                             <div id='name-generator' className='collapse'>
@@ -305,58 +325,28 @@ export default class WelcomeScreen extends React.Component<any, any> {
                                         - Allow removing tags. Currently if a tag becomes empty it no longer allows  --> */}
                         <List.Item className='utils-panel'>
                             <a href='#initiative-helper' data-toggle='collapse' className='utility'>
-                                <FontAwesomeIcon
-                                    icon={faPlus}
-                                />
+                                <FontAwesomeIcon icon={faPlus} />
                                 TODO Initiative Helper here
                             </a>
                             <div id='initiative-helper' className='collapse'>
                                 <List ordered className='inner-utility'>
-                                    <List.Item
-                                        id='li1'
-                                        onDrop={swap_drop}
-                                        onDragOver={allow_drop}>
-                                        <div
-                                            id='drag1'
-                                            draggable={true}
-                                            onDragStart={start_drag}
-                                            className='editable'>
+                                    <List.Item id='li1' onDrop={swap_drop} onDragOver={allow_drop}>
+                                        <div id='drag1' draggable={true} onDragStart={start_drag} className='editable'>
                                             Char 1
                                         </div>
                                     </List.Item>
-                                    <List.Item
-                                        id='li2'
-                                        onDrop={swap_drop}
-                                        onDragOver={allow_drop}>
-                                        <div
-                                            id='drag2'
-                                            draggable={true}
-                                            onDragStart={start_drag}
-                                            className='editable'>
+                                    <List.Item id='li2' onDrop={swap_drop} onDragOver={allow_drop}>
+                                        <div id='drag2' draggable={true} onDragStart={start_drag} className='editable'>
                                             Char 2
                                         </div>
                                     </List.Item>
-                                    <List.Item
-                                        id='li3'
-                                        onDrop={swap_drop}
-                                        onDragOver={allow_drop}>
-                                        <div
-                                            id='drag3'
-                                            draggable={true}
-                                            onDragStart={start_drag}
-                                            className='editable'>
+                                    <List.Item id='li3' onDrop={swap_drop} onDragOver={allow_drop}>
+                                        <div id='drag3' draggable={true} onDragStart={start_drag} className='editable'>
                                             Char 3
                                         </div>
                                     </List.Item>
-                                    <List.Item
-                                        id='li4'
-                                        onDrop={swap_drop}
-                                        onDragOver={allow_drop}>
-                                        <div
-                                            id='drag4'
-                                            draggable={true}
-                                            onDragStart={start_drag}
-                                            className='editable'>
+                                    <List.Item id='li4' onDrop={swap_drop} onDragOver={allow_drop}>
+                                        <div id='drag4' draggable={true} onDragStart={start_drag} className='editable'>
                                             Char 4
                                         </div>
                                     </List.Item>
@@ -367,5 +357,5 @@ export default class WelcomeScreen extends React.Component<any, any> {
                 </div>
             </Grid.Column>
         );
-    }
+    };
 }

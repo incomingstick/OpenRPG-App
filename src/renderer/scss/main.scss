@@ -1,4 +1,4 @@
-$logo-primary: #2196f3;
+@import 'variables';
 
 .ui.grid {
     min-height: 100%;
@@ -148,13 +148,9 @@ a {
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
-    /* padding-left: 5rem; */
-    padding-bottom: 1.3rem;
     transition: all 0.5s ease;
     min-height: 100%;
     height: auto !important;
-    height: 100%;
-    margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
     position: relative;
 }
 
@@ -337,14 +333,13 @@ li.utils-panel {
 
 /* footer stuff */
 footer {
-    margin-top: 1rem;
     font-size: 0.85rem;
     text-align: left;
     background-color: $logo-primary;
     position: fixed;
-    height: 1.3rem;
-    width: 100%;
+    height: $footer-height;
     bottom: 0;
+    width: 100%;
     z-index: 1030;
     color: #fff;
 }

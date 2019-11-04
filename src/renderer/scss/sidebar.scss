@@ -1,3 +1,5 @@
+@import 'variables';
+
 /* Open nav stuff */
 .nav .open > a {
     background-color: transparent;
@@ -18,10 +20,10 @@
 /* Wrappers */
 #sidebar-wrapper {
     background: #1a1a1a;
-    height: calc(100vh - 1.3rem);
+    height: calc(100vh - #{$footer-height} + 0.3rem);
     overflow-x: hidden;
     overflow-y: auto;
-    width: 3rem;
+    width: $sidebar-width;
 }
 
 #sidebar-wrapper::-webkit-scrollbar {

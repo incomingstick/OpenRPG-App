@@ -2,12 +2,12 @@ import { remote } from 'electron';
 import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Grid } from 'semantic-ui-react';
-import Sidebar from './sidebar'
+import Sidebar from './sidebar';
 import CharacterScreen from './characters';
 import CampaignScreen from './campaign';
 import CitiesScreen from './cities';
 import SettingsScreen from './settings';
-import WorldMapsScreen from './worldMaps'
+import WorldMapsScreen from './worldMaps';
 import WelcomeScreen from './welcome';
 
 const ORPG_VERSION = remote.app.getVersion();
@@ -36,16 +36,16 @@ class AppContainer extends React.Component<any, TAppContainerState> {
             <>
                 <div id='wrapper'>
                     <Grid>
-                        <Grid.Column width={4} className='navbar navbar-fixed-top js-nav' id='sidebar-wrapper' role='navigation'>
+                        <Grid.Column className='navbar navbar-fixed-top js-nav' id='sidebar-wrapper' role='navigation'>
                             <Sidebar parentCallback={this.sidebarCallback} />
                         </Grid.Column>
 
-                        <Grid.Column stretched width={12}>
-                            <main id='main-content-wrapper' className='content js-content is-shown'>
-                                <this.CurrentScreen />
-                            </main>
-                            {/* <!-- end main-content-wrapper --> */}
-                        </Grid.Column>
+                        {/* <Grid.Column stretched width={12}> */}
+                        <main id='main-content-wrapper' className='content js-content is-shown'>
+                            <this.CurrentScreen />
+                        </main>
+                        {/* <!-- end main-content-wrapper --> */}
+                        {/* </Grid.Column> */}
                     </Grid>
                 </div>
                 {/* <!-- end wrapper --> */}
@@ -62,21 +62,18 @@ class AppContainer extends React.Component<any, TAppContainerState> {
         );
     }
 
-    private sidebarCallback = (callbackData: string) => { this.setState({ screen: callbackData }) }
+    private sidebarCallback = (callbackData: string) => {
+        this.setState({ screen: callbackData });
+    };
 
     private CurrentScreen = () => {
-        if(this.state.screen === 'characters')
-            return <CharacterScreen />
-        else if(this.state.screen === 'cities')
-            return <CitiesScreen />
-        else if(this.state.screen === 'world-maps')
-            return <WorldMapsScreen />
-        else if(this.state.screen === 'campaign')
-            return <CampaignScreen />
-        else if(this.state.screen === 'settings')
-            return <SettingsScreen />
-        else return <WelcomeScreen />
-    }
+        if (this.state.screen === 'characters') return <CharacterScreen />;
+        else if (this.state.screen === 'cities') return <CitiesScreen />;
+        else if (this.state.screen === 'world-maps') return <WorldMapsScreen />;
+        else if (this.state.screen === 'campaign') return <CampaignScreen />;
+        else if (this.state.screen === 'settings') return <SettingsScreen />;
+        else return <WelcomeScreen />;
+    };
 }
 
 const App = () => <AppContainer />;

@@ -3,6 +3,8 @@ import { Menu, MenuItemProps } from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faFile, faBuilding, faMap, faGlobe, faCog } from '@fortawesome/free-solid-svg-icons';
 
+require('../scss/sidebar.scss');
+
 type TSidebarProps = {
     parentCallback: (callbackData: string) => void;
 };
@@ -15,7 +17,7 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
     constructor(props: TSidebarProps, context?: TSidebarState) {
         super(props, context);
         this.state = {
-            screen: 'welcome',
+            screen: 'welcome'
         };
 
         this.handleClick = this.handleClick.bind(this);
@@ -34,9 +36,7 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
                     name='welcome'
                     active={activeItem === 'welcome'}
                     onClick={this.handleClick}>
-                    <FontAwesomeIcon
-                        icon={faHome}
-                    />
+                    <FontAwesomeIcon icon={faHome} />
                 </Menu.Item>
                 {/* <!-- TODO Is this the correct tooltip --> */}
                 <Menu.Item
@@ -47,9 +47,7 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
                     name='characters'
                     active={activeItem === 'characters'}
                     onClick={this.handleClick}>
-                    <FontAwesomeIcon
-                        icon={faFile}
-                    />
+                    <FontAwesomeIcon icon={faFile} />
                 </Menu.Item>
                 {/* <!-- TODO Is this the correct tooltip / icon --> */}
                 <Menu.Item
@@ -60,9 +58,7 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
                     name='cities'
                     active={activeItem === 'cities'}
                     onClick={this.handleClick}>
-                    <FontAwesomeIcon
-                        icon={faBuilding}
-                    />
+                    <FontAwesomeIcon icon={faBuilding} />
                 </Menu.Item>
                 {/* <!-- TODO Is this the correct tooltip --> */}
                 <Menu.Item
@@ -73,9 +69,7 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
                     name='world-maps'
                     active={activeItem === 'world-maps'}
                     onClick={this.handleClick}>
-                    <FontAwesomeIcon
-                        icon={faMap}
-                    />
+                    <FontAwesomeIcon icon={faMap} />
                 </Menu.Item>
                 {/* <!-- TODO Is this the correct tooltip --> */}
                 <Menu.Item
@@ -86,9 +80,7 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
                     name='campaign'
                     active={activeItem === 'campaign'}
                     onClick={this.handleClick}>
-                    <FontAwesomeIcon
-                        icon={faGlobe}
-                    />
+                    <FontAwesomeIcon icon={faGlobe} />
                 </Menu.Item>
                 {/* <!-- TODO Is this the correct tooltip --> */}
                 <Menu.Item
@@ -99,18 +91,16 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
                     name='settings'
                     active={activeItem === 'settings'}
                     onClick={this.handleClick}>
-                    <FontAwesomeIcon
-                        icon={faCog}
-                    />
+                    <FontAwesomeIcon icon={faCog} />
                 </Menu.Item>
             </Menu>
-        )
+        );
     }
 
     private handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, data: MenuItemProps) => {
         e.preventDefault();
 
-        if(data.name === undefined) {
+        if (data.name === undefined) {
             console.log('Menu.Item prop name is missing or undefined');
             return;
         }
