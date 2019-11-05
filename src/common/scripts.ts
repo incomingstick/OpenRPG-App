@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import * as libroll from 'openrpg-libs';
+import { ExpressionTree } from 'openrpg-libs';
 
 $(document).ready(() => {
     // change plus and minus for dropdown items
@@ -23,11 +23,27 @@ $(document).ready(() => {
 
 // Evaluate a die roll
 export function die_eval(exp: string) {
-    const parser = new libroll.ExpressionTree();
+    console.log('expression ', exp);
 
-    parser.set_expression(exp);
+    const parser = new ExpressionTree();
+    let ret: number;
 
-    return parser.parse_expression();
+    console.log(parser.to_string());
+
+    if(parser.set_expression(exp)) {
+
+        ret = parser.parse_expression();
+
+        return ret;
+    }
+
+    console.log('parser state 3 ', parser);
+
+    ret = parser.parse_expression();
+
+    console.log('ret value ', ret);
+
+    return ret;
 }
 
 // Allow drag
