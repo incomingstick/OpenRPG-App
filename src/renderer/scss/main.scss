@@ -106,18 +106,6 @@ a {
     background-position: center center;
 }
 
-.content {
-    flex: 1;
-    overflow: hidden;
-    visibility: hidden;
-    opacity: 0;
-}
-
-.content.is-shown {
-    visibility: visible;
-    opacity: 1;
-}
-
 .is-selected {
     background-color: $logo-primary;
     color: #fff;
@@ -137,10 +125,6 @@ a {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
-}
-
-.hidden {
-    display: none !important;
 }
 
 /* wrappers */
@@ -166,10 +150,6 @@ a {
 }
 
 /* main content  */
-.container {
-    width: 100%;
-}
-
 .nav-tabs {
     border-bottom: 1px solid #666;
 }

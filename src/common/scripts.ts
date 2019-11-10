@@ -25,7 +25,7 @@ $(document).ready(() => {
 export function die_eval(exp: string) {
     const parser = new ExpressionTree();
 
-    if(parser.set_expression(exp)) {
+    if (parser.set_expression(exp)) {
         return parser.parse_expression();
     }
 

@@ -1,22 +1,36 @@
 import * as React from 'react';
-import { Grid, Form, Table, Input, List, InputProps, Button } from 'semantic-ui-react';
+import {
+    Grid,
+    Form,
+    Table,
+    Input,
+    List,
+    InputProps,
+    Button,
+    Accordion,
+    Card,
+    InputOnChangeData
+} from 'semantic-ui-react';
 import ORPGLogo from '../assets/images/d20_transparent.png';
 import { die_eval, swap_drop, allow_drop, start_drag } from '../../common/scripts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import _ from 'lodash';
 
 require('../css/section.css');
 require('../scss/welcome.scss');
 
 type TWelcomeState = {
     calcValue: string;
+    activeUtilIndex: number;
 };
 
 export default class WelcomeScreen extends React.Component<any, TWelcomeState> {
     constructor(props: any, context?: TWelcomeState) {
         super(props, context);
         this.state = {
-            calcValue: '1d20'
+            calcValue: '1d20',
+            activeUtilIndex: -1
         };
 
         this.handleCalcInputChange = this.handleCalcInputChange.bind(this);
@@ -104,11 +118,18 @@ export default class WelcomeScreen extends React.Component<any, TWelcomeState> {
 
     private handleCalcSubmit = (e: React.SyntheticEvent, data: string) => {
         // TODO(incomingstick): filter out bad characters
-        console.log('event: ', e);
-        console.log('data: ', data);
-
         e.preventDefault();
         if (data !== undefined) this.setState({ calcValue: die_eval(data).toString() });
+    };
+
+    private handleUtilHeaderClick = (e: React.MouseEvent, data: InputProps) => {
+        e.preventDefault();
+
+        const index = data.index;
+        const activeIndex = this.state.activeUtilIndex;
+        const newIndex = activeIndex === index ? -1 : index;
+
+        this.setState({ activeUtilIndex: newIndex });
     };
 
     private Calculator = () => {
@@ -116,203 +137,210 @@ export default class WelcomeScreen extends React.Component<any, TWelcomeState> {
         let currValue = this.state.calcValue;
 
         return (
-            <>
-                <a href='#die-calculator' data-toggle='collapse' className='utility'>
-                    <FontAwesomeIcon icon={faPlus} />
-                    Die Calculator
-                </a>
-                <div id='die-calculator' className='collapse'>
-                    <Form name='calc'>
-                        <Table id='calc' border={0}>
-                            <Table.Body>
-                                <Table.Row>
-                                    <Table.Cell colSpan={3}>
-                                        <Input
-                                            id='calc-display'
-                                            className='btn btn-rect'
-                                            name='display'
-                                            type='text'
-                                            placeholder={currValue}
-                                            value={currValue}
-                                            onChange={this.handleCalcInputChange}
-                                        />
-                                    </Table.Cell>
-                                    <Table.Cell>
-                                        <Button
-                                            className={calcBtnClass}
-                                            content='C'
-                                            onClick={() => {
-                                                currValue = '';
-                                                this.setState({ calcValue: currValue });
-                                            }}
-                                            title='Clear'
-                                        />
-                                    </Table.Cell>
-                                </Table.Row>
-                                <Table.Row>
-                                    <Table.Cell>
-                                        <Button
-                                            className={calcBtnClass}
-                                            content='1'
-                                            onClick={() => this.setState({ calcValue: currValue += '1' })}
-                                        />
-                                    </Table.Cell>
-                                    <Table.Cell>
-                                        <Button
-                                            className={calcBtnClass}
-                                            content='2'
-                                            onClick={() => this.setState({ calcValue: currValue += '2' })}
-                                        />
-                                    </Table.Cell>
-                                    <Table.Cell>
-                                        <Button
-                                            className={calcBtnClass}
-                                            content='3'
-                                            onClick={() => this.setState({ calcValue: currValue += '3' })}
-                                        />
-                                    </Table.Cell>
-                                    <Table.Cell>
-                                        <Button
-                                            className={calcBtnClass}
-                                            content='+'
-                                            onClick={() => this.setState({ calcValue: currValue += '+' })}
-                                        />
-                                    </Table.Cell>
-                                </Table.Row>
-                                <Table.Row>
-                                    <Table.Cell>
-                                        <Button
-                                            className={calcBtnClass}
-                                            content='4'
-                                            onClick={() => this.setState({ calcValue: currValue += '4' })}
-                                        />
-                                    </Table.Cell>
-                                    <Table.Cell>
-                                        <Button
-                                            className={calcBtnClass}
-                                            content='5'
-                                            onClick={() => this.setState({ calcValue: currValue += '5' })}
-                                        />
-                                    </Table.Cell>
-                                    <Table.Cell>
-                                        <Button
-                                            className={calcBtnClass}
-                                            content='6'
-                                            onClick={() => this.setState({ calcValue: currValue += '6' })}
-                                        />
-                                    </Table.Cell>
-                                    <Table.Cell>
-                                        <Button
-                                            className={calcBtnClass}
-                                            content='-'
-                                            onClick={() => this.setState({ calcValue: currValue += '-' })}
-                                        />
-                                    </Table.Cell>
-                                </Table.Row>
-                                <Table.Row>
-                                    <Table.Cell>
-                                        <Button
-                                            className={calcBtnClass}
-                                            content='7'
-                                            onClick={() => this.setState({ calcValue: currValue += '7' })}
-                                        />
-                                    </Table.Cell>
-                                    <Table.Cell>
-                                        <Button
-                                            className={calcBtnClass}
-                                            content='8'
-                                            onClick={() => this.setState({ calcValue: currValue += '8' })}
-                                        />
-                                    </Table.Cell>
-                                    <Table.Cell>
-                                        <Button
-                                            className={calcBtnClass}
-                                            content='9'
-                                            onClick={() => this.setState({ calcValue: currValue += '9' })}
-                                        />
-                                    </Table.Cell>
-                                    <Table.Cell>
-                                        <Button
-                                            className={calcBtnClass}
-                                            content='x'
-                                            onClick={() => this.setState({ calcValue: currValue += '*' })}
-                                        />
-                                    </Table.Cell>
-                                </Table.Row>
-                                <Table.Row>
-                                    <Table.Cell>
-                                        <Button
-                                            className={calcBtnClass}
-                                            content='d'
-                                            onClick={() => this.setState({ calcValue: currValue += 'd' })}
-                                            title='XdY'
-                                        />
-                                    </Table.Cell>
-                                    <Table.Cell>
-                                        <Button
-                                            className={calcBtnClass}
-                                            content='0'
-                                            onClick={() => this.setState({ calcValue: currValue += '0' })}
-                                        />
-                                    </Table.Cell>
-                                    <Table.Cell>
-                                        <Button
-                                            id='calc-eval'
-                                            className={calcBtnClass}
-                                            content='='
-                                            onClick={(event: React.SyntheticEvent) => {
-                                                this.handleCalcSubmit(event, currValue);
-                                            }}
-                                        />
-                                    </Table.Cell>
-                                    <Table.Cell>
-                                        <Button
-                                            className={calcBtnClass}
-                                            content='/'
-                                            onClick={() => this.setState({ calcValue: currValue += '/' })}
-                                        />
-                                    </Table.Cell>
-                                </Table.Row>
-                            </Table.Body>
-                        </Table>
-                    </Form>
-                </div>
-            </>
+            <Form name='calc'>
+                <Table id='calc' border={0}>
+                    <Table.Body>
+                        <Table.Row>
+                            <Table.Cell colSpan={3}>
+                                <Input
+                                    id='calc-display'
+                                    className='btn btn-rect'
+                                    name='display'
+                                    type='text'
+                                    placeholder={currValue}
+                                    value={currValue}
+                                    onChange={this.handleCalcInputChange}
+                                />
+                            </Table.Cell>
+                            <Table.Cell>
+                                <Button
+                                    className={calcBtnClass}
+                                    content='C'
+                                    onClick={() => {
+                                        currValue = '';
+                                        this.setState({ calcValue: currValue });
+                                    }}
+                                    title='Clear'
+                                />
+                            </Table.Cell>
+                        </Table.Row>
+                        <Table.Row>
+                            <Table.Cell>
+                                <Button
+                                    className={calcBtnClass}
+                                    content='1'
+                                    onClick={() => this.setState({ calcValue: currValue += '1' })}
+                                />
+                            </Table.Cell>
+                            <Table.Cell>
+                                <Button
+                                    className={calcBtnClass}
+                                    content='2'
+                                    onClick={() => this.setState({ calcValue: currValue += '2' })}
+                                />
+                            </Table.Cell>
+                            <Table.Cell>
+                                <Button
+                                    className={calcBtnClass}
+                                    content='3'
+                                    onClick={() => this.setState({ calcValue: currValue += '3' })}
+                                />
+                            </Table.Cell>
+                            <Table.Cell>
+                                <Button
+                                    className={calcBtnClass}
+                                    content='+'
+                                    onClick={() => this.setState({ calcValue: currValue += '+' })}
+                                />
+                            </Table.Cell>
+                        </Table.Row>
+                        <Table.Row>
+                            <Table.Cell>
+                                <Button
+                                    className={calcBtnClass}
+                                    content='4'
+                                    onClick={() => this.setState({ calcValue: currValue += '4' })}
+                                />
+                            </Table.Cell>
+                            <Table.Cell>
+                                <Button
+                                    className={calcBtnClass}
+                                    content='5'
+                                    onClick={() => this.setState({ calcValue: currValue += '5' })}
+                                />
+                            </Table.Cell>
+                            <Table.Cell>
+                                <Button
+                                    className={calcBtnClass}
+                                    content='6'
+                                    onClick={() => this.setState({ calcValue: currValue += '6' })}
+                                />
+                            </Table.Cell>
+                            <Table.Cell>
+                                <Button
+                                    className={calcBtnClass}
+                                    content='-'
+                                    onClick={() => this.setState({ calcValue: currValue += '-' })}
+                                />
+                            </Table.Cell>
+                        </Table.Row>
+                        <Table.Row>
+                            <Table.Cell>
+                                <Button
+                                    className={calcBtnClass}
+                                    content='7'
+                                    onClick={() => this.setState({ calcValue: currValue += '7' })}
+                                />
+                            </Table.Cell>
+                            <Table.Cell>
+                                <Button
+                                    className={calcBtnClass}
+                                    content='8'
+                                    onClick={() => this.setState({ calcValue: currValue += '8' })}
+                                />
+                            </Table.Cell>
+                            <Table.Cell>
+                                <Button
+                                    className={calcBtnClass}
+                                    content='9'
+                                    onClick={() => this.setState({ calcValue: currValue += '9' })}
+                                />
+                            </Table.Cell>
+                            <Table.Cell>
+                                <Button
+                                    className={calcBtnClass}
+                                    content='x'
+                                    onClick={() => this.setState({ calcValue: currValue += '*' })}
+                                />
+                            </Table.Cell>
+                        </Table.Row>
+                        <Table.Row>
+                            <Table.Cell>
+                                <Button
+                                    className={calcBtnClass}
+                                    content='d'
+                                    onClick={() => this.setState({ calcValue: currValue += 'd' })}
+                                    title='XdY'
+                                />
+                            </Table.Cell>
+                            <Table.Cell>
+                                <Button
+                                    className={calcBtnClass}
+                                    content='0'
+                                    onClick={() => this.setState({ calcValue: currValue += '0' })}
+                                />
+                            </Table.Cell>
+                            <Table.Cell>
+                                <Button
+                                    id='calc-eval'
+                                    className={calcBtnClass}
+                                    content='='
+                                    onClick={(event: React.SyntheticEvent) => {
+                                        this.handleCalcSubmit(event, currValue);
+                                    }}
+                                />
+                            </Table.Cell>
+                            <Table.Cell>
+                                <Button
+                                    className={calcBtnClass}
+                                    content='/'
+                                    onClick={() => this.setState({ calcValue: currValue += '/' })}
+                                />
+                            </Table.Cell>
+                        </Table.Row>
+                    </Table.Body>
+                </Table>
+            </Form>
         );
     };
 
     private HomeUtils = () => {
+        const activeIndex = this.state.activeUtilIndex;
+
         return (
             <Grid.Column width={11}>
                 <div className='homepage-utils'>
                     <h3>Utilities</h3>
-                    <List>
-                        {/* <!-- TODO All of these should be collapsed when program starts --> */}
-                        <List.Item className='utils-panel'>
-                            <this.Calculator />
-                        </List.Item>
-
-                        {/* <!-- TODO add name generator here --> */}
-                        <List.Item className='utils-panel'>
-                            <a href='#name-generator' data-toggle='collapse' className='utility'>
+                    <Accordion>
+                        <Card className='utils-panel' fluid>
+                            <Accordion.Title
+                                className='utility'
+                                as={Card.Header}
+                                index={0}
+                                active={activeIndex === 0}
+                                onClick={this.handleUtilHeaderClick}>
+                                <FontAwesomeIcon icon={faPlus} />
+                                Die Calculator
+                            </Accordion.Title>
+                            <Accordion.Content id='die-calculator' as={Card.Content} active={activeIndex === 0}>
+                                <this.Calculator />
+                            </Accordion.Content>
+                        </Card>
+                        <Card className='utils-panel' fluid>
+                            <Accordion.Title
+                                className='utility'
+                                as={Card.Header}
+                                index={1}
+                                active={activeIndex === 1}
+                                onClick={this.handleUtilHeaderClick}>
                                 <FontAwesomeIcon icon={faPlus} />
                                 TODO Name Generator here
-                            </a>
-                            <div id='name-generator' className='collapse'>
+                            </Accordion.Title>
+                            <Accordion.Content id='name-generator' as={Card.Content} active={activeIndex === 1}>
                                 <div className='inner-utility'>Lorem ipsum dolor text....</div>
-                            </div>
-                        </List.Item>
-
-                        {/* <!-- TODO Finish this
-                                        - Ensure security of accepting label input
-                                        - Allow adding more tags
-                                        - Allow removing tags. Currently if a tag becomes empty it no longer allows  --> */}
-                        <List.Item className='utils-panel'>
-                            <a href='#initiative-helper' data-toggle='collapse' className='utility'>
+                            </Accordion.Content>
+                        </Card>
+                        <Card className='utils-panel' fluid>
+                            <Accordion.Title
+                                className='utility'
+                                as={Card.Header}
+                                index={2}
+                                active={activeIndex === 2}
+                                onClick={this.handleUtilHeaderClick}>
                                 <FontAwesomeIcon icon={faPlus} />
                                 TODO Initiative Helper here
-                            </a>
-                            <div id='initiative-helper' className='collapse'>
+                            </Accordion.Title>
+                            <Accordion.Content id='initiative-helper' as={Card.Content} active={activeIndex === 2}>
                                 <List ordered className='inner-utility'>
                                     <List.Item id='li1' onDrop={swap_drop} onDragOver={allow_drop}>
                                         <div id='drag1' draggable={true} onDragStart={start_drag} className='editable'>
@@ -335,9 +363,9 @@ export default class WelcomeScreen extends React.Component<any, TWelcomeState> {
                                         </div>
                                     </List.Item>
                                 </List>
-                            </div>
-                        </List.Item>
-                    </List>
+                            </Accordion.Content>
+                        </Card>
+                    </Accordion>
                 </div>
             </Grid.Column>
         );
