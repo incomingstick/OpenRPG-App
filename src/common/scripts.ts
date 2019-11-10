@@ -23,27 +23,13 @@ $(document).ready(() => {
 
 // Evaluate a die roll
 export function die_eval(exp: string) {
-    console.log('expression ', exp);
-
     const parser = new ExpressionTree();
-    let ret: number;
-
-    console.log(parser.to_string());
 
     if(parser.set_expression(exp)) {
-
-        ret = parser.parse_expression();
-
-        return ret;
+        return parser.parse_expression();
     }
 
-    console.log('parser state 3 ', parser);
-
-    ret = parser.parse_expression();
-
-    console.log('ret value ', ret);
-
-    return ret;
+    return parser.parse_expression();
 }
 
 // Allow drag

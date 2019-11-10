@@ -1,0 +1,61 @@
+@import 'variables';
+
+#die-calculator {
+    background-color: #444;
+    padding: 0.5rem 0;
+}
+
+#calc {
+    margin: auto;
+}
+
+#calc .ui.input {
+    width: 100%
+}
+
+#calc.ui.table td {
+    padding: 0;
+}
+
+.welcome-header {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    flex: 1 100%;
+}
+
+.getting-started > ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.homepage-utils > ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+li.utils-panel {
+    margin-bottom: 10px;
+    background-color: #222;
+    border: 2px solid transparent;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.utils-panel > a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.inner-utility {
+    padding: 3px;
+}
+
+#name-generator {
+    background-color: #444;
+}
+
+#initiative-helper {
+    background-color: #444;
+}
