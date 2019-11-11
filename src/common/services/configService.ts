@@ -41,19 +41,19 @@ function isDir(path: string) {
 function detectDataFolder(): string {
     const checkFolders: string[] = [];
     switch (os.type()) {
-        case 'Darwin': {
-            checkFolders.push('/Applications/OpenRPG');
-            break;
-        }
-        case 'Windows_NT': {
-            checkFolders.push('c:/Program Files (x86)/OpenRPG');
-            checkFolders.push('c:/Program Files/OpenRPG');
-            break;
-        }
-        /* TODO Add Linux Support */
-        default: {
-            break;
-        }
+    case 'Darwin': {
+        checkFolders.push('/Applications/OpenRPG');
+        break;
+    }
+    case 'Windows_NT': {
+        checkFolders.push('c:/Program Files (x86)/OpenRPG');
+        checkFolders.push('c:/Program Files/OpenRPG');
+        break;
+    }
+    /* TODO Add Linux Support */
+    default: {
+        break;
+    }
     }
 
     for (const folder of checkFolders) {

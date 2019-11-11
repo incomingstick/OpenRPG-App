@@ -5,7 +5,6 @@
   "scripts": {
     "start": "electron-webpack dev",
     "lint": "eslint src/**/* --fix",
-    "test": "mocha -r ts-node/register src/test/**/*-test.ts",
     "prettier": "prettier --write src/**/*.{ts,tsx,js,jsx,md,css,scss,sass,json} !src/static/** !tmp/**",
     "pretty-quick": "pretty-quick --staged",
     "typecheck": "tsc --pretty --noEmit",

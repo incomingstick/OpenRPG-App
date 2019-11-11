@@ -29,7 +29,7 @@ export default class WelcomeScreen extends React.Component<any, TWelcomeState> {
     public render() {
         return (
             <div className='section-template'>
-                <div id='welcome-section' className='section js-section is-shown'>
+                <div id='welcome-section'>
                     <div className='welcome-header'>
                         <img src={ORPGLogo} height={45} />
                         <h1>OpenRPG</h1>
