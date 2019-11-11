@@ -1,8 +1,22 @@
 import * as React from 'react';
+import { Tab } from 'semantic-ui-react';
 
 require('../scss/characterSheet.scss');
 
 export default class CharacterScreen extends React.Component<any, any> {
+    private panes = [
+        {
+            menuItem: 'Char 1',
+            render: () => (
+                <Tab.Pane>
+                    <this.CharacterSheet />
+                </Tab.Pane>
+            )
+        },
+        { menuItem: 'Char 2', render: () => <Tab.Pane>TODO adding and removing chars</Tab.Pane> },
+        { menuItem: 'Char 3', render: () => <Tab.Pane>TODO Handle multiple chars</Tab.Pane> }
+    ];
+
     public constructor(props: any, context?: any) {
         super(props, context);
 
@@ -25,63 +39,10 @@ export default class CharacterScreen extends React.Component<any, any> {
 
                     <div className='container'>
                         <h3>TODO Do character creator and other character stuff here</h3>
-                        <nav>
-                            <div className='nav nav-tabs' id='char-list-nav-tab' role='tablist'>
-                                <a
-                                    className='nav-item nav-link active'
-                                    id='nav-char-1-tab'
-                                    data-toggle='tab'
-                                    href='#nav-char-1'
-                                    role='tab'
-                                    aria-controls='nav-char-1'
-                                    aria-selected='true'>
-                                    Char 1
-                                </a>
-                                <a
-                                    className='nav-item nav-link'
-                                    id='nav-char-2-tab'
-                                    data-toggle='tab'
-                                    href='#nav-char-2'
-                                    role='tab'
-                                    aria-controls='nav-char-2'
-                                    aria-selected='false'>
-                                    Char 2
-                                </a>
-                                <a
-                                    className='nav-item nav-link'
-                                    id='nav-char-3-tab'
-                                    data-toggle='tab'
-                                    href='#nav-char-3'
-                                    role='tab'
-                                    aria-controls='nav-char-3'
-                                    aria-selected='false'>
-                                    Char 3
-                                </a>
-                            </div>
-                        </nav>
-                        <div className='tab-content' id='char-list-nav-tabContent'>
-                            <div
-                                className='tab-pane fade show active'
-                                id='nav-char-1'
-                                role='tabpanel'
-                                aria-labelledby='nav-char-1-tab'>
-                                <this.CharacterSheet />
-                            </div>
-                            <div
-                                className='tab-pane fade'
-                                id='nav-char-2'
-                                role='tabpanel'
-                                aria-labelledby='nav-char-2-tab'>
-                                TODO adding and removing chars
-                            </div>
-                            <div
-                                className='tab-pane fade'
-                                id='nav-char-3'
-                                role='tabpanel'
-                                aria-labelledby='nav-char-3-tab'>
-                                TODO Handle multiple chars
-                            </div>
-                        </div>
+                        <Tab
+                            menu={{ color: 'grey', inverted: true, attached: false, tabular: false }}
+                            panes={this.panes}
+                        />
                     </div>
                 </div>
             </div>

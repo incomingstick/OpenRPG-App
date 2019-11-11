@@ -1,4 +1,4 @@
-/* Section ------------------ */
+/* Sections */
 section {
     padding-top: 0.5rem;
 }
@@ -56,4 +56,9 @@ section {
     height: 32px;
     vertical-align: middle;
     margin-right: 0.5em;
+}
+
+/* Segments */
+.ui.attached.segment {
+    border-color: $background !important; // FIXME(incomingstick): find away around this !important
 }
