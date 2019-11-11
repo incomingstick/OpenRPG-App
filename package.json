@@ -4,7 +4,7 @@
   "description": "A tool for someone to use to quickly create content for a tabletop RPG world",
   "scripts": {
     "start": "electron-webpack dev",
-    "lint": "eslint src/**/* --fix",
+    "lint": "eslint \"src/**/*\" --fix",
     "prettier": "prettier --write src/**/*.{ts,tsx,js,jsx,md,css,scss,sass,json} !src/static/** !tmp/**",
     "pretty-quick": "pretty-quick --staged",
     "typecheck": "tsc --pretty --noEmit",
@@ -30,6 +30,10 @@
     "ssh": "git+ssh://git@github.com:incomingstick/OpenRPG-App.git"
   },
   "license": "OSL",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/incomingstick"
+  },
   "author": {
     "name": "Nick Gaulke",
     "url": "https://github.com/incomingstick",
