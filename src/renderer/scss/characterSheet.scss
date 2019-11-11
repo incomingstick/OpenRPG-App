@@ -2,10 +2,10 @@
 @import 'sections';
 
 textarea {
-    font-size: 12px;
+    font-size: 1rem;
     text-align: left;
-    border-radius: 10px;
-    padding: 10px;
+    border-radius: .8333rem;
+    padding: .8333rem;
     resize: none;
     overflow: hidden;
     height: 15em;
@@ -17,7 +17,7 @@ input[type='checkbox'] {
 }
 
 div.box {
-    margin-top: 10px;
+    margin-top: .8333rem;
 }
 
 form.charSheet {
@@ -41,9 +41,9 @@ form.charSheet {
             text-align: center;
             border: 1px solid black;
             border-top: 0;
-            font-size: 10px;
+            font-size: .8333rem;
             width: calc(100% - 20px - 2px);
-            border-radius: 0 0 10px 10px;
+            border-radius: 0 0 .8333rem .8333rem;
             padding: 4px 0;
             font-weight: bold;
         }
@@ -85,7 +85,7 @@ form.charSheet {
 
     label {
         text-transform: uppercase;
-        font-size: 12px;
+        font-size: 1rem;
     }
 
     header {
@@ -96,7 +96,7 @@ form.charSheet {
         section.charName {
             border: 1px solid black;
             border-right: 0;
-            border-radius: 10px 0 0 10px;
+            border-radius: .8333rem 0 0 .8333rem;
             padding: 5px 0;
             background-color: #eee;
             width: 30%;
@@ -122,12 +122,12 @@ form.charSheet {
         section.misc {
             width: 70%;
             border: 1px solid black;
-            border-radius: 10px;
+            border-radius: .8333rem;
             padding-left: 1em;
             padding-right: 1em;
 
             ul {
-                padding: 10px 0px 5px 0px;
+                padding: .8333rem 0px 5px 0px;
                 display: flex;
                 flex-wrap: wrap;
 
@@ -188,7 +188,7 @@ form.charSheet {
                 div.scores {
                     width: 101px;
                     background-color: #bbb;
-                    border-radius: 10px;
+                    border-radius: .8333rem;
                     padding-bottom: 5px;
 
                     label {
@@ -211,7 +211,7 @@ form.charSheet {
                             text-align: center;
                             display: flex;
                             flex-direction: column;
-                            border-radius: 10px;
+                            border-radius: .8333rem;
 
                             input {
                                 width: 100%;
@@ -255,7 +255,7 @@ form.charSheet {
                             -webkit-appearance: none;
                             border: 1px solid black;
                             padding: 15px;
-                            border-radius: 10px;
+                            border-radius: .8333rem;
                         }
                     }
 
@@ -269,21 +269,21 @@ form.charSheet {
                             height: 28px;
                             border: 1px solid black;
                             text-align: center;
-                            border-radius: 10px;
+                            border-radius: .8333rem;
                         }
                     }
 
                     div.list-section {
                         border: 1px solid black;
-                        border-radius: 10px;
-                        padding: 10px 5px;
+                        border-radius: .8333rem;
+                        padding: .8333rem 5px;
 
                         div.label {
-                            margin-top: 10px;
+                            margin-top: .8333rem;
                             margin-bottom: 2.5px;
                             text-align: center;
                             text-transform: uppercase;
-                            font-size: 10px;
+                            font-size: .8333rem;
                             font-weight: bold;
                         }
 
@@ -309,7 +309,7 @@ form.charSheet {
 
                                 input[type='text'] {
                                     width: 30px;
-                                    font-size: 12px;
+                                    font-size: 1rem;
                                     text-align: center;
                                     border: 0;
                                     border-bottom: 1px solid black;
@@ -318,10 +318,10 @@ form.charSheet {
 
                                 input[type='checkbox'] {
                                     -webkit-appearance: none;
-                                    width: 10px;
-                                    height: 10px;
+                                    width: .8333rem;
+                                    height: .8333rem;
                                     border: 1px solid black;
-                                    border-radius: 10px;
+                                    border-radius: .8333rem;
                                     order: 1;
                                 }
 
@@ -344,7 +344,7 @@ form.charSheet {
                     height: 28px;
                     text-align: center;
                     border: 1px solid black;
-                    border-radius: 10px;
+                    border-radius: .8333rem;
                 }
             }
 
@@ -359,7 +359,7 @@ form.charSheet {
             background-color: #eee;
             display: flex;
             flex-wrap: wrap;
-            border-radius: 10px;
+            border-radius: .8333rem;
 
             > div {
                 overflow: hidden;
@@ -374,7 +374,7 @@ form.charSheet {
                     display: flex;
                     flex-direction: column-reverse;
                     align-items: center;
-                    margin-top: 10px;
+                    margin-top: .8333rem;
 
                     label {
                         font-size: 8px;
@@ -385,13 +385,13 @@ form.charSheet {
                         text-align: center;
                         padding-top: 5px;
                         padding-bottom: 5px;
-                        border-radius: 0 0 10px 10px;
+                        border-radius: 0 0 .8333rem .8333rem;
                     }
 
                     input {
                         height: 70px;
                         width: 70px;
-                        border-radius: 10px;
+                        border-radius: .8333rem;
                         border: 1px solid black;
                         text-align: center;
                         font-size: 30px;
@@ -405,9 +405,9 @@ form.charSheet {
                 > div.regular {
                     background-color: white;
                     border: 1px solid black;
-                    margin: 10px;
+                    margin: .8333rem;
                     margin-bottom: 5px;
-                    border-radius: 10px 10px 0 0;
+                    border-radius: .8333rem .8333rem 0 0;
 
                     > div.max {
                         display: flex;
@@ -415,7 +415,7 @@ form.charSheet {
                         align-items: baseline;
 
                         label {
-                            font-size: 10px;
+                            font-size: .8333rem;
                             text-transform: none;
                             color: #bbb;
                         }
@@ -424,7 +424,7 @@ form.charSheet {
                             width: 40%;
                             border: 0;
                             border-bottom: 1px solid #ddd;
-                            font-size: 12px;
+                            font-size: 1rem;
                             text-align: center;
                         }
                     }
@@ -434,7 +434,7 @@ form.charSheet {
                         flex-direction: column-reverse;
 
                         label {
-                            font-size: 10px;
+                            font-size: .8333rem;
                             padding-bottom: 5px;
                             text-align: center;
                             font-weight: bold;
@@ -450,16 +450,16 @@ form.charSheet {
                     }
 
                     > div.temporary {
-                        margin: 10px;
+                        margin: .8333rem;
                         margin-top: 0;
                         border: 1px solid black;
-                        border-radius: 0 0 10px 10px;
+                        border-radius: 0 0 .8333rem .8333rem;
                         display: flex;
                         flex-direction: column-reverse;
                         background-color: white;
 
                         label {
-                            font-size: 10px;
+                            font-size: .8333rem;
                             padding-bottom: 5px;
                             text-align: center;
                             font-weight: bold;
@@ -478,9 +478,9 @@ form.charSheet {
             > div.hitdice {
                 > div {
                     background-color: white;
-                    margin: 10px;
+                    margin: .8333rem;
                     border: 1px solid black;
-                    border-radius: 10px;
+                    border-radius: .8333rem;
                     display: flex;
                     flex-direction: column;
 
@@ -491,14 +491,14 @@ form.charSheet {
                         padding: 5px 0;
 
                         label {
-                            font-size: 10px;
+                            font-size: .8333rem;
                             color: #bbb;
                             margin: 0.25em;
                             text-transform: none;
                         }
 
                         input {
-                            font-size: 12px;
+                            font-size: 1rem;
                             flex-grow: 1;
                             border: 0;
                             border-bottom: 1px solid #ddd;
@@ -517,7 +517,7 @@ form.charSheet {
                         label {
                             text-align: center;
                             padding: 2px;
-                            font-size: 10px;
+                            font-size: .8333rem;
                         }
 
                         input {
@@ -541,10 +541,10 @@ form.charSheet {
 
             > div.deathsaves {
                 > div {
-                    margin: 10px;
+                    margin: .8333rem;
                     background: white;
                     border: 1px solid black;
-                    border-radius: 10px;
+                    border-radius: .8333rem;
                     display: flex;
                     flex-direction: column-reverse;
 
@@ -552,7 +552,7 @@ form.charSheet {
                         text-align: center;
 
                         label {
-                            font-size: 10px;
+                            font-size: .8333rem;
                         }                    
                     }
 
@@ -581,10 +581,10 @@ form.charSheet {
 
                         input[type='checkbox'] {
                             -webkit-appearance: none;
-                            width: 10px;
-                            height: 10px;
+                            width: .8333rem;
+                            height: .8333rem;
                             border: 1px solid black;
-                            border-radius: 10px;
+                            border-radius: .8333rem;
                         }
 
                         input[type='checkbox']:checked {
@@ -597,11 +597,11 @@ form.charSheet {
 
         section.attacksandspellcasting {
             border: 1px solid black;
-            border-radius: 10px;
-            margin-top: 10px;
+            border-radius: .8333rem;
+            margin-top: .8333rem;
 
             > div {
-                margin: 10px;
+                margin: .8333rem;
                 display: flex;
                 flex-direction: column;
 
@@ -614,7 +614,7 @@ form.charSheet {
                     width: 100%;
 
                     th {
-                        font-size: 10px;
+                        font-size: .8333rem;
                         color: #ddd;
                     }
 
@@ -622,7 +622,7 @@ form.charSheet {
                         width: calc(100% - 4px);
                         border: 0;
                         background-color: #eee;
-                        font-size: 10px;
+                        font-size: .8333rem;
                         padding: 3px;
                     }
                 }
@@ -635,11 +635,11 @@ form.charSheet {
 
         section.equipment {
             border: 1px solid black;
-            border-radius: 10px;
-            margin-top: 10px;
+            border-radius: .8333rem;
+            margin-top: .8333rem;
 
             > div {
-                padding: 10px;
+                padding: .8333rem;
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
@@ -657,7 +657,7 @@ form.charSheet {
 
                             label {
                                 border: 1px solid black;
-                                border-radius: 10px 0 0 10px;
+                                border-radius: .8333rem 0 0 .8333rem;
                                 border-right: 0;
                                 width: 20px;
                                 font-size: 8px;
@@ -667,10 +667,10 @@ form.charSheet {
 
                             input {
                                 border: 1px solid black;
-                                border-radius: 10px;
+                                border-radius: .8333rem;
                                 width: 40px;
-                                padding: 10px 3px;
-                                font-size: 12px;
+                                padding: .8333rem 3px;
+                                font-size: 1rem;
                                 text-align: center;
                             }
                         }
@@ -692,9 +692,9 @@ form.charSheet {
         }
 
         section.flavor {
-            padding: 10px;
+            padding: .8333rem;
             background: #bbb;
-            border-radius: 10px;
+            border-radius: .8333rem;
 
             div {
                 background: white;
@@ -705,7 +705,7 @@ form.charSheet {
 
                 label {
                     text-align: center;
-                    font-size: 10px;
+                    font-size: .8333rem;
                     margin-top: 3px;
                 }
 
@@ -717,25 +717,25 @@ form.charSheet {
             }
 
             div:first-child {
-                border-radius: 10px 10px 0 0;
+                border-radius: .8333rem .8333rem 0 0;
             }
 
             div:not(:first-child) {
-                margin-top: 10px;
+                margin-top: .8333rem;
             }
 
             div:last-child {
-                border-radius: 0 0 10px 10px;
+                border-radius: 0 0 .8333rem .8333rem;
             }
         }
 
         section.features {
-            padding: 10px 0;
+            padding: .8333rem 0;
 
             div {
-                padding: 10px;
+                padding: .8333rem;
                 border: 1px solid black;
-                border-radius: 10px;
+                border-radius: .8333rem;
                 display: flex;
                 flex-direction: column-reverse;
 
