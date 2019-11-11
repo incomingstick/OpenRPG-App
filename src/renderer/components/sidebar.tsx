@@ -36,7 +36,7 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
                     name='welcome'
                     active={activeItem === 'welcome'}
                     onClick={this.handleClick}>
-                    <FontAwesomeIcon icon={faHome} />
+                    <FontAwesomeIcon icon={faHome} inverse={activeItem !== 'welcome'} />
                 </Menu.Item>
                 {/* <!-- TODO Is this the correct tooltip --> */}
                 <Menu.Item
@@ -47,7 +47,7 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
                     name='characters'
                     active={activeItem === 'characters'}
                     onClick={this.handleClick}>
-                    <FontAwesomeIcon icon={faFile} />
+                    <FontAwesomeIcon icon={faFile} inverse={activeItem !== 'characters'} />
                 </Menu.Item>
                 {/* <!-- TODO Is this the correct tooltip / icon --> */}
                 <Menu.Item
@@ -58,7 +58,7 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
                     name='cities'
                     active={activeItem === 'cities'}
                     onClick={this.handleClick}>
-                    <FontAwesomeIcon icon={faBuilding} />
+                    <FontAwesomeIcon icon={faBuilding} inverse={activeItem !== 'cities'} />
                 </Menu.Item>
                 {/* <!-- TODO Is this the correct tooltip --> */}
                 <Menu.Item
@@ -69,7 +69,7 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
                     name='world-maps'
                     active={activeItem === 'world-maps'}
                     onClick={this.handleClick}>
-                    <FontAwesomeIcon icon={faMap} />
+                    <FontAwesomeIcon icon={faMap} inverse={activeItem !== 'world-maps'} />
                 </Menu.Item>
                 {/* <!-- TODO Is this the correct tooltip --> */}
                 <Menu.Item
@@ -80,7 +80,7 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
                     name='campaign'
                     active={activeItem === 'campaign'}
                     onClick={this.handleClick}>
-                    <FontAwesomeIcon icon={faGlobe} />
+                    <FontAwesomeIcon icon={faGlobe} inverse={activeItem !== 'campaign'} />
                 </Menu.Item>
                 {/* <!-- TODO Is this the correct tooltip --> */}
                 <Menu.Item
@@ -91,7 +91,7 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
                     name='settings'
                     active={activeItem === 'settings'}
                     onClick={this.handleClick}>
-                    <FontAwesomeIcon icon={faCog} />
+                    <FontAwesomeIcon icon={faCog} inverse={activeItem !== 'settings'} />
                 </Menu.Item>
             </Menu>
         );

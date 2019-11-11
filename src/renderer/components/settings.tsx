@@ -3,7 +3,6 @@ import * as React from 'react';
 export default class SettingsScreen extends React.Component<any, any> {
     public render() {
         return (
-            <>
             <div className="section-template">
                 <div id="settings-section">
                     <div className="settings-header">
@@ -16,12 +15,6 @@ export default class SettingsScreen extends React.Component<any, any> {
                     </div>
                 </div>
             </div>
-            </>
         );
     }
-}
-
-{
-    /* TODO(incomingstick): this is the previous settings page
-    > */
 }
