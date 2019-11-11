@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import _ from 'lodash';
 
-require('../css/section.css');
 require('../scss/welcome.scss');
 
 type TWelcomeState = {

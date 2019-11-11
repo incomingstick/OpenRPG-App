@@ -6,7 +6,7 @@ import { faHome, faFile, faBuilding, faMap, faGlobe, faCog } from '@fortawesome/
 require('../scss/sidebar.scss');
 
 type TSidebarProps = {
-    parentCallback: (callbackData: string) => void;
+    clickCallback: (callbackData: string) => void;
 };
 
 type TSidebarState = {
@@ -105,7 +105,7 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
             return;
         }
 
-        this.props.parentCallback(data.name);
+        this.props.clickCallback(data.name);
 
         this.setState({ screen: data.name });
     };

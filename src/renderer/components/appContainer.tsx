@@ -32,11 +32,11 @@ class AppContainer extends React.Component<any, TAppContainerState> {
                 <div id='wrapper'>
                     <Grid>
                         <Grid.Column className='navbar navbar-fixed-top js-nav' id='sidebar-wrapper' role='navigation'>
-                            <Sidebar parentCallback={this.sidebarCallback} />
+                            <Sidebar clickCallback={this.sidebarCallback} />
                         </Grid.Column>
 
                         {/* <Grid.Column stretched width={12}> */}
-                        <main id='main-content-wrapper' className='content js-content is-shown'>
+                        <main id='main-content-wrapper'>
                             <this.CurrentScreen />
                         </main>
                         {/* <!-- end main-content-wrapper --> */}

@@ -11,7 +11,8 @@ module.exports = {
     },
     "plugins": [
         "@typescript-eslint",
-        "@typescript-eslint/tslint"
+        "@typescript-eslint/tslint",
+        "react-hooks"
     ],
     "rules": {
         "@typescript-eslint/adjacent-overload-signatures": "error",
@@ -109,6 +110,7 @@ module.exports = {
         ],
         "id-match": "error",
         "import/order": "off",
+        "linebreak-style": ["error", "unix"],
         "max-classes-per-file": "off",
         "max-len": [
             "error",
@@ -156,6 +158,8 @@ module.exports = {
         "prefer-const": "error",
         "quote-props": "off",
         "radix": "error",
+        "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+        "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
         "space-before-function-paren": [
             "error",
             {
