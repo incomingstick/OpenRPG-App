@@ -3,7 +3,6 @@ import { app, BrowserWindow, dialog, ipcMain, Menu, shell } from 'electron';
 import * as log from 'electron-log';
 import * as path from 'path';
 import * as url from 'url';
-import * as libroll from 'openrpg-libs';
 import ConfigService from '../common/services/configService';
 import UpdateService from '../common/services/updateService';
 
@@ -109,9 +108,6 @@ function createWindow() {
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
     createWindow();
-
-    console.log('libroll.Die', libroll.Die);
-    console.log('libroll.ExpressionTree', libroll.ExpressionTree);
 
     autoUpdater.checkForUpdatesAndNotify();
 

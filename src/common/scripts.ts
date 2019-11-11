@@ -1,3 +1,10 @@
+/**
+ * Global script defintions for the OpenRPG App
+ *
+ * Project: OpenRPG <https://openrpg.io>
+ * Definitions by: incomingstick <https://github.com/incomingstick>
+ */
+
 import $ from 'jquery';
 import { ExpressionTree } from 'openrpg-libs';
 
@@ -29,7 +36,7 @@ export function die_eval(exp: string) {
         return parser.parse_expression();
     }
 
-    return parser.parse_expression();
+    return -1;
 }
 
 // Allow drag

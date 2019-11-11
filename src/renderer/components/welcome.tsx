@@ -8,11 +8,11 @@ import {
     InputProps,
     Button,
     Accordion,
-    Card,
-    InputOnChangeData
+    Card
 } from 'semantic-ui-react';
 import ORPGLogo from '../assets/images/d20_transparent.png';
 import { die_eval, swap_drop, allow_drop, start_drag } from '../../common/scripts';
+import { ORPG_DOCS, ORPG_REPO, ORPG_BLOG } from '../../common/globals';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import _ from 'lodash';
@@ -84,26 +84,20 @@ export default class WelcomeScreen extends React.Component<any, TWelcomeState> {
                     <h3>Help</h3>
                     <ul>
                         <li>
-                            <a href='#' target='_blank' id='docs'>
+                            <a href={ORPG_DOCS} target='_blank' id='docs'>
                                 Documentation
                             </a>
                         </li>
                         <li>
-                            <a href='#' target='_blank' id='repo'>
+                            <a href={ORPG_REPO} target='_blank' id='repo'>
                                 Github Repository
                             </a>
                         </li>
                         <li>
-                            <a href='#' target='_blank' id='blog'>
+                            <a href={ORPG_BLOG} target='_blank' id='blog'>
                                 Blog
                             </a>
                         </li>
-
-                        <script type='text/javascript'>
-                            document.getElementById("docs").href = pkginfo.website.docs;
-                            document.getElementById("repo").href = pkginfo.repository.url;
-                            document.getElementById("blog").href = pkginfo.website.blog;
-                        </script>
                     </ul>
                 </div>
             </Grid.Column>

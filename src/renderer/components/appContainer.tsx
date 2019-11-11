@@ -1,4 +1,3 @@
-import { remote } from 'electron';
 import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Grid } from 'semantic-ui-react';
@@ -9,11 +8,7 @@ import CitiesScreen from './cities';
 import SettingsScreen from './settings';
 import WorldMapsScreen from './worldMaps';
 import WelcomeScreen from './welcome';
-
-const ORPG_VERSION = remote.app.getVersion();
-const NODE_VERSION = process.versions.node;
-const CHROME_VERSION = process.versions.chrome;
-const ELECTRON_VERSION = process.versions.electron;
+import { PACKAGE_VERSION, NODE_VERSION, CHROME_VERSION, ELECTRON_VERSION }  from '../../common/globals'
 
 type TAppContainerState = {
     screen: string;
@@ -30,7 +25,7 @@ class AppContainer extends React.Component<any, TAppContainerState> {
     }
 
     public render() {
-        document.title = `OpenRPG Client v` + ORPG_VERSION;
+        document.title = `OpenRPG Client v` + PACKAGE_VERSION;
 
         return (
             <>
@@ -53,7 +48,7 @@ class AppContainer extends React.Component<any, TAppContainerState> {
                 <footer>
                     <div className='container'>
                         <p>
-                            We are using OpenRPG {ORPG_VERSION}, node {NODE_VERSION}, Chrome {CHROME_VERSION}, and
+                            We are using OpenRPG {PACKAGE_VERSION}, node {NODE_VERSION}, Chrome {CHROME_VERSION}, and
                             Electron {ELECTRON_VERSION}.
                         </p>
                     </div>
