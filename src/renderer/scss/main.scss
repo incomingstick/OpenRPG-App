@@ -159,6 +159,7 @@ a {
 
 #main-content-wrapper {
     padding-left: 2.5rem;
+    width: calc(100% - #{$sidebar-width})
 }
 
 /* main content  */
