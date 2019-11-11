@@ -30,6 +30,7 @@ module.exports = {
             "error",
             4,
             {
+                "SwitchCase": 1,
                 "FunctionDeclaration": {
                     "parameters": "first"
                 },
@@ -81,7 +82,7 @@ module.exports = {
         "arrow-body-style": "error",
         "arrow-parens": [
             "error",
-            "as-needed"
+            "always"
         ],
         "camelcase": "off",
         "capitalized-comments": "error",

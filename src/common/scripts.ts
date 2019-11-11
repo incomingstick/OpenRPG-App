@@ -21,7 +21,7 @@ $(document).ready(() => {
     });
 
     // Allow use of enter/return key for calculator
-    $('#calc-display').keypress(event => {
+    $('#calc-display').keypress((event) => {
         if (event.keyCode === 13) {
             $('#calc-eval').click();
         }
@@ -72,7 +72,7 @@ export function update_val(curr: Element, value: string) {
     curr.setAttribute('draggable', 'false');
     $(curr).html('<input class="editing" type="text" value="' + value + '" />');
     $('.editing').focus();
-    $('.editing').keyup(event => {
+    $('.editing').keyup((event) => {
         if (event.keyCode === 13) {
             const editing = <string>$('.editing').val();
             $(curr).html(editing.trim());
