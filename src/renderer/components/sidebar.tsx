@@ -14,7 +14,7 @@ type TSidebarState = {
 };
 
 export default class Sidebar extends React.Component<TSidebarProps, TSidebarState> {
-    constructor(props: TSidebarProps, context?: TSidebarState) {
+    public constructor(props: TSidebarProps, context?: TSidebarState) {
         super(props, context);
         this.state = {
             screen: 'welcome'

@@ -4,7 +4,7 @@
   "description": "A tool for someone to use to quickly create content for a tabletop RPG world",
   "scripts": {
     "start": "electron-webpack dev",
-    "lint": "tslint --project tsconfig.json --force",
+    "lint": "eslint src/**/* --fix",
     "test": "mocha -r ts-node/register src/test/**/*-test.ts",
     "prettier": "prettier --write src/**/*.{ts,tsx,js,jsx,md,css,scss,sass,json} !src/static/** !tmp/**",
     "pretty-quick": "pretty-quick --staged",
@@ -27,7 +27,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:incomingstick/OpenRPG-App.git"
+    "url": "https://github.com/incomingstick/OpenRPG-App",
+    "ssh": "git+ssh://git@github.com:incomingstick/OpenRPG-App.git"
   },
   "license": "OSL",
   "author": {
@@ -82,12 +83,16 @@
     "@types/mkpath": ">=0.1.29",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.4",
+    "@typescript-eslint/eslint-plugin": "^2.6.1",
+    "@typescript-eslint/eslint-plugin-tslint": "^2.6.1",
+    "@typescript-eslint/parser": "^2.6.1",
     "electron": "^6.1.4",
     "electron-builder": "^22.1.0",
     "electron-prebuilt-compile": ">=4.0.0",
     "electron-rebuild": ">=1.8.6",
     "electron-webpack": ">=2.7.4",
     "electron-webpack-ts": ">=3.2.0",
+    "eslint": "^6.6.0",
     "git-validate": ">=2.2.4",
     "handlebars": "^4.5.1",
     "image-webpack-loader": "^6.0.0",

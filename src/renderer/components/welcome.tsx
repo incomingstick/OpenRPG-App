@@ -1,15 +1,5 @@
 import * as React from 'react';
-import {
-    Grid,
-    Form,
-    Table,
-    Input,
-    List,
-    InputProps,
-    Button,
-    Accordion,
-    Card
-} from 'semantic-ui-react';
+import { Grid, Form, Table, Input, List, InputProps, Button, Accordion, Card } from 'semantic-ui-react';
 import ORPGLogo from '../assets/images/d20_transparent.png';
 import { die_eval, swap_drop, allow_drop, start_drag } from '../../common/scripts';
 import { ORPG_DOCS, ORPG_REPO, ORPG_BLOG } from '../../common/globals';
@@ -26,7 +16,7 @@ type TWelcomeState = {
 };
 
 export default class WelcomeScreen extends React.Component<any, TWelcomeState> {
-    constructor(props: any, context?: TWelcomeState) {
+    public constructor(props: any, context?: TWelcomeState) {
         super(props, context);
         this.state = {
             calcValue: '1d20',
@@ -57,52 +47,50 @@ export default class WelcomeScreen extends React.Component<any, TWelcomeState> {
         );
     }
 
-    private GettingStarted = () => {
-        return (
-            <Grid.Column width={4}>
-                <div className='getting-started'>
-                    <h3>Start</h3>
-                    <ul>
-                        <li>
-                            <a href='#'>New Character</a>
-                        </li>
-                        <li>
-                            <a href='#'>Open Something...</a>
-                        </li>
-                        <li>
-                            <a href='#'>Import Something...</a>
-                        </li>
-                    </ul>
-                </div>
-                <div className='getting-started'>
-                    <h3>Recent</h3>
-                    <ul>
-                        <li>No recent stuff</li>
-                    </ul>
-                </div>
-                <div className='getting-started'>
-                    <h3>Help</h3>
-                    <ul>
-                        <li>
-                            <a href={ORPG_DOCS} target='_blank' id='docs'>
-                                Documentation
-                            </a>
-                        </li>
-                        <li>
-                            <a href={ORPG_REPO} target='_blank' id='repo'>
-                                Github Repository
-                            </a>
-                        </li>
-                        <li>
-                            <a href={ORPG_BLOG} target='_blank' id='blog'>
-                                Blog
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </Grid.Column>
-        );
-    };
+    private GettingStarted = () => (
+        <Grid.Column width={4}>
+            <div className='getting-started'>
+                <h3>Start</h3>
+                <ul>
+                    <li>
+                        <a href='#'>New Character</a>
+                    </li>
+                    <li>
+                        <a href='#'>Open Something...</a>
+                    </li>
+                    <li>
+                        <a href='#'>Import Something...</a>
+                    </li>
+                </ul>
+            </div>
+            <div className='getting-started'>
+                <h3>Recent</h3>
+                <ul>
+                    <li>No recent stuff</li>
+                </ul>
+            </div>
+            <div className='getting-started'>
+                <h3>Help</h3>
+                <ul>
+                    <li>
+                        <a href={ORPG_DOCS} target='_blank' id='docs'>
+                            Documentation
+                        </a>
+                    </li>
+                    <li>
+                        <a href={ORPG_REPO} target='_blank' id='repo'>
+                            Github Repository
+                        </a>
+                    </li>
+                    <li>
+                        <a href={ORPG_BLOG} target='_blank' id='blog'>
+                            Blog
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </Grid.Column>
+    );
 
     private handleCalcInputChange = (e: React.ChangeEvent<HTMLInputElement>, data: InputProps) => {
         // TODO(incomingstick): filter out bad characters
@@ -113,7 +101,7 @@ export default class WelcomeScreen extends React.Component<any, TWelcomeState> {
     private handleCalcSubmit = (e: React.SyntheticEvent, data: string) => {
         // TODO(incomingstick): filter out bad characters
         e.preventDefault();
-        if (data !== undefined) this.setState({ calcValue: die_eval(data).toString() });
+        this.setState({ calcValue: die_eval(data)?.toString() });
     };
 
     private handleUtilHeaderClick = (e: React.MouseEvent, data: InputProps) => {

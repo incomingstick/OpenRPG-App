@@ -16,7 +16,7 @@ type TConfigData = {
     hostURL: string;
 };
 
-// if the config formats differ then we revert to the original default config
+// If the config formats differ then we revert to the original default config
 const CONFIG_FORMAT = '2019-09-14';
 
 const DEFAULT_CONFIG: TConfigData = {
@@ -80,7 +80,7 @@ class ConfigService extends EventEmitter implements IConfigService {
     private configPath: string;
     private isConfigLoaded: boolean;
 
-    constructor(path: string) {
+    public constructor(path: string) {
         super();
         this.configData = _.clone(DEFAULT_CONFIG);
         this.configPath = path;
@@ -103,7 +103,7 @@ class ConfigService extends EventEmitter implements IConfigService {
                 this.save();
             }
         } catch (e) {
-            log.error(`Failed to restore config - loading defaults`, e);
+            log.error('Failed to restore config - loading defaults', e);
             this.restoreDefaults();
             this.save();
         }
@@ -114,12 +114,12 @@ class ConfigService extends EventEmitter implements IConfigService {
     }
 
     public restoreDefaults() {
-        log.info(`[Config] Restoring defaults`);
+        log.info('[Config] Restoring defaults');
         this.configData = _.clone(DEFAULT_CONFIG);
     }
 
     public save() {
-        log.info(`[Config] Saving...`);
+        log.info('[Config] Saving...');
         fs.writeFileSync(this.configPath, JSON.stringify(this.configData, null, 2), 'utf8');
         this.triggerConfigUpdated();
     }
@@ -140,7 +140,7 @@ class ConfigService extends EventEmitter implements IConfigService {
 
     // Private functions
     private triggerConfigUpdated() {
-        log.info(`[Config] Config has been updated ...`);
+        log.info('[Config] Config has been updated ...');
         this.emit('updated', this.configData);
     }
 }
@@ -149,7 +149,7 @@ export default function config_service(callback: any) {
     // Save to the user-specific app location.
     //
     // NOTE: When running in development mode this will be a "Electron" folder,
-    // but production builds will properly save to a RaiderIO folder.
+    // But production builds will properly save to a RaiderIO folder.
     // See here for more: https://www.bountysource.com/issues/43448486-beta-app-getpath-userdata-returns-electron-default
     const path = Path.join(app.getPath('userData'), 'config.json');
     const config = new ConfigService(path);

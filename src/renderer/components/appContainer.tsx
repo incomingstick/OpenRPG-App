@@ -8,7 +8,7 @@ import CitiesScreen from './cities';
 import SettingsScreen from './settings';
 import WorldMapsScreen from './worldMaps';
 import WelcomeScreen from './welcome';
-import { PACKAGE_VERSION, NODE_VERSION, CHROME_VERSION, ELECTRON_VERSION }  from '../../common/globals'
+import { PACKAGE_VERSION, NODE_VERSION, CHROME_VERSION, ELECTRON_VERSION } from '../../common/globals';
 
 type TAppContainerState = {
     screen: string;
@@ -16,7 +16,7 @@ type TAppContainerState = {
 };
 
 class AppContainer extends React.Component<any, TAppContainerState> {
-    constructor(props: any, context?: any) {
+    public constructor(props: any, context?: any) {
         super(props, context);
         this.state = {
             screen: 'welcome',
@@ -25,7 +25,7 @@ class AppContainer extends React.Component<any, TAppContainerState> {
     }
 
     public render() {
-        document.title = `OpenRPG Client v` + PACKAGE_VERSION;
+        document.title = 'OpenRPG Client v' + PACKAGE_VERSION;
 
         return (
             <>

@@ -1,6 +1,8 @@
 /**
  * Global Variable defintions for the OpenRPG App
  *
+ * TODO(incomingstick): Review this file as the project grows
+ *
  * Project: OpenRPG <https://openrpg.io>
  * Definitions by: incomingstick <https://github.com/incomingstick>
  */
@@ -14,4 +16,4 @@ export const ORPG_URL = process.env.npm_package_website_url;
 export const ORPG_BLOG = process.env.npm_package_website_blog;
 export const ORPG_BUGS = process.env.npm_package_bugs_url;
 export const ORPG_DOCS = process.env.npm_package_website_docs;
-export const ORPG_REPO = process.env.npm_package_repository_url;
+export const ORPG_REPO = process.env.npm_package_repository_url?.substring(4);

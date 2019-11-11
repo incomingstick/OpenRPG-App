@@ -9,7 +9,7 @@ import $ from 'jquery';
 import { ExpressionTree } from 'openrpg-libs';
 
 $(document).ready(() => {
-    // change plus and minus for dropdown items
+    // Change plus and minus for dropdown items
     $('a.utility').on('click', function(event) {
         const $me = $(this);
         const $childIcon = $me.find('.fa.fa-fw');
@@ -74,7 +74,7 @@ export function update_val(curr: Element, value: string) {
     $('.editing').focus();
     $('.editing').keyup((event) => {
         if (event.keyCode === 13) {
-            const editing = <String>$('.editing').val();
+            const editing = <string>$('.editing').val();
             $(curr).html(editing.trim());
             curr.setAttribute('draggable', 'true');
         }
@@ -83,7 +83,7 @@ export function update_val(curr: Element, value: string) {
     $(document).click(() => {
         const toTrim = $('.editing');
         if (typeof toTrim.val() !== 'undefined') {
-            const editing = <String>$('.editing').val();
+            const editing = <string>$('.editing').val();
             $(curr).html(editing.trim());
             curr.setAttribute('draggable', 'true');
             return;
@@ -91,7 +91,7 @@ export function update_val(curr: Element, value: string) {
     });
 }
 
-// allow user to edit a div by giving it the editable class
+// Allow user to edit a div by giving it the editable class
 // TODO ensure you cannot inject malicious code here
 $(document).ready(() => {
     $('div.editable').dblclick(function(event) {
@@ -104,7 +104,7 @@ $(document).ready(() => {
 
 // This code should open external links in the systems default browser
 const shell = require('electron').shell;
-// open links externally by default
+// Open links externally by default
 $(document).on('click', 'a[href^="http"]', function(event) {
     event.preventDefault();
     shell.openExternal(this.href);

@@ -13,10 +13,6 @@ const gunzip = promisify(zlib.gunzip);
 const writeFile = promisify(fs.writeFile);
 const mkpath = promisify(Mkpath);
 
-//
-// TODO: custom user agent: RaiderIOClient/1.0.2 (OS)
-//
-
 export interface IUpdateService {
     isUpdateAvailable(): Promise<boolean>;
     startCheckingForUpdates(): Promise<void>;
@@ -25,19 +21,13 @@ export interface IUpdateService {
 }
 
 export default function updateServiceFactory(config: IConfigService, callback: Function) {
-    /* tslint:disable:no-eval */
-    // This is a hack to prevent uglify from mangling the factory names. every dependency would need to be listed here.
-    // end solution: move away from async.auto for DI and use something like inversify.
-    eval('typeof config');
-    /* tslint:enable:no-eval */
-
     const emitter = new EventEmitter();
 
     // TODO time since last update
     let updateTimerHandle: any = null;
 
     /**
-     * performUpdateCheck
+     * PerformUpdateCheck
      *
      * Performs a single check for whether we shoud download data from the server.
      */
@@ -47,12 +37,12 @@ export default function updateServiceFactory(config: IConfigService, callback: F
         const configJSON = await getJsonFromUrl(getChannelConfigUrl());
 
         if (!factory.isManifestVersionOutdated(configJSON.manifest_version)) {
-            // already in sync
+            // Already in sync
             log.info(`[Updater] Already in sync with latest version ${configJSON.manifest_version}`);
 
             // TODO: checking the config is OK, but not 100% great, because the installed version
-            // could actually be different. The only way to know for sure would be to check the
-            // actual files and see if the SHA checksums differ from what is expected on the server.
+            // Could actually be different. The only way to know for sure would be to check the
+            // Actual files and see if the SHA checksums differ from what is expected on the server.
             //
             // This takes a good bit of effort, but I feel we might want to do something like this.
 
@@ -69,7 +59,7 @@ export default function updateServiceFactory(config: IConfigService, callback: F
 
         const manifest = await getJsonFromUrl(configJSON.manifest_url);
 
-        // remove the file part from the URL
+        // Remove the file part from the URL
         const urlParts = configJSON.manifest_url.split('/');
         const manifestRootUrl = urlParts.splice(0, urlParts.length - 1).join('/') + '/';
 
@@ -83,7 +73,7 @@ export default function updateServiceFactory(config: IConfigService, callback: F
     }
 
     /**
-     * syncManifest
+     * SyncManifest
      *
      * Synchronize the changes files from the server to client.
      * Perhaps this needs to know that certain files can be ignored, like if a user doesn't want a certain region.
@@ -97,8 +87,8 @@ export default function updateServiceFactory(config: IConfigService, callback: F
             });
 
             // TODO: later on we can make it so we run multiple of these at the same
-            // time. We don't want to just do a Promise.all though, because we want to
-            // control how many downloads are happening at once.
+            // Time. We don't want to just do a Promise.all though, because we want to
+            // Control how many downloads are happening at once.
             await syncManifestEntry(rootUrl, entry);
         }
 
@@ -109,26 +99,26 @@ export default function updateServiceFactory(config: IConfigService, callback: F
     }
 
     /**
-     * syncManifestEntry
+     * SyncManifestEntry
      *
      * Sync a single file from the manifest from server -> verify -> disk
      */
     async function syncManifestEntry(rootUrl: string, entry: any) {
         // TODO: look at entry.region / entry.faction to know whether we should sync this
-        // file, though we need to make sure the old file isn't corrupted even if it
-        // wasn't for the current region. Maybe we need to store a record of the previous
-        // checksums?
+        // File, though we need to make sure the old file isn't corrupted even if it
+        // Wasn't for the current region. Maybe we need to store a record of the previous
+        // Checksums?
 
         log.info(`[Updater] Downloading ${entry.path} ...`);
         const compressedFileData = await downloadFileToMemory(rootUrl + entry.path);
 
         let fileData: any = compressedFileData;
         if (entry.path.endsWith('.gz')) {
-            log.info(`[Updater] Uncompressing ...`);
+            log.info('[Updater] Uncompressing ...');
             fileData = await uncompressData(compressedFileData);
         }
 
-        log.info(`[Updater] Validating checksum ...`);
+        log.info('[Updater] Validating checksum ...');
         if (!isMatchingChecksum(compressedFileData, entry.checksum)) {
             throw new Error(`Checksum failed for ${entry.path}`);
         }
@@ -138,7 +128,7 @@ export default function updateServiceFactory(config: IConfigService, callback: F
     }
 
     /**
-     * uncompressData
+     * UncompressData
      *
      * uncompresses a gzip buffer.
      *
@@ -150,7 +140,7 @@ export default function updateServiceFactory(config: IConfigService, callback: F
     }
 
     /**
-     * getBaseUrl
+     * GetBaseUrl
      *
      * Simple helper function to return base URL for all requests (scheme/host).
      * This data is pulled from out clients config.json
@@ -160,7 +150,7 @@ export default function updateServiceFactory(config: IConfigService, callback: F
     }
 
     /**
-     * getChannelConfigUrl
+     * GetChannelConfigUrl
      *
      * Get URL for where to read the config file for a specific channel.
      * This data is pulled from out clients config.json
@@ -170,7 +160,7 @@ export default function updateServiceFactory(config: IConfigService, callback: F
     }
 
     /**
-     * getJsonFromUrl
+     * GetJsonFromUrl
      *
      * Retrieve a JSON object from the server.
      *
@@ -189,7 +179,7 @@ export default function updateServiceFactory(config: IConfigService, callback: F
     }
 
     /**
-     * downloadFileToMemory
+     * DownloadFileToMemory
      *
      * TODO: we should probably be streaming straight to disk (tempfile) rather than
      * into memory. This will let us do our verification on the disk and then we can
@@ -204,7 +194,7 @@ export default function updateServiceFactory(config: IConfigService, callback: F
     }
 
     /**
-     * isMatchingChecksum
+     * IsMatchingChecksum
      *
      * Returns true if the supplied data matches the given checksum.
      */
@@ -217,7 +207,7 @@ export default function updateServiceFactory(config: IConfigService, callback: F
     }
 
     /**
-     * saveToLocalSystem
+     * SaveToLocalSystem
      *
      * Saves the file data to the local file system in the given path.
      *
@@ -233,7 +223,7 @@ export default function updateServiceFactory(config: IConfigService, callback: F
         const outputDir = path.dirname(outputPath);
 
         // TODO: Should we check if the path is visible to the calling process? This is useful for determining
-        // if a path exists, but says nothing about rwx permissions. This is the default if no mode is specified.
+        // If a path exists, but says nothing about rwx permissions. This is the default if no mode is specified.
         // Or should we check if the path can be written to?
         await fs.access(outputDir, fs.constants.F_OK, (err0: any) => {
             if (err0) {
@@ -255,7 +245,7 @@ export default function updateServiceFactory(config: IConfigService, callback: F
         },
 
         /**
-         * isUpdatedAvailable
+         * IsUpdatedAvailable
          *
          * Check if the server has an updated pending for us
          */
@@ -265,7 +255,7 @@ export default function updateServiceFactory(config: IConfigService, callback: F
         },
 
         /**
-         * startCheckingForUpdates
+         * StartCheckingForUpdates
          *
          * Begins the update cycle and starts to sync new addon data from server to client
          */
@@ -296,7 +286,7 @@ export default function updateServiceFactory(config: IConfigService, callback: F
         },
 
         /**
-         * stopCheckingForUpdates
+         * StopCheckingForUpdates
          */
         stopCheckingForUpdates() {
             log.info('stopCheckingForUpdates');
