@@ -359,9 +359,9 @@ export default class CharacterScreen extends React.Component<any, any> {
                     </section>
                     <section>
                         <section className='combat'>
-                            <div className='armorclassName'>
+                            <div className='armorclass'>
                                 <div>
-                                    <label htmlFor='ac'>Armor className</label>
+                                    <label htmlFor='ac'>Armor Class</label>
                                     <input name='ac' placeholder='10' type='text' />
                                 </div>
                             </div>

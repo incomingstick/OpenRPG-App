@@ -4,8 +4,8 @@
 textarea {
     font-size: 1rem;
     text-align: left;
-    border-radius: .8333rem;
-    padding: .8333rem;
+    border-radius: 0.8333rem;
+    padding: 0.8333rem;
     resize: none;
     overflow: hidden;
     height: 15em;
@@ -17,11 +17,10 @@ input[type='checkbox'] {
 }
 
 div.box {
-    margin-top: .8333rem;
+    margin-top: 0.8333rem;
 }
 
 form.charSheet {
-    width: 850px;
     margin-right: auto;
     margin-left: auto;
     margin-top: 1rem;
@@ -41,9 +40,9 @@ form.charSheet {
             text-align: center;
             border: 1px solid black;
             border-top: 0;
-            font-size: .8333rem;
+            font-size: 0.8333rem;
             width: calc(100% - 20px - 2px);
-            border-radius: 0 0 .8333rem .8333rem;
+            border-radius: 0 0 0.8333rem 0.8333rem;
             padding: 4px 0;
             font-weight: bold;
         }
@@ -96,7 +95,7 @@ form.charSheet {
         section.charName {
             border: 1px solid black;
             border-right: 0;
-            border-radius: .8333rem 0 0 .8333rem;
+            border-radius: 0.8333rem 0 0 0.8333rem;
             padding: 5px 0;
             background-color: #eee;
             width: 30%;
@@ -122,12 +121,12 @@ form.charSheet {
         section.misc {
             width: 70%;
             border: 1px solid black;
-            border-radius: .8333rem;
+            border-radius: 0.8333rem;
             padding-left: 1em;
             padding-right: 1em;
 
             ul {
-                padding: .8333rem 0px 5px 0px;
+                padding: 0.8333rem 0px 5px 0px;
                 display: flex;
                 flex-wrap: wrap;
 
@@ -147,7 +146,7 @@ form.charSheet {
                 }
             }
         }
-    } 
+    }
 
     main {
         display: flex;
@@ -166,11 +165,11 @@ form.charSheet {
             > label {
                 position: absolute;
                 left: 0;
-                top: 1px;
+                top: -0.5333rem;
                 -webkit-transform: translate(0%, 50%);
                 transform: translate(0%, 50%);
                 width: 100%;
-                font-size: 8px;
+                font-size: 0.85rem;
             }
         }
 
@@ -186,9 +185,10 @@ form.charSheet {
                 justify-content: space-between;
 
                 div.scores {
-                    width: 101px;
+                    width: 50%;
                     background-color: #bbb;
-                    border-radius: .8333rem;
+                    border-radius: 0.8333rem;
+                    margin: 0.75rem;
                     padding-bottom: 5px;
 
                     label {
@@ -211,7 +211,7 @@ form.charSheet {
                             text-align: center;
                             display: flex;
                             flex-direction: column;
-                            border-radius: .8333rem;
+                            border-radius: 0.8333rem;
 
                             input {
                                 width: 100%;
@@ -233,10 +233,10 @@ form.charSheet {
 
                                 input {
                                     background: white;
-                                    width: 30px;
-                                    height: 20px;
+                                    width: 2rem;
+                                    height: 1.3333rem;
                                     border: 1px inset black;
-                                    border-radius: 20px;
+                                    border-radius: 1.3333rem;
                                     margin: -1px;
                                     text-align: center;
                                 }
@@ -246,6 +246,9 @@ form.charSheet {
                 }
 
                 div.attr-applications {
+                    width: 50%;
+                    margin: 0.75rem;
+
                     div.inspiration {
                         display: flex;
                         flex-direction: row-reverse;
@@ -255,7 +258,7 @@ form.charSheet {
                             -webkit-appearance: none;
                             border: 1px solid black;
                             padding: 15px;
-                            border-radius: .8333rem;
+                            border-radius: 0.8333rem;
                         }
                     }
 
@@ -265,25 +268,25 @@ form.charSheet {
                         justify-content: flex-end;
 
                         input {
-                            width: 30px;
-                            height: 28px;
+                            width: 2rem;
+                            height: 1.8666rem;
                             border: 1px solid black;
                             text-align: center;
-                            border-radius: .8333rem;
+                            border-radius: 0.8333rem;
                         }
                     }
 
                     div.list-section {
                         border: 1px solid black;
-                        border-radius: .8333rem;
-                        padding: .8333rem 5px;
+                        border-radius: 0.8333rem;
+                        padding: 0.8333rem 5px;
 
                         div.label {
-                            margin-top: .8333rem;
+                            margin-top: 0.8333rem;
                             margin-bottom: 2.5px;
                             text-align: center;
                             text-transform: uppercase;
-                            font-size: .8333rem;
+                            font-size: 0.8333rem;
                             font-weight: bold;
                         }
 
@@ -298,7 +301,7 @@ form.charSheet {
 
                                 label {
                                     text-transform: none;
-                                    font-size: 8px;
+                                    font-size: 0.85rem;
                                     text-align: left;
                                     order: 3;
 
@@ -308,7 +311,7 @@ form.charSheet {
                                 }
 
                                 input[type='text'] {
-                                    width: 30px;
+                                    width: 2rem;
                                     font-size: 1rem;
                                     text-align: center;
                                     border: 0;
@@ -318,10 +321,10 @@ form.charSheet {
 
                                 input[type='checkbox'] {
                                     -webkit-appearance: none;
-                                    width: .8333rem;
-                                    height: .8333rem;
+                                    width: 0.8333rem;
+                                    height: 0.8333rem;
                                     border: 1px solid black;
-                                    border-radius: .8333rem;
+                                    border-radius: 0.8333rem;
                                     order: 1;
                                 }
 
@@ -340,11 +343,11 @@ form.charSheet {
                 justify-content: flex-end;
 
                 input {
-                    width: 30px;
-                    height: 28px;
+                    width: 2rem;
+                    height: 1.8666rem;
                     text-align: center;
                     border: 1px solid black;
-                    border-radius: .8333rem;
+                    border-radius: 0.8333rem;
                 }
             }
 
@@ -359,7 +362,7 @@ form.charSheet {
             background-color: #eee;
             display: flex;
             flex-wrap: wrap;
-            border-radius: .8333rem;
+            border-radius: 0.8333rem;
 
             > div {
                 overflow: hidden;
@@ -374,10 +377,10 @@ form.charSheet {
                     display: flex;
                     flex-direction: column-reverse;
                     align-items: center;
-                    margin-top: .8333rem;
+                    margin-top: 0.8333rem;
 
                     label {
-                        font-size: 8px;
+                        font-size: 0.5rem;
                         width: 50px;
                         border: 1px solid black;
                         border-top: 0;
@@ -385,16 +388,16 @@ form.charSheet {
                         text-align: center;
                         padding-top: 5px;
                         padding-bottom: 5px;
-                        border-radius: 0 0 .8333rem .8333rem;
+                        border-radius: 0 0 0.8333rem 0.8333rem;
                     }
 
                     input {
-                        height: 70px;
-                        width: 70px;
-                        border-radius: .8333rem;
+                        height: 4.6667rem;
+                        width: 4.6667rem;
+                        border-radius: 0.8333rem;
                         border: 1px solid black;
                         text-align: center;
-                        font-size: 30px;
+                        font-size: 2rem;
                     }
                 }
             }
@@ -405,9 +408,9 @@ form.charSheet {
                 > div.regular {
                     background-color: white;
                     border: 1px solid black;
-                    margin: .8333rem;
+                    margin: 0.8333rem;
                     margin-bottom: 5px;
-                    border-radius: .8333rem .8333rem 0 0;
+                    border-radius: 0.8333rem 0.8333rem 0 0;
 
                     > div.max {
                         display: flex;
@@ -415,7 +418,7 @@ form.charSheet {
                         align-items: baseline;
 
                         label {
-                            font-size: .8333rem;
+                            font-size: 0.8333rem;
                             text-transform: none;
                             color: #bbb;
                         }
@@ -434,7 +437,7 @@ form.charSheet {
                         flex-direction: column-reverse;
 
                         label {
-                            font-size: .8333rem;
+                            font-size: 0.8333rem;
                             padding-bottom: 5px;
                             text-align: center;
                             font-weight: bold;
@@ -448,29 +451,29 @@ form.charSheet {
                             text-align: center;
                         }
                     }
+                }
 
-                    > div.temporary {
-                        margin: .8333rem;
-                        margin-top: 0;
-                        border: 1px solid black;
-                        border-radius: 0 0 .8333rem .8333rem;
-                        display: flex;
-                        flex-direction: column-reverse;
-                        background-color: white;
+                > div.temporary {
+                    margin: 0.8333rem;
+                    margin-top: 0;
+                    border: 1px solid black;
+                    border-radius: 0 0 0.8333rem 0.8333rem;
+                    display: flex;
+                    flex-direction: column-reverse;
+                    background-color: white;
 
-                        label {
-                            font-size: .8333rem;
-                            padding-bottom: 5px;
-                            text-align: center;
-                            font-weight: bold;
-                        }
+                    label {
+                        font-size: 0.8333rem;
+                        padding-bottom: 5px;
+                        text-align: center;
+                        font-weight: bold;
+                    }
 
-                        input {
-                            padding: 1em 0;
-                            font-size: 20px;
-                            border: 0;
-                            text-align: center;
-                        }
+                    input {
+                        padding: 1em 0;
+                        font-size: 20px;
+                        border: 0;
+                        text-align: center;
                     }
                 }
             }
@@ -478,9 +481,9 @@ form.charSheet {
             > div.hitdice {
                 > div {
                     background-color: white;
-                    margin: .8333rem;
+                    margin: 0.8333rem;
                     border: 1px solid black;
-                    border-radius: .8333rem;
+                    border-radius: 0.8333rem;
                     display: flex;
                     flex-direction: column;
 
@@ -491,7 +494,7 @@ form.charSheet {
                         padding: 5px 0;
 
                         label {
-                            font-size: .8333rem;
+                            font-size: 0.8333rem;
                             color: #bbb;
                             margin: 0.25em;
                             text-transform: none;
@@ -517,7 +520,7 @@ form.charSheet {
                         label {
                             text-align: center;
                             padding: 2px;
-                            font-size: .8333rem;
+                            font-size: 0.8333rem;
                         }
 
                         input {
@@ -525,7 +528,7 @@ form.charSheet {
                             border: 0;
                             flex: 1;
                         }
-                    }                
+                    }
                 }
             }
 
@@ -541,10 +544,10 @@ form.charSheet {
 
             > div.deathsaves {
                 > div {
-                    margin: .8333rem;
+                    margin: 0.8333rem;
                     background: white;
                     border: 1px solid black;
-                    border-radius: .8333rem;
+                    border-radius: 0.8333rem;
                     display: flex;
                     flex-direction: column-reverse;
 
@@ -552,8 +555,8 @@ form.charSheet {
                         text-align: center;
 
                         label {
-                            font-size: .8333rem;
-                        }                    
+                            font-size: 0.8333rem;
+                        }
                     }
 
                     > div.marks {
@@ -568,7 +571,7 @@ form.charSheet {
                             align-items: center;
 
                             label {
-                                font-size: 8px;
+                                font-size: 0.85rem;
                                 text-align: right;
                                 flex: 1 50%;
                             }
@@ -581,10 +584,10 @@ form.charSheet {
 
                         input[type='checkbox'] {
                             -webkit-appearance: none;
-                            width: .8333rem;
-                            height: .8333rem;
+                            width: 0.8333rem;
+                            height: 0.8333rem;
                             border: 1px solid black;
-                            border-radius: .8333rem;
+                            border-radius: 0.8333rem;
                         }
 
                         input[type='checkbox']:checked {
@@ -597,11 +600,11 @@ form.charSheet {
 
         section.attacksandspellcasting {
             border: 1px solid black;
-            border-radius: .8333rem;
-            margin-top: .8333rem;
+            border-radius: 0.8333rem;
+            margin-top: 0.8333rem;
 
             > div {
-                margin: .8333rem;
+                margin: 0.8333rem;
                 display: flex;
                 flex-direction: column;
 
@@ -614,7 +617,7 @@ form.charSheet {
                     width: 100%;
 
                     th {
-                        font-size: .8333rem;
+                        font-size: 0.8333rem;
                         color: #ddd;
                     }
 
@@ -622,24 +625,24 @@ form.charSheet {
                         width: calc(100% - 4px);
                         border: 0;
                         background-color: #eee;
-                        font-size: .8333rem;
+                        font-size: 0.8333rem;
                         padding: 3px;
                     }
                 }
 
                 textarea {
                     border: 0;
-                }            
+                }
             }
         }
 
         section.equipment {
             border: 1px solid black;
-            border-radius: .8333rem;
-            margin-top: .8333rem;
+            border-radius: 0.8333rem;
+            margin-top: 0.8333rem;
 
             > div {
-                padding: .8333rem;
+                padding: 0.8333rem;
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
@@ -650,6 +653,7 @@ form.charSheet {
                         flex-direction: column;
                         justify-content: space-between;
                         height: 100%;
+                        margin-right: 2px;
 
                         > li {
                             display: flex;
@@ -657,19 +661,19 @@ form.charSheet {
 
                             label {
                                 border: 1px solid black;
-                                border-radius: .8333rem 0 0 .8333rem;
+                                border-radius: 0.8333rem 0 0 0.8333rem;
                                 border-right: 0;
                                 width: 20px;
-                                font-size: 8px;
+                                font-size: 0.85rem;
                                 text-align: center;
                                 padding: 3px 0;
                             }
 
                             input {
                                 border: 1px solid black;
-                                border-radius: .8333rem;
-                                width: 40px;
-                                padding: .8333rem 3px;
+                                border-radius: 0.8333rem;
+                                width: 2.6667rem;
+                                padding: 0.8333rem 3px;
                                 font-size: 1rem;
                                 text-align: center;
                             }
@@ -687,14 +691,15 @@ form.charSheet {
                     flex: 1;
                     border: 0;
                     height: 15.4rem;
+                    margin-left: 2px;
                 }
             }
         }
 
         section.flavor {
-            padding: .8333rem;
+            padding: 0.8333rem;
             background: #bbb;
-            border-radius: .8333rem;
+            border-radius: 0.8333rem;
 
             div {
                 background: white;
@@ -705,7 +710,7 @@ form.charSheet {
 
                 label {
                     text-align: center;
-                    font-size: .8333rem;
+                    font-size: 0.8333rem;
                     margin-top: 3px;
                 }
 
@@ -717,25 +722,25 @@ form.charSheet {
             }
 
             div:first-child {
-                border-radius: .8333rem .8333rem 0 0;
+                border-radius: 0.8333rem 0.8333rem 0 0;
             }
 
             div:not(:first-child) {
-                margin-top: .8333rem;
+                margin-top: 0.8333rem;
             }
 
             div:last-child {
-                border-radius: 0 0 .8333rem .8333rem;
+                border-radius: 0 0 0.8333rem 0.8333rem;
             }
         }
 
         section.features {
-            padding: .8333rem 0;
+            padding: 0.8333rem 0;
 
             div {
-                padding: .8333rem;
+                padding: 0.8333rem;
                 border: 1px solid black;
-                border-radius: .8333rem;
+                border-radius: 0.8333rem;
                 display: flex;
                 flex-direction: column-reverse;
 

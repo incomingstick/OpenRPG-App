@@ -16,8 +16,13 @@ section {
     pointer-events: none;
     visibility: hidden;
     opacity: 0;
-    /* transform: translateX(-20px); */
     /* transition: visibility 0s .12s linear , opacity .12s ease-in, transform .12s ease-in; */
+
+    /* transform: translateX(-20px); */
+    h3,
+    p {
+        color: var(--color);
+    }
 }
 
 .section-template {
@@ -32,21 +37,14 @@ section {
     /* transition: visibility 0s 0s linear , opacity .36s ease-out, transform .36s ease-out; */
 }
 
-.section h3,
-.section p {
-    color: var(--color);
-}
-
 .section-wrapper {
     position: relative;
     max-width: 740px;
     margin: 0 auto;
     padding: 2rem 2rem 1rem 2rem;
     border-bottom: 1px solid var(--color-border);
-}
 
-@media (min-width: 940px) {
-    .section-wrapper {
+    @media (min-width: 940px) {
         padding-top: 4rem;
     }
 }

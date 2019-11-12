@@ -55,20 +55,20 @@ html {
     // Default Font Size
     font-size: 16px;
     // UHD-1
-    @media screen and (min-width: 2560px) {
-        font-size: 24px;
+    @media screen and (min-width: 3840px) {
+        font-size: 19px;
     }
     // WQHD
     @media screen and (min-width: 2560px) {
-        font-size: 32px;
+        font-size: 18px;
     }
     // HD 1080
     @media screen and (min-width: 1920px) {
-        font-size: 24px;
+        font-size: 17px;
     }
     // Large Monitors
     @media screen and (min-width: 1600px) {
-        font-size: 18px;
+        font-size: 15px;
     }
     // Small Laptops
     @media screen and (max-width: 1366px) {
@@ -184,17 +184,22 @@ a {
 /* main content  */
 .nav-tabs {
     border-bottom: 1px solid #666;
+
+    .nav-item.show .nav-link,
+    .nav-link.active {
+        color: #eee;
+        background-color: #666;
+        border-color: #666;
+    }
 }
 
 a.nav-link {
     color: #aaa;
 }
 
-.nav-tabs .nav-item.show .nav-link,
-.nav-tabs .nav-link.active {
-    color: #eee;
-    background-color: #666;
-    border-color: #666;
+.navbar a {
+    color: $background;
+    font-weight: 500;
 }
 
 /* search-box */
@@ -210,31 +215,31 @@ a.nav-link {
     padding: 0;
     overflow: hidden;
     font-size: 0.9rem;
+
+    .dropdown-item {
+        padding-right: 0.75rem;
+        padding-left: 0.75rem;
+        color: $background;
+    }
+
+    .dropdown-item:last-child {
+        margin-bottom: 0.25rem;
+    }
+
+    .dropdown-item:first-child {
+        margin-top: 0.25rem;
+    }
+
+    .no-results {
+        padding: 0.75rem 1rem;
+        color: #7a7a7a;
+        text-align: center;
+        white-space: normal;
+    }
 }
 
 .search-results:empty {
     display: none;
-}
-
-.search-results .dropdown-item:last-child {
-    margin-bottom: 0.25rem;
-}
-
-.search-results .dropdown-item:first-child {
-    margin-top: 0.25rem;
-}
-
-.search-results .dropdown-item {
-    padding-right: 0.75rem;
-    padding-left: 0.75rem;
-    color: $background;
-}
-
-.search-results .no-results {
-    padding: 0.75rem 1rem;
-    color: #7a7a7a;
-    text-align: center;
-    white-space: normal;
 }
 
 /* buttons */
@@ -297,7 +302,7 @@ a.nav-link {
 
 /* footer stuff */
 footer {
-    font-size: 0.85rem;
+    font-size: 1rem;
     text-align: left;
     background-color: $logo-primary;
     position: fixed;
@@ -306,24 +311,22 @@ footer {
     width: 100%;
     z-index: 1030;
     color: #fff;
-}
 
-footer li {
-    display: inline-block;
-}
+    li {
+        display: inline-block;
+    }
 
-footer .container {
-    margin: 0 1rem;
-}
+    .container {
+        margin: 0 1rem;
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+    }
 
-footer a,
-.navbar a {
-    color: $background;
-    font-weight: 500;
-}
-
-footer a {
-    font-weight: 500;
+    a {
+        color: $background;
+        font-weight: 500;
+    }
 }
 
 footer a:hover {
