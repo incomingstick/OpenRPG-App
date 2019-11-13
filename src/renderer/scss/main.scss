@@ -179,6 +179,9 @@ a {
 #main-content-wrapper {
     padding: $sidebar-width / 2;
     width: calc(100% - #{$sidebar-width});
+    position: absolute;
+    top: 0;
+    left: $sidebar-width;
 }
 
 /* main content  */

@@ -24,6 +24,9 @@
     overflow-x: hidden;
     overflow-y: auto;
     width: $sidebar-width;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 #sidebar-wrapper::-webkit-scrollbar {
@@ -37,90 +40,32 @@
     padding: 0;
     position: absolute;
     top: 0;
+    left: 1px;
     width: 3rem;
+}
 
-    li {
-        display: inline-block;
-        line-height: 20px;
-        position: relative;
+.ui.vertical.tabular.menu {
+    .item.nav-button {
+        display: block;
         width: 100%;
+        font: inherit;
+        color: inherit;
+        border: none;
+        background-color: transparent;
+        outline: none;
+        color: #ddd;
+        padding: 1.3rem 1rem;
+        text-decoration: none;
 
-        a {
-            color: #dddddd;
+        > svg {
             display: block;
-            padding: 10px 15px 10px 30px;
-            text-decoration: none;
+            margin: 0 auto;
         }
     }
-
-    li:before {
-        background-color: #1c1c1c;
-        content: '';
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        -webkit-transition: width 0.2s ease-in;
-        transition: width 0.2s ease-in;
-        width: 3px;
-        z-index: -1;
-    }
-
-    li:hover:before {
+        
+    .active.item.nav-button {
         background-color: #2196f3;
-        -webkit-transition: width 0.2s ease-in;
-        transition: width 0.2s ease-in;
-        width: 100%;
+        color: #fff;
+        border-radius: 0!important;
     }
-
-    li.open:hover before {
-        -webkit-transition: width 0.2s ease-in;
-        transition: width 0.2s ease-in;
-        width: 100%;
-    }
-
-    .dropdown-menu {
-        background-color: #222222;
-        border-radius: 0;
-        border: none;
-        box-shadow: none;
-        margin: 0;
-        padding: 0;
-        position: relative;
-        width: 100%;
-    }
-
-    li a:hover,
-    li a:active,
-    li a:focus,
-    li.open a:hover,
-    li.open a:active,
-    li.open a:focus {
-        background-color: transparent;
-        color: #ffffff;
-        text-decoration: none;
-    }
-
-    > .sidebar-brand {
-        font-size: 20px;
-        height: 65px;
-        line-height: 44px;
-    }
-}
-
-.nav-button {
-    display: block;
-    width: 100%;
-    font: inherit;
-    color: inherit;
-    border: none;
-    background-color: transparent;
-    outline: none;
-    color: #dddddd;
-    padding: 0.6rem 0.9rem;
-    text-decoration: none;
-}
-
-.nav-button.is-selected {
-    background-color: #2196f3;
 }
