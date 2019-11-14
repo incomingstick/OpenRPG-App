@@ -1,6 +1,10 @@
 @import 'variables';
 @import 'sections';
 
+$bg: #fff;
+$faded-bg: #eee;
+$dark-bg: #bbb;
+
 textarea {
     font-size: 1rem;
     text-align: left;
@@ -63,23 +67,23 @@ form.charSheet {
     }
 
     ::-webkit-input-placeholder {
-        color: #bbb;
+        color: $dark-bg;
     }
 
     :-ms-input-placeholder {
-        color: #bbb;
+        color: $dark-bg;
     }
 
     :-ms-input-placeholder {
-        color: #bbb;
+        color: $dark-bg;
     }
 
     ::-ms-input-placeholder {
-        color: #bbb;
+        color: $dark-bg;
     }
 
     ::placeholder {
-        color: #bbb;
+        color: $dark-bg;
     }
 
     label {
@@ -97,7 +101,7 @@ form.charSheet {
             border-right: 0;
             border-radius: 0.8333rem 0 0 0.8333rem;
             padding: 5px 0;
-            background-color: #eee;
+            background-color: $faded-bg;
             width: 30%;
             display: flex;
             flex-direction: column-reverse;
@@ -177,6 +181,7 @@ form.charSheet {
             width: 32%;
             display: flex;
             flex-direction: column;
+            margin: 0 1rem;
 
             section.attributes {
                 width: 100%;
@@ -186,7 +191,7 @@ form.charSheet {
 
                 div.scores {
                     width: 25%;
-                    background-color: #bbb;
+                    background-color: $dark-bg;
                     border-radius: 0.8333rem;
                     margin: 0.75rem;
                     padding-bottom: 5px;
@@ -206,7 +211,7 @@ form.charSheet {
                         li {
                             height: 80px;
                             width: 70px;
-                            background-color: white;
+                            background-color: $bg;
                             border: 1px solid black;
                             text-align: center;
                             display: flex;
@@ -224,7 +229,7 @@ form.charSheet {
                                     text-align: center;
                                     font-size: 40px;
                                     padding: 2px 0px 0px 0px;
-                                    background: white;
+                                    background: $bg;
                                 }
                             }
 
@@ -232,7 +237,7 @@ form.charSheet {
                                 margin-top: 3px;
 
                                 input {
-                                    background: white;
+                                    background: $bg;
                                     width: 2rem;
                                     height: 1.3333rem;
                                     border: 1px inset black;
@@ -255,6 +260,8 @@ form.charSheet {
                         justify-content: flex-end;
 
                         input {
+                            height: 2.8666rem;
+                            width: 2.8666rem;
                             -webkit-appearance: none;
                             border: 1px solid black;
                             padding: 15px;
@@ -268,8 +275,8 @@ form.charSheet {
                         justify-content: flex-end;
 
                         input {
-                            width: 2rem;
-                            height: 1.8666rem;
+                            width: 2.8666rem;
+                            height: 2.8666rem;
                             border: 1px solid black;
                             text-align: center;
                             border-radius: 0.8333rem;
@@ -306,7 +313,7 @@ form.charSheet {
                                     order: 3;
 
                                     span.skill {
-                                        color: #bbb;
+                                        color: $dark-bg;
                                     }
                                 }
 
@@ -343,8 +350,8 @@ form.charSheet {
                 justify-content: flex-end;
 
                 input {
-                    width: 2rem;
-                    height: 1.8666rem;
+                    width: 2.8666rem;
+                    height: 2.8666rem;
                     text-align: center;
                     border: 1px solid black;
                     border-radius: 0.8333rem;
@@ -359,7 +366,7 @@ form.charSheet {
         }
 
         section.combat {
-            background-color: #eee;
+            background-color: $faded-bg;
             display: flex;
             flex-wrap: wrap;
             border-radius: 0.8333rem;
@@ -384,7 +391,7 @@ form.charSheet {
                         width: 50px;
                         border: 1px solid black;
                         border-top: 0;
-                        background-color: white;
+                        background-color: $bg;
                         text-align: center;
                         padding-top: 5px;
                         padding-bottom: 5px;
@@ -406,7 +413,7 @@ form.charSheet {
                 flex-basis: 100%;
 
                 > div.regular {
-                    background-color: white;
+                    background-color: $bg;
                     border: 1px solid black;
                     margin: 0.8333rem;
                     margin-bottom: 5px;
@@ -420,7 +427,7 @@ form.charSheet {
                         label {
                             font-size: 0.8333rem;
                             text-transform: none;
-                            color: #bbb;
+                            color: $dark-bg;
                         }
 
                         input {
@@ -460,7 +467,7 @@ form.charSheet {
                     border-radius: 0 0 0.8333rem 0.8333rem;
                     display: flex;
                     flex-direction: column-reverse;
-                    background-color: white;
+                    background-color: $bg;
 
                     label {
                         font-size: 0.8333rem;
@@ -480,7 +487,7 @@ form.charSheet {
 
             > div.hitdice {
                 > div {
-                    background-color: white;
+                    background-color: $bg;
                     margin: 0.8333rem;
                     border: 1px solid black;
                     border-radius: 0.8333rem;
@@ -495,7 +502,7 @@ form.charSheet {
 
                         label {
                             font-size: 0.8333rem;
-                            color: #bbb;
+                            color: $dark-bg;
                             margin: 0.25em;
                             text-transform: none;
                         }
@@ -545,7 +552,7 @@ form.charSheet {
             > div.deathsaves {
                 > div {
                     margin: 0.8333rem;
-                    background: white;
+                    background: $bg;
                     border: 1px solid black;
                     border-radius: 0.8333rem;
                     display: flex;
@@ -624,7 +631,7 @@ form.charSheet {
                     input {
                         width: calc(100% - 4px);
                         border: 0;
-                        background-color: #eee;
+                        background-color: $faded-bg;
                         font-size: 0.8333rem;
                         padding: 3px;
                     }
@@ -698,11 +705,11 @@ form.charSheet {
 
         section.flavor {
             padding: 0.8333rem;
-            background: #bbb;
+            background: $dark-bg;
             border-radius: 0.8333rem;
 
             div {
-                background: white;
+                background: $bg;
                 display: flex;
                 flex-direction: column-reverse;
                 padding: 5px;

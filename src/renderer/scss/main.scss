@@ -24,14 +24,14 @@ textarea,
 a:not([draggable='true']),
 img:not([draggable='true']) {
     -webkit-user-drag: none;
-    user-drag: none; /* Technically not supported in Electron yet */
+    //user-drag: none; /* Technically not supported in Electron yet */
 }
 
 a[href^="http://"],
 a[href^="https://"],
 a[href^="ftp://"] {
     -webkit-user-drag: auto;
-    user-drag: auto; /* Technically not supported in Electron yet */
+    //user-drag: auto; /* Technically not supported in Electron yet */
 }
 
 a.external-link {
@@ -177,7 +177,7 @@ a {
 }
 
 #main-content-wrapper {
-    padding: $sidebar-width / 2;
+    padding: $sidebar-width / 4;
     width: calc(100% - #{$sidebar-width});
     position: absolute;
     top: 0;
