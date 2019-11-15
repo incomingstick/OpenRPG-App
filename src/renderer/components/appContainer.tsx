@@ -2,7 +2,7 @@ import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { Grid } from 'semantic-ui-react';
 import Sidebar from './sidebar';
-import CharacterScreen from './characters';
+import CharacterScreen from './characterScreen';
 import CampaignScreen from './campaign';
 import CitiesScreen from './cities';
 import SettingsScreen from './settings';
@@ -35,12 +35,10 @@ class AppContainer extends React.Component<any, TAppContainerState> {
                             <Sidebar clickCallback={this.sidebarCallback} />
                         </Grid.Column>
 
-                        {/* <Grid.Column stretched width={12}> */}
                         <main id='main-content-wrapper'>
                             <this.CurrentScreen />
                         </main>
                         {/* <!-- end main-content-wrapper --> */}
-                        {/* </Grid.Column> */}
                     </Grid>
                 </div>
                 {/* <!-- end wrapper --> */}

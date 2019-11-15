@@ -50,8 +50,15 @@ function detectDataFolder(): string {
             checkFolders.push('c:/Program Files/OpenRPG');
             break;
         }
-        /* TODO Add Linux Support */
+
+        case 'Linux': {
+            checkFolders.push('/usr/share/openrpg');
+            checkFolders.push('/usr/local/share/openrpg');
+            break;
+        }
+
         default: {
+            console.log('OS Type not Supported. Could not find data folder.');
             break;
         }
     }

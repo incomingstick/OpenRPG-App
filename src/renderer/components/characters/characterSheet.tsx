@@ -1,55 +1,47 @@
-import * as React from 'react';
-import { Tab } from 'semantic-ui-react';
+import React from 'react';
+import ScoreBar from './scoreBar';
+import SavesPanel from './savesPanel';
 
-require('../scss/characterSheet.scss');
-
-type TScoreItemProps = {
-    className: string;
+export type ScoreList = {
     scoreName: string;
-};
+    scoreID: string;
+}[];
 
-export default class CharacterScreen extends React.Component<any, any> {
-    private panes = [
+export default class CharacterSheet extends React.Component<any, any> {
+    private scores: ScoreList = [
         {
-            menuItem: 'Char 1',
-            render: () => (
-                <Tab.Pane>
-                    <this.CharacterSheet />
-                </Tab.Pane>
-            )
+            scoreName: 'Strength',
+            scoreID: 'STR'
         },
-        { menuItem: 'Char 2', render: () => <Tab.Pane>TODO adding and removing chars</Tab.Pane> },
-        { menuItem: 'Char 3', render: () => <Tab.Pane>TODO Handle multiple chars</Tab.Pane> }
+        {
+            scoreName: 'Dexterity',
+            scoreID: 'DEX'
+        },
+        {
+            scoreName: 'Constitution',
+            scoreID: 'CON'
+        },
+        {
+            scoreName: 'Intelligence',
+            scoreID: 'INT'
+        },
+        {
+            scoreName: 'Wiscom',
+            scoreID: 'WIS'
+        },
+        {
+            scoreName: 'Chrisma',
+            scoreID: 'CHA'
+        }
     ];
 
-    public constructor(props: any, context?: any) {
-        super(props, context);
-
-        this.CharacterSheet = this.CharacterSheet.bind(this);
-    }
-
     public render() {
-        /**
-         * TODO(incomingstick): go through and start converting this to React and Semantic-React elements while trying to maintain the design
-         */
         return (
-            <div className='section-template'>
-                <div id='character-section'>
-                    <div className='character-header'>
-                        <div>
-                            <h1>Characters</h1>
-                        </div>
-                        <h2>Your Characters</h2>
-                    </div>
-
-                    <div className='container'>
-                        <h3>TODO Do character creator and other character stuff here</h3>
-                        <Tab
-                            menu={{ color: 'grey', inverted: true, attached: false, tabular: false }}
-                            panes={this.panes}
-                        />
-                    </div>
-                </div>
+            <div className='row'>
+                <form className='charSheet'>
+                    <this.HeaderSeciton />
+                    <this.MainSection />
+                </form>
             </div>
         );
     }
@@ -91,42 +83,11 @@ export default class CharacterScreen extends React.Component<any, any> {
         </header>
     );
 
-    private ScoreItem = (props: TScoreItemProps) => {
-        const scoreModClass = props.className + 'Mod';
-        const scoreClass = props.className + 'Score';
-        const scoreName = props.scoreName;
-
-        return (
-            <li>
-                <div className='score'>
-                    <label htmlFor={scoreClass + 'Score'}>{scoreName}</label>
-                    <input name={scoreClass + 'Score'} placeholder='10' />
-                </div>
-                <div className='modifier'>
-                    <input name={scoreModClass} placeholder='+0' />
-                </div>
-            </li>
-        );
-    };
-
-    private ScoresBar = () => (
-        <div className='scores'>
-            <ul>
-                <this.ScoreItem className='str' scoreName='Strength' />
-                <this.ScoreItem className='dex' scoreName='Dexterity' />
-                <this.ScoreItem className='con' scoreName='Constitution' />
-                <this.ScoreItem className='wis' scoreName='Wisdom' />
-                <this.ScoreItem className='int' scoreName='Intelligence' />
-                <this.ScoreItem className='cha' scoreName='Charisma' />
-            </ul>
-        </div>
-    );
-
     private MainSection = () => (
         <main>
             <section>
                 <section className='attributes'>
-                    <this.ScoresBar />
+                    <ScoreBar scoreList={this.scores} />
                     <div className='attr-applications'>
                         <div className='inspiration box'>
                             <div className='label-container'>
@@ -140,41 +101,7 @@ export default class CharacterScreen extends React.Component<any, any> {
                             </div>
                             <input name='proficiencybonus' placeholder='+0' />
                         </div>
-                        <div className='saves list-section box'>
-                            <ul>
-                                <li>
-                                    <label htmlFor='Strength-save'>Strength</label>
-                                    <input name='Strength-save' placeholder='+0' type='text' />
-                                    <input name='Strength-save-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Dexterity-save'>Dexterity</label>
-                                    <input name='Dexterity-save' placeholder='+0' type='text' />
-                                    <input name='Dexterity-save-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Constitution-save'>Constitution</label>
-                                    <input name='Constitution-save' placeholder='+0' type='text' />
-                                    <input name='Constitution-save-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Wisdom-save'>Wisdom</label>
-                                    <input name='Wisdom-save' placeholder='+0' type='text' />
-                                    <input name='Wisdom-save-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Intelligence-save'>Intelligence</label>
-                                    <input name='Intelligence-save' placeholder='+0' type='text' />
-                                    <input name='Intelligence-save-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Charisma-save'>Charisma</label>
-                                    <input name='Charisma-save' placeholder='+0' type='text' />
-                                    <input name='Charisma-save-prof' type='checkbox' />
-                                </li>
-                            </ul>
-                            <div className='label'>Saving Throws</div>
-                        </div>
+                        <SavesPanel scoreList={this.scores} />
                         <div className='skills list-section box'>
                             <ul>
                                 <li>
@@ -519,14 +446,5 @@ export default class CharacterScreen extends React.Component<any, any> {
                 </section>
             </section>
         </main>
-    );
-
-    private CharacterSheet = () => (
-        <div className='row'>
-            <form className='charSheet'>
-                <this.HeaderSeciton />
-                <this.MainSection />
-            </form>
-        </div>
     );
 }

@@ -1,3 +1,5 @@
+# NOTE
+This repository is for the front end application for OpenRPG. If you are looking for the back end libraries, please visit our sister repository, [here](https://github.com/incomingstick/OpenRPG).
 
 # OpenRPG
 [![Build Status](https://travis-ci.org/incomingstick/OpenRPG.svg?branch=master)](https://travis-ci.org/incomingstick/OpenRPG)
@@ -32,86 +34,11 @@ v0.1.0 is a basis for the CLI/developer version, but v1.0.0 will contain a
 portable GUI that works on Windows, Linux, and macOS.
 
 ## Building
-Currently we require `cmake` (at least v2.8.4) and `make`, and your choice of C/C++ compiler for the library binaries. To compile the gui see [Building the GUI](#building-the-gui) below.
+This is a node project, and as such you will need `npm` or `yarn` installed. Currently we require your choice of C/C++ compiler for the backend library [binaries](https://github.com/incomingstick/OpenRPG).
 
-Note: This project strives to keep its source as clean of any dependancies to be as cross platform as possible. If you have suggestions to help move toward that goal, please feel free to open issues, or even a PR!
+Run `npm install` to download all dependancies.
+Run `npm start` to run the OpenRPG app.
 
-### Linux Build Script
-The build script now provides some extra assistance with building, installing, uninstalling and more.
-
-**Debug build:** `$ ./build.sh`
-
-**Install debug build:** `$ ./build.sh install`
-
-**Release build:** `$ ./build.sh release`
-
-**Install release build:** `$ ./build.sh release install`
-
-**Clean build files:** `$ ./build.sh clean`
-
-**Clean build files and rebuild:** `$ ./build.sh rebuild`
-
-Note: `build.sh` has the potential to work on MacOS, but is currently untested. If you happen to use a Mac, please test this!
-
-### Windows Build Script
-This script is VERY minimal compared to its bash counterpart. It could use a ton of improvements, so if that is something you are interested in, open a PR! Please make sure you have Visual Studio Build Tools (i.e msbuild) in your `%PATH%`.
-
-**Debug build:** `> .\build.bat`
-
-**Release build:** `> .\build.bat release`
-
-**Clean build files:** `> .\build.bat clean`
-
-**Clean build files and rebuild:** `> .\build.bat rebuild`
-
-
-### Manual Build
-Create a build directory `$ mkdir build && cd build`  
-Run cmake `$ cmake ..` **OR** Optionally run `$ cmake -DCMAKE_INSTALL_PREFIX=/desired/install/location ..`  
-Run make `$ make`  
-
-## Check Integrity of Build
-In the toplevel `build/` folder, run make check `$ make check` 
-
-## Building the GUI
-Currently we require `npm` in addition to the requirements noted above to build the GUI. To compile the main binaries see [Building](#building) above.
-
-### Manual build
-Because we need to link to our C++ libraries building and linking properly gets pretty complicated pretty quick. To make this easier just use the provided build.sh files. I will not go into manual build details here. If you would like to understand this better, I suggest opening up those scripts and taking a look.
-
-### Linux Build Script
-The build script now provides some extra assistance with building and running the GUIs.
-
-**Debug build:** `$ ./build.sh app`
-
-**Release build:** `$ ./build.sh release app`
-
-**Linux clean build:** `$ ./build.sh clean app`
-
-Note: this currently only cleans the top level build/ folder, and not the app.
-
-**Linux run the app:** `$ ./build.sh run app`
-
-Note: `build.sh` has the potential to work on MacOS, but is currently untested. If you happen to use a Mac, please test this!
-
-### Windows Build Script
-Currently the Windows built.bat does not support building the app.
-
-# Installing
-## Arch Linux Install
-We are now on the Arch User Repository! You can use your favorite AUR wrapper, or simply makepkg.
-
-**AUR Wrapper Example:** `$ yay -S openrpg-git`
-
-**Makepkg Example:** `$ git clone https://aur.archlinux.org/openrpg-git.git && cd openrpg-git && makepkg -si`
-
-## Installing from Source
-After building, in the `build/` folder, run make install `$ make install`
-
-# Uninstalling
-After installing, in the `build/` folder, run make uninstall `$ make uninstall`
-
-**NOTE:** Currently this will NOT install the GUI.
 
 # License
 OpenRPG Software License - Version 1.0 - February 10th, 2017 <https://openrpg.io/about/license/>
