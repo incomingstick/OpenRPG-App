@@ -25,10 +25,7 @@ export default class TitleBar extends React.Component<any, any> {
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>
-                <div id='window-title'>
-                    {/* TODO Window Title goes here */}
-                    {win.getTitle()}
-                </div>
+                <div id='window-title'>{win.getTitle()}</div>
                 <div id='window-controls'>
                     <div className='button' id='min-button' onClick={this.handleWindowControlClick}>
                         <span>&#xE921;</span>
