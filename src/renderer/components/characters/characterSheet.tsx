@@ -1,9 +1,15 @@
 import React from 'react';
 import ScoreBar from './scoreBar';
 import SavesPanel from './savesPanel';
+import SkillsPanel from './skillsPanel';
 
 export type ScoreList = {
     scoreName: string;
+    scoreID: string;
+}[];
+
+export type SkillsList = {
+    skillName: string;
     scoreID: string;
 }[];
 
@@ -32,6 +38,85 @@ export default class CharacterSheet extends React.Component<any, any> {
         {
             scoreName: 'Chrisma',
             scoreID: 'CHA'
+        }
+    ];
+
+    private skills: SkillsList = [
+        {
+            skillName: 'Acrobatics',
+            scoreID: 'DEX'
+        },
+        {
+            skillName: 'Animal Handling',
+            scoreID: 'WIS'
+        },
+        {
+            skillName: 'Arcana',
+            scoreID: 'INT'
+        },
+        {
+            skillName: 'Athletics',
+            scoreID: 'STR'
+        },
+        {
+            skillName: 'Deception',
+            scoreID: 'CHA'
+        },
+        {
+            skillName: 'History',
+            scoreID: 'INT'
+        },
+        {
+            skillName: 'Insight',
+            scoreID: 'WIS'
+        },
+        {
+            skillName: 'Intimidation',
+            scoreID: 'CHA'
+        },
+        {
+            skillName: 'Investigation',
+            scoreID: 'INT'
+        },
+        {
+            skillName: 'Medicine',
+            scoreID: 'WIS'
+        },
+        {
+            skillName: 'Nature',
+            scoreID: 'INT'
+        },
+        {
+            skillName: 'Perception',
+            scoreID: 'WIS'
+        },
+        {
+            skillName: 'Performance',
+            scoreID: 'CHA'
+        },
+        {
+            skillName: 'Persuasion',
+            scoreID: 'CHA'
+        },
+        {
+            skillName: 'Religion',
+            scoreID: 'INT'
+        },
+        {
+            skillName: 'Sleight of Hand',
+            scoreID: 'DEX'
+        },
+        {
+            skillName: 'Stealth',
+            scoreID: 'DEX'
+        },
+        {
+            skillName: 'Survival',
+            scoreID: 'WIS'
+        },
+        {
+            skillName: 'Survival',
+            scoreID: 'WIS'
         }
     ];
 
@@ -102,155 +187,7 @@ export default class CharacterSheet extends React.Component<any, any> {
                             <input name='proficiencybonus' placeholder='+0' />
                         </div>
                         <SavesPanel scoreList={this.scores} />
-                        <div className='skills list-section box'>
-                            <ul>
-                                <li>
-                                    <label htmlFor='Acrobatics'>
-                                        Acrobatics
-                                        <span className='skill'>(Dex)</span>
-                                    </label>
-                                    <input name='Acrobatics' placeholder='+0' type='text' />
-                                    <input name='Acrobatics-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Animal Handling'>
-                                        Animal Handling
-                                        <span className='skill'>(Wis)</span>
-                                    </label>
-                                    <input name='Animal Handling' placeholder='+0' type='text' />
-                                    <input name='Animal Handling-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Arcana'>
-                                        Arcana
-                                        <span className='skill'>(Int)</span>
-                                    </label>
-                                    <input name='Arcana' placeholder='+0' type='text' />
-                                    <input name='Arcana-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Athletics'>
-                                        Athletics
-                                        <span className='skill'>(Str)</span>
-                                    </label>
-                                    <input name='Athletics' placeholder='+0' type='text' />
-                                    <input name='Athletics-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Deception'>
-                                        Deception
-                                        <span className='skill'>(Cha)</span>
-                                    </label>
-                                    <input name='Deception' placeholder='+0' type='text' />
-                                    <input name='Deception-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='History'>
-                                        History
-                                        <span className='skill'>(Int)</span>
-                                    </label>
-                                    <input name='History' placeholder='+0' type='text' />
-                                    <input name='History-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Insight'>
-                                        Insight
-                                        <span className='skill'>(Wis)</span>
-                                    </label>
-                                    <input name='Insight' placeholder='+0' type='text' />
-                                    <input name='Insight-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Intimidation'>
-                                        Intimidation
-                                        <span className='skill'>(Cha)</span>
-                                    </label>
-                                    <input name='Intimidation' placeholder='+0' type='text' />
-                                    <input name='Intimidation-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Investigation'>
-                                        Investigation
-                                        <span className='skill'>(Int)</span>
-                                    </label>
-                                    <input name='Investigation' placeholder='+0' type='text' />
-                                    <input name='Investigation-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Medicine'>
-                                        Medicine
-                                        <span className='skill'>(Wis)</span>
-                                    </label>
-                                    <input name='Medicine' placeholder='+0' type='text' />
-                                    <input name='Medicine-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Nature'>
-                                        Nature
-                                        <span className='skill'>(Int)</span>
-                                    </label>
-                                    <input name='Nature' placeholder='+0' type='text' />
-                                    <input name='Nature-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Perception'>
-                                        Perception
-                                        <span className='skill'>(Wis)</span>
-                                    </label>
-                                    <input name='Perception' placeholder='+0' type='text' />
-                                    <input name='Perception-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Performance'>
-                                        PerhtmlFormance
-                                        <span className='skill'>(Cha)</span>
-                                    </label>
-                                    <input name='Performance' placeholder='+0' type='text' />
-                                    <input name='Performance-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Persuasion'>
-                                        Persuasion
-                                        <span className='skill'>(Cha)</span>
-                                    </label>
-                                    <input name='Persuasion' placeholder='+0' type='text' />
-                                    <input name='Persuasion-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Religion'>
-                                        Religion
-                                        <span className='skill'>(Int)</span>
-                                    </label>
-                                    <input name='Religion' placeholder='+0' type='text' />
-                                    <input name='Religion-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Sleight of Hand'>
-                                        Sleight of Hand
-                                        <span className='skill'>(Dex)</span>
-                                    </label>
-                                    <input name='Sleight of Hand' placeholder='+0' type='text' />
-                                    <input name='Sleight of Hand-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Stealth'>
-                                        Stealth
-                                        <span className='skill'>(Dex)</span>
-                                    </label>
-                                    <input name='Stealth' placeholder='+0' type='text' />
-                                    <input name='Stealth-prof' type='checkbox' />
-                                </li>
-                                <li>
-                                    <label htmlFor='Survival'>
-                                        Survival
-                                        <span className='skill'>(Wis)</span>
-                                    </label>
-                                    <input name='Survival' placeholder='+0' type='text' />
-                                    <input name='Survival-prof' type='checkbox' />
-                                </li>
-                            </ul>
-                            <div className='label'>Skills</div>
-                        </div>
+                        <SkillsPanel skillList={this.skills} />
                     </div>
                 </section>
                 <div className='passive-perception box'>
@@ -261,7 +198,7 @@ export default class CharacterSheet extends React.Component<any, any> {
                 </div>
                 <div className='otherprofs box textblock'>
                     <label htmlFor='otherprofs'>Other Proficiencies and Languages</label>
-                    <textarea name='otherprofs'></textarea>
+                    <textarea name='otherprofs' placeholder='Extra Proficiencies and Languages here'></textarea>
                 </div>
             </section>
             <section>
@@ -321,17 +258,17 @@ export default class CharacterSheet extends React.Component<any, any> {
                                 <div className='deathsuccesses'>
                                     <label>Successes</label>
                                     <div className='bubbles'>
-                                        <input name='deathsuccess1' type='checkbox' />
-                                        <input name='deathsuccess2' type='checkbox' />
-                                        <input name='deathsuccess3' type='checkbox' />
+                                        <input name='deathsuccess' type='checkbox' />
+                                        <input name='deathsuccess' type='checkbox' />
+                                        <input name='deathsuccess' type='checkbox' />
                                     </div>
                                 </div>
                                 <div className='deathfails'>
                                     <label>Failures</label>
                                     <div className='bubbles'>
-                                        <input name='deathfail1' type='checkbox' />
-                                        <input name='deathfail2' type='checkbox' />
-                                        <input name='deathfail3' type='checkbox' />
+                                        <input name='deathfail' type='checkbox' />
+                                        <input name='deathfail' type='checkbox' />
+                                        <input name='deathfail' type='checkbox' />
                                     </div>
                                 </div>
                             </div>
@@ -352,40 +289,40 @@ export default class CharacterSheet extends React.Component<any, any> {
                             <tbody>
                                 <tr>
                                     <td>
-                                        <input name='atkname1' type='text' />
+                                        <input name='atkname' type='text' />
                                     </td>
                                     <td>
-                                        <input name='atkbonus1' type='text' />
+                                        <input name='atkbonus' type='text' />
                                     </td>
                                     <td>
-                                        <input name='atkdamage1' type='text' />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input name='atkname2' type='text' />
-                                    </td>
-                                    <td>
-                                        <input name='atkbonus2' type='text' />
-                                    </td>
-                                    <td>
-                                        <input name='atkdamage2' type='text' />
+                                        <input name='atkdamage' type='text' />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input name='atkname3' type='text' />
+                                        <input name='atkname' type='text' />
                                     </td>
                                     <td>
-                                        <input name='atkbonus3' type='text' />
+                                        <input name='atkbonus' type='text' />
                                     </td>
                                     <td>
-                                        <input name='atkdamage3' type='text' />
+                                        <input name='atkdamage' type='text' />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input name='atkname' type='text' />
+                                    </td>
+                                    <td>
+                                        <input name='atkbonus' type='text' />
+                                    </td>
+                                    <td>
+                                        <input name='atkdamage' type='text' />
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <textarea></textarea>
+                        <textarea placeholder='Attacks & Spells here'></textarea>
                     </div>
                 </section>
                 <section className='equipment'>
@@ -423,25 +360,25 @@ export default class CharacterSheet extends React.Component<any, any> {
                 <section className='flavor'>
                     <div className='personality'>
                         <label htmlFor='personality'>Personality</label>
-                        <textarea name='personality'></textarea>
+                        <textarea name='personality' placeholder='Personality here'></textarea>
                     </div>
                     <div className='ideals'>
                         <label htmlFor='ideals'>Ideals</label>
-                        <textarea name='ideals'></textarea>
+                        <textarea name='ideals' placeholder='Ideals here'></textarea>
                     </div>
                     <div className='bonds'>
                         <label htmlFor='bonds'>Bonds</label>
-                        <textarea name='bonds'></textarea>
+                        <textarea name='bonds' placeholder='Bonds here'></textarea>
                     </div>
                     <div className='flaws'>
                         <label htmlFor='flaws'>Flaws</label>
-                        <textarea name='flaws'></textarea>
+                        <textarea name='flaws' placeholder='Flaws here'></textarea>
                     </div>
                 </section>
                 <section className='features'>
                     <div>
                         <label htmlFor='features'>Features &amp; Traits</label>
-                        <textarea name='features'></textarea>
+                        <textarea name='features' placeholder='Features & Traits here'></textarea>
                     </div>
                 </section>
             </section>

@@ -1,10 +1,6 @@
 @import 'variables';
 @import 'sections';
 
-$bg: #fff;
-$faded-bg: #eee;
-$dark-bg: #bbb;
-
 textarea {
     font-size: 1rem;
     text-align: left;
@@ -14,10 +10,21 @@ textarea {
     overflow: hidden;
     height: 15em;
     width: 100%;
+    color: $text-primary;
+    background-color: $background;
 }
 
-input[type='checkbox'] {
-    cursor: pointer;
+input {
+    color: $cs-input-fg;
+    background-color: $background;
+
+    &[type='text'] {
+        color: $text-primary;
+    }
+
+    &[type='checkbox'] {
+        cursor: pointer;
+    }
 }
 
 div.box {
@@ -42,7 +49,7 @@ form.charSheet {
 
         label {
             text-align: center;
-            border: 1px solid black;
+            border: 1px solid $cs-boarder;
             border-top: 0;
             font-size: 0.8333rem;
             width: calc(100% - 20px - 2px);
@@ -52,7 +59,7 @@ form.charSheet {
         }
 
         textarea {
-            border: 1px solid black;
+            border: 1px solid $cs-boarder;
         }
     }
 
@@ -67,28 +74,33 @@ form.charSheet {
     }
 
     ::-webkit-input-placeholder {
-        color: $dark-bg;
-    }
-
-    :-ms-input-placeholder {
-        color: $dark-bg;
-    }
-
-    :-ms-input-placeholder {
-        color: $dark-bg;
+        color: #aaa;
     }
 
     ::-ms-input-placeholder {
-        color: $dark-bg;
+        color: #aaa;
+    }
+
+    ::-ms-input-placeholder {
+        color: #aaa;
+    }
+
+    ::-ms-input-placeholder {
+        color: #aaa;
     }
 
     ::placeholder {
-        color: $dark-bg;
+        color: #aaa;
     }
 
     label {
         text-transform: uppercase;
         font-size: 1rem;
+
+        &[for='charName'] {
+            padding-left: 0.5rem;
+            color: $text-primary;
+        }
     }
 
     header {
@@ -97,11 +109,10 @@ form.charSheet {
         align-items: stretch;
 
         section.charName {
-            border: 1px solid black;
+            border: 1px solid $cs-boarder;
             border-right: 0;
             border-radius: 0.8333rem 0 0 0.8333rem;
             padding: 5px 0;
-            background-color: $faded-bg;
             width: 30%;
             display: flex;
             flex-direction: column-reverse;
@@ -124,7 +135,7 @@ form.charSheet {
 
         section.misc {
             width: 70%;
-            border: 1px solid black;
+            border: 1px solid $cs-boarder;
             border-radius: 0.8333rem;
             padding-left: 1em;
             padding-right: 1em;
@@ -145,7 +156,7 @@ form.charSheet {
 
                     input {
                         border: 0;
-                        border-bottom: 1px solid #ddd;
+                        border-bottom: 1px solid $text-primary;
                     }
                 }
             }
@@ -162,7 +173,7 @@ form.charSheet {
             width: 100%;
             height: 18px;
             margin-top: 6px;
-            border: 1px solid black;
+            border: 1px solid $cs-boarder;
             border-left: 0;
             text-align: center;
 
@@ -191,7 +202,6 @@ form.charSheet {
 
                 div.scores {
                     width: 25%;
-                    background-color: $dark-bg;
                     border-radius: 0.8333rem;
                     margin: 0.75rem;
                     padding-bottom: 5px;
@@ -211,8 +221,8 @@ form.charSheet {
                         li {
                             height: 80px;
                             width: 70px;
-                            background-color: $bg;
-                            border: 1px solid black;
+                            background-color: $background;
+                            border: 1px solid $cs-boarder;
                             text-align: center;
                             display: flex;
                             flex-direction: column;
@@ -229,7 +239,7 @@ form.charSheet {
                                     text-align: center;
                                     font-size: 40px;
                                     padding: 2px 0px 0px 0px;
-                                    background: $bg;
+                                    background-color: $background;
                                 }
                             }
 
@@ -237,10 +247,10 @@ form.charSheet {
                                 margin-top: 3px;
 
                                 input {
-                                    background: $bg;
+                                    background-color: $background;
                                     width: 2rem;
                                     height: 1.3333rem;
-                                    border: 1px inset black;
+                                    border: 1px solid $cs-boarder;
                                     border-radius: 1.3333rem;
                                     margin: -1px;
                                     text-align: center;
@@ -263,7 +273,7 @@ form.charSheet {
                             height: 2.8666rem;
                             width: 2.8666rem;
                             -webkit-appearance: none;
-                            border: 1px solid black;
+                            border: 1px solid $cs-boarder;
                             padding: 15px;
                             border-radius: 0.8333rem;
                         }
@@ -277,14 +287,14 @@ form.charSheet {
                         input {
                             width: 2.8666rem;
                             height: 2.8666rem;
-                            border: 1px solid black;
+                            border: 1px solid $cs-boarder;
                             text-align: center;
                             border-radius: 0.8333rem;
                         }
                     }
 
                     div.list-section {
-                        border: 1px solid black;
+                        border: 1px solid $cs-boarder;
                         border-radius: 0.8333rem;
                         padding: 0.8333rem 5px;
 
@@ -313,7 +323,7 @@ form.charSheet {
                                     order: 3;
 
                                     span.skill {
-                                        color: $dark-bg;
+                                        color: #aaa;
                                     }
                                 }
 
@@ -322,7 +332,7 @@ form.charSheet {
                                     font-size: 1rem;
                                     text-align: center;
                                     border: 0;
-                                    border-bottom: 1px solid black;
+                                    border-bottom: 1px solid $cs-boarder;
                                     order: 2;
                                 }
 
@@ -330,7 +340,7 @@ form.charSheet {
                                     -webkit-appearance: none;
                                     width: 0.8333rem;
                                     height: 0.8333rem;
-                                    border: 1px solid black;
+                                    border: 1px solid $cs-boarder;
                                     border-radius: 0.8333rem;
                                     order: 1;
                                 }
@@ -353,7 +363,7 @@ form.charSheet {
                     width: 2.8666rem;
                     height: 2.8666rem;
                     text-align: center;
-                    border: 1px solid black;
+                    border: 1px solid $cs-boarder;
                     border-radius: 0.8333rem;
                 }
             }
@@ -366,10 +376,8 @@ form.charSheet {
         }
 
         section.combat {
-            background-color: $faded-bg;
             display: flex;
             flex-wrap: wrap;
-            border-radius: 0.8333rem;
 
             > div {
                 overflow: hidden;
@@ -389,9 +397,9 @@ form.charSheet {
                     label {
                         font-size: 0.5rem;
                         width: 50px;
-                        border: 1px solid black;
+                        border: 1px solid $cs-boarder;
                         border-top: 0;
-                        background-color: $bg;
+                        background-color: $background;
                         text-align: center;
                         padding-top: 5px;
                         padding-bottom: 5px;
@@ -402,7 +410,7 @@ form.charSheet {
                         height: 4.6667rem;
                         width: 4.6667rem;
                         border-radius: 0.8333rem;
-                        border: 1px solid black;
+                        border: 1px solid $cs-boarder;
                         text-align: center;
                         font-size: 2rem;
                     }
@@ -413,8 +421,8 @@ form.charSheet {
                 flex-basis: 100%;
 
                 > div.regular {
-                    background-color: $bg;
-                    border: 1px solid black;
+                    background-color: $background;
+                    border: 1px solid $cs-boarder;
                     margin: 0.8333rem;
                     margin-bottom: 5px;
                     border-radius: 0.8333rem 0.8333rem 0 0;
@@ -427,13 +435,13 @@ form.charSheet {
                         label {
                             font-size: 0.8333rem;
                             text-transform: none;
-                            color: $dark-bg;
+                            color: $text-primary;
                         }
 
                         input {
                             width: 40%;
                             border: 0;
-                            border-bottom: 1px solid #ddd;
+                            border-bottom: 1px solid $text-primary;
                             font-size: 1rem;
                             text-align: center;
                         }
@@ -442,6 +450,7 @@ form.charSheet {
                     > div.current {
                         display: flex;
                         flex-direction: column-reverse;
+                        background-color: $background;
 
                         label {
                             font-size: 0.8333rem;
@@ -463,11 +472,11 @@ form.charSheet {
                 > div.temporary {
                     margin: 0.8333rem;
                     margin-top: 0;
-                    border: 1px solid black;
+                    border: 1px solid $cs-boarder;
                     border-radius: 0 0 0.8333rem 0.8333rem;
                     display: flex;
                     flex-direction: column-reverse;
-                    background-color: $bg;
+                    background-color: $background;
 
                     label {
                         font-size: 0.8333rem;
@@ -487,12 +496,13 @@ form.charSheet {
 
             > div.hitdice {
                 > div {
-                    background-color: $bg;
+                    background-color: #fff;
                     margin: 0.8333rem;
-                    border: 1px solid black;
+                    border: 1px solid $cs-boarder;
                     border-radius: 0.8333rem;
                     display: flex;
                     flex-direction: column;
+                    background-color: $background;
 
                     > div.total {
                         display: flex;
@@ -502,7 +512,7 @@ form.charSheet {
 
                         label {
                             font-size: 0.8333rem;
-                            color: $dark-bg;
+                            color: #aaa;
                             margin: 0.25em;
                             text-transform: none;
                         }
@@ -511,7 +521,7 @@ form.charSheet {
                             font-size: 1rem;
                             flex-grow: 1;
                             border: 0;
-                            border-bottom: 1px solid #ddd;
+                            border-bottom: 1px solid $text-primary;
                             width: 50%;
                             margin-right: 0.25em;
                             padding: 0 0.25em;
@@ -552,11 +562,12 @@ form.charSheet {
             > div.deathsaves {
                 > div {
                     margin: 0.8333rem;
-                    background: $bg;
-                    border: 1px solid black;
+                    background: #fff;
+                    border: 1px solid $cs-boarder;
                     border-radius: 0.8333rem;
                     display: flex;
                     flex-direction: column-reverse;
+                    background-color: $background;
 
                     > div.label {
                         text-align: center;
@@ -593,12 +604,21 @@ form.charSheet {
                             -webkit-appearance: none;
                             width: 0.8333rem;
                             height: 0.8333rem;
-                            border: 1px solid black;
+                            border: 1px solid $cs-boarder;
                             border-radius: 0.8333rem;
+                            margin: 0 0.1rem 0 0.1rem;
                         }
 
                         input[type='checkbox']:checked {
-                            background-color: black;
+                            &[name='deathsuccess'] {
+                                background-color: $cs-deathsuccess-checked;
+                                border: 1px solid $cs-deathsuccess-checked;
+                            }
+
+                            &[name='deathfail'] {
+                                background-color: $cs-deathfail-checked;
+                                border: 1px solid $cs-deathfail-checked;
+                            }
                         }
                     }
                 }
@@ -606,7 +626,7 @@ form.charSheet {
         }
 
         section.attacksandspellcasting {
-            border: 1px solid black;
+            border: 1px solid $cs-boarder;
             border-radius: 0.8333rem;
             margin-top: 0.8333rem;
 
@@ -625,13 +645,13 @@ form.charSheet {
 
                     th {
                         font-size: 0.8333rem;
-                        color: #ddd;
+                        color: $text-primary;
                     }
 
                     input {
                         width: calc(100% - 4px);
-                        border: 0;
-                        background-color: $faded-bg;
+                        border: 1px solid $cs-boarder;
+                        background-color: $background;
                         font-size: 0.8333rem;
                         padding: 3px;
                     }
@@ -644,7 +664,7 @@ form.charSheet {
         }
 
         section.equipment {
-            border: 1px solid black;
+            border: 1px solid $cs-boarder;
             border-radius: 0.8333rem;
             margin-top: 0.8333rem;
 
@@ -667,7 +687,7 @@ form.charSheet {
                             align-items: center;
 
                             label {
-                                border: 1px solid black;
+                                border: 1px solid $cs-boarder;
                                 border-radius: 0.8333rem 0 0 0.8333rem;
                                 border-right: 0;
                                 width: 20px;
@@ -677,7 +697,7 @@ form.charSheet {
                             }
 
                             input {
-                                border: 1px solid black;
+                                border: 1px solid $cs-boarder;
                                 border-radius: 0.8333rem;
                                 width: 2.6667rem;
                                 padding: 0.8333rem 3px;
@@ -704,16 +724,14 @@ form.charSheet {
         }
 
         section.flavor {
-            padding: 0.8333rem;
-            background: $dark-bg;
             border-radius: 0.8333rem;
 
             div {
-                background: $bg;
+                background: $background;
                 display: flex;
                 flex-direction: column-reverse;
                 padding: 5px;
-                border: 1px solid black;
+                border: 1px solid $cs-boarder;
 
                 label {
                     text-align: center;
@@ -746,7 +764,7 @@ form.charSheet {
 
             div {
                 padding: 0.8333rem;
-                border: 1px solid black;
+                border: 1px solid $cs-boarder;
                 border-radius: 0.8333rem;
                 display: flex;
                 flex-direction: column-reverse;

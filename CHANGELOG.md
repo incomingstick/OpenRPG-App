@@ -4,80 +4,18 @@ f
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). However, note that all pre-v0.5.0 releases will have the suffix "-dev"
 
-## [Unreleased]
-### Added
-- We are now on the Arch User Repository and supporting Arch as our first Linux distro, as it is what I ([@incomingstick](http://github.comincomingstick)) use!
-    - You can use the PKGBUILD branch of this Repo to build from `makepkg` that way
-    - Clone us out of the AUR yourself by running `git clone https://aur.archlinux.org/openrpg-git.git && cd openrpg-git && makepkg -si`
-    - You can use your favorite AUR helper, such as `yay`
-        - Run `$ yay -S openrpg`
-- An ASCII character sheet in `data/` thanks to [@var-username](https://github.com/var-username)
-    - data/character_sheets/ascii_char_sheet
-    - "data/character_sheets/Blank ASCII Character Sheet.txt"
-- Added build info for Windows and improved the Unix documentation
-- Added an uninstall target to CMake and Make, allowing for the use of `make uninstall` to... uninstall
-    - cmake_uninstall.cmake.in
-- build.sh has a ton of new commands, including an uninstall command `$ ./build.sh uninstall`
-- This Changelog! You are likely looking at CHANGELOG.md
-- The OGL is now in our main LICENSE, in addition to the OSL, to hopefully cover our bases with that stuff... hopefully we don't accidentally use copyright WotC stuff, or anyones stuff for that matter
-- We now generate export headers via CMake for the Windows DLLs to ensure proper linking
-- Some suggested vim settings, if thats your editor of choice
-- TravisCI Windows builds! We are now testing Windows via TravisCI, as well as AppVeyor
-- OSC XCode8 tests on TravisCI!
-- Lots of namespacing to help prevent name collision when our project is used, the structure is as follows:
-    - `ORPG`
-    - `ORPG::Core`
-    - `ORPG::Utils`
-    - `ORPG::Roll`
-    - `ORPG::Names`
-    - `ORPG::Character`
-- `NameGenerator` class now has a constructor that takes a file location as a `std::string`, here are some important notes:
-    - By creating this constructor we are allowing an end user to specify the location the namelist we will read from. It is extremely important we explore this further. I [@incomingstick](http://github.comincomingstick)) do think this could prove a beneficial feature, if we allow end users to specify namelists.
-    - I [@incomingstick](http://github.comincomingstick)) created this function specifically to help the test suite. When testing on a fresh system, we are built before we test, but the release builds defines ASSET_LOC as: "/usr/local/data/openrpg" Because of this, it attempts to check a folder that has not been installed yet, and we need a way to NameGenerator to our source data folder.
-- Character Generator program now takes full advantage of our Names library to allow for the use of first and last names
-- Added the Elf race to the Characters library
-    - `class Elf : public Character`
-    - `class HighElf : public Elf`
-- `CharacterFactory` class has a new constructor that takes a name as a `std::string`
-- Character library has a new class, `Skill` that helps represent the 5e Skill in a better way, and makes use of the new `EnumSkill` enum to pair score to human readable tags thanks to [@var-username](https://github.com/var-username)
-
+## [Unreleased / 0.5.0]
 ### Changed
-- Building Libraries as Dynamic instead of Static, because why wouldn't a game want Dynamic/Shared libraries!
-- Split .github/ISSUE_TEMPLATE.md into two files:
-    - .github/FEATURE_REQUEST.md
-    - .github/BUG_REPORT.md
-- Renamed `int random(...)` to `int randomInt(...)` in the Utils library thanks to [@var-username](https://github.com/var-username)
-- Fixed some install locations to better form to different platforms
-- build.bat now has actual commands such as `> .\build.bat clean`, or `> .\build.bat rebuild` as well as better error reporting
-- Make sure we don't accidentally add some packaged/compressed files to the repo, cuz that would be obnoxious
-- Lots of "auto-fication" across the project, as well as other C++11 improvements
-- Lots of restructuring within the files themeselves to help keep things better organized
-- Lots of additional documention comments throughout the project for you other devs out there
-- Levels is now an externally definded global variable in the `include/character/character.h` header, so you must link to the Character library to use is
-- The `Skills` struct is now a class that acts as a wrapper of sorts for the `Skill` class and the `EnumSkill` enum thanks to [@var-username](https://github.com/var-username)
-- `Character` class now uses the `Skills` class internally and has a new function to interface with it via `void update_skills()` thanks to [@var-username](https://github.com/var-username)
-- Some header guards improved to better show their purpose in the project file system
-
-### Fixed
-- Typo in the Warforged namelist that gave "Zealot" a period (was "Zealot.")
-- Consistant URL usage for [openrpg.io](https://openrpg.io)
-- Better CMake output to help you developers understand whats going where / when.
-- When installed on some systems, the creation of a data folder could potentially cause VSCode to fail to open
-- Linking issues when running `make check` could cause some tests to fail, on some systems
-- Issue when running `make check` on a release build, that caused the tests to be unable to locate the data assets
-- A bug that would cause some divide by zero operations, as well as preventing the rolling of a 1 sided die thanks to [@tehguy](https://github.com/tehguy)
-- A typo in the roll parser test that was incorrectly validating d6's thanks to [@pashcovich](https://github.com/pashcovich)
-- Missing note in Core::print_basic_help() about how to exit OpenRPG.
-
-### Removed
-- Obliterated the old Name Generator test src/tests/name-generator-test.cpp
-
+- Full Divergence from the OpenRPG core repo. This changelog will now JUST handle changes and updates to the OpenRPG Desktop App. All of the below release information (<= v0.4.4-dev) is in reference to [OpenRPG Core](https://github.com/incomingstick/OpenRPG)
+- Moved the `electron-gui` branch of the Core repository into it's own repo (this (meta, I know!! xD))
+- Swapped from Javascript and pure HTML to Typescript and React JSX, using Webpack to build the Electron app
+- Restructured the filesystem to better adhear to Webpack/React standards
 
 ## [0.4.4-dev] - 2017-11-05
 ### Added
 - Windows build script: build.bat
 - A `help` or `h` command in the orpg console `orpg >`
-- A Code of Conduct! See .github/CODE_OF_CONDUCT.md
+- A Code of Conduct! See [.github/CODE_OF_CONDUCT.md](.github/CODE_OF_CONDUCT.md)
 
 ### Changed
 - Put back the Linux Clang 5.0 build that was hidden in the last patch
@@ -87,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - All Unix/POSIX headers to allow for compilation on Windows
 - Some redundant headers
 - The `get_console_width()` and `get_console_height()` functions
-- The TODO's list from the Contributing file, .github/CONTRIBUTING.md
+- The TODO's list from the Contributing file, [.github/CONTRIBUTING.md](.github/CONTRIBUTING.md)
 
 
 ## [0.4.3-dev] - 2017-10-14
@@ -451,7 +389,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The `openrpg` command welcome banner
     - src/assets/banners/welcome_mat1
 
-[Unreleased]: https://github.com/incomingstick/OpenRPG/compare/v0.4.4-dev...patch-v0.5.0-dev
+[Unreleased]: https://github.com/incomingstick/OpenRPG-App/compare/v0.5.0...master
+[0.5.0]: https://github.com/incomingstick/OpenRPG-App/releases/tag/v0.5.0
 [0.4.4-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.4.3-dev...v0.4.4-dev
 [0.4.3-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.4.2-dev...v0.4.3-dev
 [0.4.2-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.4.1-dev...v0.4.2-dev

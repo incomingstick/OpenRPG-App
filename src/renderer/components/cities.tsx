@@ -18,7 +18,3 @@ export default class CitiesScreen extends React.Component<any, any> {
         );
     }
 }
-
-{
-    /*  */
-}

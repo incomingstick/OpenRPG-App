@@ -19,8 +19,6 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
         this.state = {
             screen: 'welcome'
         };
-
-        this.handleClick = this.handleClick.bind(this);
     }
 
     public render() {
@@ -38,7 +36,7 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
                     onClick={this.handleClick}>
                     <FontAwesomeIcon icon={faHome} />
                 </Menu.Item>
-                {/* <!-- TODO Is this the correct tooltip --> */}
+                {/* TODO Is this the correct tooltip */}
                 <Menu.Item
                     id='button-characters'
                     data-section='character'
@@ -49,7 +47,7 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
                     onClick={this.handleClick}>
                     <FontAwesomeIcon icon={faFile} />
                 </Menu.Item>
-                {/* <!-- TODO Is this the correct tooltip / icon --> */}
+                {/* TODO Is this the correct tooltip / icon */}
                 <Menu.Item
                     id='button-cities'
                     data-section='cities'
@@ -60,7 +58,7 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
                     onClick={this.handleClick}>
                     <FontAwesomeIcon icon={faBuilding} />
                 </Menu.Item>
-                {/* <!-- TODO Is this the correct tooltip --> */}
+                {/* TODO Is this the correct tooltip */}
                 <Menu.Item
                     id='button-world-maps'
                     data-section='world-maps'
@@ -71,7 +69,7 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
                     onClick={this.handleClick}>
                     <FontAwesomeIcon icon={faMap} />
                 </Menu.Item>
-                {/* <!-- TODO Is this the correct tooltip --> */}
+                {/* TODO Is this the correct tooltip */}
                 <Menu.Item
                     id='button-campaign'
                     data-section='campaign'
@@ -82,7 +80,7 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
                     onClick={this.handleClick}>
                     <FontAwesomeIcon icon={faGlobe} />
                 </Menu.Item>
-                {/* <!-- TODO Is this the correct tooltip --> */}
+                {/* TODO Is this the correct tooltip */}
                 <Menu.Item
                     id='button-settings'
                     data-section='settings'
@@ -97,6 +95,13 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
         );
     }
 
+    /**
+     * @desc This private function handles the click event triggered from one of this SideBar Menu.Item's being clicked. It calles this
+     * SideBar's clickCallback function, passing the name of the clicked Menu.Item. We set the screen state of this SideBar to that name.
+     *
+     * @param e A React.MouseEvent<HTMLAnchorElement, MouseEvent> that was triggered from the current click being handled
+     * @param data MenuItemProps the properties of the MenuItem (Menu.Item) that was clicked
+     */
     private handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, data: MenuItemProps) => {
         e.preventDefault();
 

@@ -1,9 +1,52 @@
+/**
+ * NOTE(incomingstick): This file exists as a global variables file. All Sass variables used in the project should
+ * be located here, so that all sass files may have access to them. This allows us to remain consistant throughout
+ * the project. 
+ */
+
 // branding stuff and colors
-$logo-primary: #2196f3;
-$background: #333;
+// Color1 is the OpenRPG logo color
+$color0: #201019;
+$color1: #2196f3;
+$color2: #7a7ea0;
+$color3: #8779a0;
+$color4: #655ea0;
+$color5: #3770a0;
+$color6: #355ba0;
+$color7: #a2729e;
+$color8: #80385c;
+$color9: #3479c8;
+$color10: #1a59a0;
+$color11: #c8536f;
+$color12: #c87fc8;
+$color13: #bb7dc8;
+$color14: #8184c8;
+$color15: #e3ac28;
+$color16: #cda869;
+$color17: #9b703f;
+$color18: #323537;
+$color19: #464b50;
+$color20: #838184;
+$color21: #c3c3c3;
+
+$background: $color0;
+$foreground: $color21;
+$logo-primary: $color1;
+$text-primary: $color21;
+$text-important: $color15;
 
 // sidebar stuff
-$sidebar-width: 5rem;
+$sidebar-bg: $color0;
+$sidebar-width: 4rem;
+
+// character sheet stuff
+$cs-section-bg: $color18;
+$cs-boarder: $color8;
+$cs-input-fg: $color15;
+$cs-deathsuccess-checked: $color10;
+$cs-deathfail-checked: $color11;
 
 // footer stuff
 $footer-height: 2rem;
+$footer-background: $color12;
+$footer-foreground: $color18;

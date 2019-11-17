@@ -19,7 +19,7 @@
 
 /* Wrappers */
 #sidebar-wrapper {
-    background: #1a1a1a;
+    background: $sidebar-bg;
     min-height: calc(100vh - #{$footer-height} + 0.3rem);
     overflow-x: hidden;
     overflow-y: auto;

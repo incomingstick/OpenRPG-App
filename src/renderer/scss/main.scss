@@ -96,8 +96,8 @@ body {
     font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-size: 1rem;
     line-height: 1.42857143;
-    color: #ccc;
-    background-color: #363636;
+    color: $text-primary;
+    background-color: $background;
 }
 
 html,
@@ -132,7 +132,7 @@ a {
     min-height: 100%;
     padding-top: 1%;
     overflow: auto;
-    background-image: linear-gradient(rgba(51, 51, 51, 1), rgba(51, 51, 51, 1));
+    background-image: $background;
     background-size: cover;
     background-position: center center;
     background-color: $background;
@@ -307,13 +307,13 @@ a.nav-link {
 footer {
     font-size: 1rem;
     text-align: left;
-    background-color: $logo-primary;
+    background-color: $footer-background;
     position: fixed;
     height: $footer-height;
     bottom: 0;
     width: 100%;
     z-index: 1030;
-    color: #fff;
+    color: $footer-foreground;
 
     li {
         display: inline-block;

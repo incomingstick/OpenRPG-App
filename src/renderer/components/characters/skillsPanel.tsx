@@ -1,9 +1,9 @@
 import React from 'react';
-import SavesItem from './savesItem';
-import { ScoreList } from './characterSheet';
+import SkillItem from './skillItem';
+import { SkillsList } from './characterSheet';
 
 type TSavesPanelProps = {
-    scoreList: ScoreList;
+    skillList: SkillsList;
 };
 
 export default class SavesPanel extends React.Component<TSavesPanelProps, any> {
@@ -14,14 +14,14 @@ export default class SavesPanel extends React.Component<TSavesPanelProps, any> {
     public render() {
         const items: any = [];
 
-        for (const [index, item] of this.props.scoreList.entries()) {
-            items.push(<SavesItem key={index} scoreName={item.scoreName} />);
+        for (const [index, item] of this.props.skillList.entries()) {
+            items.push(<SkillItem key={index} skillName={item.skillName} scoreID={item.scoreID} />);
         }
 
         return (
-            <div className='saves list-section box'>
+            <div className='skills list-section box'>
                 <ul>{items}</ul>
-                <div className='label'>Saving Throws</div>
+                <div className='label'>Skills</div>
             </div>
         );
     }
