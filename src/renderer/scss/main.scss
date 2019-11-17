@@ -52,6 +52,20 @@ html {
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
 
+
+    // TODO make custom scrollbar
+    ::-webkit-scrollbar-track {
+        background: $scrollbar-bg;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: $scrollbar-fg;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: $scrollbar-hover;
+    }
+
     // Default Font Size
     font-size: 16px;
     // UHD-1
@@ -112,6 +126,11 @@ body {
 h1 {
     color: #eee;
     font-weight: 700;
+    margin-bottom: 0.3333rem;
+
+    &:last-child {
+        margin-bottom: 0.3333rem;
+    }
 }
 
 h2 {

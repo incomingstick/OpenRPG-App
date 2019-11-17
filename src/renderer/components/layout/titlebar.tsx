@@ -13,7 +13,7 @@ export default class TitleBar extends React.Component<any, any> {
             <header id='titlebar'>
                 <img src={ORPGLogo} className='logo' />
                 <div id='titlebar-menu'>
-                    {/* TODO Menu Items go here */}
+                    {/* TODO Vertically center these */}
                     <Dropdown className='titlebar-item' text='File' icon={null}>
                         <Dropdown.Menu>
                             <Dropdown.Item text='Exit' onClick={this.handleMenuClick} />
@@ -53,11 +53,10 @@ export default class TitleBar extends React.Component<any, any> {
         const win = remote.getCurrentWindow();
 
         switch (data.text) {
-            case 'Exit':
-                {
-                    win.close();
-                }
+            case 'Exit': {
+                win.close();
                 break;
+            }
 
             default: {
                 console.log('Unknown button click in title bar menu');
@@ -71,31 +70,27 @@ export default class TitleBar extends React.Component<any, any> {
         const win = remote.getCurrentWindow();
 
         switch (e.currentTarget.id) {
-            case 'min-button':
-                {
-                    win.minimize();
-                }
+            case 'min-button': {
+                win.minimize();
                 break;
+            }
 
-            case 'max-button':
-                {
-                    win.maximize();
-                    document.body.classList.add('maximized');
-                }
+            case 'max-button': {
+                win.maximize();
+                document.body.classList.add('maximized');
                 break;
+            }
 
-            case 'restore-button':
-                {
-                    win.restore();
-                    document.body.classList.remove('maximized');
-                }
+            case 'restore-button': {
+                win.restore();
+                document.body.classList.remove('maximized');
                 break;
+            }
 
-            case 'close-button':
-                {
-                    win.close();
-                }
+            case 'close-button': {
+                win.close();
                 break;
+            }
 
             default: {
                 console.log('Unknown button click in title bar menu');

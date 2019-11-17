@@ -27,18 +27,11 @@ export default class CharacterScreen extends React.Component<any, any> {
             <div className='section-template'>
                 <div id='character-section'>
                     <div className='character-header'>
-                        <div>
-                            <h1>Characters</h1>
-                        </div>
-                        <h2>Your Characters</h2>
+                        <h1>Characters</h1>
                     </div>
 
                     <div className='container'>
-                        <h3>TODO Do character creator and other character stuff here</h3>
-                        <Tab
-                            // Menu={{ color: 'grey', inverted: true, attached: false, tabular: false }}
-                            panes={this.panes}
-                        />
+                        <Tab panes={this.panes} />
                     </div>
                 </div>
             </div>
