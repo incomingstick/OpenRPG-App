@@ -113,18 +113,20 @@
             cursor: default;
 
             &:hover {
-                background: rgba(255, 255, 255, 0.1);
+                background: rgba(255, 255, 255, 0.2);
 
                 &#close-button {
-                    background: rgba(255, 0, 0, 0.5);
+                    background: rgba(255, 0, 0, 1.0);
+                    font-weight: bold;
+                    color: #ddd;
                 }
             }
 
             &:active {
-                background: rgba(255, 255, 255, 0.2);
+                background: rgba(255, 255, 255, 0.3);
 
                 &#close-button {
-                    background: rgba(255, 0, 0, 0.6);
+                    background: rgba(255, 0, 0, 1.0);
                 }
             }
         }
