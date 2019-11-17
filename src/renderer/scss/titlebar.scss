@@ -7,7 +7,7 @@
     }
 
     #window-title {
-        margin-left: 0.8rem;
+        margin: 0 auto;
     }
 
     #restore-button {
@@ -25,7 +25,6 @@
     left: 0;
     height: $titlebar-height;
     width: 100%;
-    font-family: 'Segoe MDL2 Assets', 'Segoe UI', sans-serif;
     background: $background;
     -webkit-app-region: drag;
     z-index: 9999;
@@ -35,9 +34,10 @@
         grid-column: 1;
         display: flex;
         align-items: center;
-        margin-left: 0.75rem;
         overflow-x: hidden;
-        height: 1.75rem;
+        height: 100%;
+        padding: $titlebar-pad-top;
+        margin-left: 1rem;
     }
 
     #titlebar-menu {
@@ -56,11 +56,10 @@
         outline: 0;
 
         .titlebar-item {
-            padding: 0 0.5rem;
+            padding: $titlebar-pad-top 0.5rem 0;
             position: relative;
             grid-row: 1 / span 1;
             height: 100%;
-            top: 2px;
 
             &:hover {
                 background: rgba(255, 255, 255, 0.1);
@@ -89,7 +88,8 @@
         position: absolute;
         left: 50%;
         transform: translate(-50%, 0px);
-        top: 0.2rem;
+        top: 0;
+        padding-top: $titlebar-pad-top;
     }
 
     #window-controls {

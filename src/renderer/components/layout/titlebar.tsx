@@ -2,6 +2,9 @@ import React from 'react';
 import { remote } from 'electron';
 import ORPGLogo from '../../assets/images/d20_transparent.png';
 import { Dropdown, DropdownItemProps } from 'semantic-ui-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWindowMinimize, faClone, faSquare } from '@fortawesome/free-regular-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 require('../../scss/titlebar.scss');
 
@@ -28,16 +31,16 @@ export default class TitleBar extends React.Component<any, any> {
                 <div id='window-title'>{win.getTitle()}</div>
                 <div id='window-controls'>
                     <div className='button' id='min-button' onClick={this.handleWindowControlClick}>
-                        <span>&#xE921;</span>
+                        <FontAwesomeIcon icon={faWindowMinimize} />
                     </div>
                     <div className='button' id='max-button' onClick={this.handleWindowControlClick}>
-                        <span>&#xE922;</span>
+                    <FontAwesomeIcon icon={faSquare} />
                     </div>
                     <div className='button' id='restore-button' onClick={this.handleWindowControlClick}>
-                        <span>&#xE923;</span>
+                        <FontAwesomeIcon icon={faClone} flip='both' />
                     </div>
                     <div className='button' id='close-button' onClick={this.handleWindowControlClick}>
-                        <span>&#xE8BB;</span>
+                        <FontAwesomeIcon icon={faTimes} />
                     </div>
                 </div>
             </header>
