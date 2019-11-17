@@ -25,7 +25,7 @@
     overflow-y: auto;
     width: $sidebar-width;
     position: fixed;
-    top: 0;
+    top: $titlebar-height;
     left: 0;
 }
 
@@ -53,8 +53,9 @@
         border: none;
         background-color: transparent;
         outline: none;
-        color: #ddd;
-        padding: 1.3rem 1rem;
+        color: $icon-color;
+        padding: 0.8rem;
+        margin-bottom: 0.7rem !important;
         text-decoration: none;
 
         > svg {

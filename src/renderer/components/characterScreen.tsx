@@ -36,7 +36,7 @@ export default class CharacterScreen extends React.Component<any, any> {
                     <div className='container'>
                         <h3>TODO Do character creator and other character stuff here</h3>
                         <Tab
-                            menu={{ color: 'grey', inverted: true, attached: false, tabular: false }}
+                            // Menu={{ color: 'grey', inverted: true, attached: false, tabular: false }}
                             panes={this.panes}
                         />
                     </div>

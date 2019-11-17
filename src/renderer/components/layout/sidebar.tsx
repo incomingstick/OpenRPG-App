@@ -3,7 +3,7 @@ import { Menu, MenuItemProps } from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faFile, faBuilding, faMap, faGlobe, faCog } from '@fortawesome/free-solid-svg-icons';
 
-require('../scss/sidebar.scss');
+require('../../scss/sidebar.scss');
 
 type TSidebarProps = {
     clickCallback: (callbackData: string) => void;

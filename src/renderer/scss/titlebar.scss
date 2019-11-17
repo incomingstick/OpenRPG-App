@@ -1,0 +1,150 @@
+@import 'variables';
+
+.maximized {
+    #titlebar {
+        width: 100%;
+        padding: 0;
+    }
+
+    #window-title {
+        margin-left: 12px;
+    }
+
+    #restore-button {
+        display: flex !important;
+    }
+
+    #max-button {
+        display: none !important;
+    }
+}
+
+#titlebar {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    height: $titlebar-height - 0.2rem;
+    margin-top: 0.2rem;
+    width: 100%;
+    font-family: 'Segoe MDL2 Assets', 'Segoe UI', sans-serif;
+    background: $background;
+    -webkit-app-region: drag;
+    z-index: 9999;
+    color: $titlebar-fg;
+
+    .logo {
+        grid-column: 1;
+        display: flex;
+        align-items: center;
+        margin-left: 0.75rem;
+        overflow-x: hidden;
+        height: 1.75rem;
+    }
+
+    #titlebar-menu {
+        display: grid;
+        position: absolute;
+        top: -2px;
+        left: 3.5rem;
+        height: 100%;
+        -webkit-app-region: no-drag;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0 8px;
+        cursor: default;
+        zoom: 1;
+        white-space: nowrap;
+        outline: 0;
+
+        .titlebar-item {
+            padding: 0 0.5rem;
+            position: relative;
+            grid-row: 1 / span 1;
+            height: 100%;
+            top: 2px;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            &:active {
+                background: rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        .menu {
+            background: $titlebar-menu-bg;
+            border-radius: 0;
+
+            .item {
+                color: $titlebar-menu-fg;
+
+                &:hover {
+                    background-color: $titlebar-menu-item-hover;
+                }
+            }
+        }
+    }
+
+    #window-title {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0px);
+        top: 0.2rem;
+    }
+
+    #window-controls {
+        display: grid;
+        grid-template-columns: repeat(3, 3rem);
+        position: absolute;
+        top: -2px;
+        right: 0;
+        height: 100%;
+        font-size: 0.8rem;
+        -webkit-app-region: no-drag;
+
+        .button {
+            grid-row: 1 / span 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            user-select: none;
+            cursor: default;
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.1);
+
+                &#close-button {
+                    background: rgba(255, 0, 0, 0.5);
+                }
+            }
+
+            &:active {
+                background: rgba(255, 255, 255, 0.2);
+
+                &#close-button {
+                    background: rgba(255, 0, 0, 0.6);
+                }
+            }
+        }
+
+        #min-button {
+            grid-column: 1;
+        }
+
+        #max-button,
+        #restore-button {
+            grid-column: 2;
+        }
+
+        #restore-button {
+            display: none;
+        }
+
+        #close-button {
+            grid-column: 3;
+        }
+    }
+}

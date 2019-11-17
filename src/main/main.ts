@@ -1,5 +1,5 @@
 import { autoInject } from 'async';
-import { app, BrowserWindow, dialog, ipcMain, Menu, shell } from 'electron';
+import { app, BrowserWindow, ipcMain, shell } from 'electron';
 import * as log from 'electron-log';
 import * as path from 'path';
 import * as url from 'url';
@@ -20,61 +20,13 @@ function createWindow() {
     win = new BrowserWindow({
         width: 1280,
         height: 720,
+        frame: false,
         title: 'OpenRPG Client v' + app.getVersion(),
-        backgroundColor: '#363636',
+        backgroundColor: '#201019',
         webPreferences: {
             nodeIntegration: true
         }
     });
-
-    const menuTemplate: any[] = [
-        {
-            role: 'window',
-            submenu: [{ role: 'minimize' }, { role: 'close' }]
-        }
-    ];
-
-    if (process.platform === 'darwin') {
-        menuTemplate.unshift({
-            label: app.getName(),
-            submenu: [
-                {
-                    label: 'About OpenRPG',
-                    click: async () => {
-                        win.webContents.send('show-about-modal');
-                    }
-                },
-                {
-                    label: 'Check for Updates...',
-                    click: async () => {
-                        const results = await autoUpdater.checkForUpdatesAndNotify();
-                        if (!results) {
-                            dialog.showMessageBox({
-                                type: 'info',
-                                title: 'Checked for Updates',
-                                message: 'There are currently no updates available.'
-                            });
-                        }
-                    }
-                },
-                { type: 'separator' },
-                { role: 'services', submenu: [] },
-                { type: 'separator' },
-                { role: 'hide' },
-                { role: 'hideothers' },
-                { role: 'unhide' },
-                { type: 'separator' },
-                { role: 'quit' }
-            ]
-        });
-    }
-
-    const menu = Menu.buildFromTemplate(menuTemplate);
-    Menu.setApplicationMenu(menu);
-
-    if (process.platform === 'win32') {
-        win.setMenu(null);
-    }
 
     if (DEBUG) {
         win.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`);
@@ -158,7 +110,7 @@ app.on('ready', () => {
                 api.config.save();
             });
 
-            ipcMain.on('check-for-addon-updates', (event: any) => {
+            ipcMain.on('check-for-addon-updates', () => {
                 api.updateService.startCheckingForUpdates();
             });
 
@@ -169,17 +121,17 @@ app.on('ready', () => {
             //
             // Addon Updater Events
             //
-            api.updateService.events().on('update-check-started', (event: any) => {
+            api.updateService.events().on('update-check-started', () => {
                 log.info('update-check-started');
                 win.webContents.send('update-check-started');
             });
 
-            api.updateService.events().on('update-available', (event: any) => {
+            api.updateService.events().on('update-available', () => {
                 log.info('update-available');
                 win.webContents.send('update-available');
             });
 
-            api.updateService.events().on('update-unnecessary', (event: any) => {
+            api.updateService.events().on('update-unnecessary', () => {
                 log.info('update-unnecessary');
                 win.webContents.send('update-unnecessary');
             });

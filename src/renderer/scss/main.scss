@@ -98,6 +98,7 @@ body {
     line-height: 1.42857143;
     color: $text-primary;
     background-color: $background;
+    border: 0;
 }
 
 html,
@@ -130,7 +131,6 @@ a {
 #app {
     height: 100%;
     min-height: 100%;
-    padding-top: 1%;
     overflow: auto;
     background-image: $background;
     background-size: cover;
@@ -180,7 +180,7 @@ a {
     padding: $sidebar-width / 4;
     width: calc(100% - #{$sidebar-width});
     position: absolute;
-    top: 0;
+    top: $titlebar-height;
     left: $sidebar-width;
 }
 

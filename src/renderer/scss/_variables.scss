@@ -35,9 +35,18 @@ $logo-primary: $color1;
 $text-primary: $color21;
 $text-important: $color15;
 
+// titlebar stuff
+$titlebar-bg: $color0;
+$titlebar-fg: $color7;
+$titlebar-height: 2.2rem;
+$titlebar-menu-bg: $color8;
+$titlebar-menu-fg: #cccccc;
+$titlebar-menu-item-hover: $color4;
+
 // sidebar stuff
 $sidebar-bg: $color0;
 $sidebar-width: 4rem;
+$icon-color: $color7;
 
 // character sheet stuff
 $cs-section-bg: $color18;

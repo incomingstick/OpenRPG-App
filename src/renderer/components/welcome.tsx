@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Grid, Form, Table, Input, List, InputProps, Button, Accordion, Card } from 'semantic-ui-react';
-import ORPGLogo from '../assets/images/d20_transparent.png';
 import { die_eval, swap_drop, allow_drop, start_drag } from '../../common/scripts';
 import { ORPG_DOCS, ORPG_REPO, ORPG_BLOG } from '../../common/globals';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -30,7 +29,6 @@ export default class WelcomeScreen extends React.Component<any, TWelcomeState> {
             <div className='section-template'>
                 <div id='welcome-section'>
                     <div className='welcome-header'>
-                        <img src={ORPGLogo} height={45} />
                         <h1>OpenRPG</h1>
                         <h2>Your tabletop RPG workbench</h2>
                     </div>
