@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
-import { Grid } from 'semantic-ui-react';
 import Sidebar from './layout/sidebar';
 import Titlebar from './layout/titlebar';
 import CharacterScreen from './characterScreen';
@@ -31,21 +30,15 @@ class AppContainer extends React.Component<any, TAppContainerState> {
         return (
             <>
                 <Titlebar />
-
                 <div id='wrapper'>
-                    <Grid>
-                        <Grid.Column className='navbar navbar-fixed-top js-nav' id='sidebar-wrapper' role='navigation'>
-                            <Sidebar clickCallback={this.sidebarCallback} />
-                        </Grid.Column>
+                    <div id='sidebar-wrapper' role='navigation'>
+                        <Sidebar clickCallback={this.sidebarCallback} />
+                    </div>
 
-                        <main id='main-content-wrapper'>
-                            <this.CurrentScreen />
-                        </main>
-                        {/* <!-- end main-content-wrapper --> */}
-                    </Grid>
+                    <main id='main-content-wrapper'>
+                        <this.CurrentScreen />
+                    </main>
                 </div>
-                {/* <!-- end wrapper --> */}
-
                 <footer>
                     <div className='container'>
                         <p>

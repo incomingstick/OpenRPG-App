@@ -10,7 +10,11 @@ require('../../scss/titlebar.scss');
 
 /**
  * TODO(incomingstick):
- * - Add About Modal callback function
+ * - Add Documentation callback funtion
+ * - Add Changelog callback funtion
+ * - Add Report Issue callback funtion
+ * - Add View License callback function
+ * - Add About callback function
  * - Add menu hotkey/shortcuts
  * - Add the ability to filter menu items out based on build type (i.e hide some items for the release build)
  * - Allow mouse to hover across the bar when a single item has been clicked
@@ -39,6 +43,20 @@ export default class TitleBar extends React.Component<any, any> {
         {
             itemLabel: 'Help',
             submenu: [
+                {
+                    itemLabel: 'Documentation'
+                },
+                {
+                    itemLabel: 'Changelog',
+                    divider: true
+                },
+                {
+                    itemLabel: 'Report Issue',
+                    divider: true
+                },
+                {
+                    itemLabel: 'View License'
+                },
                 {
                     itemLabel: 'Toggle Developers Tools',
                     itemCallback: () => {
@@ -91,9 +109,9 @@ export default class TitleBar extends React.Component<any, any> {
      * @desc This function takes in a TitlebarMenu (currently defined only as this.titlebarMenu) and builds a
      * SemanticUI Dropdown Menu. To modify the contents of this menu, edit the private member variable titlebarMenu
      * above. This function is recursive.
-     * 
+     *
      * @param input the current TitlebarMenu being passed. The root level is the the member variable titlebarMenu
-     * 
+     *
      * @return a fully built SemanticUi Dropdown menu system as a JSX.Element
      */
     private buildMenu = (input: TitlebarMenu) => {
@@ -126,7 +144,7 @@ export default class TitleBar extends React.Component<any, any> {
      * - The app will fill the whole screen
      * - The app will restore to its previous state (🐞 see the FIXME below)
      * - The app will exit
-     * 
+     *
      * FIXME(incomingstick): 3/4 of these buttons currently work, however the "restore" function is bugged. This seems to be an
      * Electron (or upstream) issue.
      */

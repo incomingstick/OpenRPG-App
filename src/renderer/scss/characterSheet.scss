@@ -31,21 +31,31 @@ div.box {
     margin-top: 0.8333rem;
 }
 
+#character-header {
+    margin-bottom: 1rem;
+}
+
 #character-section {
-    .ui.attached.tabular.menu {
-        border-color: $cs-boarder;
+    .ui {
+        &.bottom.attached.segment.active.tab {
+            overflow: auto;
+        }
 
-        a {
-            &.item {
-                color: $text-primary;
-            }
+        &.attached.tabular.menu {
+            border-color: $cs-boarder;
 
-            &.active {
-                background: $background;
-                border-color: $cs-boarder;
-
+            a {
                 &.item {
                     color: $text-primary;
+                }
+
+                &.active {
+                    background: $background;
+                    border-color: $cs-boarder;
+
+                    &.item {
+                        color: $text-primary;
+                    }
                 }
             }
         }

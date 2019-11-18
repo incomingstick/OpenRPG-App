@@ -1,36 +1,14 @@
 @import 'variables';
 
-/* Open nav stuff */
-.nav .open > a {
-    background-color: transparent;
-}
-
-.nav .open > a:hover {
-    background-color: transparent;
-}
-
-.nav .open > a:focus {
-    background-color: transparent;
-}
-
-.navbar {
-    padding: 0;
-}
-
-/* Wrappers */
 #sidebar-wrapper {
+    padding: 0;
     background: $sidebar-bg;
     min-height: calc(100vh - #{$footer-height} + 0.3rem);
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
     width: $sidebar-width;
     position: fixed;
     top: $titlebar-height;
     left: 0;
-}
-
-#sidebar-wrapper::-webkit-scrollbar {
-    display: none;
 }
 
 /* Sidebar nav styles */
