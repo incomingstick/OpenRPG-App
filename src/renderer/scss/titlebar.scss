@@ -68,17 +68,25 @@
             &:active {
                 background: rgba(255, 255, 255, 0.2);
             }
-        }
 
-        .menu {
-            background: $titlebar-menu-bg;
-            border-radius: 0;
+            .menu {
+                background: $titlebar-menu-bg;
+                border-radius: 0;
+                padding: 0.5rem 0.1rem;
 
-            .item {
-                color: $titlebar-menu-fg;
+                .item {
+                    color: $titlebar-menu-fg;
+                    padding: 0.5rem 1rem !important;
 
-                &:hover {
-                    background-color: $titlebar-menu-item-hover;
+                    &:hover {
+                        color: #fff;
+                        background-color: $titlebar-menu-item-hover;
+                    }
+                }
+
+                .divider {
+                    border-color: $titlebar-menu-fg;
+                    margin: 0.3rem 0.5rem;
                 }
             }
         }

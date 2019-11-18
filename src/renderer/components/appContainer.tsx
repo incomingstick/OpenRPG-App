@@ -26,7 +26,7 @@ class AppContainer extends React.Component<any, TAppContainerState> {
     }
 
     public render() {
-        document.title = 'OpenRPG Client v' + PACKAGE_VERSION;
+        document.title = 'OpenRPG v' + PACKAGE_VERSION;
 
         return (
             <>

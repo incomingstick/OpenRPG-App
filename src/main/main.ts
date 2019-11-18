@@ -21,7 +21,6 @@ function createWindow() {
         width: 1280,
         height: 720,
         frame: false,
-        title: 'OpenRPG Client v' + app.getVersion(),
         backgroundColor: '#201019',
         webPreferences: {
             nodeIntegration: true
