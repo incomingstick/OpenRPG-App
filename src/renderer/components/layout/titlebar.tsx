@@ -1,10 +1,11 @@
 import React from 'react';
-import { remote } from 'electron';
+import { remote, shell } from 'electron';
 import ORPGLogo from '../../assets/images/d20_transparent.png';
-import { Dropdown, DropdownItemProps } from 'semantic-ui-react';
+import { Dropdown, DropdownItemProps, Modal, Button } from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowMinimize, faClone, faSquare } from '@fortawesome/free-regular-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { ORPG_DOCS, ORPG_BUGS } from '../../../common/globals';
 
 require('../../scss/titlebar.scss');
 
@@ -20,6 +21,11 @@ require('../../scss/titlebar.scss');
  * - Allow mouse to hover across the bar when a single item has been clicked
  */
 
+type TitleBarState = {
+    changelongOpen: boolean;
+    licenseOpen: boolean;
+};
+
 type TitlebarMenu = {
     itemLabel: string;
     itemCallback?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, data: DropdownItemProps) => any;
@@ -27,7 +33,7 @@ type TitlebarMenu = {
     divider?: boolean;
 }[];
 
-export default class TitleBar extends React.Component<any, any> {
+export default class TitleBar extends React.Component<any, TitleBarState> {
     private titlebarMenu: TitlebarMenu = [
         {
             itemLabel: 'File',
@@ -44,18 +50,32 @@ export default class TitleBar extends React.Component<any, any> {
             itemLabel: 'Help',
             submenu: [
                 {
-                    itemLabel: 'Documentation'
+                    itemLabel: 'Documentation',
+                    itemCallback: () => {
+                        shell.openExternal(ORPG_DOCS);
+                    }
                 },
                 {
                     itemLabel: 'Changelog',
+                    itemCallback: () => {
+                        if (this.state.changelongOpen === true) this.setState({ changelongOpen: false });
+                        else this.setState({ changelongOpen: true });
+                    },
                     divider: true
                 },
                 {
                     itemLabel: 'Report Issue',
+                    itemCallback: () => {
+                        shell.openExternal(ORPG_BUGS);
+                    },
                     divider: true
                 },
                 {
-                    itemLabel: 'View License'
+                    itemLabel: 'View License',
+                    itemCallback: () => {
+                        if (this.state.licenseOpen === true) this.setState({ licenseOpen: false });
+                        else this.setState({ licenseOpen: true });
+                    }
                 },
                 {
                     itemLabel: 'Toggle Developers Tools',
@@ -79,6 +99,14 @@ export default class TitleBar extends React.Component<any, any> {
         }
     ];
 
+    public constructor(props: any, context?: TitleBarState) {
+        super(props, context);
+        this.state = {
+            changelongOpen: false,
+            licenseOpen: false
+        };
+    }
+
     public render() {
         const win = remote.getCurrentWindow();
 
@@ -101,9 +129,46 @@ export default class TitleBar extends React.Component<any, any> {
                         <FontAwesomeIcon icon={faTimes} />
                     </div>
                 </div>
+
+                <this.changelogModal />
+                <this.licenseModal />
             </header>
         );
     }
+
+    // TODO Pull this into it's own component and changelogModal.tsx
+    private closeChagelog = () => {
+        this.setState({ changelongOpen: false });
+    };
+
+    private changelogModal = () => (
+        <Modal open={this.state.changelongOpen} onClose={this.closeChagelog}>
+            <Modal.Header>TODO Changelog</Modal.Header>
+            <Modal.Content>
+                <p>Changelog.md would ideally be displayed here</p>
+            </Modal.Content>
+            <Modal.Actions>
+                <Button labelPosition='right' content='Close' onClick={this.closeChagelog} />
+            </Modal.Actions>
+        </Modal>
+    );
+
+    // TODO Pull this into it's own component and changelogModal.tsx
+    private closeLicense = () => {
+        this.setState({ licenseOpen: false });
+    };
+
+    private licenseModal = () => (
+        <Modal open={this.state.licenseOpen} onClose={this.closeLicense}>
+            <Modal.Header>TODO License</Modal.Header>
+            <Modal.Content>
+                <p>License.md would ideally be displayed here</p>
+            </Modal.Content>
+            <Modal.Actions>
+                <Button labelPosition='right' content='Close' onClick={this.closeLicense} />
+            </Modal.Actions>
+        </Modal>
+    );
 
     /**
      * @desc This function takes in a TitlebarMenu (currently defined only as this.titlebarMenu) and builds a

@@ -12,8 +12,8 @@ export const NODE_VERSION = process.versions.node;
 export const CHROME_VERSION = process.versions.chrome;
 export const ELECTRON_VERSION = process.versions.electron;
 
-export const ORPG_URL = process.env.npm_package_website_url;
-export const ORPG_BLOG = process.env.npm_package_website_blog;
-export const ORPG_BUGS = process.env.npm_package_bugs_url;
-export const ORPG_DOCS = process.env.npm_package_website_docs;
-export const ORPG_REPO = process.env.npm_package_repository_url?.substring(4);
+export const ORPG_URL = process.env.npm_package_website_url as string;
+export const ORPG_BLOG = process.env.npm_package_website_blog as string;
+export const ORPG_BUGS = process.env.npm_package_bugs_url as string;
+export const ORPG_DOCS = process.env.npm_package_website_docs as string;
+export const ORPG_REPO = process.env.npm_package_repository_url?.substring(4) as string;
