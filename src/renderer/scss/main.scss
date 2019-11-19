@@ -53,43 +53,7 @@ html {
     -webkit-text-size-adjust: 100%;
 
     // Default Font Size
-    font-size: 16px;
-    // UHD-1
-    @media screen and (min-width: 3840px) {
-        font-size: 19px;
-    }
-    // WQHD
-    @media screen and (min-width: 2560px) {
-        font-size: 18px;
-    }
-    // HD 1080
-    @media screen and (min-width: 1920px) {
-        font-size: 17px;
-    }
-    // Large Monitors
-    @media screen and (min-width: 1600px) {
-        font-size: 15px;
-    }
-    // Small Laptops
-    @media screen and (max-width: 1366px) {
-        font-size: 14px;
-    }
-    // Tablet Landscape
-    @media screen and (max-width: 1024px) {
-        font-size: 13px;
-    }
-    // Tablet Portrait
-    @media screen and (max-width: 854px) {
-        font-size: 12px;
-    }
-    // Mobile Landscape
-    @media screen and (max-width: 480px) {
-        font-size: 7px;
-    }
-    // Mobile Portrait
-    @media screen and (max-width: 352px) {
-        font-size: 5px;
-    }
+    font-size: 14px;
 }
 
 body {

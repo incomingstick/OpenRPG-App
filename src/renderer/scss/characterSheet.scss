@@ -40,21 +40,41 @@ div.box {
         &.bottom.attached.segment.active.tab {
             overflow: auto;
         }
+    }
 
-        &.attached.tabular.menu {
-            border-color: $cs-boarder;
+    #character-tabs {
+        .ui {
+            &.attached.tabular.menu {
+                border-color: $cs-boarder;
 
-            a {
-                &.item {
-                    color: $text-primary;
-                }
-
-                &.active {
-                    background: $background;
-                    border-color: $cs-boarder;
+                a {
+                    > svg {
+                        font-size: 1rem;
+                        margin-left: 0.75rem;
+                        opacity: 0;
+                    }
 
                     &.item {
                         color: $text-primary;
+                    }
+
+                    &.active {
+                        background: $background;
+                        border-color: $cs-boarder;
+
+                        > svg {
+                            opacity: 1;
+                        }
+
+                        &.item {
+                            color: $text-primary;
+                        }
+                    }
+
+                    &:hover {
+                        > svg {
+                            opacity: 1;
+                        }
                     }
                 }
             }
@@ -377,7 +397,7 @@ form.charSheet {
                                 }
 
                                 input[type='checkbox']:checked {
-                                    background-color: black;
+                                    background-color: $cs-boarder;
                                 }
                             }
                         }
