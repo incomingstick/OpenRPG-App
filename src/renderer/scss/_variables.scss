@@ -54,14 +54,18 @@ $sidebar-bg: $color0;
 $sidebar-width: 4rem;
 $icon-color: $color7;
 
+// main content stuff
+$main-content-padding: $sidebar-width / 4;
+
 // character sheet stuff
 $cs-section-bg: $color18;
 $cs-boarder: $color8;
 $cs-input-fg: $color15;
 $cs-deathsuccess-checked: $color10;
 $cs-deathfail-checked: $color11;
+$cs-tab-height: 3rem;
 
 // footer stuff
-$footer-height: 2rem;
+$footer-height: 1.6rem;
 $footer-background: $color12;
 $footer-foreground: $color18;

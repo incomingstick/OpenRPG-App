@@ -31,14 +31,11 @@ div.box {
     margin-top: 0.8333rem;
 }
 
-#character-header {
-    margin-bottom: 1rem;
-}
-
 #character-section {
     .ui {
         &.bottom.attached.segment.active.tab {
             overflow: auto;
+            max-height: calc(100vh - #{$titlebar-height + $footer-height + $cs-tab-height + $main-content-padding});
         }
     }
 
@@ -46,6 +43,8 @@ div.box {
         .ui {
             &.attached.tabular.menu {
                 border-color: $cs-boarder;
+                width: calc(100% - #{$sidebar-width / 4});
+                height: $cs-tab-height;
 
                 a {
                     > svg {
@@ -64,6 +63,11 @@ div.box {
 
                         > svg {
                             opacity: 1;
+
+                            &:hover,
+                            :hover {
+                                cursor: pointer;
+                            }
                         }
 
                         &.item {
@@ -74,6 +78,11 @@ div.box {
                     &:hover {
                         > svg {
                             opacity: 1;
+
+                            &:hover,
+                            :hover {
+                                cursor: pointer;
+                            }
                         }
                     }
                 }

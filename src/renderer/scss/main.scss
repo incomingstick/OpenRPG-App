@@ -64,6 +64,19 @@ body {
     background-color: $background;
     border: 0;
     overflow: hidden;
+
+    // TODO make custom scrollbar
+    *::-webkit-scrollbar-track {
+        background: $scrollbar-bg !important;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background: $scrollbar-fg !important;
+    }
+
+    *::-webkit-scrollbar-thumb:hover {
+        background: $scrollbar-hover !important;
+    }
 }
 
 html,
@@ -143,24 +156,10 @@ a {
     min-height: 100%;
     height: auto !important;
     position: relative;
-    overflow: auto;
-
-    // TODO make custom scrollbar
-    &::-webkit-scrollbar-track {
-        background: $scrollbar-bg;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background: $scrollbar-fg;
-    }
-
-    &::-webkit-scrollbar-thumb:hover {
-        background: $scrollbar-hover;
-    }
 }
 
 #main-content-wrapper {
-    padding: $sidebar-width / 4;
+    padding: $main-content-padding 0 $main-content-padding $main-content-padding;
     width: calc(100% - #{$sidebar-width});
     position: absolute;
     top: $titlebar-height;
@@ -288,7 +287,7 @@ a.nav-link {
 
 /* footer stuff */
 footer {
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-align: left;
     background-color: $footer-background;
     position: fixed;

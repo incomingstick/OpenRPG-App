@@ -1,0 +1,33 @@
+@import 'variables';
+
+.modals {
+    &.dimmer {
+        .ui {
+            &.modal {
+                border-radius: 50%;
+
+                .header,
+                .content,
+                .actions {
+                    background: $background;
+                    border: none;
+                }
+
+                .header {
+                    color: #fff;
+                }
+
+                .close {
+                    color: #fff;
+                    top: 1.0535rem;
+                    right: 1rem;
+
+                    &::before,
+                    :hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -2,22 +2,23 @@ import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
 import Sidebar from './layout/sidebar';
 import Titlebar from './layout/titlebar';
-import CharacterScreen from './characterScreen';
+import CharacterScreen, { TCharacterState } from './characterScreen';
 import CampaignScreen from './campaign';
 import CitiesScreen from './cities';
 import SettingsScreen from './settings';
 import WorldMapsScreen from './worldMaps';
 import WelcomeScreen from './welcome';
-import { PACKAGE_VERSION, NODE_VERSION, CHROME_VERSION, ELECTRON_VERSION } from '../../common/globals';
 
 type TAppContainerState = {
     screen: string;
     aboutModalOpen: boolean;
+    characterScreenState?: TCharacterState;
 };
 
 class AppContainer extends React.Component<any, TAppContainerState> {
     public constructor(props: any, context?: any) {
         super(props, context);
+
         this.state = {
             screen: 'welcome',
             aboutModalOpen: false
@@ -25,8 +26,6 @@ class AppContainer extends React.Component<any, TAppContainerState> {
     }
 
     public render() {
-        document.title = 'OpenRPG v' + PACKAGE_VERSION;
-
         return (
             <>
                 <Titlebar />
@@ -41,10 +40,7 @@ class AppContainer extends React.Component<any, TAppContainerState> {
                 </div>
                 <footer>
                     <div className='container'>
-                        <p>
-                            We are using OpenRPG {PACKAGE_VERSION}, node {NODE_VERSION}, Chrome {CHROME_VERSION}, and
-                            Electron {ELECTRON_VERSION}.
-                        </p>
+                        <p>TODO Notification stuff here maybe? And chat stuff maybe?</p>
                     </div>
                 </footer>
             </>

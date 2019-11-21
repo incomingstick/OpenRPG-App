@@ -6,7 +6,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 require('../scss/characterSheet.scss');
 
-type TCharacterState = {
+export type TCharacterState = {
     currIndex: string | number | undefined;
     panes: TPaneItem[];
 };
@@ -49,10 +49,6 @@ export default class CharacterScreen extends React.Component<any, TCharacterStat
         return (
             <div className='section-template'>
                 <div id='character-section'>
-                    <div id='character-header'>
-                        <h1>Characters</h1>
-                    </div>
-
                     <div className='container'>
                         <Tab
                             id='character-tabs'
@@ -94,6 +90,8 @@ export default class CharacterScreen extends React.Component<any, TCharacterStat
         this.setState({ currIndex: index });
     };
 
+    // FIXME(incomingstick): when returning to this page, React claims there is a memory leak when calling
+    // SetState within this function... why?
     private removePaneItemFromClick = (id: string | undefined, removeIndex: any, currIndex: number) => {
         let nextIndex = 0;
         const newPanes = this.state.panes;

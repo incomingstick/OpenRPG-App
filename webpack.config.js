@@ -11,15 +11,10 @@ module.exports = {
                     cacheDirectory: true,
                     babelrc: false,
                     presets: [
-                        [
-                            '@babel/preset-env',
-                            { targets: 'maintained node versions' }
-                        ],
+                        ['@babel/preset-env', { targets: 'maintained node versions' }],
                         '@babel/preset-typescript'
                     ],
-                    plugins: [
-                        ['@babel/plugin-proposal-class-properties', { loose: true }]
-                    ]
+                    plugins: [['@babel/plugin-proposal-class-properties', { loose: true }]]
                 }
             },
             {
@@ -30,16 +25,11 @@ module.exports = {
                     cacheDirectory: true,
                     babelrc: false,
                     presets: [
-                        [
-                            '@babel/preset-env',
-                            { targets: { browsers: 'last 2 versions ' } }
-                        ],
+                        ['@babel/preset-env', { targets: { browsers: 'last 2 versions ' } }],
                         '@babel/preset-typescript',
                         '@babel/preset-react'
                     ],
-                    plugins: [
-                        ['@babel/plugin-proposal-class-properties', { loose: true }]
-                    ]
+                    plugins: [['@babel/plugin-proposal-class-properties', { loose: true }]]
                 }
             },
             {
@@ -60,6 +50,14 @@ module.exports = {
                             disable: false
                         }
                     }
+                ]
+            },
+            // TODO why do we still need to inline import these?
+            {
+                test: /\.(md|txt)$/,
+                loaders: [
+                    'html-loader',
+                    'raw-loader'
                 ]
             },
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.

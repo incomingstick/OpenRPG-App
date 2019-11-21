@@ -1,11 +1,14 @@
 import React from 'react';
 import { remote, shell } from 'electron';
 import ORPGLogo from '../../assets/images/d20_transparent.png';
-import { Dropdown, DropdownItemProps, Modal, Button } from 'semantic-ui-react';
+import { Dropdown, DropdownItemProps } from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowMinimize, faClone, faSquare } from '@fortawesome/free-regular-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { ORPG_DOCS, ORPG_BUGS } from '../../../common/globals';
+import ChangelogModal from '../modals/changelogModal';
+import LicenseModal from '../modals/licenseModal';
+import AboutModal from '../modals/aboutModal';
 
 require('../../scss/titlebar.scss');
 
@@ -22,8 +25,9 @@ require('../../scss/titlebar.scss');
  */
 
 type TitleBarState = {
-    changelongOpen: boolean;
+    changelogOpen: boolean;
     licenseOpen: boolean;
+    aboutOpen: boolean;
 };
 
 type TitlebarMenu = {
@@ -58,8 +62,8 @@ export default class TitleBar extends React.Component<any, TitleBarState> {
                 {
                     itemLabel: 'Changelog',
                     itemCallback: () => {
-                        if (this.state.changelongOpen === true) this.setState({ changelongOpen: false });
-                        else this.setState({ changelongOpen: true });
+                        if (this.state.changelogOpen === true) this.setState({ changelogOpen: false });
+                        else this.setState({ changelogOpen: true });
                     },
                     divider: true
                 },
@@ -93,7 +97,11 @@ export default class TitleBar extends React.Component<any, TitleBarState> {
                     divider: true
                 },
                 {
-                    itemLabel: 'About'
+                    itemLabel: 'About',
+                    itemCallback: () => {
+                        if (this.state.aboutOpen === true) this.setState({ aboutOpen: false });
+                        else this.setState({ aboutOpen: true });
+                    }
                 }
             ]
         }
@@ -102,8 +110,9 @@ export default class TitleBar extends React.Component<any, TitleBarState> {
     public constructor(props: any, context?: TitleBarState) {
         super(props, context);
         this.state = {
-            changelongOpen: false,
-            licenseOpen: false
+            changelogOpen: false,
+            licenseOpen: false,
+            aboutOpen: false
         };
     }
 
@@ -130,45 +139,24 @@ export default class TitleBar extends React.Component<any, TitleBarState> {
                     </div>
                 </div>
 
-                <this.changelogModal />
-                <this.licenseModal />
+                <ChangelogModal open={this.state.changelogOpen} closeCallback={this.closeChangelog} />
+                <LicenseModal open={this.state.licenseOpen} closeCallback={this.closeLicense} />
+                <AboutModal open={this.state.aboutOpen} closeCallback={this.closeAbout} />
             </header>
         );
     }
 
-    // TODO Pull this into it's own component and changelogModal.tsx
-    private closeChagelog = () => {
-        this.setState({ changelongOpen: false });
+    private closeChangelog = () => {
+        this.setState({ changelogOpen: false });
     };
 
-    private changelogModal = () => (
-        <Modal open={this.state.changelongOpen} onClose={this.closeChagelog}>
-            <Modal.Header>TODO Changelog</Modal.Header>
-            <Modal.Content>
-                <p>Changelog.md would ideally be displayed here</p>
-            </Modal.Content>
-            <Modal.Actions>
-                <Button labelPosition='right' content='Close' onClick={this.closeChagelog} />
-            </Modal.Actions>
-        </Modal>
-    );
-
-    // TODO Pull this into it's own component and changelogModal.tsx
     private closeLicense = () => {
         this.setState({ licenseOpen: false });
     };
 
-    private licenseModal = () => (
-        <Modal open={this.state.licenseOpen} onClose={this.closeLicense}>
-            <Modal.Header>TODO License</Modal.Header>
-            <Modal.Content>
-                <p>License.md would ideally be displayed here</p>
-            </Modal.Content>
-            <Modal.Actions>
-                <Button labelPosition='right' content='Close' onClick={this.closeLicense} />
-            </Modal.Actions>
-        </Modal>
-    );
+    private closeAbout = () => {
+        this.setState({ aboutOpen: false });
+    };
 
     /**
      * @desc This function takes in a TitlebarMenu (currently defined only as this.titlebarMenu) and builds a
