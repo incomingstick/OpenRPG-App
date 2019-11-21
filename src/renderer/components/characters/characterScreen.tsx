@@ -98,7 +98,6 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
         let saveIndex = this.currKey;
 
         for(let pane of this.currPanes) {
-            console.log(pane.menuItem?.props);
             if(pane.menuItem?.props.id !== undefined) {
                 retList.push(pane.menuItem?.props.id);
             }
