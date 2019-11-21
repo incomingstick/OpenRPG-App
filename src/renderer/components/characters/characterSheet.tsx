@@ -168,6 +168,7 @@ export default class CharacterSheet extends React.Component<any, any> {
         </header>
     );
 
+    // TODO continue pulling this out into components
     private MainSection = () => (
         <main>
             <section>

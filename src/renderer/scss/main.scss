@@ -228,56 +228,73 @@ a.nav-link {
 }
 
 /* buttons */
-.ui.button.btn {
-    display: inline-block;
-    font-weight: 500;
-    line-height: 1.25;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    border: 1px solid transparent;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 0.25rem;
-    -webkit-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-    color: $logo-primary;
-    border-color: $logo-primary;
-}
+.ui.button {
+    &.btn {
+        display: inline-block;
+        font-weight: 500;
+        line-height: 1.25;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        border-radius: 0.25rem;
+        -webkit-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+        color: $logo-primary;
+        border-color: $logo-primary;
+        background: transparent;
 
-.ui.button.btn.active,
-.ui.button.btn:focus,
-.ui.button.btn:hover {
-    text-decoration: none;
-    color: #fff;
-    background-color: $logo-primary;
-    border-color: $logo-primary;
-}
+        &.active,
+        &:focus,
+        &:hover {
+            text-decoration: none;
+            color: $background;
+            background-color: $logo-primary;
+            border-color: $logo-primary;
+            font-weight: bold;
+        }
 
-.ui.button.btn-lg {
-    padding: 0.75rem 1.5rem;
-    font-size: 1.25rem;
-    border-radius: 0.3rem;
-}
+        &:not(.icon) {
+            border: 1px solid transparent !important;
+            padding: 0.5rem 1rem !important;
+            border-color: $logo-primary !important;
 
-.ui.button.btn-sm {
-    padding: 0.25rem 0.75rem;
-    font-size: 0.85rem;
-    border-radius: 0.2rem;
-}
+            &:hover {
+                text-decoration: none;
+                color: $background;
+                background-color: $logo-primary !important;
+                font-weight: bold;
+            }
+        }
+    }
 
-.ui.button.btn-fill {
-    width: 100%;
-    height: 100%;
-}
+    &.btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1.25rem;
+        border-radius: 0.3rem;
+    }
 
-.ui.button.btn-rect {
-    border-radius: 0;
+    &.btn-sm {
+        padding: 0.25rem 0.75rem;
+        font-size: 0.85rem;
+        border-radius: 0.2rem;
+    }
+
+    &.btn-fill {
+        width: 100%;
+        height: 100%;
+    }
+
+    &.btn-rect {
+        border-radius: 0;
+    }
 }
 
 /* tabs */

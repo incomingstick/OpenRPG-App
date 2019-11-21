@@ -29,7 +29,7 @@ class AppContainer extends React.Component<any, TAppContainerState> {
         this.characterState = {
             names: [],
             currIndex: 0
-        }
+        };
     }
 
     public render() {
@@ -60,10 +60,16 @@ class AppContainer extends React.Component<any, TAppContainerState> {
 
     private characterScreenCallback = (state: TCharacterSaveState) => {
         this.characterState = state;
-    }
+    };
 
     private CurrentScreen = () => {
-        if (this.state.screen === 'characters') return <CharacterScreen characterSaveState={this.characterState} characterSaveCallback={this.characterScreenCallback}/>;
+        if (this.state.screen === 'characters')
+            return (
+                <CharacterScreen
+                    characterSaveState={this.characterState}
+                    characterSaveCallback={this.characterScreenCallback}
+                />
+            );
         else if (this.state.screen === 'cities') return <CitiesScreen />;
         else if (this.state.screen === 'world-maps') return <WorldMapsScreen />;
         else if (this.state.screen === 'campaign') return <CampaignScreen />;

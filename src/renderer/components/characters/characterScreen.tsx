@@ -9,12 +9,12 @@ require('../../scss/characterSheet.scss');
 export type TCharacterSaveState = {
     names?: string[];
     currIndex?: number;
-}
+};
 
 type TCharacterProps = {
     characterSaveState?: TCharacterSaveState;
     characterSaveCallback?: (state: TCharacterSaveState) => void;
-}
+};
 
 export type TCharacterState = {
     currIndex: string | number | undefined;
@@ -26,7 +26,6 @@ type TPaneItem = {
     menuItem?: JSX.Element;
     render?: (() => React.ReactNode) | undefined;
 };
-
 
 export default class CharacterScreen extends React.Component<TCharacterProps, TCharacterState> {
     private currKey: number;
@@ -47,7 +46,7 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
                                 TODO Do Character creation stuff here. For now click the button below to add a menu
                                 item.
                             </p>
-                            <Button content='Add Char' onClick={this.createCharacterMenu} />
+                            <Button className='btn' content='Add Char' onClick={this.createCharacterMenu} />
                         </Tab.Pane>
                     )
                 }
@@ -55,18 +54,18 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
         };
 
         this.currPanes = this.state.panes;
-        
-        if(this.props.characterSaveState !== undefined) this.loadCharacterState(this.props.characterSaveState);
+
+        if (this.props.characterSaveState !== undefined) this.loadCharacterState(this.props.characterSaveState);
     }
 
     public loadCharacterState = (loadState: TCharacterSaveState) => {
         const newPanes = this.currPanes;
 
-        if(loadState?.names !== undefined) {
+        if (loadState?.names !== undefined) {
             let item: TPaneItem;
             let name: string;
 
-            for(name of loadState.names) {
+            for (name of loadState.names) {
                 item = {
                     menuItem: (
                         <Menu.Item key={this.currKey++} id={name} onContextMenu={this.handleTabRightClick}>
@@ -86,19 +85,19 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
             }
         }
 
-        if(loadState?.currIndex !== undefined && loadState.currIndex > this.currKey) {
+        if (loadState?.currIndex !== undefined && loadState.currIndex > this.currKey) {
             this.currKey = loadState?.currIndex;
         }
-        
+
         this.currPanes = newPanes;
-    }
+    };
 
     public saveCharacterState = () => {
-        let retList: string[] = [];
-        let saveIndex = this.currKey;
+        const retList: string[] = [];
+        const saveIndex = this.currKey;
 
-        for(let pane of this.currPanes) {
-            if(pane.menuItem?.props.id !== undefined) {
+        for (const pane of this.currPanes) {
+            if (pane.menuItem?.props.id !== undefined) {
                 retList.push(pane.menuItem?.props.id);
             }
         }
@@ -107,7 +106,7 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
             names: retList,
             currIndex: saveIndex
         };
-    }
+    };
 
     public render() {
         const activeIndex = this.state.currIndex;
@@ -129,8 +128,8 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
     }
 
     public componentWillUnmount = () => {
-        if(this.props.characterSaveCallback !== undefined) this.props.characterSaveCallback(this.saveCharacterState());
-    }
+        if (this.props.characterSaveCallback !== undefined) this.props.characterSaveCallback(this.saveCharacterState());
+    };
 
     private handleTabIconClick = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
         e.stopPropagation();

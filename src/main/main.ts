@@ -109,7 +109,7 @@ app.on('ready', () => {
                 api.config.save();
             });
 
-            ipcMain.on('check-for-addon-updates', () => {
+            ipcMain.on('check-for-updates', () => {
                 api.updateService.startCheckingForUpdates();
             });
 

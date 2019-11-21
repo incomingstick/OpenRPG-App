@@ -58,7 +58,7 @@ function detectDataFolder(): string {
         }
 
         default: {
-            console.log('OS Type not Supported. Could not find data folder.');
+            log.warn('[Config] OS Type not Supported. Could not find data folder.');
             break;
         }
     }

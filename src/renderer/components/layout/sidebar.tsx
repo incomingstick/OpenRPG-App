@@ -2,6 +2,7 @@ import React from 'react';
 import { Menu, MenuItemProps } from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faFile, faBuilding, faMap, faGlobe, faCog } from '@fortawesome/free-solid-svg-icons';
+import log from '../../../common/log';
 
 require('../../scss/sidebar.scss');
 
@@ -106,7 +107,7 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
         e.preventDefault();
 
         if (data.name === undefined) {
-            console.log('Menu.Item prop name is missing or undefined');
+            log.warn('[Sidebar] Menu.Item prop name is missing or undefined');
             return;
         }
 

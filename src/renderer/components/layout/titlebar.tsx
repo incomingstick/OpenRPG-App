@@ -1,5 +1,5 @@
 import React from 'react';
-import { remote, shell } from 'electron';
+import { remote, shell, ipcRenderer } from 'electron';
 import ORPGLogo from '../../assets/images/d20_transparent.png';
 import { Dropdown, DropdownItemProps } from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,6 +9,7 @@ import { ORPG_DOCS, ORPG_BUGS } from '../../../common/globals';
 import ChangelogModal from '../modals/changelogModal';
 import LicenseModal from '../modals/licenseModal';
 import AboutModal from '../modals/aboutModal';
+import log from '../../../common/log';
 
 require('../../scss/titlebar.scss');
 
@@ -93,6 +94,17 @@ export default class TitleBar extends React.Component<any, TitleBarState> {
                             // Open them there dev toolz
                             webContents.openDevTools();
                         }
+                    },
+                    divider: true
+                },
+                {
+                    itemLabel: 'Check for Updates...',
+                    itemCallback: () => {
+                        ipcRenderer.send('check-for-updates');
+
+                        ipcRenderer.on('update-available', () => {
+                            log.info('[Titlebar] caught update event!');
+                        });
                     },
                     divider: true
                 },
@@ -230,7 +242,7 @@ export default class TitleBar extends React.Component<any, TitleBarState> {
             }
 
             default: {
-                console.log('Unknown button click in title bar menu');
+                log.warn('[Titlebar] Unknown button click in title bar menu');
             }
         }
     };
