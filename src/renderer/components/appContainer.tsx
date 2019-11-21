@@ -2,7 +2,7 @@ import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
 import Sidebar from './layout/sidebar';
 import Titlebar from './layout/titlebar';
-import CharacterScreen, { TCharacterState } from './characterScreen';
+import CharacterScreen, { TCharacterState, TCharacterSaveState } from './characters/characterScreen';
 import CampaignScreen from './campaign';
 import CitiesScreen from './cities';
 import SettingsScreen from './settings';
@@ -16,6 +16,8 @@ type TAppContainerState = {
 };
 
 class AppContainer extends React.Component<any, TAppContainerState> {
+    private characterState: TCharacterSaveState;
+
     public constructor(props: any, context?: any) {
         super(props, context);
 
@@ -23,6 +25,11 @@ class AppContainer extends React.Component<any, TAppContainerState> {
             screen: 'welcome',
             aboutModalOpen: false
         };
+
+        this.characterState = {
+            names: [],
+            currIndex: 0
+        }
     }
 
     public render() {
@@ -51,8 +58,12 @@ class AppContainer extends React.Component<any, TAppContainerState> {
         this.setState({ screen: callbackData });
     };
 
+    private characterScreenCallback = (state: TCharacterSaveState) => {
+        this.characterState = state;
+    }
+
     private CurrentScreen = () => {
-        if (this.state.screen === 'characters') return <CharacterScreen />;
+        if (this.state.screen === 'characters') return <CharacterScreen characterSaveState={this.characterState} characterSaveCallback={this.characterScreenCallback}/>;
         else if (this.state.screen === 'cities') return <CitiesScreen />;
         else if (this.state.screen === 'world-maps') return <WorldMapsScreen />;
         else if (this.state.screen === 'campaign') return <CampaignScreen />;

@@ -1,10 +1,20 @@
 import * as React from 'react';
 import { Tab, Button, Menu, TabProps, SemanticShorthandItem, TabPaneProps } from 'semantic-ui-react';
-import CharacterSheet from './characters/characterSheet';
+import CharacterSheet from './characterSheet';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-require('../scss/characterSheet.scss');
+require('../../scss/characterSheet.scss');
+
+export type TCharacterSaveState = {
+    names?: string[];
+    currIndex?: number;
+}
+
+type TCharacterProps = {
+    characterSaveState?: TCharacterSaveState;
+    characterSaveCallback?: (state: TCharacterSaveState) => void;
+}
 
 export type TCharacterState = {
     currIndex: string | number | undefined;
@@ -17,11 +27,13 @@ type TPaneItem = {
     render?: (() => React.ReactNode) | undefined;
 };
 
-export default class CharacterScreen extends React.Component<any, TCharacterState> {
+
+export default class CharacterScreen extends React.Component<TCharacterProps, TCharacterState> {
     private currKey: number;
+    private currPanes: TPaneItem[];
 
     // TODO(incomingstick): research maintaining state after unmount, this HAS to be possible...
-    public constructor(props: any, context?: TCharacterState) {
+    public constructor(props: TCharacterProps, context?: TCharacterState) {
         super(props, context);
         this.currKey = 0;
         this.state = {
@@ -41,6 +53,61 @@ export default class CharacterScreen extends React.Component<any, TCharacterStat
                 }
             ]
         };
+
+        this.currPanes = this.state.panes;
+        
+        if(this.props.characterSaveState !== undefined) this.loadCharacterState(this.props.characterSaveState);
+    }
+
+    public loadCharacterState = (loadState: TCharacterSaveState) => {
+        const newPanes = this.currPanes;
+
+        if(loadState?.names !== undefined) {
+            let item: TPaneItem;
+            let name: string;
+
+            for(name of loadState.names) {
+                item = {
+                    menuItem: (
+                        <Menu.Item key={this.currKey++} id={name} onContextMenu={this.handleTabRightClick}>
+                            {name}
+                            <FontAwesomeIcon icon={faTimes} onClick={this.handleTabIconClick} />
+                        </Menu.Item>
+                    ),
+                    render: () => (
+                        <Tab.Pane>
+                            <CharacterSheet />
+                        </Tab.Pane>
+                    )
+                };
+
+                // Add item to the end of the list - 1 to account for the New button
+                newPanes.splice(this.state.panes.length - 1, 0, item);
+            }
+        }
+
+        if(loadState?.currIndex !== undefined && loadState.currIndex > this.currKey) {
+            this.currKey = loadState?.currIndex;
+        }
+        
+        this.currPanes = newPanes;
+    }
+
+    public saveCharacterState = () => {
+        let retList: string[] = [];
+        let saveIndex = this.currKey;
+
+        for(let pane of this.currPanes) {
+            console.log(pane.menuItem?.props);
+            if(pane.menuItem?.props.id !== undefined) {
+                retList.push(pane.menuItem?.props.id);
+            }
+        }
+
+        return {
+            names: retList,
+            currIndex: saveIndex
+        };
     }
 
     public render() {
@@ -52,7 +119,7 @@ export default class CharacterScreen extends React.Component<any, TCharacterStat
                     <div className='container'>
                         <Tab
                             id='character-tabs'
-                            panes={this.state.panes}
+                            panes={this.currPanes}
                             activeIndex={activeIndex}
                             onTabChange={this.handleTabChange}
                         />
@@ -60,6 +127,10 @@ export default class CharacterScreen extends React.Component<any, TCharacterStat
                 </div>
             </div>
         );
+    }
+
+    public componentWillUnmount = () => {
+        if(this.props.characterSaveCallback !== undefined) this.props.characterSaveCallback(this.saveCharacterState());
     }
 
     private handleTabIconClick = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
