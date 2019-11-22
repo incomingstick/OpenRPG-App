@@ -1,6 +1,6 @@
 import * as log from 'electron-log';
+import { DEBUG } from './globals';
 
-// TODO: make this switch to 'warn' in release mode
-log.transports.file.level = 'debug';
+log.transports.file.level = DEBUG ? 'debug' : 'warn';
 
 export default log;

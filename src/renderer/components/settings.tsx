@@ -7,7 +7,6 @@ export default class SettingsScreen extends React.Component<any, any> {
                 <div id='settings-section'>
                     <div className='settings-header'>
                         <h1>Settings</h1>
-                        <h2>Your Settings</h2>
                     </div>
 
                     <div className='container'>

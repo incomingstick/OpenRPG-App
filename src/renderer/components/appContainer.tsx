@@ -8,10 +8,12 @@ import CitiesScreen from './cities';
 import SettingsScreen from './settings';
 import WorldMapsScreen from './worldMaps';
 import WelcomeScreen from './welcome';
+import { ipcRenderer } from 'electron';
+import { TSettingsData } from '../../common/services/settingsService';
+import log from '../../common/log';
 
 type TAppContainerState = {
     screen: string;
-    aboutModalOpen: boolean;
     characterScreenState?: TCharacterState;
 };
 
@@ -21,13 +23,16 @@ class AppContainer extends React.Component<any, TAppContainerState> {
     public constructor(props: any, context?: any) {
         super(props, context);
 
+        // TODO can this become async?
+        const settings = ipcRenderer.sendSync('sync-settings-get') as TSettingsData;
+        const defScreen = settings.lastWindow !== undefined ? settings.lastWindow : 'welcome';
+
         this.state = {
-            screen: 'welcome',
-            aboutModalOpen: false
+            screen: defScreen
         };
 
         this.characterState = {
-            names: [],
+            names: settings.openCharacters !== undefined ? settings.openCharacters : [],
             currIndex: 0
         };
     }
@@ -38,7 +43,7 @@ class AppContainer extends React.Component<any, TAppContainerState> {
                 <Titlebar />
                 <div id='wrapper'>
                     <div id='sidebar-wrapper' role='navigation'>
-                        <Sidebar clickCallback={this.sidebarCallback} />
+                        <Sidebar clickCallback={this.sidebarCallback} screen={this.state.screen} />
                     </div>
 
                     <main id='main-content-wrapper'>
@@ -55,10 +60,16 @@ class AppContainer extends React.Component<any, TAppContainerState> {
     }
 
     private sidebarCallback = (callbackData: string) => {
+        ipcRenderer.send('settings-updated', { lastWindow: callbackData }); // This lags the program
+
         this.setState({ screen: callbackData });
     };
 
     private characterScreenCallback = (state: TCharacterSaveState) => {
+        log.info('[App Container] characterScreenCallback state ', state);
+
+        ipcRenderer.send('settings-updated', { openCharacters: state.names });
+
         this.characterState = state;
     };
 
@@ -66,8 +77,8 @@ class AppContainer extends React.Component<any, TAppContainerState> {
         if (this.state.screen === 'characters')
             return (
                 <CharacterScreen
-                    characterSaveState={this.characterState}
-                    characterSaveCallback={this.characterScreenCallback}
+                    characterScreenSaveState={this.characterState}
+                    characterScreenSaveCallback={this.characterScreenCallback}
                 />
             );
         else if (this.state.screen === 'cities') return <CitiesScreen />;

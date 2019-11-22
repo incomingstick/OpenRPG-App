@@ -3,17 +3,13 @@ import { app, BrowserWindow, ipcMain, shell } from 'electron';
 import * as log from 'electron-log';
 import * as path from 'path';
 import * as url from 'url';
-import ConfigService from '../common/services/configService';
+import SettingsService from '../common/services/settingsService';
 import UpdateService from '../common/services/updateService';
-
-const { autoUpdater } = require('electron-updater');
+import { DEBUG } from '../common/globals';
 
 // Keep a global reference of the window object, if you don't, the window will
 // Be closed automatically when the JavaScript object is garbage collected.
 let win: any = null;
-
-// Check if we are a release build or not
-const DEBUG = process.env.NODE_ENV !== 'production';
 
 function createWindow() {
     // Create the browser window.
@@ -60,13 +56,11 @@ function createWindow() {
 app.on('ready', () => {
     createWindow();
 
-    autoUpdater.checkForUpdatesAndNotify();
-
     // Resolves the dependencies
     autoInject(
         // Api
         {
-            config: ConfigService,
+            settings: SettingsService,
             updateService: UpdateService
         },
         (err: any, api: any) => {
@@ -77,36 +71,36 @@ app.on('ready', () => {
 
             log.info(`Dependency injection completes with APIs: ${Object.keys(api).join(', ')}`);
 
-            api.config.on('updated', () => {
+            api.settings.on('updated', () => {
                 if (!win) {
                     return;
                 }
 
-                win.webContents.send('config-load', api.config.get());
+                win.webContents.send('settings-load', api.settings.get());
             });
 
-            // Asynchronously get the configuration
-            ipcMain.on('config-get', () => {
+            // Asynchronously get the settings
+            ipcMain.on('settings-get', () => {
                 if (!win) {
                     return;
                 }
 
-                win.webContents.send('config-load', api.config.get());
+                win.webContents.send('settings-load', api.settings.get());
             });
 
-            // Synchronously get the configuration
-            ipcMain.on('sync-config-get', (event: any) => {
+            // Synchronously get the settings
+            ipcMain.on('sync-settings-get', (event: any) => {
                 if (!win) {
                     event.returnValue = {};
                 } else {
-                    event.returnValue = api.config.get();
+                    event.returnValue = api.settings.get();
                 }
             });
 
-            ipcMain.on('config-updated', (event: any, arg: any) => {
-                log.info('data folder changed from event', event);
-                api.config.merge(arg);
-                api.config.save();
+            ipcMain.on('settings-updated', (event: any, arg: any) => {
+                log.info('settings changed from event', event);
+                api.settings.merge(arg);
+                api.settings.save();
             });
 
             ipcMain.on('check-for-updates', () => {
@@ -118,7 +112,7 @@ app.on('ready', () => {
             });
 
             //
-            // Addon Updater Events
+            // Updater Events
             //
             api.updateService.events().on('update-check-started', () => {
                 log.info('update-check-started');

@@ -1,7 +1,8 @@
 import log from '../log';
-import { IConfigService } from './configService';
+import { ISettingsService } from './settingsService';
 import * as EventEmitter from 'events';
-import { autoUpdater } from 'electron-updater';
+
+const { autoUpdater } = require('electron-updater');
 
 export interface IUpdateService {
     isUpdateAvailable(): Promise<boolean>;
@@ -10,7 +11,7 @@ export interface IUpdateService {
     events(): EventEmitter;
 }
 
-export default function updateServiceFactory(config: IConfigService, callback: Function) {
+export default function updateServiceFactory(settings: ISettingsService, callback: Function) {
     const emitter = new EventEmitter();
 
     // TODO time since last update
@@ -46,19 +47,9 @@ export default function updateServiceFactory(config: IConfigService, callback: F
         },
 
         /**
-         * IsUpdatedAvailable
-         *
-         * Check if the server has an updated pending for us
-         */
-        isManifestVersionOutdated(manifestVersion: string) {
-            const conf = config.get();
-            return !conf.installedManifest || conf.installedManifest.version !== manifestVersion;
-        },
-
-        /**
          * StartCheckingForUpdates
          *
-         * Begins the update cycle and starts to sync new addon data from server to client
+         * Begins the update cycle and starts to sync new data from server to client
          */
         async startCheckingForUpdates() {
             if (updateInProgress) {
@@ -81,7 +72,7 @@ export default function updateServiceFactory(config: IConfigService, callback: F
                 updateInProgress = false;
                 updateTimerHandle = setTimeout(
                     () => this.startCheckingForUpdates(),
-                    config.get().updateTimerMinutes * 1000 * 60
+                    settings.get().updateTimerMinutes * 1000 * 60
                 );
             }
         },

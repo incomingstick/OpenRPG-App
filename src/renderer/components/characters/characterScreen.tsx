@@ -12,8 +12,8 @@ export type TCharacterSaveState = {
 };
 
 type TCharacterProps = {
-    characterSaveState?: TCharacterSaveState;
-    characterSaveCallback?: (state: TCharacterSaveState) => void;
+    characterScreenSaveState?: TCharacterSaveState;
+    characterScreenSaveCallback?: (state: TCharacterSaveState) => void;
 };
 
 export type TCharacterState = {
@@ -55,7 +55,8 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
 
         this.currPanes = this.state.panes;
 
-        if (this.props.characterSaveState !== undefined) this.loadCharacterState(this.props.characterSaveState);
+        if (this.props.characterScreenSaveState !== undefined)
+            this.loadCharacterState(this.props.characterScreenSaveState);
     }
 
     public loadCharacterState = (loadState: TCharacterSaveState) => {
@@ -128,7 +129,8 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
     }
 
     public componentWillUnmount = () => {
-        if (this.props.characterSaveCallback !== undefined) this.props.characterSaveCallback(this.saveCharacterState());
+        if (this.props.characterScreenSaveCallback !== undefined)
+            this.props.characterScreenSaveCallback(this.saveCharacterState());
     };
 
     private handleTabIconClick = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
