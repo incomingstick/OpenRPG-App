@@ -302,6 +302,43 @@ a.nav-link {
     background: $background;
 }
 
+/* input */
+.ui.input {
+    > input {
+        background: $color8;
+
+        &:active {
+            background: $color8;
+            color: $foreground;
+        }
+
+        &:focus {
+            border-color: $logo-primary;
+        }
+
+        &[type='text'] {
+            background: $color8;
+            color: $foreground;
+        }
+
+        &::placeholder {
+            /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: $foreground;
+            opacity: 1; /* Firefox */
+        }
+
+        &:-ms-input-placeholder {
+            /* Internet Explorer 10-11 */
+            color: $foreground;
+        }
+
+        &::-ms-input-placeholder {
+            /* Microsoft Edge */
+            color: $foreground;
+        }
+    }
+}
+
 /* footer stuff */
 footer {
     font-size: 0.9rem;

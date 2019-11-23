@@ -4,6 +4,11 @@ import * as EventEmitter from 'events';
 
 const { autoUpdater } = require('electron-updater');
 
+/**
+ * TODO(incomingstick): keep default settings saved always as the config file, and when a user changes settings
+ * create a new, user specific settings file
+ */
+
 export interface IUpdateService {
     isUpdateAvailable(): Promise<boolean>;
     startCheckingForUpdates(): Promise<void>;
@@ -56,7 +61,7 @@ export default function updateServiceFactory(settings: ISettingsService, callbac
                 return;
             }
 
-            log.info('startCheckingForUpdates');
+            log.info('[Updater] startCheckingForUpdates');
             if (updateTimerHandle) {
                 clearTimeout(updateTimerHandle);
                 updateTimerHandle = null;
@@ -81,7 +86,7 @@ export default function updateServiceFactory(settings: ISettingsService, callbac
          * StopCheckingForUpdates
          */
         stopCheckingForUpdates() {
-            log.info('stopCheckingForUpdates');
+            log.info('[Updater] stopCheckingForUpdates');
             if (updateTimerHandle) {
                 clearTimeout(updateTimerHandle);
                 updateTimerHandle = null;

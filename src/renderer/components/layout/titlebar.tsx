@@ -103,7 +103,7 @@ export default class TitleBar extends React.Component<any, TitleBarState> {
                         ipcRenderer.send('check-for-updates');
 
                         ipcRenderer.on('update-available', () => {
-                            log.info('[Titlebar] caught update event!');
+                            log.info('[Titlebar] caught update event! TODO display update modal');
                         });
                     },
                     divider: true

@@ -17,7 +17,8 @@ export type TSettingsData = {
     updateTimerMinutes: number;
     hostURL: string;
     lastWindow: string;
-    openCharacters: string[]; // This will eventually hold a list of locations to character files
+    openCharacters?: string[]; // This will eventually hold a list of locations to character files
+    zoomLevel?: number;
 };
 
 // If the settings formats differ then we revert to the original default settings

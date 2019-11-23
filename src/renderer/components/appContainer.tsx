@@ -8,12 +8,12 @@ import CitiesScreen from './cities';
 import SettingsScreen from './settings';
 import WorldMapsScreen from './worldMaps';
 import WelcomeScreen from './welcome';
-import { ipcRenderer } from 'electron';
+import { ipcRenderer, webFrame } from 'electron';
 import { TSettingsData } from '../../common/services/settingsService';
-import log from '../../common/log';
 
 type TAppContainerState = {
     screen: string;
+    settings: TSettingsData;
     characterScreenState?: TCharacterState;
 };
 
@@ -23,21 +23,25 @@ class AppContainer extends React.Component<any, TAppContainerState> {
     public constructor(props: any, context?: any) {
         super(props, context);
 
-        // TODO can this become async?
         const settings = ipcRenderer.sendSync('sync-settings-get') as TSettingsData;
-        const defScreen = settings.lastWindow !== undefined ? settings.lastWindow : 'welcome';
 
         this.state = {
-            screen: defScreen
+            settings,
+            screen: settings.lastWindow !== '' ? settings.lastWindow : 'welcome'
         };
 
         this.characterState = {
-            names: settings.openCharacters !== undefined ? settings.openCharacters : [],
+            names: this.state.settings.openCharacters !== undefined ? this.state.settings.openCharacters : [],
             currIndex: 0
         };
     }
 
     public render() {
+        if (this.state.settings.zoomLevel !== undefined) {
+            const zoomLevel = this.state.settings.zoomLevel;
+            webFrame.setZoomFactor(1.0 + zoomLevel * 0.2);
+        }
+
         return (
             <>
                 <Titlebar />
@@ -62,15 +66,17 @@ class AppContainer extends React.Component<any, TAppContainerState> {
     private sidebarCallback = (callbackData: string) => {
         ipcRenderer.send('settings-updated', { lastWindow: callbackData }); // This lags the program
 
-        this.setState({ screen: callbackData });
+        this.setState({ screen: callbackData, settings: ipcRenderer.sendSync('sync-settings-get') as TSettingsData });
     };
 
     private characterScreenCallback = (state: TCharacterSaveState) => {
-        log.info('[App Container] characterScreenCallback state ', state);
-
         ipcRenderer.send('settings-updated', { openCharacters: state.names });
 
         this.characterState = state;
+    };
+
+    private settingsScreenCallback = () => {
+        this.setState({ settings: ipcRenderer.sendSync('sync-settings-get') as TSettingsData });
     };
 
     private CurrentScreen = () => {
@@ -84,7 +90,9 @@ class AppContainer extends React.Component<any, TAppContainerState> {
         else if (this.state.screen === 'cities') return <CitiesScreen />;
         else if (this.state.screen === 'world-maps') return <WorldMapsScreen />;
         else if (this.state.screen === 'campaign') return <CampaignScreen />;
-        else if (this.state.screen === 'settings') return <SettingsScreen />;
+        else if (this.state.screen === 'settings')
+            return <SettingsScreen settingsScreenSaveCallback={this.settingsScreenCallback} />;
+        // TODO Create settings callback when settings are updated
         else return <WelcomeScreen />;
     };
 }

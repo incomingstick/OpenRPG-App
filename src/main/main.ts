@@ -69,7 +69,7 @@ app.on('ready', () => {
                 return;
             }
 
-            log.info(`Dependency injection completes with APIs: ${Object.keys(api).join(', ')}`);
+            log.info(`[Main] Dependency injection completes with APIs: ${Object.keys(api).join(', ')}`);
 
             api.settings.on('updated', () => {
                 if (!win) {
@@ -98,7 +98,6 @@ app.on('ready', () => {
             });
 
             ipcMain.on('settings-updated', (event: any, arg: any) => {
-                log.info('settings changed from event', event);
                 api.settings.merge(arg);
                 api.settings.save();
             });
@@ -115,32 +114,32 @@ app.on('ready', () => {
             // Updater Events
             //
             api.updateService.events().on('update-check-started', () => {
-                log.info('update-check-started');
+                log.info('[Main] update-check-started');
                 win.webContents.send('update-check-started');
             });
 
             api.updateService.events().on('update-available', () => {
-                log.info('update-available');
+                log.info('[Main] update-available');
                 win.webContents.send('update-available');
             });
 
             api.updateService.events().on('update-unnecessary', () => {
-                log.info('update-unnecessary');
+                log.info('[Main] update-unnecessary');
                 win.webContents.send('update-unnecessary');
             });
 
             api.updateService.events().on('update-progress', (data: any) => {
-                log.info('update-progress', data);
+                log.info('[Main] update-progress', data);
                 win.webContents.send('update-progress', data);
             });
 
             api.updateService.events().on('update-completed', (data: any) => {
-                log.info('update-completed', data);
+                log.info('[Main] update-completed', data);
                 win.webContents.send('update-completed', data);
             });
 
             api.updateService.events().on('update-failed', (data: any) => {
-                log.info('update-failed', data);
+                log.info('[Main] update-failed', data);
                 win.webContents.send('update-failed', data);
             });
         }

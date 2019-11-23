@@ -1,6 +1,26 @@
 import * as React from 'react';
+import { Input, InputOnChangeData } from 'semantic-ui-react';
+import { TSettingsData } from '../../common/services/settingsService';
+import { ipcRenderer } from 'electron';
+import log from '../../common/log';
 
-export default class SettingsScreen extends React.Component<any, any> {
+type TSettingsScreenState = {
+    settings: TSettingsData;
+};
+
+type TSettingsScreenProps = {
+    settingsScreenSaveCallback: () => void;
+};
+
+export default class SettingsScreen extends React.Component<TSettingsScreenProps, TSettingsScreenState> {
+    public constructor(props: TSettingsScreenProps, context?: TSettingsScreenState) {
+        super(props, context);
+
+        this.state = {
+            settings: ipcRenderer.sendSync('sync-settings-get') as TSettingsData
+        };
+    }
+
     public render() {
         return (
             <div className='section-template'>
@@ -10,10 +30,34 @@ export default class SettingsScreen extends React.Component<any, any> {
                     </div>
 
                     <div className='container'>
-                        <h3>TODO settings stuff here</h3>
+                        <h4>Zoom Level</h4>
+                        <p>
+                            Adjust the zoom level of the window. The original size is 0 and each increment above (e.g.
+                            1) or below (e.g. -1) represents zooming 20% larger or smaller. You can also enter decimals
+                            to adjust the zoom level with a finer granularity.
+                        </p>
+                        <Input
+                            value={this.state.settings.zoomLevel !== undefined ? this.state.settings.zoomLevel : 0}
+                            onChange={this.handleNumberInput}
+                        />
                     </div>
                 </div>
             </div>
         );
     }
+
+    private handleNumberInput = (e: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => {
+        const re = /^[0-9\b]+$/;
+
+        // If value is not blank, then test the regex
+
+        if (data.value === '' || re.test(data.value)) {
+            log.info('[Settings Menu] ', data.value);
+
+            ipcRenderer.send('settings-updated', { zoomLevel: data.value });
+            this.setState({ settings: ipcRenderer.sendSync('sync-settings-get') as TSettingsData });
+        }
+
+        this.props.settingsScreenSaveCallback();
+    };
 }
