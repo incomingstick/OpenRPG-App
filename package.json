@@ -11,7 +11,7 @@
     "compile": "electron-webpack",
     "dist": "npm run compile && electron-builder",
     "dist:dir": "npm run compile && electron-builder --dir -c.compression=store -c.mac.identity=null",
-    "release": "build --mac --win -p always",
+    "release": "electron-builder -p always",
     "postinstall": "electron-rebuild"
   },
   "electronWebpack": {
@@ -25,8 +25,13 @@
     }
   },
   "build": {
+    "appId": "com.openrpg.app",
+    "productName": "OpenRPG",
+    "copyright": "Copyright © 2019 ${author}",
     "publish": {
-      "provider": "github"
+      "provider": "github",
+      "owner": "incomingstick",
+      "repo": "OpenRPG-App"
     }
   },
   "repository": {
