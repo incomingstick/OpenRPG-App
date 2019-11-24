@@ -6,6 +6,7 @@
     "sourceMap": true,
     "inlineSources": true,
     "importHelpers": true,
+    "resolveJsonModule": true,
     "sourceRoot": "./",
     "typeRoots": ["src/common/types"]
   },

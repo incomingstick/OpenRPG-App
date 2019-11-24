@@ -2,18 +2,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). However, note that all pre-v0.5.0 releases will have the suffix "-dev"
 
-## [Unreleased / 0.5.0]
+## [v0.5.0]
+### Added
+- ZoomLevel setting that allows you to adjust the zoom level of the window. The original size is 0 and each increment above (e.g. 1) represents zooming 20% larger
+- You can now open multiple character sheets 
+- Reload last state when you close/reopen OpenRPG, this includes the character sheets you had open
+
 ### Changed
 - Full Divergence from the OpenRPG core repo. This changelog will now JUST handle changes and updates to the OpenRPG Desktop App. All of the below release information (<= v0.4.4-dev) is in reference to [OpenRPG Core](https://github.com/incomingstick/OpenRPG)
 - Moved the `electron-gui` branch of the Core repository into it's own repo (this (meta, I know!! xD))
 - Swapped from Javascript and pure HTML to Typescript and React JSX, using Webpack to build the Electron app
 - Restructured the filesystem to better adhear to Webpack/React standards
 
-## [0.4.4-dev] - 2017-11-05
+## Fixed
+- Relative links in this file now point to github!
+
+## [v0.4.4-dev] - 2017-11-05
 ### Added
 - Windows build script: build.bat
 - A `help` or `h` command in the orpg console `orpg >`
-- A Code of Conduct! See [.github/CODE_OF_CONDUCT.md](.github/CODE_OF_CONDUCT.md)
+- A Code of Conduct! See [.github/CODE_OF_CONDUCT.md](https://github.com/incomingstick/OpenRPG-App/tree/master/.github/CODE_OF_CONDUCT.md)
 
 ### Changed
 - Put back the Linux Clang 5.0 build that was hidden in the last patch
@@ -23,15 +31,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - All Unix/POSIX headers to allow for compilation on Windows
 - Some redundant headers
 - The `get_console_width()` and `get_console_height()` functions
-- The TODO's list from the Contributing file, [.github/CONTRIBUTING.md](.github/CONTRIBUTING.md)
+- The TODO's list from the Contributing file, [.github/CONTRIBUTING.md](https://github.com/incomingstick/OpenRPG-App/tree/master/.github/CONTRIBUTING.md)
 
 
-## [0.4.3-dev] - 2017-10-14
+## [v0.4.3-dev] - 2017-10-14
 ### Removed
 - TravisCI was failing internally when trying to use Clang 5.0 through the LLVM toolchain on Linux via the truster repository. Specifically it would fail during an apt call, something outside of our control, so we simple will hide this test for now.
 
 
-## [0.4.2-dev] - 2017-06-02
+## [v0.4.2-dev] - 2017-06-02
 ### Added
 - A whole suite of new TravisCI builds for testing GCC, LLVM, and Clang compilers on multiple platforms
 
@@ -39,12 +47,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The build compiler is set to c++14 and the individual modules have `CXX_STANDARD` set to 11 in CMake
 
 
-## [0.4.1-dev] - 2017-05-31
+## [v0.4.1-dev] - 2017-05-31
 ### Fixed
 - A fatal bug from running `make check` in the Roll Parser test that was calling a function that no longer existed...
 
 
-## [0.4.0-dev] - 2017-05-31
+## [v0.4.0-dev] - 2017-05-31
 ### Added
 - `INCLUDE` rule for our `include/` folder in CMakeLists.txt to install the headers with our library when running `make install`
 - `build.sh` support for "darwin" (OSX) and "cygwin" builds
@@ -125,7 +133,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unnecessary and platform dependant headers project wide
 
 
-## [0.3.0-dev] - 2017-04-24
+## [v0.3.0-dev] - 2017-04-24
 ### Added
 - We have our own custom option parser (command line argument parser) fully defined in its own opt-parser header, designed to replace the platform dependant `<getopt.h>`
     - include/opt-parser.h
@@ -138,7 +146,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - data/LICENSE
 
 ### Changed
-- Discord badge color in README.md from blue to 7289da (discords official purple, I [@incomingstick](http://github.comincomingstick)) think...)
+- Discord badge color in README.md from blue to 7289da (discords official purple, I [@incomingstick](http://github.com/incomingstick)) think...)
 - ASSET_LOC in config.h.in pulls the CMake `DATA_DIR` variable
 - Major project filesystem restructuring as noted below:
     - Moved the `src/tests/` folder out of `src/
@@ -199,12 +207,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - src/assets/names/human/truami/{female, last, male}
 
 
-## [0.2.1-dev] - 2017-02-25
+## [v0.2.1-dev] - 2017-02-25
 ### Fixed
 - Fatal bug that caused endless loop when running `roll`, always... oops
 
 
-## [0.2.0-dev] - 2017-02-18
+## [v0.2.0-dev] - 2017-02-18
 ### Added
 - Linux build scripts via `build.sh`
 - Header guards and autogeneration notes in config.h.in and the resulting config.h
@@ -252,7 +260,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Warnings from the `NameGenerator` class when unable to read from a file
 
 
-## [0.1.1-dev] - 2017-02-12
+## [v0.1.1-dev] - 2017-02-12
 ### Changed
 - License changed from GNU/GPLv3+ to the OpenRPG Software License (OSL) - Version 1.0
 
@@ -265,7 +273,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - src/lib/modules/roll/roll-scanner.l
 
 
-## [0.1.0-dev] - 2017-01-31
+## [v0.1.0-dev] - 2017-01-31
 ### Added
 - Brand new website and small project branding at https://openrpg.io
 - Defined OpenRPGs goals as a library, and software, as well as laid out an initial v1.0 release goal in both README.md and .github/CONTRIBUTING.md
@@ -312,7 +320,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CMake Legacy Cygwin errors hidden when using Cygwin to compile with GNU compilers
 
 
-## [0.0.3-dev] - 2017-01-19
+## [v0.0.3-dev] - 2017-01-19
 ### Added
 - Install location `-DCMAKE_INSTALL_PREFIX=/desired/install/location` instructions for CMake in README.md
 - `src/lib/modules/CMakeLists.txt` that sets output directories and addes the generator and roll directories to the build tree ([@ShinyHobo](https://github.com/ShinyHobo))
@@ -359,7 +367,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Post `openrpg` CMake build target that copied the assets folder after building
 
 
-## [0.0.2-dev] - 2017-01-08
+## [v0.0.2-dev] - 2017-01-08
 ### Added
 - LICENSE (GNU General Public License, version 3)
 - README.md containing a short description and build, integrity check, and install instructions
@@ -388,16 +396,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - src/assets/banners/welcome_mat1
 
 [Unreleased]: https://github.com/incomingstick/OpenRPG-App/compare/v0.5.0...master
-[0.5.0]: https://github.com/incomingstick/OpenRPG-App/releases/tag/v0.5.0
-[0.4.4-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.4.3-dev...v0.4.4-dev
-[0.4.3-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.4.2-dev...v0.4.3-dev
-[0.4.2-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.4.1-dev...v0.4.2-dev
-[0.4.1-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.4.0-dev...v0.4.4-dev
-[0.4.0-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.3.0-dev...v0.4.0-dev
-[0.3.0-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.2.1-dev...v0.3.0-dev
-[0.2.1-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.2.0-dev...v0.2.1-dev
-[0.2.0-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.1.1-dev...v0.2.0-dev
-[0.1.1-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.1.0-dev...v0.1.1-dev
-[0.1.0-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.0.3-dev...v0.1.0-dev
-[0.0.3-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.0.2-dev...v0.0.3-dev
-[0.0.2-dev]: https://github.com/incomingstick/OpenRPG/tree/v0.0.2-dev
+[v0.5.0]: https://github.com/incomingstick/OpenRPG-App/releases/tag/v0.5.0
+[v0.4.4-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.4.3-dev...v0.4.4-dev
+[v0.4.3-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.4.2-dev...v0.4.3-dev
+[v0.4.2-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.4.1-dev...v0.4.2-dev
+[v0.4.1-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.4.0-dev...v0.4.4-dev
+[v0.4.0-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.3.0-dev...v0.4.0-dev
+[v0.3.0-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.2.1-dev...v0.3.0-dev
+[v0.2.1-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.2.0-dev...v0.2.1-dev
+[v0.2.0-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.1.1-dev...v0.2.0-dev
+[v0.1.1-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.1.0-dev...v0.1.1-dev
+[v0.1.0-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.0.3-dev...v0.1.0-dev
+[v0.0.3-dev]: https://github.com/incomingstick/OpenRPG/compare/v0.0.2-dev...v0.0.3-dev
+[v0.0.2-dev]: https://github.com/incomingstick/OpenRPG/tree/v0.0.2-dev

@@ -98,7 +98,7 @@ export interface ISettingsService {
     clear(): void;
 }
 
-class SettingsService extends EventEmitter implements ISettingsService {
+export class SettingsService extends EventEmitter implements ISettingsService {
     private settingsData: TSettingsData;
     private settingsPath: string;
     private settingsLoaded: boolean;

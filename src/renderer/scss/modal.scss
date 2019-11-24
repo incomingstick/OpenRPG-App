@@ -3,6 +3,14 @@
 .modals {
     &.dimmer {
         .ui {
+            &.scrolling {
+                &.modal {
+                    &.visible {
+                        margin: 2.5rem auto;
+                    }
+                }
+            }
+
             &.modal {
                 border-radius: 50%;
 

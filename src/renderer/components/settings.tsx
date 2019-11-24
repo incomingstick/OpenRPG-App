@@ -31,10 +31,16 @@ export default class SettingsScreen extends React.Component<TSettingsScreenProps
 
                     <div className='container'>
                         <h4>Zoom Level</h4>
+                        {/**
+                          * TODO(incomingstick):
+                          *     - Add ability to zoom out.
+                          *     - Add ability to Ctrl+Scroll zoom.
+                          *     - Add ability to enter decimals.
+                          *     - Add up/down arrows in input and allow up/down key use
+                          */}
                         <p>
                             Adjust the zoom level of the window. The original size is 0 and each increment above (e.g.
-                            1) or below (e.g. -1) represents zooming 20% larger or smaller. You can also enter decimals
-                            to adjust the zoom level with a finer granularity.
+                            1) represents zooming 20% larger.
                         </p>
                         <Input
                             value={this.state.settings.zoomLevel !== undefined ? this.state.settings.zoomLevel : 0}

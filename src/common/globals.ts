@@ -6,8 +6,9 @@
  * Project: OpenRPG <https://openrpg.io>
  * Definitions by: incomingstick <https://github.com/incomingstick>
  */
+import { website, bugs, version, repository } from '../../package.json';
 
-export const PACKAGE_VERSION = process.env.npm_package_version;
+export const PACKAGE_VERSION = version;
 export const NODE_VERSION = process.versions.node;
 export const CHROME_VERSION = process.versions.chrome;
 export const ELECTRON_VERSION = process.versions.electron;
@@ -16,8 +17,8 @@ export const ELECTRON_VERSION = process.versions.electron;
 export const DEBUG = process.env.NODE_ENV !== 'production';
 export const BUILD_TYPE = DEBUG ? 'development' : 'production';
 
-export const ORPG_URL = process.env.npm_package_website_url as string;
-export const ORPG_BLOG = process.env.npm_package_website_blog as string;
-export const ORPG_BUGS = process.env.npm_package_bugs_url as string;
-export const ORPG_DOCS = process.env.npm_package_website_docs as string;
-export const ORPG_REPO = process.env.npm_package_repository_url?.substring(4) as string;
+export const ORPG_URL = website.url;
+export const ORPG_BLOG = website.blog;
+export const ORPG_BUGS = bugs.url;
+export const ORPG_DOCS = website.docs;
+export const ORPG_REPO = repository.url.substring(4);

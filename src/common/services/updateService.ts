@@ -1,5 +1,4 @@
 import log from '../log';
-import { ISettingsService } from './settingsService';
 import * as EventEmitter from 'events';
 
 const { autoUpdater } = require('electron-updater');
@@ -16,7 +15,7 @@ export interface IUpdateService {
     events(): EventEmitter;
 }
 
-export default function updateServiceFactory(settings: ISettingsService, callback: Function) {
+export default function updateServiceFactory(callback: any) {
     const emitter = new EventEmitter();
 
     // TODO time since last update
@@ -57,6 +56,8 @@ export default function updateServiceFactory(settings: ISettingsService, callbac
          * Begins the update cycle and starts to sync new data from server to client
          */
         async startCheckingForUpdates() {
+            const updateTimerInMinutes = 5;
+
             if (updateInProgress) {
                 return;
             }
@@ -75,10 +76,7 @@ export default function updateServiceFactory(settings: ISettingsService, callbac
                 throw e;
             } finally {
                 updateInProgress = false;
-                updateTimerHandle = setTimeout(
-                    () => this.startCheckingForUpdates(),
-                    settings.get().updateTimerMinutes * 1000 * 60
-                );
+                updateTimerHandle = setTimeout(() => this.startCheckingForUpdates(), updateTimerInMinutes * 1000 * 60);
             }
         },
 
