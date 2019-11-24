@@ -62,7 +62,7 @@ export default function updateServiceFactory(callback: any) {
                 return;
             }
 
-            log.info('[Updater] startCheckingForUpdates');
+            log.info('[Update Serviice] called startCheckingForUpdates');
             if (updateTimerHandle) {
                 clearTimeout(updateTimerHandle);
                 updateTimerHandle = null;
@@ -84,7 +84,7 @@ export default function updateServiceFactory(callback: any) {
          * StopCheckingForUpdates
          */
         stopCheckingForUpdates() {
-            log.info('[Updater] stopCheckingForUpdates');
+            log.info('[Update Serviice] called stopCheckingForUpdates');
             if (updateTimerHandle) {
                 clearTimeout(updateTimerHandle);
                 updateTimerHandle = null;

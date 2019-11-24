@@ -10,7 +10,6 @@ import WorldMapsScreen from './worldMaps';
 import WelcomeScreen from './welcome';
 import { ipcRenderer, webFrame } from 'electron';
 import { TSettingsData } from '../../common/services/settingsService';
-import log from '../../common/log';
 
 type TAppContainerState = {
     screen: string;
@@ -40,7 +39,6 @@ class AppContainer extends React.Component<any, TAppContainerState> {
     public render() {
         if (this.state.settings.zoomLevel !== undefined) {
             const zoomLevel = this.state.settings.zoomLevel;
-            log.info('[App Container] zoom level: ', zoomLevel);
             webFrame.setZoomFactor(1.0 + zoomLevel * 0.2);
         }
 
@@ -66,7 +64,7 @@ class AppContainer extends React.Component<any, TAppContainerState> {
     }
 
     private sidebarCallback = (callbackData: string) => {
-        ipcRenderer.send('settings-updated', { lastWindow: callbackData }); // This lags the program
+        ipcRenderer.send('settings-updated', { lastWindow: callbackData });
 
         this.setState({ screen: callbackData, settings: ipcRenderer.sendSync('sync-settings-get') as TSettingsData });
     };

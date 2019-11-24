@@ -33,6 +33,14 @@
       "provider": "github",
       "owner": "incomingstick",
       "repo": "OpenRPG-App"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "pacman",
+        "tar.gz"
+      ]
     }
   },
   "repository": {

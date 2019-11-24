@@ -71,7 +71,7 @@ app.on('ready', () => {
         },
         (err: any, api: any) => {
             if (err) {
-                log.error({ err }, 'Dependency loader error');
+                log.error('[Main]', { err }, 'Dependency loader error');
                 return;
             }
 
@@ -174,5 +174,5 @@ app.on('activate', () => {
 
 // This is to catch any unhandledRejections from node promises
 process.on('unhandledRejection', (reason: any, p: any) => {
-    log.error('Unhandled Rejection at: Promise', p, 'reason:', reason);
+    log.error('[Main] Unhandled Rejection at: Promise', p, 'reason:', reason);
 });
