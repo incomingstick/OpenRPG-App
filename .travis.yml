@@ -26,4 +26,5 @@ env:
 
 script:
   - npm run compile
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo snap install snapcraft --classic; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then npm run release -- --mac --win; else npm run release; fi

@@ -7,6 +7,8 @@ import SettingsService from '../common/services/settingsService';
 import UpdateService from '../common/services/updateService';
 import { DEBUG } from '../common/globals';
 
+const { autoUpdater } = require('electron-updater');
+
 // Keep a global reference of the window object, if you don't, the window will
 // Be closed automatically when the JavaScript object is garbage collected.
 let win: any = null;
@@ -55,6 +57,10 @@ function createWindow() {
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
     createWindow();
+
+    autoUpdater.logger = log;
+
+    autoUpdater.checkForUpdatesAndNotify();
 
     // Resolves the dependencies
     autoInject(
