@@ -1,5 +1,4 @@
 language: node_js
-node_js: 13.0.1
 
 os:
   - linux
@@ -26,9 +25,6 @@ global:
 
 jobs:
   include:
-    # - stage: Test
-    #   script:
-    #     - npm test
     - stage: Deploy Windows & Mac
       if: tag IS present
       os: osx
