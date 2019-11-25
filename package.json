@@ -37,6 +37,9 @@
       "owner": "incomingstick",
       "repo": "OpenRPG-App"
     },
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
     "linux": {
       "target": [
         "AppImage",
