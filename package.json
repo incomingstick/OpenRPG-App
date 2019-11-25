@@ -1,6 +1,6 @@
 {
   "name": "openrpg",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "A tool for someone to use to quickly create content for a tabletop RPG world",
   "scripts": {
     "start": "electron-webpack dev",

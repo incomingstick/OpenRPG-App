@@ -22,6 +22,7 @@ export default function updateServiceFactory(callback: any) {
     let updateTimerHandle: any = null;
 
     autoUpdater.logger = log;
+    autoUpdater.allowPrerelease = true;
 
     /**
      * PerformUpdateCheck
