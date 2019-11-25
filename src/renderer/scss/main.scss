@@ -131,8 +131,11 @@ a {
     color: #fff;
 }
 
-.outline {
-    border: 1px solid #f00;
+.ui.list:last-child,
+ol.ui.list:last-child,
+ul.ui.list:last-child {
+    margin-bottom: 0.9rem;
+    padding-bottom: 0;
 }
 
 /* Visually hidden, but will be read by screen readers */

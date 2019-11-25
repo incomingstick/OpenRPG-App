@@ -7,9 +7,6 @@
 
 import $ from 'jquery';
 import { ExpressionTree } from 'openrpg-libs';
-import log from './log';
-
-log.info('here');
 
 $(document).ready(() => {
     // Change plus and minus for dropdown items

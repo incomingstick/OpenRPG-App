@@ -72,14 +72,6 @@ export default class TitleBar extends React.Component<any, TitleBarState> {
                     itemLabel: 'Report Issue',
                     itemCallback: () => {
                         shell.openExternal(ORPG_BUGS);
-                    },
-                    divider: true
-                },
-                {
-                    itemLabel: 'View License',
-                    itemCallback: () => {
-                        if (this.state.licenseOpen === true) this.setState({ licenseOpen: false });
-                        else this.setState({ licenseOpen: true });
                     }
                 },
                 {
@@ -107,6 +99,13 @@ export default class TitleBar extends React.Component<any, TitleBarState> {
                         });
                     },
                     divider: true
+                },
+                {
+                    itemLabel: 'View License',
+                    itemCallback: () => {
+                        if (this.state.licenseOpen === true) this.setState({ licenseOpen: false });
+                        else this.setState({ licenseOpen: true });
+                    }
                 },
                 {
                     itemLabel: 'About',

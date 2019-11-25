@@ -47,44 +47,44 @@ export default class WelcomeScreen extends React.Component<any, TWelcomeState> {
     private GettingStarted = () => (
         <Grid.Column width={4}>
             <div className='getting-started'>
-                <h3>Start</h3>
-                <ul>
-                    <li>
+                <List>
+                    <List.Header as='h3'>Start</List.Header>
+                    <List.Item>
                         <a href='#'>New Character</a>
-                    </li>
-                    <li>
+                    </List.Item>
+                    <List.Item>
                         <a href='#'>Open Something...</a>
-                    </li>
-                    <li>
+                    </List.Item>
+                    <List.Item>
                         <a href='#'>Import Something...</a>
-                    </li>
-                </ul>
+                    </List.Item>
+                </List>
             </div>
             <div className='getting-started'>
-                <h3>Recent</h3>
-                <ul>
-                    <li>No recent stuff</li>
-                </ul>
+                <List>
+                    <List.Header as='h3'>Recent</List.Header>
+                    <List.Item>No recent stuff</List.Item>
+                </List>
             </div>
             <div className='getting-started'>
-                <h3>Help</h3>
-                <ul>
-                    <li>
+                <List>
+                    <List.Header as='h3'>Help</List.Header>
+                    <List.Item>
                         <a href={ORPG_DOCS} target='_blank' id='docs'>
                             Documentation
                         </a>
-                    </li>
-                    <li>
+                    </List.Item>
+                    <List.Item>
                         <a href={ORPG_REPO} target='_blank' id='repo'>
                             Github Repository
                         </a>
-                    </li>
-                    <li>
+                    </List.Item>
+                    <List.Item>
                         <a href={ORPG_BLOG} target='_blank' id='blog'>
                             Blog
                         </a>
-                    </li>
-                </ul>
+                    </List.Item>
+                </List>
             </div>
         </Grid.Column>
     );

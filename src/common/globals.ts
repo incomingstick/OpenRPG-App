@@ -21,4 +21,4 @@ export const ORPG_URL = website.url;
 export const ORPG_BLOG = website.blog;
 export const ORPG_BUGS = bugs.url;
 export const ORPG_DOCS = website.docs;
-export const ORPG_REPO = repository.url.substring(4);
+export const ORPG_REPO = repository.url;
