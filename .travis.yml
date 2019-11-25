@@ -14,7 +14,7 @@ notifications:
 addons:
   apt:
     packages:
-    - rpm
+      - rpm
 
 cache:
   directories:
