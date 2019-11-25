@@ -29,6 +29,9 @@
     "appId": "com.openrpg.app",
     "productName": "OpenRPG",
     "copyright": "Copyright © 2019 ${author}",
+    "directories": {
+      "buildResources": "static/"
+    },
     "publish": {
       "provider": "github",
       "owner": "incomingstick",
