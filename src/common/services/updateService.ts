@@ -30,13 +30,18 @@ export default function updateServiceFactory(callback: any) {
      * Performs a single check for whether we shoud download data from the server.
      */
     async function performUpdateCheck() {
+        log.info('[Update Serviice] called performUpdateCheck');
         emitter.emit('update-check-started');
 
         autoUpdater.checkForUpdatesAndNotify();
 
         try {
+            autoUpdater.on('update-not-available', () => {
+                emitter.emit('update-unavailable');
+            });
+
             autoUpdater.on('update-available', () => {
-                emitter.emit('update-completed');
+                emitter.emit('update-available');
             });
         } catch (e) {
             emitter.emit('update-failed');

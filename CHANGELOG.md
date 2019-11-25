@@ -26,7 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Restructured the filesystem to better adhear to Webpack/React standards
 
 ## Fixed
-- Relative links in this file now point to github!
+- Relative links in this file now point to GitHub!
 
 ## [v0.4.4-dev] - 2017-11-05
 ### Added

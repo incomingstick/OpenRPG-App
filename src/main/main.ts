@@ -1,5 +1,5 @@
 import { autoInject } from 'async';
-import { app, BrowserWindow, ipcMain, shell } from 'electron';
+import { app, BrowserWindow, ipcMain, shell, dialog } from 'electron';
 import * as log from 'electron-log';
 import * as path from 'path';
 import * as url from 'url';
@@ -129,9 +129,17 @@ app.on('ready', () => {
                 win.webContents.send('update-available');
             });
 
-            api.updateService.events().on('update-unnecessary', () => {
-                log.info('[Main] update-unnecessary');
-                win.webContents.send('update-unnecessary');
+            // FIXME(incomingstick): This does not seem to clear after call, resulting in multiple calls building up
+            api.updateService.events().on('update-unavailable', () => {
+                log.info('[Main] update-unavailable');
+
+                dialog.showMessageBox({
+                    type: 'info',
+                    title: 'OpenRPG',
+                    message: 'No updates are currently available!'
+                });
+
+                win.webContents.send('update-unavailable-dialog');
             });
 
             api.updateService.events().on('update-progress', (data: any) => {
