@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Tab, Button, Menu, TabProps, SemanticShorthandItem, TabPaneProps } from 'semantic-ui-react';
-import CharacterSheet from './characterSheet';
+import CharacterSheet from './characters/characterSheet';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-require('../../scss/characterSheet.scss');
+require('../scss/characterSheet.scss');
 
 export type TCharacterSaveState = {
     names?: string[];

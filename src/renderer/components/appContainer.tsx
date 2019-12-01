@@ -2,7 +2,7 @@ import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
 import Sidebar from './layout/sidebar';
 import Titlebar from './layout/titlebar';
-import CharacterScreen, { TCharacterState, TCharacterSaveState } from './characters/characterScreen';
+import CharacterScreen, { TCharacterState, TCharacterSaveState } from './characterScreen';
 import CampaignScreen from './campaign';
 import CitiesScreen from './cities';
 import SettingsScreen from './settings';
@@ -10,7 +10,6 @@ import WorldMapsScreen from './worldMaps';
 import WelcomeScreen from './welcome';
 import { ipcRenderer, webFrame } from 'electron';
 import { TSettingsData } from '../../common/services/settingsService';
-import log from '../../common/log';
 
 type TAppContainerState = {
     screen: string;
@@ -42,8 +41,6 @@ class AppContainer extends React.Component<any, TAppContainerState> {
             const zoomLevel = this.state.settings.zoomLevel;
             webFrame.setZoomFactor(1.0 + zoomLevel * 0.2);
         }
-
-        log.info('[App Container] state screen ', this.state.screen);
 
         return (
             <>

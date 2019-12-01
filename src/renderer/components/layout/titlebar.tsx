@@ -45,6 +45,7 @@ type TitlebarMenu = {
 }[];
 
 export default class TitleBar extends React.Component<TTitleBarSProps, TTitleBarState> {
+    /* NOTE(incomingstick): use this to build the titlebar */
     private titlebarMenu: TitlebarMenu = [
         {
             itemLabel: 'File',
@@ -78,7 +79,7 @@ export default class TitleBar extends React.Component<TTitleBarSProps, TTitleBar
                     itemLabel: 'Changelog',
                     itemCallback: () => {
                         if (this.state.changelogOpen === true) this.setState({ changelogOpen: false });
-                        else this.setState({ changelogOpen: true });
+                        else this.setState({ changelogOpen: true, licenseOpen: false, aboutOpen: false });
                     },
                     divider: true
                 },
@@ -114,14 +115,14 @@ export default class TitleBar extends React.Component<TTitleBarSProps, TTitleBar
                     itemLabel: 'View License',
                     itemCallback: () => {
                         if (this.state.licenseOpen === true) this.setState({ licenseOpen: false });
-                        else this.setState({ licenseOpen: true });
+                        else this.setState({ changelogOpen: false, licenseOpen: true, aboutOpen: false });
                     }
                 },
                 {
                     itemLabel: 'About',
                     itemCallback: () => {
                         if (this.state.aboutOpen === true) this.setState({ aboutOpen: false });
-                        else this.setState({ aboutOpen: true });
+                        else this.setState({ changelogOpen: false, licenseOpen: false, aboutOpen: true });
                     }
                 }
             ]

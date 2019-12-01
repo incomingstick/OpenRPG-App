@@ -11,8 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - AutoUpdater will now recognize pre-releases!
-
-### Removed
+- Modals are now exlusively open, i.e you cannot open the Changelog and the License at the same time
 
 ## [v0.5.0]
 ### Added
@@ -26,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Swapped from Javascript and pure HTML to Typescript and React JSX, using Webpack to build the Electron app
 - Restructured the filesystem to better adhear to Webpack/React standards
 
-## Fixed
+### Fixed
 - Relative links in this file now point to GitHub!
 
 ## [v0.4.4-dev] - 2017-11-05

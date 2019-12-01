@@ -26,8 +26,6 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
     public render() {
         const activeItem = this.props.screen !== undefined ? this.props.screen : this.state.screen;
 
-        log.info('[Sidebar] state screen ', this.state.screen);
-
         return (
             <Menu fluid vertical tabular className='nav sidebar-nav'>
                 <Menu.Item
