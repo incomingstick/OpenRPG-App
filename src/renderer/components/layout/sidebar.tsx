@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu, MenuItemProps } from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faFile, faBuilding, faMap, faGlobe, faCog } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faFile, faBuilding, faMap, faGlobe } from '@fortawesome/free-solid-svg-icons';
 import log from '../../../common/log';
 
 require('../../scss/sidebar.scss');
@@ -24,7 +24,9 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
     }
 
     public render() {
-        const activeItem = this.state.screen;
+        const activeItem = this.props.screen !== undefined ? this.props.screen : this.state.screen;
+
+        log.info('[Sidebar] state screen ', this.state.screen);
 
         return (
             <Menu fluid vertical tabular className='nav sidebar-nav'>
@@ -81,17 +83,6 @@ export default class Sidebar extends React.Component<TSidebarProps, TSidebarStat
                     active={activeItem === 'campaign'}
                     onClick={this.handleClick}>
                     <FontAwesomeIcon icon={faGlobe} />
-                </Menu.Item>
-                {/* TODO Is this the correct tooltip */}
-                <Menu.Item
-                    id='button-settings'
-                    data-section='settings'
-                    className='nav-button'
-                    title='Settings'
-                    name='settings'
-                    active={activeItem === 'settings'}
-                    onClick={this.handleClick}>
-                    <FontAwesomeIcon icon={faCog} />
                 </Menu.Item>
             </Menu>
         );

@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - rpm package support
 
 ### Changed
+- Settings removed from Sidebar and added to Titlebar under File > Settings
 
 ### Fixed
 - AutoUpdater will now recognize pre-releases!

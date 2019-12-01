@@ -136,10 +136,10 @@ app.on('ready', () => {
                 dialog.showMessageBox({
                     type: 'info',
                     title: 'OpenRPG',
-                    message: 'No updates are currently available!'
+                    message: 'Hey, listen! No updates are currently available!'
                 });
 
-                win.webContents.send('update-unavailable-dialog');
+                win.webContents.send('update-unavailable');
             });
 
             api.updateService.events().on('update-progress', (data: any) => {

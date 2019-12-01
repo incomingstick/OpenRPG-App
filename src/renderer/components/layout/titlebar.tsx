@@ -25,10 +25,16 @@ require('../../scss/titlebar.scss');
  * - Allow mouse to hover across the bar when a single item has been clicked
  */
 
-type TitleBarState = {
+type TTitleBarState = {
     changelogOpen: boolean;
     licenseOpen: boolean;
     aboutOpen: boolean;
+    screen: string;
+};
+
+type TTitleBarSProps = {
+    clickCallback: (callbackData: string) => void;
+    screen?: string;
 };
 
 type TitlebarMenu = {
@@ -38,11 +44,19 @@ type TitlebarMenu = {
     divider?: boolean;
 }[];
 
-export default class TitleBar extends React.Component<any, TitleBarState> {
+export default class TitleBar extends React.Component<TTitleBarSProps, TTitleBarState> {
     private titlebarMenu: TitlebarMenu = [
         {
             itemLabel: 'File',
             submenu: [
+                {
+                    itemLabel: 'Settings',
+                    itemCallback: () => {
+                        this.props.clickCallback('settings');
+
+                        this.setState({ screen: 'Settings' });
+                    }
+                },
                 {
                     itemLabel: 'Exit',
                     itemCallback: () => {
@@ -93,10 +107,6 @@ export default class TitleBar extends React.Component<any, TitleBarState> {
                     itemLabel: 'Check for Updates...',
                     itemCallback: () => {
                         ipcRenderer.send('check-for-updates');
-
-                        ipcRenderer.on('update-available', () => {
-                            log.info('[Titlebar] caught update event! TODO display update modal');
-                        });
                     },
                     divider: true
                 },
@@ -118,12 +128,13 @@ export default class TitleBar extends React.Component<any, TitleBarState> {
         }
     ];
 
-    public constructor(props: any, context?: TitleBarState) {
+    public constructor(props: any, context?: TTitleBarState) {
         super(props, context);
         this.state = {
             changelogOpen: false,
             licenseOpen: false,
-            aboutOpen: false
+            aboutOpen: false,
+            screen: this.props.screen !== undefined ? this.props.screen : 'welcome'
         };
     }
 

@@ -10,6 +10,7 @@ import WorldMapsScreen from './worldMaps';
 import WelcomeScreen from './welcome';
 import { ipcRenderer, webFrame } from 'electron';
 import { TSettingsData } from '../../common/services/settingsService';
+import log from '../../common/log';
 
 type TAppContainerState = {
     screen: string;
@@ -42,9 +43,11 @@ class AppContainer extends React.Component<any, TAppContainerState> {
             webFrame.setZoomFactor(1.0 + zoomLevel * 0.2);
         }
 
+        log.info('[App Container] state screen ', this.state.screen);
+
         return (
             <>
-                <Titlebar />
+                <Titlebar clickCallback={this.titleBarCallback} screen={this.state.screen} />
                 <div id='wrapper'>
                     <div id='sidebar-wrapper' role='navigation'>
                         <Sidebar clickCallback={this.sidebarCallback} screen={this.state.screen} />
@@ -64,6 +67,12 @@ class AppContainer extends React.Component<any, TAppContainerState> {
     }
 
     private sidebarCallback = (callbackData: string) => {
+        ipcRenderer.send('settings-updated', { lastWindow: callbackData });
+
+        this.setState({ screen: callbackData, settings: ipcRenderer.sendSync('sync-settings-get') as TSettingsData });
+    };
+
+    private titleBarCallback = (callbackData: string) => {
         ipcRenderer.send('settings-updated', { lastWindow: callbackData });
 
         this.setState({ screen: callbackData, settings: ipcRenderer.sendSync('sync-settings-get') as TSettingsData });
@@ -91,8 +100,8 @@ class AppContainer extends React.Component<any, TAppContainerState> {
         else if (this.state.screen === 'world-maps') return <WorldMapsScreen />;
         else if (this.state.screen === 'campaign') return <CampaignScreen />;
         else if (this.state.screen === 'settings')
+            // TODO Create settings callback when settings are updated
             return <SettingsScreen settingsScreenSaveCallback={this.settingsScreenCallback} />;
-        // TODO Create settings callback when settings are updated
         else return <WelcomeScreen />;
     };
 }
