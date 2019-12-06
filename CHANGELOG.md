@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - AutoUpdater will now recognize pre-releases!
-- Modals are now exlusively open, i.e you cannot open the Changelog and the License at the same time
+- Modals now open exlusively, i.e you cannot open the Changelog and the License at the same time
 
 ## [v0.5.0]
 ### Added
