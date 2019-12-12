@@ -119,7 +119,7 @@
     "@typescript-eslint/parser": "^2.10.0",
     "electron": "^6.1.5",
     "electron-builder": "^22.2.0",
-    "electron-rebuild": "^1.8.8",
+    "electron-prebuilt-compile": "^4.0.0",
     "electron-webpack": ">=2.7.4",
     "electron-webpack-ts": ">=3.2.0",
     "eslint": "^6.7.2",
