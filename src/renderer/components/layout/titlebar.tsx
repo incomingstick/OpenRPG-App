@@ -1,3 +1,4 @@
+import * as os from 'os';
 import React from 'react';
 import { remote, shell, ipcRenderer } from 'electron';
 import ORPGLogo from '../../assets/images/d20_transparent.png';
@@ -40,6 +41,7 @@ type TTitleBarSProps = {
 type TitlebarMenu = {
     itemLabel: string;
     itemCallback?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, data: DropdownItemProps) => any;
+    visible?: boolean;
     submenu?: TitlebarMenu;
     divider?: boolean;
 }[];
@@ -109,6 +111,7 @@ export default class TitleBar extends React.Component<TTitleBarSProps, TTitleBar
                     itemCallback: () => {
                         ipcRenderer.send('check-for-updates');
                     },
+                    visible: os.type() !== 'Linux',
                     divider: true
                 },
                 {
@@ -195,18 +198,19 @@ export default class TitleBar extends React.Component<TTitleBarSProps, TTitleBar
         let keyVal = 0;
 
         for (const item of input) {
-            if (item.submenu !== undefined) {
-                retElem.push(
-                    <Dropdown key={keyVal++} className='titlebar-item' text={item.itemLabel} icon={null}>
-                        <Dropdown.Menu>{this.buildMenu(item.submenu)}</Dropdown.Menu>
-                    </Dropdown>
-                );
-            } else {
-                retElem.push(<Dropdown.Item key={keyVal++} text={item.itemLabel} onClick={item.itemCallback} />);
-            }
-
-            if (item.divider) {
-                retElem.push(<Dropdown.Divider key={keyVal++} />);
+            if(item.visible !== false){
+                if (item.submenu !== undefined) {
+                    retElem.push(
+                        <Dropdown key={keyVal++} className='titlebar-item' text={item.itemLabel} icon={null}>
+                            <Dropdown.Menu>{this.buildMenu(item.submenu)}</Dropdown.Menu>
+                        </Dropdown>
+                    );
+                } else {
+                    retElem.push(<Dropdown.Item key={keyVal++} text={item.itemLabel} onClick={item.itemCallback} />);
+                }
+                if (item.divider) {
+                    retElem.push(<Dropdown.Divider key={keyVal++} />);
+                }
             }
         }
 
