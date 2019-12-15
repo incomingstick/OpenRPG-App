@@ -1,10 +1,11 @@
 import * as React from 'react';
+import _ from 'lodash';
 import { Grid, Form, Table, Input, List, InputProps, Button, Accordion, Card } from 'semantic-ui-react';
-import { die_eval, swap_drop, allow_drop, start_drag } from '../../common/scripts';
-import { ORPG_DOCS, ORPG_REPO, ORPG_BLOG } from '../../common/globals';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import _ from 'lodash';
+import { die_eval, swap_drop, allow_drop, start_drag } from '../../common/scripts';
+import { ORPG_DOCS, ORPG_REPO, ORPG_BLOG } from '../../common/globals';
+import { TControlFunctionMap } from './appContainer';
 
 require('../scss/welcome.scss');
 
@@ -13,8 +14,19 @@ type TWelcomeState = {
     activeUtilIndex: number;
 };
 
-export default class WelcomeScreen extends React.Component<any, TWelcomeState> {
-    public constructor(props: any, context?: TWelcomeState) {
+export type TWelcomeCallbackData = {
+    screen?: string;
+    action?: (...data: any[]) => void;
+    data?: any;
+};
+
+type TWelcomeProps = {
+    welcomeScreenCallback: (callbackData: TWelcomeCallbackData) => void;
+    controlFuncMap: TControlFunctionMap;
+};
+
+export default class WelcomeScreen extends React.Component<TWelcomeProps, TWelcomeState> {
+    public constructor(props: TWelcomeProps, context?: TWelcomeState) {
         super(props, context);
         this.state = {
             calcValue: '1d20',
@@ -50,7 +62,7 @@ export default class WelcomeScreen extends React.Component<any, TWelcomeState> {
                 <List>
                     <List.Header as='h3'>Start</List.Header>
                     <List.Item>
-                        <a href='#'>New Character</a>
+                        <a onClick={this.handleNewCharacterClick}>New Character</a>
                     </List.Item>
                     <List.Item>
                         <a href='#'>Open Something...</a>
@@ -88,6 +100,15 @@ export default class WelcomeScreen extends React.Component<any, TWelcomeState> {
             </div>
         </Grid.Column>
     );
+
+    private handleNewCharacterClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        // TODO(incomingstick): Open CharacterScreen and start new character dialog
+        e.preventDefault();
+
+        const item = this.props.controlFuncMap.find((obj) => obj.functionAlias === 'newCharacter');
+
+        this.props.welcomeScreenCallback({ screen: item?.control, action: item?.function });
+    };
 
     private handleCalcInputChange = (e: React.ChangeEvent<HTMLInputElement>, data: InputProps) => {
         // TODO(incomingstick): filter out bad characters

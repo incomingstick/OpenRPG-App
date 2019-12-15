@@ -9,6 +9,7 @@
 import { website, bugs, version, repository } from '../../package.json';
 
 export const PACKAGE_VERSION = version;
+export const ORPG_VERSION = 'TODO';
 export const NODE_VERSION = process.versions.node;
 export const CHROME_VERSION = process.versions.chrome;
 export const ELECTRON_VERSION = process.versions.electron;
@@ -17,6 +18,7 @@ export const ELECTRON_VERSION = process.versions.electron;
 export const DEBUG = process.env.NODE_ENV !== 'production';
 export const BUILD_TYPE = DEBUG ? 'development' : 'production';
 
+// Get relevant URLS
 export const ORPG_URL = website.url;
 export const ORPG_BLOG = website.blog;
 export const ORPG_BUGS = bugs.url;

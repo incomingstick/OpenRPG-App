@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
 import Sidebar from './layout/sidebar';
-import Titlebar from './layout/titlebar';
+import Titlebar, { TTitlebarCallbackData } from './layout/titlebar';
 import CharacterScreen, { TCharacterState, TCharacterSaveState } from './characterScreen';
 import CampaignScreen from './campaign';
 import CitiesScreen from './cities';
 import SettingsScreen from './settings';
 import WorldMapsScreen from './worldMaps';
-import WelcomeScreen from './welcome';
+import WelcomeScreen, { TWelcomeCallbackData } from './welcome';
 import { ipcRenderer, webFrame } from 'electron';
 import { TSettingsData } from '../../common/services/settingsService';
+import log from '../../common/log';
 
 type TAppContainerState = {
     screen: string;
@@ -17,8 +18,15 @@ type TAppContainerState = {
     characterScreenState?: TCharacterState;
 };
 
+export type TControlFunctionMap = {
+    control: string;
+    functionAlias: string;
+    function: (...args: any[]) => void;
+}[];
+
 class AppContainer extends React.Component<any, TAppContainerState> {
     private characterState: TCharacterSaveState;
+    private controlFuncMap: TControlFunctionMap;
 
     public constructor(props: any, context?: any) {
         super(props, context);
@@ -34,6 +42,16 @@ class AppContainer extends React.Component<any, TAppContainerState> {
             names: this.state.settings.openCharacters !== undefined ? this.state.settings.openCharacters : [],
             currIndex: 0
         };
+
+        this.controlFuncMap = [
+            {
+                control: 'characters',
+                functionAlias: 'newCharacter',
+                function: () => {
+                    log.info('[App Container] TODO New Character Modal here!');
+                }
+            }
+        ];
     }
 
     public render() {
@@ -44,7 +62,11 @@ class AppContainer extends React.Component<any, TAppContainerState> {
 
         return (
             <>
-                <Titlebar clickCallback={this.titleBarCallback} screen={this.state.screen} />
+                <Titlebar
+                    titlebarCallback={this.titleBarCallback}
+                    screen={this.state.screen}
+                    controlFuncMap={this.controlFuncMap}
+                />
                 <div id='wrapper'>
                     <div id='sidebar-wrapper' role='navigation'>
                         <Sidebar clickCallback={this.sidebarCallback} screen={this.state.screen} />
@@ -69,10 +91,31 @@ class AppContainer extends React.Component<any, TAppContainerState> {
         this.setState({ screen: callbackData, settings: ipcRenderer.sendSync('sync-settings-get') as TSettingsData });
     };
 
-    private titleBarCallback = (callbackData: string) => {
-        ipcRenderer.send('settings-updated', { lastWindow: callbackData });
+    private titleBarCallback = (callbackData: TTitlebarCallbackData) => {
+        ipcRenderer.send('settings-updated', { lastWindow: callbackData.screen });
 
-        this.setState({ screen: callbackData, settings: ipcRenderer.sendSync('sync-settings-get') as TSettingsData });
+        if (callbackData.action) callbackData.action();
+        if (!callbackData.screen) callbackData.screen = 'welcome';
+
+        if (callbackData.screen === 'settings') {
+            this.setState({
+                screen: callbackData.screen,
+                settings: ipcRenderer.sendSync('sync-settings-get') as TSettingsData
+            });
+        } else {
+            this.setState({ screen: callbackData.screen });
+        }
+    };
+
+    private welcomeScreenCallback = (callbackData: TWelcomeCallbackData) => {
+        // TODO(incomingstick): where are we going from the welcome screen?
+        ipcRenderer.send('settings-updated', { lastWindow: callbackData.screen });
+
+        if (callbackData.action) callbackData.action();
+
+        if (callbackData.screen === 'characters') {
+            this.setState({ screen: callbackData.screen });
+        }
     };
 
     private characterScreenCallback = (state: TCharacterSaveState) => {
@@ -99,7 +142,13 @@ class AppContainer extends React.Component<any, TAppContainerState> {
         else if (this.state.screen === 'settings')
             // TODO Create settings callback when settings are updated
             return <SettingsScreen settingsScreenSaveCallback={this.settingsScreenCallback} />;
-        else return <WelcomeScreen />;
+        else
+            return (
+                <WelcomeScreen
+                    welcomeScreenCallback={this.welcomeScreenCallback}
+                    controlFuncMap={this.controlFuncMap}
+                />
+            );
     };
 }
 

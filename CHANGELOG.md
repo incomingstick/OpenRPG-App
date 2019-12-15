@@ -5,6 +5,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - rpm package support
+- Added visible boolean member to TitlebarMenu type to allow for conditional rendering of menu items. (i.e hide "Check for Updates..." by setting visible to false on Linux machines because electron-updater does not work on Linux)
+- New Character option added to Titlebar under File > New Character
 
 ### Changed
 - Settings removed from Sidebar and added to Titlebar under File > Settings

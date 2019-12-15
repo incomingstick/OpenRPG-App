@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal, Button, List } from 'semantic-ui-react';
-import { PACKAGE_VERSION, NODE_VERSION, CHROME_VERSION, ELECTRON_VERSION } from '../../../common/globals';
+import { PACKAGE_VERSION, NODE_VERSION, CHROME_VERSION, ELECTRON_VERSION, ORPG_VERSION } from '../../../common/globals';
 
 require('../../scss/modal.scss');
 
@@ -40,7 +40,8 @@ export default class AboutModal extends React.Component<TAboutModalProps, TAbout
                         <List.Item>
                             <List.Header as='h3'>Technical Details</List.Header>
                         </List.Item>
-                        <List.Item content={'OpenRPG Version: ' + PACKAGE_VERSION} />
+                        <List.Item content={'App Version: ' + PACKAGE_VERSION} />
+                        <List.Item content={'OpenRPG Version: ' + ORPG_VERSION} />
                         <List.Item content={'Node Version: ' + NODE_VERSION} />
                         <List.Item content={'Chrome Version: ' + CHROME_VERSION} />
                         <List.Item content={'Electron Version: ' + ELECTRON_VERSION} />

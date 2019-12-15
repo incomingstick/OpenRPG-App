@@ -11,7 +11,7 @@ export type TCharacterSaveState = {
     currIndex?: number;
 };
 
-type TCharacterProps = {
+export type TCharacterProps = {
     characterScreenSaveState?: TCharacterSaveState;
     characterScreenSaveCallback?: (state: TCharacterSaveState) => void;
 };

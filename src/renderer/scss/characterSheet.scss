@@ -231,16 +231,13 @@ form.charSheet {
         div.label-container {
             position: relative;
             width: 100%;
-            height: 18px;
+            height: 1.75rem;
             margin-top: 6px;
             border: 1px solid $cs-boarder;
             border-left: 0;
             text-align: center;
 
             > label {
-                position: absolute;
-                left: 0;
-                top: -0.5333rem;
                 -webkit-transform: translate(0%, 50%);
                 transform: translate(0%, 50%);
                 width: 100%;
@@ -309,7 +306,7 @@ form.charSheet {
                                 input {
                                     background-color: $background;
                                     width: 2rem;
-                                    height: 1.3333rem;
+                                    height: 1.6667rem;
                                     border: 1px solid $cs-boarder;
                                     border-radius: 1.3333rem;
                                     margin: -1px;
@@ -427,12 +424,6 @@ form.charSheet {
                     border-radius: 0.8333rem;
                 }
             }
-
-            div.otherprofs {
-                textarea {
-                    height: 26em;
-                }
-            }
         }
 
         section.combat {
@@ -484,8 +475,8 @@ form.charSheet {
                     background-color: $background;
                     border: 1px solid $cs-boarder;
                     margin: 0.8333rem;
-                    margin-bottom: 5px;
                     border-radius: 0.8333rem 0.8333rem 0 0;
+                    padding: 0.3333rem;
 
                     > div.max {
                         display: flex;
@@ -616,6 +607,7 @@ form.charSheet {
 
                 > div {
                     height: 80px;
+                    padding: 0.3333rem;
                 }
             }
 
@@ -657,7 +649,7 @@ form.charSheet {
                     }
 
                     div.bubbles {
-                        flex: 1 40%;
+                        flex: 1 30%;
                         margin-left: 5px;
 
                         input[type='checkbox'] {
@@ -719,6 +711,7 @@ form.charSheet {
 
                 textarea {
                     border: 0;
+                    height: 16em;
                 }
             }
         }
@@ -819,7 +812,7 @@ form.charSheet {
             }
         }
 
-        section.features {
+        section.labeled-textbox {
             padding: 0.8333rem 0;
 
             div {
@@ -836,7 +829,14 @@ form.charSheet {
                 textarea {
                     border: 0;
                     padding: 5px;
-                    height: 51.1em;
+
+                    &[name='otherprofs'] {
+                        height: 19rem;
+                    }
+
+                    &[name='features'] {
+                        height: 47rem;
+                    }
                 }
             }
         }

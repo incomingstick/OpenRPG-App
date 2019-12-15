@@ -2,6 +2,8 @@ import React from 'react';
 import ScoreBar from './scoreBar';
 import SavesPanel from './savesPanel';
 import SkillsPanel from './skillsPanel';
+import FlagInputBox from './flagInputBox';
+import LabeledTextbox from './labeledTextbox';
 
 export type ScoreList = {
     scoreName: string;
@@ -175,32 +177,18 @@ export default class CharacterSheet extends React.Component<any, any> {
                 <section className='attributes'>
                     <ScoreBar scoreList={this.scores} />
                     <div className='attr-applications'>
-                        <div className='inspiration box'>
-                            <div className='label-container'>
-                                <label htmlFor='inspiration'>Inspiration</label>
-                            </div>
-                            <input name='inspiration' type='checkbox' />
-                        </div>
-                        <div className='proficiencybonus box'>
-                            <div className='label-container'>
-                                <label htmlFor='proficiencybonus'>Proficiency Bonus</label>
-                            </div>
-                            <input name='proficiencybonus' placeholder='+0' />
-                        </div>
+                        <FlagInputBox label='Inspiration' className='inspiration' placeholder='0' />
+                        <FlagInputBox label='Proficiency Bonus' className='proficiencybonus' placeholder='+0' />
                         <SavesPanel scoreList={this.scores} />
                         <SkillsPanel skillList={this.skills} />
                     </div>
                 </section>
-                <div className='passive-perception box'>
-                    <div className='label-container'>
-                        <label htmlFor='passiveperception'>Passive Wisdom (Perception)</label>
-                    </div>
-                    <input name='passiveperception' placeholder='10' />
-                </div>
-                <div className='otherprofs box textblock'>
-                    <label htmlFor='otherprofs'>Other Proficiencies and Languages</label>
-                    <textarea name='otherprofs' placeholder='Extra Proficiencies and Languages here'></textarea>
-                </div>
+                <FlagInputBox label='Passive Wisdom (Perception)' className='passive-perception' placeholder='10' />
+                <LabeledTextbox
+                    label='Other Proficiencies and Languages'
+                    className='otherprofs'
+                    placeholder='Extra Proficiencies and Languages here'
+                />
             </section>
             <section>
                 <section className='combat'>
@@ -376,12 +364,7 @@ export default class CharacterSheet extends React.Component<any, any> {
                         <textarea name='flaws' placeholder='Flaws here'></textarea>
                     </div>
                 </section>
-                <section className='features'>
-                    <div>
-                        <label htmlFor='features'>Features &amp; Traits</label>
-                        <textarea name='features' placeholder='Features & Traits here'></textarea>
-                    </div>
-                </section>
+                <LabeledTextbox label='Features & Traits' className='features' placeholder='Features & Traits here' />
             </section>
         </main>
     );

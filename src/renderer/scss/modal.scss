@@ -2,17 +2,18 @@
 
 .modals {
     &.dimmer {
-        .ui {
-            &.scrolling {
-                &.modal {
-                    &.visible {
-                        margin: 2.5rem auto;
-                    }
-                }
-            }
+        &.visible {
+            padding: $modal-padding;
+        }
 
+        .ui {
             &.modal {
                 border-radius: 50%;
+                background: none;
+
+                &.visible {
+                    margin: $modal-margin auto;
+                }
 
                 .header,
                 .content,

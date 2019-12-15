@@ -11,6 +11,7 @@ import ChangelogModal from '../modals/changelogModal';
 import LicenseModal from '../modals/licenseModal';
 import AboutModal from '../modals/aboutModal';
 import log from '../../../common/log';
+import { TControlFunctionMap } from '../appContainer';
 
 require('../../scss/titlebar.scss');
 
@@ -33,8 +34,15 @@ type TTitleBarState = {
     screen: string;
 };
 
-type TTitleBarSProps = {
-    clickCallback: (callbackData: string) => void;
+export type TTitlebarCallbackData = {
+    screen?: string;
+    action?: (...data: any[]) => void;
+    data?: any;
+};
+
+type TTitlebarSProps = {
+    controlFuncMap: TControlFunctionMap;
+    titlebarCallback: (callbackData: TTitlebarCallbackData) => void;
     screen?: string;
 };
 
@@ -46,19 +54,31 @@ type TitlebarMenu = {
     divider?: boolean;
 }[];
 
-export default class TitleBar extends React.Component<TTitleBarSProps, TTitleBarState> {
+export default class TitleBar extends React.Component<TTitlebarSProps, TTitleBarState> {
     /* NOTE(incomingstick): use this to build the titlebar */
     private titlebarMenu: TitlebarMenu = [
         {
             itemLabel: 'File',
             submenu: [
                 {
+                    itemLabel: 'New Character',
+                    itemCallback: () => {
+                        const item = this.props.controlFuncMap.find((obj) => obj.functionAlias === 'newCharacter');
+
+                        this.props.titlebarCallback({ screen: item?.control, action: item?.function });
+
+                        this.setState({ screen: 'characters' });
+                    },
+                    divider: true
+                },
+                {
                     itemLabel: 'Settings',
                     itemCallback: () => {
-                        this.props.clickCallback('settings');
+                        this.props.titlebarCallback({ screen: 'settings' });
 
-                        this.setState({ screen: 'Settings' });
-                    }
+                        this.setState({ screen: 'settings' });
+                    },
+                    divider: true
                 },
                 {
                     itemLabel: 'Exit',
@@ -198,7 +218,7 @@ export default class TitleBar extends React.Component<TTitleBarSProps, TTitleBar
         let keyVal = 0;
 
         for (const item of input) {
-            if(item.visible !== false){
+            if (item.visible !== false) {
                 if (item.submenu !== undefined) {
                     retElem.push(
                         <Dropdown key={keyVal++} className='titlebar-item' text={item.itemLabel} icon={null}>
