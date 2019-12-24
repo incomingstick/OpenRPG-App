@@ -1,4 +1,5 @@
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     module: {
@@ -77,6 +78,7 @@ module.exports = {
     },
     devtool: 'source-map',
     plugins: [
+        new CleanWebpackPlugin(),
         new ForkTsCheckerWebpackPlugin({
             reportFiles: ['src/main/**/*']
         }),

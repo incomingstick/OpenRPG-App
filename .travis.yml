@@ -1,5 +1,5 @@
 language: node_js
-node_js: 13.0.1
+node_js: 13.5.0
 
 os:
   - linux
@@ -15,14 +15,6 @@ addons:
   apt:
     packages:
       - rpm
-
-cache:
-  directories:
-    - node_modules
-    - app/node_modules
-    - $HOME/.cache/electron
-    - $HOME/.cache/electron-builder
-    - $HOME/.npm/_prebuilds
 
 env:
   global:
