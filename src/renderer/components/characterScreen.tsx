@@ -81,7 +81,7 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
                     )
                 };
 
-                // Add item to the end of the list - 1 to account for the New button
+                // Add item to the end of the list - 1 to account for the 'New' button
                 newPanes.splice(this.state.panes.length - 1, 0, item);
             }
         }
@@ -133,6 +133,30 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
             this.props.characterScreenSaveCallback(this.saveCharacterState());
     };
 
+    public createCharacterMenu = () => {
+        const index = this.state.panes.length - 1;
+        const itemName = 'Char ' + this.currKey++;
+        const item = {
+            menuItem: (
+                <Menu.Item key={this.currKey} id={itemName} onContextMenu={this.handleTabRightClick}>
+                    {itemName}
+                    <FontAwesomeIcon icon={faTimes} onClick={this.handleTabIconClick} />
+                </Menu.Item>
+            ),
+            render: () => (
+                <Tab.Pane>
+                    <CharacterSheet />
+                </Tab.Pane>
+            )
+        };
+
+        const newPanes = this.state.panes;
+
+        newPanes.splice(index, 0, item);
+
+        this.setState({ currIndex: index, panes: newPanes });
+    };
+
     private handleTabIconClick = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
         e.stopPropagation();
 
@@ -178,29 +202,5 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
         }
 
         this.setState({ currIndex: nextIndex, panes: newPanes });
-    };
-
-    private createCharacterMenu = () => {
-        const index = this.state.panes.length - 1;
-        const itemName = 'Char ' + this.currKey++;
-        const item = {
-            menuItem: (
-                <Menu.Item key={this.currKey} id={itemName} onContextMenu={this.handleTabRightClick}>
-                    {itemName}
-                    <FontAwesomeIcon icon={faTimes} onClick={this.handleTabIconClick} />
-                </Menu.Item>
-            ),
-            render: () => (
-                <Tab.Pane>
-                    <CharacterSheet />
-                </Tab.Pane>
-            )
-        };
-
-        const newPanes = this.state.panes;
-
-        newPanes.splice(index, 0, item);
-
-        this.setState({ currIndex: index, panes: newPanes });
     };
 }

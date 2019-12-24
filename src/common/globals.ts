@@ -7,9 +7,10 @@
  * Definitions by: incomingstick <https://github.com/incomingstick>
  */
 import { website, bugs, version, repository } from '../../package.json';
+import { ORPG_VERSION } from 'openrpg-libs';
 
 export const PACKAGE_VERSION = version;
-export const ORPG_VERSION = 'TODO';
+export const LIBS_VERSION = ORPG_VERSION();
 export const NODE_VERSION = process.versions.node;
 export const CHROME_VERSION = process.versions.chrome;
 export const ELECTRON_VERSION = process.versions.electron;
