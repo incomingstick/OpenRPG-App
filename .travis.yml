@@ -16,11 +16,6 @@ addons:
     packages:
       - rpm
 
-env:
-  global:
-    - ELECTRON_CACHE=$HOME/.cache/electron
-    - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
-
 script:
   - npm run compile
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run release; fi
