@@ -12,7 +12,7 @@
     "compile": "electron-webpack",
     "dist": "npm run compile && electron-builder",
     "dist:dir": "npm run compile && electron-builder --dir -c.compression=store -c.mac.identity=null",
-    "release": "electron-builder -p always"
+    "release": "npm run compile && electron-builder -p always"
   },
   "electronWebpack": {
     "commonSourceDirectory": "src/common",
