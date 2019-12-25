@@ -18,18 +18,19 @@ addons:
 
 jobs:
   include:
-    - os: linux
-      stage: Publish
-      script:
-       - npm run release
-    - os: osx
-      stage: Publish
-      script:
-       - npm run release -- --mac
-    - os: windows
-      stage: Publish
-      script:
-       - npm run release -- --win
+    - stage: Publish
+      install:
+        - npm install
+        - npm run compile
+      - os: linux
+        script:
+          - npm run release
+      - os: osx
+        script:
+          - npm run release -- --mac
+      - os: windows
+          script:
+          - npm run release -- --win
 
 install:
   - npm install
