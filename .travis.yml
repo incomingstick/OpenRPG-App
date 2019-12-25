@@ -1,5 +1,4 @@
 language: node_js
-node_js: 13.5.0
 
 os:
   - linux
@@ -16,8 +15,23 @@ addons:
     packages:
       - rpm
 
+jobs:
+  include:
+    - os: linux
+      stage: Publish
+      script:
+       - npm run release
+    - os: osx
+      stage: Publish
+      script:
+       - npm run release -- --mac
+    - os: windows
+      stage: Publish
+      script:
+       - npm run release -- --win
+
+install:
+  - npm install
+
 script:
   - npm run compile
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run release; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then npm run release -- --mac; fi
-  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then npm run release -- --win; fi
