@@ -25,7 +25,7 @@ jobs:
     - os: osx
       stage: Publish
       script:
-        - df -h ~/.cache
+        - df -h ~/
         - npm run release -- --mac
     - os: windows
       stage: Publish
