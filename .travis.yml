@@ -21,15 +21,16 @@ jobs:
     - os: linux
       stage: Publish
       script:
-       - npm run release
+        - npm run release
     - os: osx
       stage: Publish
       script:
-       - npm run release -- --mac
+        - df -h ~/.cache
+        - npm run release -- --mac
     - os: windows
       stage: Publish
       script:
-       - npm run release -- --win
+        - npm run release -- --win
 
 install:
   - npm install
