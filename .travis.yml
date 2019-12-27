@@ -25,7 +25,7 @@ jobs:
     - os: osx
       stage: Publish
       script:
-        - rm -rfv ~/Library/Caches/com.apple.helpd
+        - rm -rfv ~/Library/Caches
         - du -c -h -d1 ~
         - du -c -h -d1 ~/Library
         - du -c -h -d1 ~/Library/Developer
