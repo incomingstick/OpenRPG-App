@@ -27,7 +27,7 @@ jobs:
       script:
         - du -c -h -d1 ~
         - du -c -h -d1 ~/Library
-        - ls ~/.cache
+        - du -c -h -d1 .
         - npm run release -- --mac
     - os: windows
       stage: Publish
