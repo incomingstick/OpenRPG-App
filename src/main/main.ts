@@ -75,7 +75,7 @@ app.on('ready', () => {
                 return;
             }
 
-            log.info(`[Main] Dependency injection completes with APIs: ${Object.keys(api).join(', ')}`);
+            log.debug(`[Main] Dependency injection completes with APIs: ${Object.keys(api).join(', ')}`);
 
             api.settings.on('updated', () => {
                 if (!win) {
@@ -120,21 +120,21 @@ app.on('ready', () => {
             // Updater Events
             //
             api.updateService.events().on('update-check-started', () => {
-                log.info('[Main] update-check-started');
+                log.debug('[Main] update-check-started');
                 win.webContents.send('update-check-started');
             });
 
             api.updateService.events().on('update-available', () => {
-                log.info('[Main] update-available');
+                log.debug('[Main] update-available');
                 win.webContents.send('update-available');
             });
 
             // FIXME(incomingstick): This does not seem to clear after call, resulting in multiple calls building up
             api.updateService.events().on('update-unavailable', () => {
-                log.info('[Main] update-unavailable');
+                log.debug('[Main] update-unavailable');
 
                 dialog.showMessageBox({
-                    type: 'info',
+                    type: 'debug',
                     title: 'OpenRPG',
                     message: 'Hey, listen! No updates are currently available!'
                 });
@@ -143,17 +143,17 @@ app.on('ready', () => {
             });
 
             api.updateService.events().on('update-progress', (data: any) => {
-                log.info('[Main] update-progress', data);
+                log.debug('[Main] update-progress', data);
                 win.webContents.send('update-progress', data);
             });
 
             api.updateService.events().on('update-completed', (data: any) => {
-                log.info('[Main] update-completed', data);
+                log.debug('[Main] update-completed', data);
                 win.webContents.send('update-completed', data);
             });
 
             api.updateService.events().on('update-failed', (data: any) => {
-                log.info('[Main] update-failed', data);
+                log.debug('[Main] update-failed', data);
                 win.webContents.send('update-failed', data);
             });
         }

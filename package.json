@@ -3,7 +3,7 @@
   "version": "0.5.1",
   "description": "A tool for someone to use to quickly create content for a tabletop RPG world",
   "scripts": {
-    "start": "electron-webpack dev",
+    "start": "electron-webpack dev --hot",
     "lint": "eslint \"src/**/*\" --fix",
     "test": "echo \"mocha -r ts-node/register src/test/**/*-test.ts\"",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,js,jsx,md,css,scss,sass,json}\" !src/static/** !tmp/**",
@@ -68,9 +68,9 @@
   },
   "homepage": "https://openrpg.io",
   "website": {
-    "url": "http://openrpg.io",
-    "blog": "http://blog.openrpg.io",
-    "docs": "http://openrpg.io/documentation/introduction/"
+    "url": "https://openrpg.io",
+    "blog": "https://blog.openrpg.io",
+    "docs": "https://openrpg.io/documentation/introduction/"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
@@ -96,6 +96,7 @@
     "openrpg-libs": "^0.5.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-hot-loader": "^4.12.19",
     "semantic-ui-css": ">=2.4.1",
     "semantic-ui-react": "^0.88.2",
     "source-map-support": "^0.5.16",
@@ -135,7 +136,6 @@
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
     "raw-loader": "^3.1.0",
-    "react-hot-loader": "^4.12.19",
     "sass-loader": "^8.0.2",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^6.2.1",

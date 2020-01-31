@@ -105,7 +105,7 @@ $(document).ready(() => {
 // This code should open external links in the systems default browser
 const shell = require('electron').shell;
 // Open links externally by default
-$(document).on('click', 'a[href^="http"]', function(event) {
+$(document).on('click', 'a[href^="https"]', function(event) {
     event.preventDefault();
     shell.openExternal(this.href);
 });

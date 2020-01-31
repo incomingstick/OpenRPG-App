@@ -15,7 +15,9 @@ module.exports = {
                         ['@babel/preset-env', { targets: 'maintained node versions' }],
                         '@babel/preset-typescript'
                     ],
-                    plugins: [['@babel/plugin-proposal-class-properties', { loose: true }]]
+                    plugins: [
+                        ['@babel/plugin-proposal-class-properties', { loose: true }]
+                    ]
                 }
             },
             {
@@ -30,8 +32,16 @@ module.exports = {
                         '@babel/preset-typescript',
                         '@babel/preset-react'
                     ],
-                    plugins: [['@babel/plugin-proposal-class-properties', { loose: true }]]
+                    plugins: [
+                        ["react-hot-loader/babel"],
+                        ['@babel/plugin-proposal-class-properties', { loose: true }]
+                    ]
                 }
+            },
+            {
+                test: /\.(js|jsx|ts|tsx)$/,
+                use: 'react-hot-loader/webpack',
+                include: /node_modules/
             },
             {
                 test: /\.s[ac]ss$/i,

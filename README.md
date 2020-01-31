@@ -3,8 +3,10 @@ This repository is for the front end application for OpenRPG. If you are looking
 
 # OpenRPG App
 [![Build Status](https://travis-ci.org/incomingstick/OpenRPG-App.svg?branch=master)](https://travis-ci.org/incomingstick/OpenRPG-App)
-![Version Number](https://img.shields.io/badge/version-v0.5.1--dev-blue.svg)
+![Version Number](https://img.shields.io/badge/version-v0.5.1-blue.svg)
 [![Discord Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/xEwaYE5)
+
+[![NPM](https://nodei.co/npm/openrpg.png)](https://nodei.co/npm/openrpg/)
 
 OpenRPG is still in its infancy and I want it to do a lot by v1.0.0!  
 What OpenRPG aims to accomplish two fold.  
@@ -34,7 +36,7 @@ v0.1.0 is a basis for the CLI/developer version, but v1.0.0 will contain a
 portable GUI that works on Windows, Linux, and macOS.
 
 ## Building
-This is a node project, and as such you will need `npm` or `yarn` installed. Currently we require your choice of C/C++ compiler for the backend library [binaries](https://github.com/incomingstick/OpenRPG).
+This is a node project, and as such you will need `npm` or `yarn` installed.
 
 Run `npm install` to download all dependancies.
 Run `npm start` to run the OpenRPG app.

@@ -7,13 +7,19 @@
         }
 
         .ui {
+            &.scrolling {
+                &.modal {
+                    margin: $modal-margin auto !important;
+                }
+            }
+
             &.modal {
                 border-radius: 50%;
                 background: none;
 
-                &.visible {
-                    margin: $modal-margin auto;
-                }
+                // &.visible {
+                //     margin: $modal-margin auto;
+                // }
 
                 .header,
                 .content,

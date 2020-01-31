@@ -12,10 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Settings removed from Sidebar and added to Titlebar under File > Settings
 
 ### Fixed
-- AutoUpdater will now recognize pre-releases!
+- AutoUpdater should now recognize pre-releases!
 - Modals now open exlusively, i.e you cannot open the Changelog and the License at the same time
 
-## [v0.5.0]
+## [v0.5.0] - 2019-11-25 
 ### Added
 - ZoomLevel setting that allows you to adjust the zoom level of the window. The original size is 0 and each increment above (e.g. 1) represents zooming 20% larger
 - You can now open multiple character sheets 

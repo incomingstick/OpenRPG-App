@@ -48,13 +48,14 @@ class AppContainer extends React.Component<any, TAppContainerState> {
                 control: 'characters',
                 functionAlias: 'newCharacter',
                 function: () => {
-                    log.info('[App Container] TODO New Character Modal here!');
+                    log.debug('[App Container] TODO New Character Modal here!');
                 }
             }
         ];
     }
 
     public render() {
+        // Apply settings stuff here
         if (this.state.settings.zoomLevel !== undefined) {
             const zoomLevel = this.state.settings.zoomLevel;
             webFrame.setZoomFactor(1.0 + zoomLevel * 0.2);

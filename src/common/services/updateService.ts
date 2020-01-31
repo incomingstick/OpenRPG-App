@@ -32,13 +32,13 @@ export default function updateServiceFactory(callback: any) {
      * Performs a single check for whether we shoud download data from the server.
      */
     async function performUpdateCheck() {
-        log.info('[Update Serviice] called performUpdateCheck');
+        log.debug('[Update Serviice] called performUpdateCheck');
         emitter.emit('update-check-started');
 
         autoUpdater.checkForUpdates();
 
         try {
-            log.info('this has been called ', TEST_GLOBAL++, ' times');
+            log.debug('this has been called ', TEST_GLOBAL++, ' times');
             autoUpdater.on('update-not-available', () => {
                 emitter.emit('update-unavailable');
             });
@@ -71,7 +71,7 @@ export default function updateServiceFactory(callback: any) {
                 return;
             }
 
-            log.info('[Update Serviice] called startCheckingForUpdates');
+            log.debug('[Update Serviice] called startCheckingForUpdates');
             if (updateTimerHandle) {
                 clearTimeout(updateTimerHandle);
                 updateTimerHandle = null;
@@ -93,7 +93,7 @@ export default function updateServiceFactory(callback: any) {
          * StopCheckingForUpdates
          */
         stopCheckingForUpdates() {
-            log.info('[Update Serviice] called stopCheckingForUpdates');
+            log.debug('[Update Serviice] called stopCheckingForUpdates');
             if (updateTimerHandle) {
                 clearTimeout(updateTimerHandle);
                 updateTimerHandle = null;

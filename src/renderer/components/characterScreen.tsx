@@ -39,7 +39,7 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
             currIndex: 0,
             panes: [
                 {
-                    menuItem: <Menu.Item key={this.currKey++} name='New' onClick={this.createCharacterMenu} />,
+                    menuItem: <Menu.Item key={this.currKey++} name='Add' onClick={this.createCharacterMenu} />,
                     render: () => (
                         <Tab.Pane>
                             <p>
@@ -60,7 +60,7 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
     }
 
     public loadCharacterState = (loadState: TCharacterSaveState) => {
-        const newPanes = this.currPanes;
+        const addPanes = this.currPanes;
 
         if (loadState?.names !== undefined) {
             let item: TPaneItem;
@@ -81,8 +81,8 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
                     )
                 };
 
-                // Add item to the end of the list - 1 to account for the 'New' button
-                newPanes.splice(this.state.panes.length - 1, 0, item);
+                // Add item to the end of the list - 1 to account for the 'Add' button
+                addPanes.splice(this.state.panes.length - 1, 0, item);
             }
         }
 
@@ -90,7 +90,7 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
             this.currKey = loadState?.currIndex;
         }
 
-        this.currPanes = newPanes;
+        this.currPanes = addPanes;
     };
 
     public saveCharacterState = () => {
@@ -150,11 +150,11 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
             )
         };
 
-        const newPanes = this.state.panes;
+        const addPanes = this.state.panes;
 
-        newPanes.splice(index, 0, item);
+        addPanes.splice(index, 0, item);
 
-        this.setState({ currIndex: index, panes: newPanes });
+        this.setState({ currIndex: index, panes: addPanes });
     };
 
     private handleTabIconClick = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
@@ -189,18 +189,18 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
     // SetState within this function... why?
     private removePaneItemFromClick = (id: string | undefined, removeIndex: any, currIndex: number) => {
         let nextIndex = 0;
-        const newPanes = this.state.panes;
+        const addPanes = this.state.panes;
 
-        newPanes.splice(removeIndex, 1);
+        addPanes.splice(removeIndex, 1);
 
         if (currIndex > removeIndex) {
             nextIndex = currIndex - 1;
-        } else if (removeIndex === newPanes.length - 1 && removeIndex === currIndex && removeIndex > 0) {
+        } else if (removeIndex === addPanes.length - 1 && removeIndex === currIndex && removeIndex > 0) {
             nextIndex = --removeIndex;
         } else {
             nextIndex = currIndex;
         }
 
-        this.setState({ currIndex: nextIndex, panes: newPanes });
+        this.setState({ currIndex: nextIndex, panes: addPanes });
     };
 }

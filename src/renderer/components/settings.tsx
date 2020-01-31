@@ -58,7 +58,7 @@ export default class SettingsScreen extends React.Component<TSettingsScreenProps
         // If value is not blank, then test the regex
 
         if (data.value === '' || re.test(data.value)) {
-            log.info('[Settings Menu] ', data.value);
+            log.debug('[Settings Menu] ', data.value);
 
             ipcRenderer.send('settings-updated', { zoomLevel: data.value });
             this.setState({ settings: ipcRenderer.sendSync('sync-settings-get') as TSettingsData });

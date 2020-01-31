@@ -112,17 +112,17 @@ export class SettingsService extends EventEmitter implements ISettingsService {
 
     // Public Functions
     public restore() {
-        log.info(`[Settings] Loading from ${this.settingsPath}`);
+        log.debug(`[Settings] Loading from ${this.settingsPath}`);
         try {
             const encodedJson = fs.readFileSync(this.settingsPath, 'utf8');
             const parsedJson = JSON.parse(encodedJson);
 
-            log.info('[Settings] loaded as json: ', parsedJson);
+            log.debug('[Settings] loaded as json: ', parsedJson);
 
             if (parsedJson.settingsFormat === SETTINGS_FORMAT) {
                 this.settingsData = _.extend({}, DEFAULT_SETTINGS, parsedJson);
             } else {
-                log.info(
+                log.debug(
                     `[Settings] Settings format has changed. Old = ${parsedJson.settingsFormat}, New = ${DEFAULT_SETTINGS} -- resetting settings`
                 );
                 this.restoreDefaults();
@@ -140,12 +140,12 @@ export class SettingsService extends EventEmitter implements ISettingsService {
     }
 
     public restoreDefaults() {
-        log.info('[Settings] Restoring defaults');
+        log.debug('[Settings] Restoring defaults');
         this.settingsData = _.clone(DEFAULT_SETTINGS);
     }
 
     public save() {
-        log.info('[Settings] Saving...');
+        log.debug('[Settings] Saving...');
         fs.writeFileSync(this.settingsPath, JSON.stringify(this.settingsData, null, 2), 'utf8');
         this.triggerSettingsUpdated();
     }
@@ -166,7 +166,7 @@ export class SettingsService extends EventEmitter implements ISettingsService {
 
     // Private functions
     private triggerSettingsUpdated() {
-        log.info('[Settings] Settings have been updated ...');
+        log.debug('[Settings] Settings have been updated ...');
         this.emit('updated', this.settingsData);
     }
 }
