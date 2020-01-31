@@ -93,10 +93,13 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
         this.currPanes = addPanes;
     };
 
-    public saveCharacterState = () => {
+    public getCharacterSaveData = () => {
         const retList: string[] = [];
-        const saveIndex = this.currKey;
 
+        /**
+         * Currently we just retrieve the names of the character panes
+         * eventually we will want to save the location of the characters
+         */
         for (const pane of this.currPanes) {
             if (pane.menuItem?.props.id !== undefined) {
                 retList.push(pane.menuItem?.props.id);
@@ -105,8 +108,13 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
 
         return {
             names: retList,
-            currIndex: saveIndex
+            currIndex: this.currKey
         };
+    };
+
+    public save = () => {
+        if (this.props.characterScreenSaveCallback !== undefined)
+            this.props.characterScreenSaveCallback(this.getCharacterSaveData());
     };
 
     public render() {
@@ -129,8 +137,7 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
     }
 
     public componentWillUnmount = () => {
-        if (this.props.characterScreenSaveCallback !== undefined)
-            this.props.characterScreenSaveCallback(this.saveCharacterState());
+        this.save();
     };
 
     public createCharacterMenu = () => {
@@ -153,6 +160,8 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
         const addPanes = this.state.panes;
 
         addPanes.splice(index, 0, item);
+
+        this.save();
 
         this.setState({ currIndex: index, panes: addPanes });
     };
@@ -200,6 +209,8 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
         } else {
             nextIndex = currIndex;
         }
+
+        this.save();
 
         this.setState({ currIndex: nextIndex, panes: addPanes });
     };

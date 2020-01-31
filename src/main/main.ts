@@ -27,6 +27,9 @@ function createWindow() {
 
     if (DEBUG) {
         win.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`);
+
+        // Open the DevTools.
+        win.webContents.openDevTools();
     } else {
         // And load the index.html of the app.
         win.loadURL(
@@ -36,11 +39,6 @@ function createWindow() {
                 slashes: true
             })
         );
-    }
-
-    // Open the DevTools.
-    if (DEBUG) {
-        win.webContents.openDevTools();
     }
 
     // Emitted when the window is closed.
@@ -155,6 +153,12 @@ app.on('ready', () => {
             api.updateService.events().on('update-failed', (data: any) => {
                 log.debug('[Main] update-failed', data);
                 win.webContents.send('update-failed', data);
+            });
+
+            // App events
+            app.on('window-all-closed', () => {
+                // Save the settings when the App is closed
+                api.settings.save();
             });
         }
     );
