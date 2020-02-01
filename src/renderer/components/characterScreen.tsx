@@ -7,8 +7,8 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 require('../scss/characterSheet.scss');
 
 export type TCharacterSaveState = {
-    names?: string[];
-    currIndex?: number;
+    currIndex?: string | number;
+    characters: string[];
 };
 
 export type TCharacterProps = {
@@ -17,14 +17,14 @@ export type TCharacterProps = {
 };
 
 export type TCharacterState = {
-    currIndex: string | number | undefined;
+    currIndex?: string | number;
     panes: TPaneItem[];
 };
 
 type TPaneItem = {
     pane?: SemanticShorthandItem<TabPaneProps>;
     menuItem?: JSX.Element;
-    render?: (() => React.ReactNode) | undefined;
+    render?: (() => React.ReactNode);
 };
 
 export default class CharacterScreen extends React.Component<TCharacterProps, TCharacterState> {
@@ -62,12 +62,10 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
     public loadCharacterState = (loadState: TCharacterSaveState) => {
         const addPanes = this.currPanes;
 
-        if (loadState?.names !== undefined) {
-            let item: TPaneItem;
-            let name: string;
-
-            for (name of loadState.names) {
-                item = {
+        if (loadState?.characters !== undefined) {
+            for (const name of loadState.characters) {
+                // Add item to the end of the list - 1 to account for the 'Add' button
+                addPanes.splice(this.state.panes.length - 1, 0, {
                     menuItem: (
                         <Menu.Item key={this.currKey++} id={name} onContextMenu={this.handleTabRightClick}>
                             {name}
@@ -79,21 +77,18 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
                             <CharacterSheet />
                         </Tab.Pane>
                     )
-                };
-
-                // Add item to the end of the list - 1 to account for the 'Add' button
-                addPanes.splice(this.state.panes.length - 1, 0, item);
+                });
             }
         }
 
-        if (loadState?.currIndex !== undefined && loadState.currIndex > this.currKey) {
-            this.currKey = loadState?.currIndex;
-        }
-
         this.currPanes = addPanes;
+        this.state = {
+            currIndex: loadState?.currIndex,
+            panes: addPanes
+        }
     };
 
-    public getCharacterSaveData = () => {
+    public save = () => {
         const retList: string[] = [];
 
         /**
@@ -106,15 +101,11 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
             }
         }
 
-        return {
-            names: retList,
-            currIndex: this.currKey
-        };
-    };
-
-    public save = () => {
         if (this.props.characterScreenSaveCallback !== undefined)
-            this.props.characterScreenSaveCallback(this.getCharacterSaveData());
+            this.props.characterScreenSaveCallback({
+                currIndex: this.state.currIndex,
+                characters: retList
+            });
     };
 
     public render() {
@@ -162,8 +153,10 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
         addPanes.splice(index, 0, item);
 
         this.save();
-
-        this.setState({ currIndex: index, panes: addPanes });
+        this.setState({
+            currIndex: index,
+            panes: addPanes
+        });
     };
 
     private handleTabIconClick = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
@@ -211,7 +204,6 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
         }
 
         this.save();
-
         this.setState({ currIndex: nextIndex, panes: addPanes });
     };
 }

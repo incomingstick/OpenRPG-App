@@ -38,10 +38,7 @@ class AppContainer extends React.Component<any, TAppContainerState> {
             screen: settings.lastWindow !== '' ? settings.lastWindow : 'welcome'
         };
 
-        this.characterState = {
-            names: this.state.settings.openCharacters !== undefined ? this.state.settings.openCharacters : [],
-            currIndex: 0
-        };
+        this.characterState = this.state.settings.openCharacters;
 
         this.controlFuncMap = [
             {
@@ -120,7 +117,7 @@ class AppContainer extends React.Component<any, TAppContainerState> {
     };
 
     private characterScreenCallback = (state: TCharacterSaveState) => {
-        ipcRenderer.send('settings-updated', { openCharacters: state.names });
+        ipcRenderer.send('settings-updated', { openCharacters: state });
 
         this.characterState = state;
     };

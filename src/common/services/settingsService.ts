@@ -6,6 +6,7 @@ import * as os from 'os';
 import * as Path from 'path';
 import log from '../log';
 import { BUILD_TYPE, DEBUG } from '../globals';
+import { TCharacterSaveState } from '../../renderer/components/characterScreen';
 
 // TODO(incomingstick): Can we take advantage of electron-settings at all here?
 
@@ -17,13 +18,13 @@ export type TSettingsData = {
     updateTimerMinutes: number;
     hostURL: string;
     lastWindow: string;
-    openCharacters?: string[]; // This will eventually hold a list of locations to character files
+    openCharacters: TCharacterSaveState;
     zoomLevel?: number;
 };
 
 // If the settings formats differ then we revert to the original default settings
 // TODO(incomingstick): Warn users when this is updated as their settings will reset
-const SETTINGS_FORMAT = '2019-11-21';
+const SETTINGS_FORMAT = '2020-02-01';
 
 const DEFAULT_SETTINGS: TSettingsData = {
     settingsFormat: SETTINGS_FORMAT,
@@ -33,7 +34,10 @@ const DEFAULT_SETTINGS: TSettingsData = {
     updateTimerMinutes: 5,
     hostURL: '',
     lastWindow: '',
-    openCharacters: []
+    openCharacters: {
+        currIndex: 0,
+        characters: []
+    }
 };
 
 function isDir(path: string) {
