@@ -6,7 +6,7 @@ import * as os from 'os';
 import * as Path from 'path';
 import log from '../log';
 import { BUILD_TYPE, DEBUG } from '../globals';
-import { TCharacterSaveState } from '../../renderer/components/characterScreen';
+import { CharacterSaveState } from '../../renderer/components/characterScreen';
 
 // TODO(incomingstick): Can we take advantage of electron-settings at all here?
 
@@ -18,7 +18,7 @@ export type TSettingsData = {
     updateTimerMinutes: number;
     hostURL: string;
     lastWindow: string;
-    openCharacters: TCharacterSaveState;
+    openCharacters: CharacterSaveState;
     zoomLevel?: number;
 };
 

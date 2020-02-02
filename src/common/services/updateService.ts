@@ -10,7 +10,7 @@ const { autoUpdater } = require('electron-updater');
 
 let TEST_GLOBAL = 0;
 
-export interface IUpdateService {
+export interface UpdateService {
     isUpdateAvailable(): Promise<boolean>;
     startCheckingForUpdates(): Promise<void>;
     pauseCheckingForUpdates(): Promise<void>;
