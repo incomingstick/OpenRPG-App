@@ -2,12 +2,12 @@ import React from 'react';
 import ScoreItem from './scoreItem';
 import { ScoreList } from './characterSheet';
 
-type TScoreBarProps = {
+type ScoreBarProps = {
     scoreList: ScoreList;
 };
 
-export default class ScoreBar extends React.Component<TScoreBarProps, any> {
-    public constructor(props: TScoreBarProps, context?: any) {
+export default class ScoreBar extends React.Component<ScoreBarProps, any> {
+    public constructor(props: ScoreBarProps, context?: any) {
         super(props, context);
     }
 

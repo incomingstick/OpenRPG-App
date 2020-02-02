@@ -25,3 +25,4 @@ export const ORPG_BLOG = website.blog;
 export const ORPG_BUGS = bugs.url;
 export const ORPG_DOCS = website.docs;
 export const ORPG_REPO = repository.url;
+export const ORPG_ASSET_DIR = '';

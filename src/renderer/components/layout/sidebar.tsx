@@ -6,17 +6,17 @@ import log from '../../../common/log';
 
 require('../../scss/sidebar.scss');
 
-type TSidebarProps = {
+type SidebarProps = {
     clickCallback: (callbackData: string) => void;
     screen?: string;
 };
 
-type TSidebarState = {
+type SidebarState = {
     screen: string;
 };
 
-export default class Sidebar extends React.Component<TSidebarProps, TSidebarState> {
-    public constructor(props: TSidebarProps, context?: TSidebarState) {
+export default class Sidebar extends React.Component<SidebarProps, SidebarState> {
+    public constructor(props: SidebarProps, context?: SidebarState) {
         super(props, context);
         this.state = {
             screen: this.props.screen !== undefined ? this.props.screen : 'welcome'

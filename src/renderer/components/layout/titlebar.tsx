@@ -11,7 +11,7 @@ import ChangelogModal from '../modals/changelogModal';
 import LicenseModal from '../modals/licenseModal';
 import AboutModal from '../modals/aboutModal';
 import log from '../../../common/log';
-import { TControlFunctionMap } from '../appContainer';
+import { ControlFunctionMap } from '../appContainer';
 
 require('../../scss/titlebar.scss');
 
@@ -41,7 +41,7 @@ export type TTitlebarCallbackData = {
 };
 
 type TTitlebarSProps = {
-    controlFuncMap: TControlFunctionMap;
+    controlFuncMap: ControlFunctionMap;
     titlebarCallback: (callbackData: TTitlebarCallbackData) => void;
     screen?: string;
 };
@@ -84,6 +84,17 @@ export default class TitleBar extends React.Component<TTitlebarSProps, TTitleBar
                     itemLabel: 'Exit',
                     itemCallback: () => {
                         remote.getCurrentWindow().close();
+                    }
+                }
+            ]
+        },
+        {
+            itemLabel: 'View',
+            submenu: [
+                {
+                    itemLabel: 'Reload Window',
+                    itemCallback: () => {
+                        remote.getCurrentWindow().reload();
                     }
                 }
             ]
@@ -234,7 +245,7 @@ export default class TitleBar extends React.Component<TTitlebarSProps, TTitleBar
             }
         }
 
-        return <>{retElem}</>;
+        return retElem;
     };
 
     /**

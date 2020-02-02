@@ -3,14 +3,14 @@ import MarkdownLoader from 'markdown-it';
 
 require('highlight.js');
 
-type TMarkdownProps = {
+type MarkdownProps = {
     content: any;
 };
 
-export default class Markdown extends React.Component<TMarkdownProps, any> {
+export default class Markdown extends React.Component<MarkdownProps, any> {
     private md = new MarkdownLoader();
 
-    public constructor(props: TMarkdownProps, context?: any) {
+    public constructor(props: MarkdownProps, context?: any) {
         super(props, context);
     }
 

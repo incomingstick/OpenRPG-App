@@ -1,13 +1,13 @@
 import React from 'react';
 
-type TLabeledTextbox = {
+type LabeledTextboxProps = {
     label: string;
     className: string;
     placeholder?: string;
 };
 
-export default class LabeledTextbox extends React.Component<TLabeledTextbox, any> {
-    public constructor(props: TLabeledTextbox, context?: any) {
+export default class LabeledTextbox extends React.Component<LabeledTextboxProps, any> {
+    public constructor(props: LabeledTextboxProps, context?: any) {
         super(props, context);
     }
 

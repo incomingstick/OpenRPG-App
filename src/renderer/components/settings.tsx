@@ -4,16 +4,16 @@ import { TSettingsData } from '../../common/services/settingsService';
 import { ipcRenderer } from 'electron';
 import log from '../../common/log';
 
-type TSettingsScreenState = {
+type SettingsScreenState = {
     settings: TSettingsData;
 };
 
-type TSettingsScreenProps = {
+type SettingsScreenProps = {
     settingsScreenSaveCallback: () => void;
 };
 
-export default class SettingsScreen extends React.Component<TSettingsScreenProps, TSettingsScreenState> {
-    public constructor(props: TSettingsScreenProps, context?: TSettingsScreenState) {
+export default class SettingsScreen extends React.Component<SettingsScreenProps, SettingsScreenState> {
+    public constructor(props: SettingsScreenProps, context?: SettingsScreenState) {
         super(props, context);
 
         this.state = {
@@ -52,7 +52,9 @@ export default class SettingsScreen extends React.Component<TSettingsScreenProps
         );
     }
 
-    private handleNumberInput = (e: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => {
+    private handleNumberInput = (event: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => {
+        event.preventDefault();
+
         const re = /^[0-9\b]+$/;
 
         // If value is not blank, then test the regex

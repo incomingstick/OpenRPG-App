@@ -6,33 +6,33 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 require('../scss/characterSheet.scss');
 
-export type TCharacterSaveState = {
+export type CharacterSaveState = {
     currIndex?: string | number;
     characters: string[];
 };
 
-export type TCharacterProps = {
-    characterScreenSaveState?: TCharacterSaveState;
-    characterScreenSaveCallback?: (state: TCharacterSaveState) => void;
+export type CharacterProps = {
+    characterScreenSaveState: CharacterSaveState;
+    characterScreenSaveCallback: (state: CharacterSaveState) => void;
 };
 
-export type TCharacterState = {
+export type CharacterState = {
     currIndex?: string | number;
-    panes: TPaneItem[];
+    panes: PaneItem[];
 };
 
-type TPaneItem = {
+type PaneItem = {
     pane?: SemanticShorthandItem<TabPaneProps>;
     menuItem?: JSX.Element;
-    render?: (() => React.ReactNode);
+    render?: () => React.ReactNode;
 };
 
-export default class CharacterScreen extends React.Component<TCharacterProps, TCharacterState> {
+export default class CharacterScreen extends React.Component<CharacterProps, CharacterState> {
     private currKey: number;
-    private currPanes: TPaneItem[];
+    private currPanes: PaneItem[];
 
     // TODO(incomingstick): research maintaining state after unmount, this HAS to be possible...
-    public constructor(props: TCharacterProps, context?: TCharacterState) {
+    public constructor(props: CharacterProps, context?: CharacterState) {
         super(props, context);
         this.currKey = 0;
         this.state = {
@@ -56,10 +56,10 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
         this.currPanes = this.state.panes;
 
         if (this.props.characterScreenSaveState !== undefined)
-            this.loadCharacterState(this.props.characterScreenSaveState);
+            this.loadSavedState(this.props.characterScreenSaveState);
     }
 
-    public loadCharacterState = (loadState: TCharacterSaveState) => {
+    public loadSavedState = (loadState: CharacterSaveState) => {
         const addPanes = this.currPanes;
 
         if (loadState?.characters !== undefined) {
@@ -85,7 +85,7 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
         this.state = {
             currIndex: loadState?.currIndex,
             panes: addPanes
-        }
+        };
     };
 
     public save = () => {
@@ -127,6 +127,10 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
         );
     }
 
+    public componentDidUpdate = () => {
+        this.save();
+    };
+
     public componentWillUnmount = () => {
         this.save();
     };
@@ -152,44 +156,46 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
 
         addPanes.splice(index, 0, item);
 
-        this.save();
         this.setState({
             currIndex: index,
             panes: addPanes
         });
     };
 
-    private handleTabIconClick = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
-        e.stopPropagation();
+    private handleTabIconClick = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+        event.preventDefault();
+        event.stopPropagation();
 
-        const id = e.currentTarget.parentElement?.id;
-        const removeIndex = this.state.panes.findIndex((item: TPaneItem) => item.menuItem?.props.id === id);
+        const id = event.currentTarget.parentElement?.id;
+        const removeIndex = this.state.panes.findIndex((item: PaneItem) => item.menuItem?.props.id === id);
         const currIndex = this.state.currIndex as number;
 
-        this.removePaneItemFromClick(id, removeIndex, currIndex);
+        this.removePaneItem(event.currentTarget.parentElement?.id, removeIndex, currIndex);
     };
 
-    // TODO(incomingstick): this function is not intended to delete the item, but for now that is what I am going to do
-    // TODO(incomingstick): render a right click menu
-    private handleTabRightClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-        e.preventDefault();
+    // TODO(incomingstick): this function is not intended to delete the item (that should be a middle click), but for now this is what I am going to do
+    // TODO(incomingstick): render a right click (context) menu
+    private handleTabRightClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        event.preventDefault();
+        event.stopPropagation();
 
-        const id = e.currentTarget?.id;
-        const removeIndex = this.state.panes.findIndex((item: TPaneItem) => item.menuItem?.props.id === id);
+        const id = event.currentTarget?.id;
+        const removeIndex = this.state.panes.findIndex((item: PaneItem) => item.menuItem?.props.id === id);
         const currIndex = this.state.currIndex as number;
 
-        this.removePaneItemFromClick(id, removeIndex, currIndex);
+        this.removePaneItem(id, removeIndex, currIndex);
     };
 
     private handleTabChange = (event: React.MouseEvent<HTMLDivElement, MouseEvent>, data: TabProps) => {
-        const index = data.activeIndex;
+        event.preventDefault();
+        event.stopPropagation();
 
-        this.setState({ currIndex: index });
+        this.setState({ currIndex: data.activeIndex });
     };
 
-    // FIXME(incomingstick): when returning to this page, React claims there is a memory leak when calling
-    // SetState within this function... why?
-    private removePaneItemFromClick = (id: string | undefined, removeIndex: any, currIndex: number) => {
+    private removePaneItem = (id: string | undefined, removeIndex: any, currIndex: number) => {
+        if(id === undefined) return;
+
         let nextIndex = 0;
         const addPanes = this.state.panes;
 
@@ -203,7 +209,6 @@ export default class CharacterScreen extends React.Component<TCharacterProps, TC
             nextIndex = currIndex;
         }
 
-        this.save();
         this.setState({ currIndex: nextIndex, panes: addPanes });
     };
 }

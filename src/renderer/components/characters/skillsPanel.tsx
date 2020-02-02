@@ -2,12 +2,12 @@ import React from 'react';
 import SkillItem from './skillItem';
 import { SkillsList } from './characterSheet';
 
-type TSavesPanelProps = {
+type SavesPanelProps = {
     skillList: SkillsList;
 };
 
-export default class SavesPanel extends React.Component<TSavesPanelProps, any> {
-    public constructor(props: TSavesPanelProps, context?: any) {
+export default class SavesPanel extends React.Component<SavesPanelProps, any> {
+    public constructor(props: SavesPanelProps, context?: any) {
         super(props, context);
     }
 

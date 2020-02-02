@@ -1,12 +1,12 @@
 import React from 'react';
 
-type TScoreItemProps = {
+type ScoreItemProps = {
     skillName: string;
     scoreID: string;
 };
 
-export default class SkillItem extends React.Component<TScoreItemProps, any> {
-    public constructor(props: TScoreItemProps, context?: any) {
+export default class SkillItem extends React.Component<ScoreItemProps, any> {
+    public constructor(props: ScoreItemProps, context?: any) {
         super(props, context);
     }
 

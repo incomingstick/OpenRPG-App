@@ -2,31 +2,31 @@ import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
 import Sidebar from './layout/sidebar';
 import Titlebar, { TTitlebarCallbackData } from './layout/titlebar';
-import CharacterScreen, { TCharacterState, TCharacterSaveState } from './characterScreen';
+import CharacterScreen, { CharacterState, CharacterSaveState } from './characterScreen';
 import CampaignScreen from './campaign';
 import CitiesScreen from './cities';
 import SettingsScreen from './settings';
 import WorldMapsScreen from './worldMaps';
-import WelcomeScreen, { TWelcomeCallbackData } from './welcome';
+import WelcomeScreen, { WelcomeCallbackData } from './welcome';
 import { ipcRenderer, webFrame } from 'electron';
 import { TSettingsData } from '../../common/services/settingsService';
 import log from '../../common/log';
 
-type TAppContainerState = {
+type AppContainerState = {
     screen: string;
     settings: TSettingsData;
-    characterScreenState?: TCharacterState;
+    characterScreenState?: CharacterState;
 };
 
-export type TControlFunctionMap = {
+export type ControlFunctionMap = {
     control: string;
     functionAlias: string;
     function: (...args: any[]) => void;
 }[];
 
-class AppContainer extends React.Component<any, TAppContainerState> {
-    private characterState: TCharacterSaveState;
-    private controlFuncMap: TControlFunctionMap;
+class AppContainer extends React.Component<any, AppContainerState> {
+    private characterState: CharacterSaveState;
+    private controlFuncMap: ControlFunctionMap;
 
     public constructor(props: any, context?: any) {
         super(props, context);
@@ -105,7 +105,7 @@ class AppContainer extends React.Component<any, TAppContainerState> {
         }
     };
 
-    private welcomeScreenCallback = (callbackData: TWelcomeCallbackData) => {
+    private welcomeScreenCallback = (callbackData: WelcomeCallbackData) => {
         // TODO(incomingstick): where are we going from the welcome screen?
         ipcRenderer.send('settings-updated', { lastWindow: callbackData.screen });
 
@@ -116,7 +116,7 @@ class AppContainer extends React.Component<any, TAppContainerState> {
         }
     };
 
-    private characterScreenCallback = (state: TCharacterSaveState) => {
+    private characterScreenCallback = (state: CharacterSaveState) => {
         ipcRenderer.send('settings-updated', { openCharacters: state });
 
         this.characterState = state;

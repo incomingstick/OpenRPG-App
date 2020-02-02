@@ -1,11 +1,11 @@
 import React from 'react';
 
-type TSavesItemProps = {
+type SavesItemProps = {
     scoreName: string;
 };
 
-export default class SavesItem extends React.Component<TSavesItemProps, any> {
-    public constructor(props: TSavesItemProps, context?: any) {
+export default class SavesItem extends React.Component<SavesItemProps, any> {
+    public constructor(props: SavesItemProps, context?: any) {
         super(props, context);
     }
 

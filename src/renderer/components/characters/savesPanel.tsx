@@ -2,12 +2,12 @@ import React from 'react';
 import SavesItem from './savesItem';
 import { ScoreList } from './characterSheet';
 
-type TSavesPanelProps = {
+type SavesPanelProps = {
     scoreList: ScoreList;
 };
 
-export default class SavesPanel extends React.Component<TSavesPanelProps, any> {
-    public constructor(props: TSavesPanelProps, context?: any) {
+export default class SavesPanel extends React.Component<SavesPanelProps, any> {
+    public constructor(props: SavesPanelProps, context?: any) {
         super(props, context);
     }
 

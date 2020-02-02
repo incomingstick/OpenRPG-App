@@ -5,28 +5,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { die_eval, swap_drop, allow_drop, start_drag } from '../../common/scripts';
 import { ORPG_DOCS, ORPG_REPO, ORPG_BLOG } from '../../common/globals';
-import { TControlFunctionMap } from './appContainer';
+import { ControlFunctionMap } from './appContainer';
 
 require('../scss/welcome.scss');
 
-type TWelcomeState = {
+type WelcomeState = {
     calcValue: string;
     activeUtilIndex: number;
 };
 
-export type TWelcomeCallbackData = {
+export type WelcomeCallbackData = {
     screen?: string;
     action?: (...data: any[]) => void;
     data?: any;
 };
 
-type TWelcomeProps = {
-    welcomeScreenCallback: (callbackData: TWelcomeCallbackData) => void;
-    controlFuncMap: TControlFunctionMap;
+type WelcomeProps = {
+    welcomeScreenCallback: (callbackData: WelcomeCallbackData) => void;
+    controlFuncMap: ControlFunctionMap;
 };
 
-export default class WelcomeScreen extends React.Component<TWelcomeProps, TWelcomeState> {
-    public constructor(props: TWelcomeProps, context?: TWelcomeState) {
+export default class WelcomeScreen extends React.Component<WelcomeProps, WelcomeState> {
+    public constructor(props: WelcomeProps, context?: WelcomeState) {
         super(props, context);
         this.state = {
             calcValue: '1d20',

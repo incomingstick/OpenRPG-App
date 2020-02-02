@@ -1,13 +1,13 @@
 import React from 'react';
 
-type TFlagInputBox = {
+type FlagInputBoxProps = {
     label: string;
     className: string;
     placeholder?: string;
 };
 
-export default class FlagInputBox extends React.Component<TFlagInputBox, any> {
-    public constructor(props: TFlagInputBox, context?: any) {
+export default class FlagInputBox extends React.Component<FlagInputBoxProps, any> {
+    public constructor(props: FlagInputBoxProps, context?: any) {
         super(props, context);
     }
 
