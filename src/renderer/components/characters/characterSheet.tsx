@@ -4,6 +4,7 @@ import SavesPanel from './savesPanel';
 import SkillsPanel from './skillsPanel';
 import FlagInputBox from './flagInputBox';
 import LabeledTextbox from './labeledTextbox';
+import Slider from '../layout/slider';
 
 export type ScoreList = {
     scoreName: string;
@@ -127,7 +128,17 @@ export default class CharacterSheet extends React.Component<any, any> {
             <div className='row'>
                 <form className='charSheet'>
                     <this.HeaderSeciton />
-                    <this.MainSection />
+                    <Slider>
+                        <Slider.Item>
+                            <this.MainSection />
+                        </Slider.Item>
+                        <Slider.Item>
+                            <this.MainSection />
+                        </Slider.Item>
+                        <Slider.Item>
+                            <this.MainSection />
+                        </Slider.Item>
+                    </Slider>
                 </form>
             </div>
         );

@@ -55,8 +55,7 @@ export default class CharacterScreen extends React.Component<CharacterProps, Cha
 
         this.currPanes = this.state.panes;
 
-        if (this.props.characterScreenSaveState !== undefined)
-            this.loadSavedState(this.props.characterScreenSaveState);
+        if (this.props.characterScreenSaveState !== undefined) this.loadSavedState(this.props.characterScreenSaveState);
     }
 
     public loadSavedState = (loadState: CharacterSaveState) => {
@@ -194,7 +193,7 @@ export default class CharacterScreen extends React.Component<CharacterProps, Cha
     };
 
     private removePaneItem = (id: string | undefined, removeIndex: any, currIndex: number) => {
-        if(id === undefined) return;
+        if (id === undefined) return;
 
         let nextIndex = 0;
         const addPanes = this.state.panes;

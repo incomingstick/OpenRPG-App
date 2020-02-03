@@ -92,6 +92,48 @@ export default class TitleBar extends React.Component<TTitlebarSProps, TTitleBar
             itemLabel: 'View',
             submenu: [
                 {
+                    itemLabel: 'Home',
+                    itemCallback: () => {
+                        this.props.titlebarCallback({ screen: 'welcome' });
+
+                        this.setState({ screen: 'welcome' });
+                    },
+                    divider: true
+                },
+                {
+                    itemLabel: 'Characters',
+                    itemCallback: () => {
+                        this.props.titlebarCallback({ screen: 'characters' });
+
+                        this.setState({ screen: 'characters' });
+                    }
+                },
+                {
+                    itemLabel: 'Cities',
+                    itemCallback: () => {
+                        this.props.titlebarCallback({ screen: 'cities' });
+
+                        this.setState({ screen: 'cities' });
+                    }
+                },
+                {
+                    itemLabel: 'World Maps',
+                    itemCallback: () => {
+                        this.props.titlebarCallback({ screen: 'world-maps' });
+
+                        this.setState({ screen: 'world-maps' });
+                    }
+                },
+                {
+                    itemLabel: 'Campaigns',
+                    itemCallback: () => {
+                        this.props.titlebarCallback({ screen: 'campaign' });
+
+                        this.setState({ screen: 'campaign' });
+                    },
+                    divider: true
+                },
+                {
                     itemLabel: 'Reload Window',
                     itemCallback: () => {
                         remote.getCurrentWindow().reload();
