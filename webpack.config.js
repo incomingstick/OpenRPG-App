@@ -41,11 +41,6 @@ module.exports = {
                 }
             },
             {
-                test: /\.(js|jsx|ts|tsx)$/,
-                use: 'react-hot-loader/webpack',
-                include: /node_modules/
-            },
-            {
                 test: /\.s[ac]ss$/i,
                 loaders: ['sass-loader']
             },

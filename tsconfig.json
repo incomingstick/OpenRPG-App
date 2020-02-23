@@ -10,6 +10,6 @@
     "sourceRoot": "./",
     "typeRoots": ["src/common/types"]
   },
-  "include": ["src/**/*", "webpack.base.config.js"],
+  "include": ["src/**/*", "webpack.config.js"],
   "exclude": ["node_modules/**"]
 }
