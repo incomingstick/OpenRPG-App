@@ -1,5 +1,7 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     module: {
@@ -98,7 +100,7 @@ module.exports = {
         new webpack.NamedModulesPlugin(),
         new HtmlWebpackPlugin(),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'tits')
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'dev')
         })
     ]
 };
