@@ -125,22 +125,14 @@ export default class CharacterSheet extends React.Component<any, any> {
 
     public render() {
         return (
-            <div className='row'>
-                <form className='charSheet'>
-                    <this.HeaderSeciton />
-                    <Slider>
-                        <Slider.Item>
-                            <this.MainSection />
-                        </Slider.Item>
-                        <Slider.Item>
-                            <this.MainSection />
-                        </Slider.Item>
-                        <Slider.Item>
-                            <this.MainSection />
-                        </Slider.Item>
-                    </Slider>
-                </form>
-            </div>
+            <form className='character-sheet'>
+                <this.HeaderSeciton />
+                <Slider>
+                    <this.MainSection />
+                    <this.MainSection />
+                    <this.MainSection />
+                </Slider>
+            </form>
         );
     }
 

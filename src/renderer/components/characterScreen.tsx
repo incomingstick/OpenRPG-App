@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Tab, Button, Menu, TabProps, SemanticShorthandItem, TabPaneProps } from 'semantic-ui-react';
-import CharacterSheet from './characters/characterSheet';
+import CharacterSheet from './characterScreen/characterSheet';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -91,8 +91,8 @@ export default class CharacterScreen extends React.Component<CharacterProps, Cha
         const retList: string[] = [];
 
         /**
-         * Currently we just retrieve the names of the character panes
-         * eventually we will want to save the location of the characters
+         * TODO Currently we just retrieve the names of the character panes
+         * eventually we will want to save the location of the character files
          */
         for (const pane of this.currPanes) {
             if (pane.menuItem?.props.id !== undefined) {

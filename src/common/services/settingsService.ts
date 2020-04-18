@@ -10,7 +10,7 @@ import { CharacterSaveState } from '../../renderer/components/characterScreen';
 
 // TODO(incomingstick): Can we take advantage of electron-settings at all here?
 
-export type TSettingsData = {
+export type SettingsData = {
     settingsFormat: string;
     appVersion: string;
     dataFolder: string;
@@ -26,7 +26,7 @@ export type TSettingsData = {
 // TODO(incomingstick): Warn users when this is updated as their settings will reset
 const SETTINGS_FORMAT = '2020-02-01';
 
-const DEFAULT_SETTINGS: TSettingsData = {
+const DEFAULT_SETTINGS: SettingsData = {
     settingsFormat: SETTINGS_FORMAT,
     appVersion: app.getVersion(),
     dataFolder: detectDataFolder(),
@@ -97,13 +97,13 @@ export interface ISettingsService {
     isLoaded(): void;
     restoreDefaults(): void;
     save(): void;
-    get(): TSettingsData;
+    get(): SettingsData;
     merge(settings: any): void;
     clear(): void;
 }
 
 export class SettingsService extends EventEmitter implements ISettingsService {
-    private settingsData: TSettingsData;
+    private settingsData: SettingsData;
     private settingsPath: string;
     private settingsLoaded: boolean;
 
@@ -154,7 +154,7 @@ export class SettingsService extends EventEmitter implements ISettingsService {
         this.triggerSettingsUpdated();
     }
 
-    public get(): TSettingsData {
+    public get(): SettingsData {
         return this.settingsData;
     }
 

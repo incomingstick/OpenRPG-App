@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Input, InputOnChangeData } from 'semantic-ui-react';
-import { TSettingsData } from '../../common/services/settingsService';
+import { SettingsData } from '../../common/services/settingsService';
 import { ipcRenderer } from 'electron';
 import log from '../../common/log';
 
 type SettingsScreenState = {
-    settings: TSettingsData;
+    settings: SettingsData;
 };
 
 type SettingsScreenProps = {
@@ -17,7 +17,7 @@ export default class SettingsScreen extends React.Component<SettingsScreenProps,
         super(props, context);
 
         this.state = {
-            settings: ipcRenderer.sendSync('sync-settings-get') as TSettingsData
+            settings: ipcRenderer.sendSync('sync-settings-get') as SettingsData
         };
     }
 
@@ -63,7 +63,7 @@ export default class SettingsScreen extends React.Component<SettingsScreenProps,
             log.debug('[Settings Menu] ', data.value);
 
             ipcRenderer.send('settings-updated', { zoomLevel: data.value });
-            this.setState({ settings: ipcRenderer.sendSync('sync-settings-get') as TSettingsData });
+            this.setState({ settings: ipcRenderer.sendSync('sync-settings-get') as SettingsData });
         }
 
         this.props.settingsScreenSaveCallback();

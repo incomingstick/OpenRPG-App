@@ -9,12 +9,12 @@ import SettingsScreen from './settings';
 import WorldMapsScreen from './worldMaps';
 import WelcomeScreen, { WelcomeCallbackData } from './welcome';
 import { ipcRenderer, webFrame } from 'electron';
-import { TSettingsData } from '../../common/services/settingsService';
+import { SettingsData } from '../../common/services/settingsService';
 import log from '../../common/log';
 
 type AppContainerState = {
     screen: string;
-    settings: TSettingsData;
+    settings: SettingsData;
     characterScreenState?: CharacterState;
 };
 
@@ -31,7 +31,7 @@ class AppContainer extends React.Component<any, AppContainerState> {
     public constructor(props: any, context?: any) {
         super(props, context);
 
-        const settings = ipcRenderer.sendSync('sync-settings-get') as TSettingsData;
+        const settings = ipcRenderer.sendSync('sync-settings-get') as SettingsData;
 
         this.state = {
             settings,
@@ -86,7 +86,7 @@ class AppContainer extends React.Component<any, AppContainerState> {
     private sidebarCallback = (callbackData: string) => {
         ipcRenderer.send('settings-updated', { lastWindow: callbackData });
 
-        this.setState({ screen: callbackData, settings: ipcRenderer.sendSync('sync-settings-get') as TSettingsData });
+        this.setState({ screen: callbackData, settings: ipcRenderer.sendSync('sync-settings-get') as SettingsData });
     };
 
     private titleBarCallback = (callbackData: TTitlebarCallbackData) => {
@@ -98,7 +98,7 @@ class AppContainer extends React.Component<any, AppContainerState> {
         if (callbackData.screen === 'settings') {
             this.setState({
                 screen: callbackData.screen,
-                settings: ipcRenderer.sendSync('sync-settings-get') as TSettingsData
+                settings: ipcRenderer.sendSync('sync-settings-get') as SettingsData
             });
         } else {
             this.setState({ screen: callbackData.screen });
@@ -123,7 +123,7 @@ class AppContainer extends React.Component<any, AppContainerState> {
     };
 
     private settingsScreenCallback = () => {
-        this.setState({ settings: ipcRenderer.sendSync('sync-settings-get') as TSettingsData });
+        this.setState({ settings: ipcRenderer.sendSync('sync-settings-get') as SettingsData });
     };
 
     private CurrentScreen = () => {

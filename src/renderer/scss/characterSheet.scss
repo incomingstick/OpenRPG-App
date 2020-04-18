@@ -91,11 +91,12 @@ div.box {
     }
 }
 
-form.charSheet {
+form.character-sheet {
     margin-right: auto;
     margin-left: auto;
     margin-top: 1rem;
     margin-bottom: 18px;
+    overflow-x: hidden;
 
     section {
         padding-left: 0;
