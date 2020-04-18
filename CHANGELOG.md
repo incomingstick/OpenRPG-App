@@ -9,9 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - "New Character" option added to Titlebar under File > New Character
 - Re-open to the character you last had selected
 - View menu with a Reload Window menu item and menu items matching the Sidebar
+- New custom Slider component
+- New Campaign and Character notes text field in Character Sheets
 
 ### Changed
 - Settings removed from Sidebar and added to Titlebar under File > Settings
+- Character sheet split into pages with sliding animation
 
 ### Fixed
 - AutoUpdater should now recognize pre-releases!
