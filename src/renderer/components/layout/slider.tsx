@@ -39,36 +39,23 @@ export default class Slider extends React.Component<any, SliderState> {
         const { children, currIndex } = this.state;
 
         return (
-            <div>
-                <Button className='prev' onClick={this.slidePrev} disabled={currIndex === 0}>
-                    Prev
-                </Button>
-                <Button className='next' onClick={this.slideNext} disabled={currIndex === children.length - 1}>
-                    Next
-                </Button>
+            <>
+                <div className='controler'>
+                    <Button className='btn prev' onClick={this.slidePrev} disabled={currIndex === 0}>
+                        Prev
+                    </Button>
+                    <Button className='btn next' onClick={this.slideNext} disabled={currIndex === children.length - 1}>
+                        Next
+                    </Button>
+                </div>
                 <div className='slider' style={{ transform: `translateX(-${currIndex * 100}%)` }}>
                     {children.map((child: any, index: number) => (
                         <Slider.Item key={index}>{child}</Slider.Item>
                     ))}
                 </div>
-            </div>
+            </>
         );
     }
-
-    public slide = (offset: number) => {
-        const leftArr = [0, 1];
-        const MAX_BOUND = 0;
-        const MIN_BOUND = -((leftArr.length - 1) * 0);
-
-        for (let i = 0; i < leftArr.length; i++) {
-            const newVal = leftArr[i] + offset;
-
-            if (i === 0 && newVal > MAX_BOUND) break;
-            if (i === 0 && newVal < MIN_BOUND) break;
-
-            leftArr[i] += offset;
-        }
-    };
 
     public slidePrev = (event: any) => {
         event.preventDefault();

@@ -225,7 +225,6 @@ form.character-sheet {
     }
 
     main {
-        display: flex;
         justify-content: space-between;
         margin-top: 20px;
 
@@ -246,8 +245,7 @@ form.character-sheet {
             }
         }
 
-        > section {
-            width: 32%;
+        section {
             display: flex;
             flex-direction: column;
             margin: 0 1rem;
@@ -255,11 +253,15 @@ form.character-sheet {
             section.attributes {
                 width: 100%;
                 display: flex;
-                flex-direction: row;
                 justify-content: space-between;
 
+                .row {
+                    display: flex;
+                    flex-direction: row;
+                }
+
                 div.scores {
-                    width: 25%;
+                    flex-direction: row;
                     border-radius: 0.8333rem;
                     margin: 0.75rem;
                     padding-bottom: 5px;
@@ -271,7 +273,7 @@ form.character-sheet {
 
                     ul {
                         display: flex;
-                        flex-direction: column;
+                        flex-direction: row;
                         justify-content: space-around;
                         align-items: center;
                         height: 100%;
@@ -318,8 +320,8 @@ form.character-sheet {
                     }
                 }
 
-                div.attr-applications {
-                    width: 75%;
+                section.attr-applications {
+                    width: 50%;
                     margin: 0.75rem;
 
                     div.inspiration {
@@ -410,6 +412,255 @@ form.character-sheet {
                         }
                     }
                 }
+
+                section.combat {
+                    width: 50%;
+                    flex-wrap: wrap;
+
+                    > div {
+                        overflow: hidden;
+                    }
+
+                    div.armorclass,
+                    div.initiative,
+                    div.speed {
+                        width: 33.3333%;
+
+                        > div {
+                            display: flex;
+                            flex-direction: column-reverse;
+                            align-items: center;
+                            margin-top: 0.8333rem;
+
+                            label {
+                                font-size: 0.5rem;
+                                width: 50px;
+                                border: 1px solid $cs-boarder;
+                                border-top: 0;
+                                background-color: $background;
+                                text-align: center;
+                                padding-top: 5px;
+                                padding-bottom: 5px;
+                                border-radius: 0 0 0.8333rem 0.8333rem;
+                            }
+
+                            input {
+                                height: 4.6667rem;
+                                width: 4.6667rem;
+                                border-radius: 0.8333rem;
+                                border: 1px solid $cs-boarder;
+                                text-align: center;
+                                font-size: 2rem;
+                            }
+                        }
+                    }
+
+                    div.hp {
+                        > div.regular {
+                            background-color: $background;
+                            border: 1px solid $cs-boarder;
+                            margin: 0.8333rem;
+                            border-radius: 0.8333rem 0.8333rem 0 0;
+                            padding: 0.3333rem;
+
+                            > div.max {
+                                display: flex;
+                                justify-content: space-around;
+                                align-items: baseline;
+
+                                label {
+                                    font-size: 0.8333rem;
+                                    text-transform: none;
+                                    color: $text-primary;
+                                }
+
+                                input {
+                                    width: 40%;
+                                    border: 0;
+                                    border-bottom: 1px solid $text-primary;
+                                    font-size: 1rem;
+                                    text-align: center;
+                                }
+                            }
+
+                            > div.current {
+                                display: flex;
+                                flex-direction: column-reverse;
+                                background-color: $background;
+
+                                label {
+                                    font-size: 0.8333rem;
+                                    padding-bottom: 5px;
+                                    text-align: center;
+                                    font-weight: bold;
+                                }
+
+                                input {
+                                    border: 0;
+                                    width: 100%;
+                                    padding: 1em 0;
+                                    font-size: 20px;
+                                    text-align: center;
+                                }
+                            }
+                        }
+
+                        > div.temporary {
+                            margin: 0.8333rem;
+                            margin-top: 0;
+                            border: 1px solid $cs-boarder;
+                            border-radius: 0 0 0.8333rem 0.8333rem;
+                            display: flex;
+                            flex-direction: column-reverse;
+                            background-color: $background;
+
+                            label {
+                                font-size: 0.8333rem;
+                                padding-bottom: 5px;
+                                text-align: center;
+                                font-weight: bold;
+                            }
+
+                            input {
+                                padding: 1em 0;
+                                font-size: 20px;
+                                border: 0;
+                                text-align: center;
+                            }
+                        }
+                    }
+
+                    div.hitdice {
+                        > div {
+                            background-color: #fff;
+                            margin: 0.8333rem;
+                            border: 1px solid $cs-boarder;
+                            border-radius: 0.8333rem;
+                            display: flex;
+                            flex-direction: column;
+                            background-color: $background;
+
+                            > div.total {
+                                display: flex;
+                                align-items: baseline;
+                                justify-content: space-around;
+                                padding: 5px 0;
+
+                                label {
+                                    font-size: 0.8333rem;
+                                    color: #aaa;
+                                    margin: 0.25em;
+                                    text-transform: none;
+                                }
+
+                                input {
+                                    font-size: 1rem;
+                                    flex-grow: 1;
+                                    border: 0;
+                                    border-bottom: 1px solid $text-primary;
+                                    width: 50%;
+                                    margin-right: 0.25em;
+                                    padding: 0 0.25em;
+                                    text-align: center;
+                                }
+                            }
+
+                            > div.remaining {
+                                flex: 1;
+                                display: flex;
+                                flex-direction: column-reverse;
+
+                                label {
+                                    text-align: center;
+                                    padding: 2px;
+                                    font-size: 0.8333rem;
+                                }
+
+                                input {
+                                    text-align: center;
+                                    border: 0;
+                                    flex: 1;
+                                }
+                            }
+                        }
+                    }
+
+                    div.hitdice,
+                    div.deathsaves {
+                        height: 100px;
+                        width: 50%;
+
+                        > div {
+                            height: 80px;
+                            padding: 0.3333rem;
+                        }
+                    }
+
+                    div.deathsaves {
+                        > div {
+                            margin: 0.8333rem;
+                            background: #fff;
+                            border: 1px solid $cs-boarder;
+                            border-radius: 0.8333rem;
+                            display: flex;
+                            flex-direction: column-reverse;
+                            background-color: $background;
+
+                            > div.label {
+                                text-align: center;
+
+                                label {
+                                    font-size: 0.8333rem;
+                                }
+                            }
+
+                            > div.marks {
+                                display: flex;
+                                flex: 1;
+                                flex-direction: column;
+                                justify-content: center;
+
+                                div.deathsuccesses,
+                                div.deathfails {
+                                    display: flex;
+                                    align-items: center;
+
+                                    label {
+                                        font-size: 0.85rem;
+                                        text-align: right;
+                                        flex: 1 50%;
+                                    }
+                                }
+                            }
+
+                            div.bubbles {
+                                flex: 1 30%;
+                                margin-left: 5px;
+
+                                input[type='checkbox'] {
+                                    -webkit-appearance: none;
+                                    width: 0.8333rem;
+                                    height: 0.8333rem;
+                                    border: 1px solid $cs-boarder;
+                                    border-radius: 0.8333rem;
+                                    margin: 0 0.1rem 0 0.1rem;
+                                }
+
+                                input[type='checkbox']:checked {
+                                    &[name='deathsuccess'] {
+                                        background-color: $cs-deathsuccess-checked;
+                                        border: 1px solid $cs-deathsuccess-checked;
+                                    }
+
+                                    &[name='deathfail'] {
+                                        background-color: $cs-deathfail-checked;
+                                        border: 1px solid $cs-deathfail-checked;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
             div.passive-perception {
@@ -423,257 +674,6 @@ form.character-sheet {
                     text-align: center;
                     border: 1px solid $cs-boarder;
                     border-radius: 0.8333rem;
-                }
-            }
-        }
-
-        section.combat {
-            display: flex;
-            flex-wrap: wrap;
-
-            > div {
-                overflow: hidden;
-            }
-
-            > div.armorclass,
-            > div.initiative,
-            > div.speed {
-                flex-basis: 33.333%;
-
-                > div {
-                    display: flex;
-                    flex-direction: column-reverse;
-                    align-items: center;
-                    margin-top: 0.8333rem;
-
-                    label {
-                        font-size: 0.5rem;
-                        width: 50px;
-                        border: 1px solid $cs-boarder;
-                        border-top: 0;
-                        background-color: $background;
-                        text-align: center;
-                        padding-top: 5px;
-                        padding-bottom: 5px;
-                        border-radius: 0 0 0.8333rem 0.8333rem;
-                    }
-
-                    input {
-                        height: 4.6667rem;
-                        width: 4.6667rem;
-                        border-radius: 0.8333rem;
-                        border: 1px solid $cs-boarder;
-                        text-align: center;
-                        font-size: 2rem;
-                    }
-                }
-            }
-
-            > div.hp {
-                flex-basis: 100%;
-
-                > div.regular {
-                    background-color: $background;
-                    border: 1px solid $cs-boarder;
-                    margin: 0.8333rem;
-                    border-radius: 0.8333rem 0.8333rem 0 0;
-                    padding: 0.3333rem;
-
-                    > div.max {
-                        display: flex;
-                        justify-content: space-around;
-                        align-items: baseline;
-
-                        label {
-                            font-size: 0.8333rem;
-                            text-transform: none;
-                            color: $text-primary;
-                        }
-
-                        input {
-                            width: 40%;
-                            border: 0;
-                            border-bottom: 1px solid $text-primary;
-                            font-size: 1rem;
-                            text-align: center;
-                        }
-                    }
-
-                    > div.current {
-                        display: flex;
-                        flex-direction: column-reverse;
-                        background-color: $background;
-
-                        label {
-                            font-size: 0.8333rem;
-                            padding-bottom: 5px;
-                            text-align: center;
-                            font-weight: bold;
-                        }
-
-                        input {
-                            border: 0;
-                            width: 100%;
-                            padding: 1em 0;
-                            font-size: 20px;
-                            text-align: center;
-                        }
-                    }
-                }
-
-                > div.temporary {
-                    margin: 0.8333rem;
-                    margin-top: 0;
-                    border: 1px solid $cs-boarder;
-                    border-radius: 0 0 0.8333rem 0.8333rem;
-                    display: flex;
-                    flex-direction: column-reverse;
-                    background-color: $background;
-
-                    label {
-                        font-size: 0.8333rem;
-                        padding-bottom: 5px;
-                        text-align: center;
-                        font-weight: bold;
-                    }
-
-                    input {
-                        padding: 1em 0;
-                        font-size: 20px;
-                        border: 0;
-                        text-align: center;
-                    }
-                }
-            }
-
-            > div.hitdice {
-                > div {
-                    background-color: #fff;
-                    margin: 0.8333rem;
-                    border: 1px solid $cs-boarder;
-                    border-radius: 0.8333rem;
-                    display: flex;
-                    flex-direction: column;
-                    background-color: $background;
-
-                    > div.total {
-                        display: flex;
-                        align-items: baseline;
-                        justify-content: space-around;
-                        padding: 5px 0;
-
-                        label {
-                            font-size: 0.8333rem;
-                            color: #aaa;
-                            margin: 0.25em;
-                            text-transform: none;
-                        }
-
-                        input {
-                            font-size: 1rem;
-                            flex-grow: 1;
-                            border: 0;
-                            border-bottom: 1px solid $text-primary;
-                            width: 50%;
-                            margin-right: 0.25em;
-                            padding: 0 0.25em;
-                            text-align: center;
-                        }
-                    }
-
-                    > div.remaining {
-                        flex: 1;
-                        display: flex;
-                        flex-direction: column-reverse;
-
-                        label {
-                            text-align: center;
-                            padding: 2px;
-                            font-size: 0.8333rem;
-                        }
-
-                        input {
-                            text-align: center;
-                            border: 0;
-                            flex: 1;
-                        }
-                    }
-                }
-            }
-
-            > div.hitdice,
-            > div.deathsaves {
-                flex: 1 50%;
-                height: 100px;
-
-                > div {
-                    height: 80px;
-                    padding: 0.3333rem;
-                }
-            }
-
-            > div.deathsaves {
-                > div {
-                    margin: 0.8333rem;
-                    background: #fff;
-                    border: 1px solid $cs-boarder;
-                    border-radius: 0.8333rem;
-                    display: flex;
-                    flex-direction: column-reverse;
-                    background-color: $background;
-
-                    > div.label {
-                        text-align: center;
-
-                        label {
-                            font-size: 0.8333rem;
-                        }
-                    }
-
-                    > div.marks {
-                        display: flex;
-                        flex: 1;
-                        flex-direction: column;
-                        justify-content: center;
-
-                        div.deathsuccesses,
-                        div.deathfails {
-                            display: flex;
-                            align-items: center;
-
-                            label {
-                                font-size: 0.85rem;
-                                text-align: right;
-                                flex: 1 50%;
-                            }
-                        }
-                    }
-
-                    div.bubbles {
-                        flex: 1 30%;
-                        margin-left: 5px;
-
-                        input[type='checkbox'] {
-                            -webkit-appearance: none;
-                            width: 0.8333rem;
-                            height: 0.8333rem;
-                            border: 1px solid $cs-boarder;
-                            border-radius: 0.8333rem;
-                            margin: 0 0.1rem 0 0.1rem;
-                        }
-
-                        input[type='checkbox']:checked {
-                            &[name='deathsuccess'] {
-                                background-color: $cs-deathsuccess-checked;
-                                border: 1px solid $cs-deathsuccess-checked;
-                            }
-
-                            &[name='deathfail'] {
-                                background-color: $cs-deathfail-checked;
-                                border: 1px solid $cs-deathfail-checked;
-                            }
-                        }
-                    }
                 }
             }
         }
@@ -739,12 +739,13 @@ form.character-sheet {
                         > li {
                             display: flex;
                             align-items: center;
+                            margin: 0.3333rem;
 
                             label {
                                 border: 1px solid $cs-boarder;
                                 border-radius: 0.8333rem 0 0 0.8333rem;
                                 border-right: 0;
-                                width: 20px;
+                                width: 2rem;
                                 font-size: 0.85rem;
                                 text-align: center;
                                 padding: 3px 0;
@@ -753,7 +754,7 @@ form.character-sheet {
                             input {
                                 border: 1px solid $cs-boarder;
                                 border-radius: 0.8333rem;
-                                width: 2.6667rem;
+                                width: 3.6667rem;
                                 padding: 0.8333rem 3px;
                                 font-size: 1rem;
                                 text-align: center;
@@ -832,11 +833,15 @@ form.character-sheet {
                     padding: 5px;
 
                     &[name='otherprofs'] {
-                        height: 19rem;
+                        height: 19.5rem;
                     }
 
                     &[name='features'] {
-                        height: 47rem;
+                        height: 19rem;
+                    }
+
+                    &[name='notes'] {
+                        height: 45rem;
                     }
                 }
             }
