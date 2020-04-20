@@ -17,12 +17,12 @@ export default class LabeledTextbox extends React.Component<LabeledTextboxProps,
         const placeholder = this.props.placeholder;
 
         return (
-            <section className={'labeled-textbox ' + className}>
+            <div className={'labeled-textbox ' + className}>
                 <div>
                     <label htmlFor={className}>{label}</label>
                     <textarea name={className} placeholder={placeholder}></textarea>
                 </div>
-            </section>
+            </div>
         );
     }
 }

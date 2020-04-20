@@ -237,6 +237,7 @@ form.character-sheet {
             border-radius: 0 0.8333rem 0.8333rem 0;
             border-left: 0;
             text-align: center;
+            left: -1px;
 
             > label {
                 -webkit-transform: translate(0%, 50%);
@@ -432,7 +433,7 @@ form.character-sheet {
                         align-items: center;
                         background-color: $background;
                         border: 1px solid $cs-boarder;
-                        margin: 0.8333rem;
+                        margin: 1.6666rem 0.8333rem 0 0.8333rem;
                         border-radius: 0.8333rem;
                         padding: 0.3333rem;
 
@@ -456,7 +457,7 @@ form.character-sheet {
                         > div.regular {
                             background-color: $background;
                             border: 1px solid $cs-boarder;
-                            margin: 0.8333rem;
+                            margin: 0.8333rem 0;
                             border-radius: 0.8333rem 0.8333rem 0 0;
                             padding: 0.3333rem;
 
@@ -503,7 +504,7 @@ form.character-sheet {
                         }
 
                         > div.temporary {
-                            margin: 0.8333rem;
+                            margin: 0.8333rem 0;
                             margin-top: 0;
                             border: 1px solid $cs-boarder;
                             border-radius: 0 0 0.8333rem 0.8333rem;
@@ -528,56 +529,54 @@ form.character-sheet {
                     }
 
                     div.hitdice {
-                        > div {
-                            background-color: #fff;
-                            margin: 0.8333rem;
-                            border: 1px solid $cs-boarder;
-                            border-radius: 0.8333rem;
+                        background-color: #fff;
+                        margin: 0 0.4166rem 0 0;
+                        border: 1px solid $cs-boarder;
+                        border-radius: 0.8333rem;
+                        display: flex;
+                        flex-direction: column;
+                        background-color: $background;
+
+                        > div.total {
                             display: flex;
-                            flex-direction: column;
-                            background-color: $background;
+                            align-items: baseline;
+                            justify-content: space-around;
+                            padding: 0.5rem;
 
-                            > div.total {
-                                display: flex;
-                                align-items: baseline;
-                                justify-content: space-around;
-                                padding: 5px 0;
-
-                                label {
-                                    font-size: 0.8333rem;
-                                    color: #aaa;
-                                    margin: 0.25em;
-                                    text-transform: none;
-                                }
-
-                                input {
-                                    font-size: 1rem;
-                                    flex-grow: 1;
-                                    border: 0;
-                                    border-bottom: 1px solid $text-primary;
-                                    width: 50%;
-                                    margin-right: 0.25em;
-                                    padding: 0 0.25em;
-                                    text-align: center;
-                                }
+                            label {
+                                font-size: 0.8333rem;
+                                color: #aaa;
+                                margin: 0.25em;
+                                text-transform: none;
                             }
 
-                            > div.remaining {
+                            input {
+                                font-size: 1rem;
+                                flex-grow: 1;
+                                border: 0;
+                                border-bottom: 1px solid $text-primary;
+                                width: 50%;
+                                margin-right: 0.25em;
+                                padding: 0 0.25em;
+                                text-align: center;
+                            }
+                        }
+
+                        > div.remaining {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: column-reverse;
+
+                            label {
+                                text-align: center;
+                                padding: 2px;
+                                font-size: 0.8333rem;
+                            }
+
+                            input {
+                                text-align: center;
+                                border: 0;
                                 flex: 1;
-                                display: flex;
-                                flex-direction: column-reverse;
-
-                                label {
-                                    text-align: center;
-                                    padding: 2px;
-                                    font-size: 0.8333rem;
-                                }
-
-                                input {
-                                    text-align: center;
-                                    border: 0;
-                                    flex: 1;
-                                }
                             }
                         }
                     }
@@ -586,73 +585,67 @@ form.character-sheet {
                     div.deathsaves {
                         height: 100px;
                         width: 50%;
-
-                        > div {
-                            height: 80px;
-                            padding: 0.3333rem;
-                        }
                     }
 
                     div.deathsaves {
-                        > div {
-                            margin: 0.8333rem;
-                            background: #fff;
-                            border: 1px solid $cs-boarder;
-                            border-radius: 0.8333rem;
-                            display: flex;
-                            flex-direction: column-reverse;
-                            background-color: $background;
+                        margin: 0 0 0 0.4166rem;
+                        background: #fff;
+                        border: 1px solid $cs-boarder;
+                        border-radius: 0.8333rem;
+                        display: flex;
+                        flex-direction: column-reverse;
+                        background-color: $background;
 
-                            > div.label {
-                                text-align: center;
+                        > div.label {
+                            text-align: center;
+
+                            label {
+                                font-size: 0.8333rem;
+                            }
+                        }
+
+                        > div.marks {
+                            display: flex;
+                            flex: 1;
+                            flex-direction: column;
+                            justify-content: center;
+
+                            div.deathsuccesses,
+                            div.deathfails {
+                                display: flex;
+                                align-items: center;
 
                                 label {
-                                    font-size: 0.8333rem;
+                                    font-size: 0.85rem;
+                                    text-align: center;
+                                    flex: 1 50%;
                                 }
                             }
+                        }
 
-                            > div.marks {
-                                display: flex;
-                                flex: 1;
-                                flex-direction: column;
-                                justify-content: center;
+                        div.bubbles {
+                            flex: 1 33%;
+                            margin-left: -1rem;
+                            padding-top: 0.2rem;
 
-                                div.deathsuccesses,
-                                div.deathfails {
-                                    display: flex;
-                                    align-items: center;
-
-                                    label {
-                                        font-size: 0.85rem;
-                                        text-align: right;
-                                        flex: 1 50%;
-                                    }
-                                }
+                            input[type='checkbox'] {
+                                -webkit-appearance: none;
+                                width: 0.8333rem;
+                                height: 0.8333rem;
+                                border: 1px solid $cs-boarder;
+                                border-radius: 0.8333rem;
+                                margin: 0 0.2rem 0 0.2rem;
                             }
 
-                            div.bubbles {
-                                flex: 1 30%;
-                                margin-left: 5px;
-
-                                input[type='checkbox'] {
-                                    -webkit-appearance: none;
-                                    width: 0.8333rem;
-                                    height: 0.8333rem;
-                                    border: 1px solid $cs-boarder;
-                                    border-radius: 0.8333rem;
-                                    margin: 0 0.1rem 0 0.1rem;
+                            input[type='checkbox']:checked {
+                                &[name='deathsuccess'] {
+                                    background-color: $cs-deathsuccess-checked;
+                                    border: 1px solid $cs-deathsuccess-checked;
                                 }
 
-                                input[type='checkbox']:checked {
-                                    &[name='deathsuccess'] {
-                                        background-color: $cs-deathsuccess-checked;
-                                        border: 1px solid $cs-deathsuccess-checked;
-                                    }
-
-                                    &[name='deathfail'] {
-                                        background-color: $cs-deathfail-checked;
-                                        border: 1px solid $cs-deathfail-checked;
-                                    }
+                                &[name='deathfail'] {
+                                    background-color: $cs-deathfail-checked;
+                                    border: 1px solid $cs-deathfail-checked;
                                 }
                             }
                         }
@@ -784,6 +777,7 @@ form.character-sheet {
 
             .flavor {
                 border-radius: 0.8333rem;
+                margin: 0;
 
                 div {
                     background: $background;
@@ -819,7 +813,7 @@ form.character-sheet {
             }
         }
 
-        section.labeled-textbox {
+        div.labeled-textbox {
             padding: 0.8333rem 0;
 
             div {
@@ -842,11 +836,11 @@ form.character-sheet {
                     }
 
                     &[name='features'] {
-                        height: 19rem;
+                        height: 18rem;
                     }
 
                     &[name='notes'] {
-                        height: 47rem;
+                        height: 46.25rem;
                     }
                 }
             }

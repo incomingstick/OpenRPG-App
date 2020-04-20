@@ -28,10 +28,11 @@ export default class ActionTable extends React.Component<ActionTableProps, any> 
     public createTable = (count: number) => {
         let actionTable = [];
 
-        // Outer loop to create parent
         for (let i = 0; i < count; i++) {
+            let id = Math.random().toString(36).replace('0.', '');
+
             actionTable.push(
-                <tr>
+                <tr key={id}>
                     <td>
                         <input className='action-name' type='text' />
                     </td>

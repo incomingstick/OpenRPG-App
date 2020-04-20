@@ -42,10 +42,10 @@ export default class Slider extends React.Component<any, SliderState> {
             <>
                 <div className='controler'>
                     <Button className='btn prev' onClick={this.slidePrev} disabled={currIndex === 0}>
-                        Prev
+                        &lt;
                     </Button>
                     <Button className='btn next' onClick={this.slideNext} disabled={currIndex === children.length - 1}>
-                        Next
+                        &gt;
                     </Button>
                 </div>
                 <div

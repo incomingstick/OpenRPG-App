@@ -29,6 +29,10 @@ export default class ScoreBar extends React.Component<ScoreBarProps, any> {
             const scoreID = this.props.scoreID;
             const scoreName = this.props.scoreName;
             const scoreVal = this.props.scoreVal;
+            const scoreMod = Math.floor((scoreVal - 10) / 2);
+
+            let scoreModStr = scoreMod.toString();
+            if(scoreMod > 0) scoreModStr = '+' + scoreModStr;
 
             return (
                 <li>
@@ -37,7 +41,7 @@ export default class ScoreBar extends React.Component<ScoreBarProps, any> {
                         <input name={scoreID + 'Score'} placeholder={scoreVal.toString()} />
                     </div>
                     <div className='modifier'>
-                        <input name={scoreID + 'Mod'} placeholder='+0' />
+                        <input name={scoreID + 'Mod'} placeholder={scoreModStr} />
                     </div>
                 </li>
             );

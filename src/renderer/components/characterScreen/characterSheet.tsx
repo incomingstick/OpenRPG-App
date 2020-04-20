@@ -257,38 +257,34 @@ export default class CharacterSheet extends React.Component<CharacterSheetProps,
                             </div>
                             <div className='row'>
                                 <div className='hitdice'>
-                                    <div>
-                                        <div className='total'>
-                                            <label htmlFor='totalhd'>Total</label>
-                                            <input name='totalhd' placeholder='2d10' type='text' />
-                                        </div>
-                                        <div className='remaining'>
-                                            <label htmlFor='remaininghd'>Hit Dice</label>
-                                            <input name='remaininghd' type='text' />
-                                        </div>
+                                    <div className='total'>
+                                        <label htmlFor='totalhd'>Total</label>
+                                        <input name='totalhd' placeholder='2d10' type='text' />
+                                    </div>
+                                    <div className='remaining'>
+                                        <label htmlFor='remaininghd'>Hit Dice</label>
+                                        <input name='remaininghd' type='text' />
                                     </div>
                                 </div>
                                 <div className='deathsaves'>
-                                    <div>
-                                        <div className='label'>
-                                            <label>Death Saves</label>
-                                        </div>
-                                        <div className='marks'>
-                                            <div className='deathsuccesses'>
-                                                <label>Successes</label>
-                                                <div className='bubbles'>
-                                                    <input name='deathsuccess' type='checkbox' />
-                                                    <input name='deathsuccess' type='checkbox' />
-                                                    <input name='deathsuccess' type='checkbox' />
-                                                </div>
+                                    <div className='label'>
+                                        <label>Death Saves</label>
+                                    </div>
+                                    <div className='marks'>
+                                        <div className='deathsuccesses'>
+                                            <label>Successes</label>
+                                            <div className='bubbles'>
+                                                <input name='deathsuccess' type='checkbox' />
+                                                <input name='deathsuccess' type='checkbox' />
+                                                <input name='deathsuccess' type='checkbox' />
                                             </div>
-                                            <div className='deathfails'>
-                                                <label>Failures</label>
-                                                <div className='bubbles'>
-                                                    <input name='deathfail' type='checkbox' />
-                                                    <input name='deathfail' type='checkbox' />
-                                                    <input name='deathfail' type='checkbox' />
-                                                </div>
+                                        </div>
+                                        <div className='deathfails'>
+                                            <label>Failures</label>
+                                            <div className='bubbles'>
+                                                <input name='deathfail' type='checkbox' />
+                                                <input name='deathfail' type='checkbox' />
+                                                <input name='deathfail' type='checkbox' />
                                             </div>
                                         </div>
                                     </div>

@@ -4,7 +4,7 @@ import CharacterSheet from './characterScreen/characterSheet';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Die } from 'openrpg-libs';
-import log from '../../common/log';
+import { die_eval } from '../../common/scripts';
 
 require('../scss/characterSheet.scss');
 
@@ -62,23 +62,20 @@ export default class CharacterScreen extends React.Component<CharacterProps, Cha
 
     public loadSavedState = (loadState: CharacterSaveState) => {
         const addPanes = this.currPanes;
-        const d20 = new Die(20);
 
         if (loadState?.characters !== undefined) {
             for (const name of loadState.characters) {
                 const data = {
                     name,
                     attributes: {
-                        str: d20.roll(),
-                        dex: d20.roll(),
-                        con: d20.roll(),
-                        int: d20.roll(),
-                        wis: d20.roll(),
-                        cha: d20.roll()
+                        str: die_eval("4d6h3"),
+                        dex: die_eval("4d6h3"),
+                        con: die_eval("4d6h3"),
+                        int: die_eval("4d6h3"),
+                        wis: die_eval("4d6h3"),
+                        cha: die_eval("4d6h3")
                     }
                 };
-
-                log.info('[Character Screen] data: ', data);
 
                 // Add item to the end of the list - 1 to account for the 'Add' button
                 addPanes.splice(this.state.panes.length - 1, 0, {
