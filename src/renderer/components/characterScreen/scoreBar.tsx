@@ -32,7 +32,7 @@ export default class ScoreBar extends React.Component<ScoreBarProps, any> {
             const scoreMod = Math.floor((scoreVal - 10) / 2);
 
             let scoreModStr = scoreMod.toString();
-            if(scoreMod > 0) scoreModStr = '+' + scoreModStr;
+            if (scoreMod > 0) scoreModStr = '+' + scoreModStr;
 
             return (
                 <li>

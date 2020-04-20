@@ -68,12 +68,12 @@ export default class CharacterScreen extends React.Component<CharacterProps, Cha
                 const data = {
                     name,
                     attributes: {
-                        str: die_eval("4d6h3"),
-                        dex: die_eval("4d6h3"),
-                        con: die_eval("4d6h3"),
-                        int: die_eval("4d6h3"),
-                        wis: die_eval("4d6h3"),
-                        cha: die_eval("4d6h3")
+                        str: die_eval('4d6h3'),
+                        dex: die_eval('4d6h3'),
+                        con: die_eval('4d6h3'),
+                        int: die_eval('4d6h3'),
+                        wis: die_eval('4d6h3'),
+                        cha: die_eval('4d6h3')
                     }
                 };
 

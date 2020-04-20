@@ -10,26 +10,26 @@ export default class ActionTable extends React.Component<ActionTableProps, any> 
         super(props, context);
     }
 
-    public render = () => {
-        return (
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Attack Bonus</th>
-                        <th>Damage/Type</th>
-                    </tr>
-                </thead>
-                {this.createTable(this.props.length)}
-            </table>
-        );
-    };
+    public render = () => (
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Attack Bonus</th>
+                    <th>Damage/Type</th>
+                </tr>
+            </thead>
+            {this.createTable(this.props.length)}
+        </table>
+    );
 
     public createTable = (count: number) => {
-        let actionTable = [];
+        const actionTable = [];
 
         for (let i = 0; i < count; i++) {
-            let id = Math.random().toString(36).replace('0.', '');
+            const id = Math.random()
+                .toString(36)
+                .replace('0.', '');
 
             actionTable.push(
                 <tr key={id}>
