@@ -234,6 +234,7 @@ form.character-sheet {
             height: 1.75rem;
             margin-top: 6px;
             border: 1px solid $cs-boarder;
+            border-radius: 0 0.8333rem 0.8333rem 0;
             border-left: 0;
             text-align: center;
 
@@ -267,7 +268,8 @@ form.character-sheet {
                     padding-bottom: 5px;
 
                     label {
-                        font-size: 8px;
+                        font-size: 0.6667rem;
+                        text-align: center;
                         font-weight: bold;
                     }
 
@@ -279,8 +281,8 @@ form.character-sheet {
                         height: 100%;
 
                         li {
-                            height: 80px;
-                            width: 70px;
+                            height: 6rem;
+                            width: 6rem;
                             background-color: $background;
                             border: 1px solid $cs-boarder;
                             text-align: center;
@@ -297,7 +299,7 @@ form.character-sheet {
                             div.score {
                                 input {
                                     text-align: center;
-                                    font-size: 40px;
+                                    font-size: 3rem;
                                     padding: 2px 0px 0px 0px;
                                     background-color: $background;
                                 }
@@ -308,8 +310,8 @@ form.character-sheet {
 
                                 input {
                                     background-color: $background;
-                                    width: 2rem;
-                                    height: 1.6667rem;
+                                    width: 3rem;
+                                    height: 2.3333rem;
                                     border: 1px solid $cs-boarder;
                                     border-radius: 1.3333rem;
                                     margin: -1px;
@@ -425,33 +427,28 @@ form.character-sheet {
                     div.initiative,
                     div.speed {
                         width: 33.3333%;
+                        display: flex;
+                        flex-direction: column-reverse;
+                        align-items: center;
+                        background-color: $background;
+                        border: 1px solid $cs-boarder;
+                        margin: 0.8333rem;
+                        border-radius: 0.8333rem;
+                        padding: 0.3333rem;
 
-                        > div {
-                            display: flex;
-                            flex-direction: column-reverse;
-                            align-items: center;
-                            margin-top: 0.8333rem;
+                        label {
+                            font-size: 0.8333rem;
+                            padding-bottom: 5px;
+                            text-align: center;
+                            font-weight: bold;
+                        }
 
-                            label {
-                                font-size: 0.5rem;
-                                width: 50px;
-                                border: 1px solid $cs-boarder;
-                                border-top: 0;
-                                background-color: $background;
-                                text-align: center;
-                                padding-top: 5px;
-                                padding-bottom: 5px;
-                                border-radius: 0 0 0.8333rem 0.8333rem;
-                            }
-
-                            input {
-                                height: 4.6667rem;
-                                width: 4.6667rem;
-                                border-radius: 0.8333rem;
-                                border: 1px solid $cs-boarder;
-                                text-align: center;
-                                font-size: 2rem;
-                            }
+                        input {
+                            border: 0;
+                            width: 100%;
+                            padding: 1em 0;
+                            font-size: 20px;
+                            text-align: center;
                         }
                     }
 
@@ -678,139 +675,147 @@ form.character-sheet {
             }
         }
 
-        section.attacksandspellcasting {
-            border: 1px solid $cs-boarder;
-            border-radius: 0.8333rem;
+        section.actions {
             margin-top: 0.8333rem;
 
-            > div {
-                margin: 0.8333rem;
-                display: flex;
-                flex-direction: column;
+            .attacksandspellcasting {
+                border: 1px solid $cs-boarder;
+                border-radius: 0.8333rem 0.8333rem 0 0;
 
-                > label {
-                    order: 3;
-                    text-align: center;
-                }
+                > div {
+                    margin: 0.8333rem;
+                    display: flex;
+                    flex-direction: column;
 
-                > table {
-                    width: 100%;
-
-                    th {
-                        font-size: 0.8333rem;
-                        color: $text-primary;
+                    > label {
+                        order: 3;
+                        text-align: center;
                     }
 
-                    input {
-                        width: calc(100% - 4px);
-                        border: 1px solid $cs-boarder;
-                        background-color: $background;
-                        font-size: 0.8333rem;
-                        padding: 3px;
-                    }
-                }
+                    > table {
+                        width: 100%;
 
-                textarea {
-                    border: 0;
-                    height: 16em;
+                        th {
+                            font-size: 0.8333rem;
+                            color: $text-primary;
+                        }
+
+                        input {
+                            width: calc(100% - 4px);
+                            border: 1px solid $cs-boarder;
+                            background-color: $background;
+                            font-size: 0.8333rem;
+                            padding: 3px;
+                        }
+                    }
+
+                    textarea {
+                        border: 0;
+                        height: 16em;
+                    }
                 }
             }
-        }
 
-        section.equipment {
-            border: 1px solid $cs-boarder;
-            border-radius: 0.8333rem;
-            margin-top: 0.8333rem;
+            .equipment {
+                border: 1px solid $cs-boarder;
+                border-radius: 0.8333rem;
+                margin-top: 0.8333rem;
+                border-radius: 0 0 0.8333rem 0.8333rem;
 
-            > div {
-                padding: 0.8333rem;
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
+                > div {
+                    padding: 0.8333rem;
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
 
-                > div.money {
-                    ul {
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: space-between;
-                        height: 100%;
-                        margin-right: 2px;
-
-                        > li {
+                    > div.money {
+                        ul {
                             display: flex;
-                            align-items: center;
-                            margin: 0.3333rem;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            height: 100%;
+                            margin-right: 2px;
 
-                            label {
-                                border: 1px solid $cs-boarder;
-                                border-radius: 0.8333rem 0 0 0.8333rem;
-                                border-right: 0;
-                                width: 2rem;
-                                font-size: 0.85rem;
-                                text-align: center;
-                                padding: 3px 0;
-                            }
+                            > li {
+                                display: flex;
+                                align-items: center;
+                                margin: 0.3333rem;
 
-                            input {
-                                border: 1px solid $cs-boarder;
-                                border-radius: 0.8333rem;
-                                width: 3.6667rem;
-                                padding: 0.8333rem 3px;
-                                font-size: 1rem;
-                                text-align: center;
+                                label {
+                                    border: 1px solid $cs-boarder;
+                                    border-radius: 0.8333rem 0 0 0.8333rem;
+                                    border-right: 0;
+                                    width: 2rem;
+                                    font-size: 0.85rem;
+                                    text-align: center;
+                                    padding: 3px 0;
+                                }
+
+                                input {
+                                    border: 1px solid $cs-boarder;
+                                    border-radius: 0.8333rem;
+                                    width: 3.6667rem;
+                                    padding: 0.8333rem 3px;
+                                    font-size: 1rem;
+                                    text-align: center;
+                                }
                             }
                         }
                     }
-                }
 
-                > label {
-                    order: 3;
-                    text-align: center;
-                    flex: 100%;
-                }
+                    > label {
+                        order: 3;
+                        text-align: center;
+                        flex: 100%;
+                    }
 
-                > textarea {
-                    flex: 1;
-                    border: 0;
-                    height: 15.4rem;
-                    margin-left: 2px;
+                    > textarea {
+                        flex: 1;
+                        border: 0;
+                        height: 15.4rem;
+                        margin-left: 2px;
+                    }
                 }
             }
         }
 
-        section.flavor {
-            border-radius: 0.8333rem;
+        section.roleplay {
+            margin-top: 0.3333rem;
 
-            div {
-                background: $background;
-                display: flex;
-                flex-direction: column-reverse;
-                padding: 5px;
-                border: 1px solid $cs-boarder;
+            .flavor {
+                border-radius: 0.8333rem;
 
-                label {
-                    text-align: center;
-                    font-size: 0.8333rem;
-                    margin-top: 3px;
+                div {
+                    background: $background;
+                    display: flex;
+                    flex-direction: column-reverse;
+                    padding: 5px;
+                    border: 1px solid $cs-boarder;
+
+                    label {
+                        text-align: center;
+                        font-size: 0.8333rem;
+                        margin-top: 3px;
+                    }
+
+                    textarea {
+                        border: 0;
+                        border-radius: 0;
+                        height: 4em;
+                    }
                 }
 
-                textarea {
-                    border: 0;
-                    border-radius: 0;
-                    height: 4em;
+                div:first-child {
+                    border-radius: 0.8333rem 0.8333rem 0 0;
                 }
-            }
 
-            div:first-child {
-                border-radius: 0.8333rem 0.8333rem 0 0;
-            }
+                div:not(:first-child) {
+                    margin-top: 0.8333rem;
+                }
 
-            div:not(:first-child) {
-                margin-top: 0.8333rem;
-            }
-
-            div:last-child {
-                border-radius: 0 0 0.8333rem 0.8333rem;
+                div:last-child {
+                    border-radius: 0 0 0.8333rem 0.8333rem;
+                }
             }
         }
 
@@ -833,7 +838,7 @@ form.character-sheet {
                     padding: 5px;
 
                     &[name='otherprofs'] {
-                        height: 19.5rem;
+                        height: 18.25rem;
                     }
 
                     &[name='features'] {
@@ -841,7 +846,7 @@ form.character-sheet {
                     }
 
                     &[name='notes'] {
-                        height: 45rem;
+                        height: 47rem;
                     }
                 }
             }

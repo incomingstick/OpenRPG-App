@@ -3,6 +3,8 @@ import { Tab, Button, Menu, TabProps, SemanticShorthandItem, TabPaneProps } from
 import CharacterSheet from './characterScreen/characterSheet';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { Die } from 'openrpg-libs';
+import log from '../../common/log';
 
 require('../scss/characterSheet.scss');
 
@@ -60,9 +62,24 @@ export default class CharacterScreen extends React.Component<CharacterProps, Cha
 
     public loadSavedState = (loadState: CharacterSaveState) => {
         const addPanes = this.currPanes;
+        const d20 = new Die(20);
 
         if (loadState?.characters !== undefined) {
             for (const name of loadState.characters) {
+                const data = {
+                    name,
+                    attributes: {
+                        str: d20.roll(),
+                        dex: d20.roll(),
+                        con: d20.roll(),
+                        int: d20.roll(),
+                        wis: d20.roll(),
+                        cha: d20.roll()
+                    }
+                };
+
+                log.info('[Character Screen] data: ', data);
+
                 // Add item to the end of the list - 1 to account for the 'Add' button
                 addPanes.splice(this.state.panes.length - 1, 0, {
                     menuItem: (
@@ -73,7 +90,7 @@ export default class CharacterScreen extends React.Component<CharacterProps, Cha
                     ),
                     render: () => (
                         <Tab.Pane>
-                            <CharacterSheet />
+                            <CharacterSheet data={data} />
                         </Tab.Pane>
                     )
                 });
@@ -137,6 +154,20 @@ export default class CharacterScreen extends React.Component<CharacterProps, Cha
     public createCharacterMenu = () => {
         const index = this.state.panes.length - 1;
         const itemName = 'Char ' + this.currKey++;
+
+        const d20 = new Die(20);
+        const data = {
+            name: itemName,
+            attributes: {
+                str: d20.roll(),
+                dex: d20.roll(),
+                con: d20.roll(),
+                int: d20.roll(),
+                wis: d20.roll(),
+                cha: d20.roll()
+            }
+        };
+
         const item = {
             menuItem: (
                 <Menu.Item key={this.currKey} id={itemName} onContextMenu={this.handleTabRightClick}>
@@ -146,7 +177,7 @@ export default class CharacterScreen extends React.Component<CharacterProps, Cha
             ),
             render: () => (
                 <Tab.Pane>
-                    <CharacterSheet />
+                    <CharacterSheet data={data} />
                 </Tab.Pane>
             )
         };

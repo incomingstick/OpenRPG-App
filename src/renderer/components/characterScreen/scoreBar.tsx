@@ -3,11 +3,20 @@ import { ScoreList } from './characterSheet';
 
 type ScoreBarProps = {
     scoreList: ScoreList;
+    data?: {
+        str: number;
+        dex: number;
+        con: number;
+        int: number;
+        wis: number;
+        cha: number;
+    };
 };
 
 type ScoreItemProps = {
     scoreName: string;
     scoreID: string;
+    scoreVal: number;
 };
 
 export default class ScoreBar extends React.Component<ScoreBarProps, any> {
@@ -19,12 +28,13 @@ export default class ScoreBar extends React.Component<ScoreBarProps, any> {
         public render() {
             const scoreID = this.props.scoreID;
             const scoreName = this.props.scoreName;
+            const scoreVal = this.props.scoreVal;
 
             return (
                 <li>
                     <div className='score'>
                         <label htmlFor={scoreName}>{scoreName}</label>
-                        <input name={scoreID + 'Score'} placeholder='10' />
+                        <input name={scoreID + 'Score'} placeholder={scoreVal.toString()} />
                     </div>
                     <div className='modifier'>
                         <input name={scoreID + 'Mod'} placeholder='+0' />
@@ -42,7 +52,49 @@ export default class ScoreBar extends React.Component<ScoreBarProps, any> {
         const items: any = [];
 
         for (const [index, item] of this.props.scoreList.entries()) {
-            items.push(<ScoreBar.Item key={index} scoreID={item.scoreID} scoreName={item.scoreName} />);
+            let scoreVal: number | undefined = 0;
+
+            switch (item.scoreID) {
+                case 'STR': {
+                    scoreVal = this.props.data?.str;
+                    break;
+                }
+
+                case 'DEX': {
+                    scoreVal = this.props.data?.dex;
+                    break;
+                }
+
+                case 'CON': {
+                    scoreVal = this.props.data?.con;
+                    break;
+                }
+
+                case 'INT': {
+                    scoreVal = this.props.data?.int;
+                    break;
+                }
+
+                case 'WIS': {
+                    scoreVal = this.props.data?.wis;
+                    break;
+                }
+
+                case 'CHA': {
+                    scoreVal = this.props.data?.str;
+                    break;
+                }
+
+                default: {
+                    scoreVal = 10;
+                }
+            }
+
+            if (scoreVal === undefined || scoreVal === 0) scoreVal = 10;
+
+            items.push(
+                <ScoreBar.Item key={index} scoreID={item.scoreID} scoreName={item.scoreName} scoreVal={scoreVal} />
+            );
         }
 
         return (

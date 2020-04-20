@@ -5,6 +5,7 @@ import SkillsPanel from './skillsPanel';
 import FlagInputBox from './flagInputBox';
 import LabeledTextbox from './labeledTextbox';
 import Slider from '../layout/slider';
+import ActionTable from './actionTable';
 
 export type ScoreList = {
     scoreName: string;
@@ -16,55 +17,201 @@ export type SkillsList = {
     scoreID: string;
 }[];
 
-export default class CharacterSheet extends React.Component<any, any> {
-    private static Header = class extends React.Component<any, any> {
-        public render = () => (
-            <header>
-                <section className='charName'>
-                    <label htmlFor='charName'>Character Name</label>
-                    <input name='charName' placeholder='Character Name' />
-                </section>
-                <section className='misc'>
-                    <ul>
-                        <li>
-                            <label htmlFor='classlevel'>Class &amp; Level</label>
-                            <input name='classlevel' placeholder='Class Levels' />
-                        </li>
-                        <li>
-                            <label htmlFor='background'>Background</label>
-                            <input name='background' placeholder='Background' />
-                        </li>
-                        <li>
-                            <label htmlFor='playerName'>Player Name</label>
-                            <input name='playerName' placeholder='Player Name' />
-                        </li>
-                        <li>
-                            <label htmlFor='race'>Race</label>
-                            <input name='race' placeholder='Race' />
-                        </li>
-                        <li>
-                            <label htmlFor='alignment'>Alignment</label>
-                            <input name='alignment' placeholder='Alignment' />
-                        </li>
-                        <li>
-                            <label htmlFor='exp'>Experience Points</label>
-                            <input name='exp' placeholder='Experience' />
-                        </li>
-                    </ul>
-                </section>
-            </header>
-        );
+// TODO get this data via OpenRPG libs
+export type CharacterData = {
+    name: string;
+    attributes: {
+        str: number;
+        dex: number;
+        con: number;
+        int: number;
+        wis: number;
+        cha: number;
+    };
+};
+
+type CharacterSheetProps = {
+    data?: CharacterData;
+};
+
+type CharacterSheetState = {
+    data: CharacterData;
+};
+
+type HeaderProps = {
+    name?: string;
+};
+
+type StatsProps = {
+    scores: ScoreList;
+    skills: SkillsList;
+    attributes?: {
+        str: number;
+        dex: number;
+        con: number;
+        int: number;
+        wis: number;
+        cha: number;
+    };
+};
+
+// TODO load this from OpenRPG libs
+export const Scores: ScoreList = [
+    {
+        scoreName: 'Strength',
+        scoreID: 'STR'
+    },
+    {
+        scoreName: 'Dexterity',
+        scoreID: 'DEX'
+    },
+    {
+        scoreName: 'Constitution',
+        scoreID: 'CON'
+    },
+    {
+        scoreName: 'Intelligence',
+        scoreID: 'INT'
+    },
+    {
+        scoreName: 'Wiscom',
+        scoreID: 'WIS'
+    },
+    {
+        scoreName: 'Charisma',
+        scoreID: 'CHA'
+    }
+];
+
+// TODO load this from OpenRPG libs
+export const Skills: SkillsList = [
+    {
+        skillName: 'Acrobatics',
+        scoreID: 'DEX'
+    },
+    {
+        skillName: 'Animal Handling',
+        scoreID: 'WIS'
+    },
+    {
+        skillName: 'Arcana',
+        scoreID: 'INT'
+    },
+    {
+        skillName: 'Athletics',
+        scoreID: 'STR'
+    },
+    {
+        skillName: 'Deception',
+        scoreID: 'CHA'
+    },
+    {
+        skillName: 'History',
+        scoreID: 'INT'
+    },
+    {
+        skillName: 'Insight',
+        scoreID: 'WIS'
+    },
+    {
+        skillName: 'Intimidation',
+        scoreID: 'CHA'
+    },
+    {
+        skillName: 'Investigation',
+        scoreID: 'INT'
+    },
+    {
+        skillName: 'Medicine',
+        scoreID: 'WIS'
+    },
+    {
+        skillName: 'Nature',
+        scoreID: 'INT'
+    },
+    {
+        skillName: 'Perception',
+        scoreID: 'WIS'
+    },
+    {
+        skillName: 'Performance',
+        scoreID: 'CHA'
+    },
+    {
+        skillName: 'Persuasion',
+        scoreID: 'CHA'
+    },
+    {
+        skillName: 'Religion',
+        scoreID: 'INT'
+    },
+    {
+        skillName: 'Sleight of Hand',
+        scoreID: 'DEX'
+    },
+    {
+        skillName: 'Stealth',
+        scoreID: 'DEX'
+    },
+    {
+        skillName: 'Survival',
+        scoreID: 'WIS'
+    },
+    {
+        skillName: 'Survival',
+        scoreID: 'WIS'
+    }
+];
+
+export default class CharacterSheet extends React.Component<CharacterSheetProps, CharacterSheetState> {
+    private static Header = class extends React.Component<HeaderProps, any> {
+        public render = () => {
+            const nameLabePlaceholder = this.props.name ? this.props.name : 'Character Name';
+
+            return (
+                <header>
+                    <section className='charName'>
+                        <label htmlFor='charName'>Character Name</label>
+                        <input name='charName' placeholder={nameLabePlaceholder} />
+                    </section>
+                    <section className='misc'>
+                        <ul>
+                            <li>
+                                <label htmlFor='classlevel'>Class &amp; Level</label>
+                                <input name='classlevel' placeholder='Class Levels' />
+                            </li>
+                            <li>
+                                <label htmlFor='background'>Background</label>
+                                <input name='background' placeholder='Background' />
+                            </li>
+                            <li>
+                                <label htmlFor='playerName'>Player Name</label>
+                                <input name='playerName' placeholder='Player Name' />
+                            </li>
+                            <li>
+                                <label htmlFor='race'>Race</label>
+                                <input name='race' placeholder='Race' />
+                            </li>
+                            <li>
+                                <label htmlFor='alignment'>Alignment</label>
+                                <input name='alignment' placeholder='Alignment' />
+                            </li>
+                            <li>
+                                <label htmlFor='exp'>Experience Points</label>
+                                <input name='exp' placeholder='Experience' />
+                            </li>
+                        </ul>
+                    </section>
+                </header>
+            );
+        };
     };
 
-    private static Stats = class extends React.Component<any, any> {
-        public constructor(props: any, context?: any) {
-            super(props, context);
-        }
-
+    private static Stats = class extends React.Component<StatsProps, any> {
         public render = () => (
             <section>
                 <section className='attributes'>
-                    <ScoreBar scoreList={this.props.scores} />
+                    <ScoreBar scoreList={this.props.scores} data={this.props.attributes} />
                     <div className='row'>
                         <section className='attr-applications'>
                             <FlagInputBox label='Inspiration' className='inspiration' placeholder='0' />
@@ -79,23 +226,17 @@ export default class CharacterSheet extends React.Component<any, any> {
                         </section>
                         <section className='combat'>
                             <div className='row'>
-                                <div className='armorclass'>
-                                    <div>
-                                        <label htmlFor='ac'>Armor Class</label>
-                                        <input name='ac' placeholder='10' type='text' />
-                                    </div>
-                                </div>
                                 <div className='initiative'>
-                                    <div>
-                                        <label htmlFor='initiative'>Initiative</label>
-                                        <input name='initiative' placeholder='+0' type='text' />
-                                    </div>
+                                    <label htmlFor='initiative'>Initiative</label>
+                                    <input name='initiative' placeholder='+0' type='text' />
+                                </div>
+                                <div className='armorclass'>
+                                    <label htmlFor='ac'>Armor Class</label>
+                                    <input name='ac' placeholder='10' type='text' />
                                 </div>
                                 <div className='speed'>
-                                    <div>
-                                        <label htmlFor='speed'>Speed</label>
-                                        <input name='speed' placeholder='30' type='text' />
-                                    </div>
+                                    <label htmlFor='speed'>Speed</label>
+                                    <input name='speed' placeholder='30' type='text' />
                                 </div>
                             </div>
                             <div className='hp'>
@@ -167,88 +308,43 @@ export default class CharacterSheet extends React.Component<any, any> {
 
     private static Equipment = class extends React.Component<any, any> {
         public render = () => (
-            <section>
-                <section>
-                    <section className='attacksandspellcasting'>
-                        <div>
-                            <label>Attacks &amp; Spellcasting</label>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Atk Bonus</th>
-                                        <th>Damage/Type</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <input name='atkname' type='text' />
-                                        </td>
-                                        <td>
-                                            <input name='atkbonus' type='text' />
-                                        </td>
-                                        <td>
-                                            <input name='atkdamage' type='text' />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input name='atkname' type='text' />
-                                        </td>
-                                        <td>
-                                            <input name='atkbonus' type='text' />
-                                        </td>
-                                        <td>
-                                            <input name='atkdamage' type='text' />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input name='atkname' type='text' />
-                                        </td>
-                                        <td>
-                                            <input name='atkbonus' type='text' />
-                                        </td>
-                                        <td>
-                                            <input name='atkdamage' type='text' />
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <textarea placeholder='Attacks & Spells here'></textarea>
+            <section className='actions'>
+                <section className='attacksandspellcasting'>
+                    <div>
+                        <label>Attacks &amp; Spellcasting</label>
+                        <ActionTable length={3} />
+                        <textarea placeholder='Attacks & Spells here'></textarea>
+                    </div>
+                </section>
+                <section className='equipment'>
+                    <div>
+                        <label>Equipment</label>
+                        <div className='money'>
+                            <ul>
+                                <li>
+                                    <label htmlFor='cp'>cp</label>
+                                    <input name='cp' />
+                                </li>
+                                <li>
+                                    <label htmlFor='sp'>sp</label>
+                                    <input name='sp' />
+                                </li>
+                                <li>
+                                    <label htmlFor='ep'>ep</label>
+                                    <input name='ep' />
+                                </li>
+                                <li>
+                                    <label htmlFor='gp'>gp</label>
+                                    <input name='gp' />
+                                </li>
+                                <li>
+                                    <label htmlFor='pp'>pp</label>
+                                    <input name='pp' />
+                                </li>
+                            </ul>
                         </div>
-                    </section>
-                    <section className='equipment'>
-                        <div>
-                            <label>Equipment</label>
-                            <div className='money'>
-                                <ul>
-                                    <li>
-                                        <label htmlFor='cp'>cp</label>
-                                        <input name='cp' />
-                                    </li>
-                                    <li>
-                                        <label htmlFor='sp'>sp</label>
-                                        <input name='sp' />
-                                    </li>
-                                    <li>
-                                        <label htmlFor='ep'>ep</label>
-                                        <input name='ep' />
-                                    </li>
-                                    <li>
-                                        <label htmlFor='gp'>gp</label>
-                                        <input name='gp' />
-                                    </li>
-                                    <li>
-                                        <label htmlFor='pp'>pp</label>
-                                        <input name='pp' />
-                                    </li>
-                                </ul>
-                            </div>
-                            <textarea placeholder='Equipment list here'></textarea>
-                        </div>
-                    </section>
+                        <textarea placeholder='Equipment list here'></textarea>
+                    </div>
                 </section>
             </section>
         );
@@ -256,7 +352,7 @@ export default class CharacterSheet extends React.Component<any, any> {
 
     private static Personality = class extends React.Component<any, any> {
         public render = () => (
-            <section>
+            <section className='roleplay'>
                 <section className='flavor'>
                     <div className='personality'>
                         <label htmlFor='personality'>Personality</label>
@@ -292,121 +388,29 @@ export default class CharacterSheet extends React.Component<any, any> {
         );
     };
 
-    // TODO load this from OpenRPG libs
-    private scores: ScoreList = [
-        {
-            scoreName: 'Strength',
-            scoreID: 'STR'
-        },
-        {
-            scoreName: 'Dexterity',
-            scoreID: 'DEX'
-        },
-        {
-            scoreName: 'Constitution',
-            scoreID: 'CON'
-        },
-        {
-            scoreName: 'Intelligence',
-            scoreID: 'INT'
-        },
-        {
-            scoreName: 'Wiscom',
-            scoreID: 'WIS'
-        },
-        {
-            scoreName: 'Chrisma',
-            scoreID: 'CHA'
-        }
-    ];
+    public constructor(props: CharacterSheetProps, context?: any) {
+        super(props, context);
 
-    // TODO load this from OpenRPG libs
-    private skills: SkillsList = [
-        {
-            skillName: 'Acrobatics',
-            scoreID: 'DEX'
-        },
-        {
-            skillName: 'Animal Handling',
-            scoreID: 'WIS'
-        },
-        {
-            skillName: 'Arcana',
-            scoreID: 'INT'
-        },
-        {
-            skillName: 'Athletics',
-            scoreID: 'STR'
-        },
-        {
-            skillName: 'Deception',
-            scoreID: 'CHA'
-        },
-        {
-            skillName: 'History',
-            scoreID: 'INT'
-        },
-        {
-            skillName: 'Insight',
-            scoreID: 'WIS'
-        },
-        {
-            skillName: 'Intimidation',
-            scoreID: 'CHA'
-        },
-        {
-            skillName: 'Investigation',
-            scoreID: 'INT'
-        },
-        {
-            skillName: 'Medicine',
-            scoreID: 'WIS'
-        },
-        {
-            skillName: 'Nature',
-            scoreID: 'INT'
-        },
-        {
-            skillName: 'Perception',
-            scoreID: 'WIS'
-        },
-        {
-            skillName: 'Performance',
-            scoreID: 'CHA'
-        },
-        {
-            skillName: 'Persuasion',
-            scoreID: 'CHA'
-        },
-        {
-            skillName: 'Religion',
-            scoreID: 'INT'
-        },
-        {
-            skillName: 'Sleight of Hand',
-            scoreID: 'DEX'
-        },
-        {
-            skillName: 'Stealth',
-            scoreID: 'DEX'
-        },
-        {
-            skillName: 'Survival',
-            scoreID: 'WIS'
-        },
-        {
-            skillName: 'Survival',
-            scoreID: 'WIS'
-        }
-    ];
+        this.state = {
+            data: {
+                name: this.props.data?.name ? this.props.data?.name : '',
+                attributes: this.props.data?.attributes
+                    ? this.props.data?.attributes
+                    : { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 }
+            }
+        };
+    }
 
     public render() {
+        const name = this.props.data?.name;
+        const attributes = this.props.data?.attributes;
+
         return (
             <form className='character-sheet'>
-                <CharacterSheet.Header />
+                <CharacterSheet.Header name={name} />
                 <main>
-                    <Slider>
-                        <CharacterSheet.Stats scores={this.scores} skills={this.skills} />
+                    <Slider key={name}>
+                        <CharacterSheet.Stats scores={Scores} skills={Skills} attributes={attributes} />
                         <CharacterSheet.Equipment />
                         <CharacterSheet.Personality />
                         <CharacterSheet.Notes />

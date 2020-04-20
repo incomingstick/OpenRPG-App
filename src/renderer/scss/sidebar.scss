@@ -12,17 +12,18 @@
 }
 
 /* Sidebar nav styles */
-.sidebar-nav {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    top: 0;
-    left: 1px;
-    width: 3rem;
-}
-
 .ui.vertical.tabular.menu {
+    &.sidebar-nav {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        left: 1px;
+        width: 3rem;
+        border-right: none;
+    }
+
     .item.nav-button {
         display: block;
         width: 100%;

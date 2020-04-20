@@ -28,6 +28,7 @@
 Makefile.*
 config.h
 *_exports.h
+*.log
 
 # Folders and other files
 exports/*

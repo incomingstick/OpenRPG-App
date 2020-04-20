@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Settings removed from Sidebar and added to Titlebar under File > Settings
 - Character sheet split into pages with sliding animation
+- Pulled the action table into it's own component `ActionTable`
 
 ### Fixed
 - AutoUpdater should now recognize pre-releases!

@@ -48,7 +48,10 @@ export default class Slider extends React.Component<any, SliderState> {
                         Next
                     </Button>
                 </div>
-                <div className='slider' style={{ transform: `translateX(-${currIndex * 100}%)` }}>
+                <div
+                    className='slider'
+                    onTouchStart={this.onTouchStart}
+                    style={{ transform: `translateX(-${currIndex * 100}%)` }}>
                     {children.map((child: any, index: number) => (
                         <Slider.Item key={index}>{child}</Slider.Item>
                     ))}
@@ -57,19 +60,25 @@ export default class Slider extends React.Component<any, SliderState> {
         );
     }
 
-    public slidePrev = (event: any) => {
-        event.preventDefault();
+    public slidePrev = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault();
 
         const prev = this.state.currIndex - 1;
 
         this.setState({ currIndex: prev });
     };
 
-    public slideNext = (event: any) => {
-        event.preventDefault();
+    public slideNext = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault();
 
         const next = this.state.currIndex + 1;
 
         this.setState({ currIndex: next });
+    };
+
+    public onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+        e.preventDefault();
+
+        // TODO Touch stuff
     };
 }

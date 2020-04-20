@@ -8,8 +8,6 @@ const { autoUpdater } = require('electron-updater');
  * create a new, user specific settings file
  */
 
-let TEST_GLOBAL = 0;
-
 export interface UpdateService {
     isUpdateAvailable(): Promise<boolean>;
     startCheckingForUpdates(): Promise<void>;
@@ -38,7 +36,6 @@ export default function updateServiceFactory(callback: any) {
         autoUpdater.checkForUpdates();
 
         try {
-            log.debug('this has been called ', TEST_GLOBAL++, ' times');
             autoUpdater.on('update-not-available', () => {
                 emitter.emit('update-unavailable');
             });
