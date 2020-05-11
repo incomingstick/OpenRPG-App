@@ -15,12 +15,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Settings removed from Sidebar and added to Titlebar under File > Settings
 - Character sheet split into pages with sliding animation
-- Pulled the action table into it's own component `ActionTable`
+- Pulled the action/attack table into it's own component `ActionTable`
+- `src/renderer/scss/main.scss` renamed to `src/renderer/scss/app.scss`
 
 ### Fixed
 - AutoUpdater should now recognize pre-releases!
 - Modals now open exlusively, i.e you cannot open the Changelog and the License at the same time
 - List of open character sheets now saved when a new character is added or a tab is closed
+
+
+### Removed
+- Dependancy `uglifyjs-webpack-plugin` marked depricated
+- Dependancy `@babel/polyfill` marked depricated
+- Dependancy `electron-compile` marked depricated
+- Dependancy `electron-prebuilt-compile` marked depricated
+- Dependancy `git-validate` no longer needed
+- Dependancy `jquery` no longer needed
 
 ## [v0.5.0] - 2019-11-25 
 ### Added
