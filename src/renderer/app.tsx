@@ -4,6 +4,6 @@ import AppContainer from './components/appContainer';
 
 require('semantic-ui-css/semantic.min.css');
 require('./css/animate.min.css');
-require('./scss/main.scss');
+require('./scss/app.scss');
 
 render(<AppContainer />, document.getElementById('app'));

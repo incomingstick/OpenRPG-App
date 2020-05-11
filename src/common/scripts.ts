@@ -4,32 +4,10 @@
  * Project: OpenRPG <https://openrpg.io>
  * Definitions by: incomingstick <https://github.com/incomingstick>
  */
-
-import $ from 'jquery';
 import { ExpressionTree } from 'openrpg-libs';
 
-$(document).ready(() => {
-    // Change plus and minus for dropdown items
-    $('a.utility').on('click', function(event) {
-        const $me = $(this);
-        const $childIcon = $me.find('.fa.fa-fw');
-
-        $childIcon.toggleClass('fa-plus');
-        $childIcon.toggleClass('fa-minus');
-
-        return true;
-    });
-
-    // Allow use of enter/return key for calculator
-    $('#calc-display').keypress((event) => {
-        if (event.keyCode === 13) {
-            $('#calc-eval').click();
-        }
-    });
-});
-
 // Evaluate a die roll
-export function die_eval(exp: string) {
+export const die_eval = (exp: string) => {
     const parser = new ExpressionTree();
 
     if (parser.set_expression(exp)) {
@@ -37,25 +15,25 @@ export function die_eval(exp: string) {
     }
 
     return -1;
-}
+};
 
 // Allow drag
-export function start_drag(event: any) {
+export const start_drag = (event: any) => {
     if (event == null) return;
     event.dataTransfer.setData('src', event.target.id);
 
     return event;
-}
+};
 
 // Allow drop
-export function allow_drop(event: any) {
+export const allow_drop = (event: any) => {
     if (event == null) return;
 
     event.preventDefault();
-}
+};
 
 // Swap two items when dragged on top of
-export function swap_drop(event: any) {
+export const swap_drop = (event: any) => {
     if (event == null) return;
 
     event.preventDefault();
@@ -65,47 +43,4 @@ export function swap_drop(event: any) {
 
     event.currentTarget.replaceChild(src, target);
     srcParent.appendChild(target);
-}
-
-// Update the value of two swapped items
-export function update_val(curr: Element, value: string) {
-    curr.setAttribute('draggable', 'false');
-    $(curr).html('<input class="editing" type="text" value="' + value + '" />');
-    $('.editing').focus();
-    $('.editing').keyup((event) => {
-        if (event.keyCode === 13) {
-            const editing = <string>$('.editing').val();
-            $(curr).html(editing.trim());
-            curr.setAttribute('draggable', 'true');
-        }
-    });
-
-    $(document).click(() => {
-        const toTrim = $('.editing');
-        if (typeof toTrim.val() !== 'undefined') {
-            const editing = <string>$('.editing').val();
-            $(curr).html(editing.trim());
-            curr.setAttribute('draggable', 'true');
-            return;
-        }
-    });
-}
-
-// Allow user to edit a div by giving it the editable class
-// TODO ensure you cannot inject malicious code here
-$(document).ready(() => {
-    $('div.editable').dblclick(function(event) {
-        event.stopPropagation();
-        const curr = this;
-        const value = $(this).html();
-        update_val(curr, value);
-    });
-});
-
-// This code should open external links in the systems default browser
-const shell = require('electron').shell;
-// Open links externally by default
-$(document).on('click', 'a[href^="https"]', function(event) {
-    event.preventDefault();
-    shell.openExternal(this.href);
-});
+};

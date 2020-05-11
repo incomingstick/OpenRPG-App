@@ -8,7 +8,7 @@ import CitiesScreen from './cities';
 import SettingsScreen from './settings';
 import WorldMapsScreen from './worldMaps';
 import WelcomeScreen, { WelcomeCallbackData } from './welcome';
-import { ipcRenderer, webFrame } from 'electron';
+import { ipcRenderer, webFrame, shell } from 'electron';
 import { SettingsData } from '../../common/services/settingsService';
 import log from '../../common/log';
 
@@ -23,6 +23,17 @@ export type ControlFunctionMap = {
     functionAlias: string;
     function: (...args: any[]) => void;
 }[];
+
+// Open links externally by default
+document.addEventListener('click', (event: MouseEvent) => {
+    const target = event.target as HTMLAreaElement;
+
+    if (target.tagName === 'A' && target.href.startsWith('http')) {
+        console.log(event);
+        event.preventDefault();
+        shell.openExternal(target.href);
+    }
+});
 
 class AppContainer extends React.Component<any, AppContainerState> {
     private characterState: CharacterSaveState;

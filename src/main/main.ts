@@ -181,9 +181,6 @@ app.on('activate', () => {
     }
 });
 
-// In this file you can include the rest of your app's specific main process
-// Code. You can also put them in separate files and require them here.
-
 // This is to catch any unhandledRejections from node promises
 process.on('unhandledRejection', (reason: any, p: any) => {
     log.error('[Main] Unhandled Rejection at: Promise', p, 'reason:', reason);
