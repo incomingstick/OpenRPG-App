@@ -13,7 +13,7 @@ const { autoUpdater } = require('electron-updater');
 // Be closed automatically when the JavaScript object is garbage collected.
 let win: any = null;
 
-function createWindow() {
+const createWindow = () => {
     // Create the browser window.
     win = new BrowserWindow({
         width: 1280,
